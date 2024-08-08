@@ -25,3 +25,28 @@
     @apply max-w-[1440px] w-full mx-auto px-20;
   }
 }
+
+/* section title */
+.section-heading::before,
+.section-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #d6bcfa;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.section-dash {
+  width: 45px;
+  height: 5px;
+  border-radius: 8px;
+}
+
+.section-dot {
+  width: 8px;
+  height: 5px;
+  border-radius: 8px;
+}

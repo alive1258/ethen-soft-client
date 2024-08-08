@@ -15,13 +15,13 @@
     --color-success-base: #157f40;
     --color-neutral-base: #444444;
     --color-neutral-muted: #767676;
-    --color-black-base: #292929;
+    --color-black-base: #1e232c;
     --color-black-muted: #767676;
   }
 }
 
-/* .container {
-  @apply {
-    max-w-[1440px] w-full mx-auto px-20
+@layer components {
+  .container {
+    @apply max-w-[1440px] w-full mx-auto px-20;
   }
-} */
+}

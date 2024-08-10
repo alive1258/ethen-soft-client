@@ -22,7 +22,9 @@ const SectionTitle = ({ subTitle, title, description, width = "270px" }) => {
       <h1 className="text-center text-primary-base text-[40px] font-semibold my-4">
         {title}
       </h1>
-      <h4 className="text-black-base text-xl text-center">{description}</h4>
+      <h4 className="max-w-[500px] mx-auto text-black-base text-xl text-center">
+        {description}
+      </h4>
     </>
   );
 };

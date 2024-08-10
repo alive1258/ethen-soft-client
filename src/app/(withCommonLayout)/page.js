@@ -1,4 +1,5 @@
 import About from "@/components/UI/Home/About/About";
+import Blogs from "@/components/UI/Home/Blog/Blogs";
 import Hero from "@/components/UI/Home/Hero/Hero";
 import MarqueeServices from "@/components/UI/Home/Marquee/MarqueeServices";
 import OurClients from "@/components/UI/Home/OurClients/OurClients";
@@ -18,6 +19,7 @@ const page = async () => {
       <About />
       <WhyTrustUs />
       <OurClients />
+      <Blogs />
     </>
   );
 };

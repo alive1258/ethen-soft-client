@@ -96,6 +96,8 @@ module.exports = {
       },
       boxShadow: {
         primary: "0px 0px 16px rgba(49, 186, 174, 0.56)",
+        "custom-5px": "0px 4px 6px -2px rgba(16, 24, 40, 0.05)",
+        "custom-10px": "0px 12px 16px -4px rgba(16, 24, 40, 0.1)",
       },
       backgroundImage: {
         "hero-pattern": "url('/public/assets/images/banner.png')",

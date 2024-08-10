@@ -10,13 +10,13 @@
     --color-secondary-base: #e8292f;
     --color-info-base: #106bda;
     --color-info-muted: #b5d1f4;
-    --color-warning-base: #ffc107;
+    --color-warning-base: #e4a11b;
     --color-danger-base: #ce3426;
     --color-success-base: #157f40;
     --color-neutral-base: #444444;
     --color-neutral-muted: #767676;
     --color-black-base: #1e232c;
-    --color-black-muted: #767676;
+    --color-black-muted: #4b4f56;
   }
 }
 

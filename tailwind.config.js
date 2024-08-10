@@ -72,6 +72,7 @@ module.exports = {
       borderColor: {
         primary: {
           base: `var(--color-primary-base)`,
+          muted: `var(--color-primary-muted)`,
         },
         secondary: {
           base: `var(--color-secondary-base)`,

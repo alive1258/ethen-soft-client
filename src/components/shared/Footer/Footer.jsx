@@ -3,6 +3,7 @@ import Image from "next/image";
 import { CiLocationOn } from "react-icons/ci";
 import { FaFacebook } from "react-icons/fa";
 import logo from "../../../../public/assets/images/Logo-white.png";
+import FooterBottom from "./FooterBottom";
 
 const Footer = () => {
   return (
@@ -107,6 +108,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        <FooterBottom />
       </div>
     </>
   );

@@ -1,7 +1,10 @@
-const SectionTitle = ({ subTitle, title, description }) => {
+const SectionTitle = ({ subTitle, title, description, width = "270px" }) => {
   return (
     <>
-      <div className="max-w-[270px] relative flex justify-center items-center mx-auto">
+      <div
+        className={`max-w-[270px] relative flex justify-center items-center mx-auto`}
+        style={{ maxWidth: width }}
+      >
         <h2 className="section-heading relative text-primary-base">
           <span className="text-primary-base font-medium relative bg-white px-3 z-10">
             {subTitle}

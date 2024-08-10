@@ -1,13 +1,15 @@
 import Link from "next/link";
 
-const ButtonOutline = ({ content, url, className }) => {
+const ButtonOutline = ({ content, url = "/", className }) => {
   return (
     <>
-      <button
-        className={`bg-primary-base font-normal px-4 py-2 rounded text-white ${className}`}
-      >
-        <Link href={url}>{content}</Link>
-      </button>
+      <div className="text-center">
+        <button
+          className={`text-primary-base border border-primary-base font-normal px-4 py-2 rounded bg-white ${className}`}
+        >
+          <Link href={url}>{content}</Link>
+        </button>
+      </div>
     </>
   );
 };

@@ -1,6 +1,9 @@
 "use client";
 
+import Image from "next/image";
+import { motion } from "framer-motion";
 import Button from "@/components/UI/Button/Button";
+import icon from "../../../../../public/assets/images/icon.png";
 import image1 from "../../../.././../public/assets/images/hero/Frame 598 (2).png";
 import image2 from "../../../.././../public/assets/images/hero/Frame 598.png";
 import image3 from "../../../.././../public/assets/images/hero/Frame 599.png";
@@ -9,8 +12,6 @@ import image5 from "../../../.././../public/assets/images/hero/Frame 601.png";
 import image6 from "../../../.././../public/assets/images/hero/Frame 602.png";
 import image7 from "../../../.././../public/assets/images/hero/Frame 603.png";
 import image8 from "../../../.././../public/assets/images/hero/Frame 598 (1).png";
-import { motion } from "framer-motion";
-import Image from "next/image";
 
 const zoomInOut = {
   initial: { scale: 1 },
@@ -28,21 +29,28 @@ const Hero = () => {
   return (
     <>
       <div
-        className="bg-cover bg-no-repeat h-screen bg-red-300 flex justify-between items-center"
+        className="bg-cover bg-no-repeat h-screen flex justify-between items-center"
         style={{
-          backgroundImage: "url(../../../../public/assets/images/banner.png)",
+          backgroundImage: "url(/assets/images/banner.png)",
         }}
       >
-        <div className="max-w-[1440px] w-full px-20 mx-auto flex items-center justify-between md:gap-40">
+        <div className="container relative flex items-center justify-between md:gap-40">
           <div className="">
-            <h1 className="text-[56px] font-semibold">
+            <h1 className="text-[56px] font-semibold text-white">
               We Provide Best Technology Solutions
             </h1>
-            <p className="text-base font-medium pt-8 pb-12">
+            <p className="text-base font-medium pt-8 pb-12 text-white">
               We are passionate about bringing enterprise-level productivity,
               scalability, and security to small and medium businesses. How it
               works Contact Us
             </p>
+            <Image
+              className="absolute top-2/3 left-1/3"
+              src={icon}
+              width={100}
+              height={100}
+              alt="icon"
+            />
             <Button content="How it works" className="mr-6" />
             <Button content="Contact Us" />
           </div>

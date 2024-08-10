@@ -94,6 +94,9 @@ module.exports = {
           muted: `var(--color-neutral-muted)`,
         },
       },
+      boxShadow: {
+        primary: "0px 0px 16px rgba(49, 186, 174, 0.56)",
+      },
       backgroundImage: {
         "hero-pattern": "url('/public/assets/images/banner.png')",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

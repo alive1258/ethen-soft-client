@@ -1,3 +1,4 @@
+import Footer from "@/components/shared/Footer/Footer";
 import Navbar from "@/components/shared/Navbar/Navbar";
 
 const CommonLayout = ({ children }) => {
@@ -5,7 +6,7 @@ const CommonLayout = ({ children }) => {
     <>
       <Navbar />
       {children}
-      <h1>Navbar</h1>
+      <Footer />
     </>
   );
 };

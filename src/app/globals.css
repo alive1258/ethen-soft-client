@@ -6,7 +6,7 @@
 @layer base {
   :root {
     --color-primary-base: #8e4fae;
-    --color-primary-muted: #f4edf7;
+    --color-primary-muted: #f1f1f1;
     --color-secondary-base: #e8292f;
     --color-info-base: #106bda;
     --color-info-muted: #b5d1f4;
@@ -23,6 +23,9 @@
 @layer components {
   .container {
     @apply max-w-[1440px] w-full mx-auto px-5 md:px-20;
+  }
+  .social-icons {
+    @apply size-10 rounded-lg bg-primary-muted text-primary-base hover:bg-primary-base hover:text-primary-muted duration-200 p-2;
   }
 }
 
@@ -49,4 +52,9 @@
   width: 8px;
   height: 5px;
   border-radius: 8px;
+}
+
+/* list style  */
+.list-white::marker {
+  color: #f1f1f1;
 }

@@ -27,7 +27,7 @@ const WhyTrustUs = () => {
                 <h1 className="text-black-base text-2xl font-semibold">
                   Protect your Business
                 </h1>
-                <p className="text-primary-base pr-5">
+                <p className="text-black-base pr-5">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt dolore
                 </p>
@@ -41,7 +41,7 @@ const WhyTrustUs = () => {
                 <h1 className="text-black-base text-2xl font-semibold">
                   Protect your Business
                 </h1>
-                <p className="text-primary-base pr-5">
+                <p className="text-black-base pr-5">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt dolore
                 </p>
@@ -55,7 +55,7 @@ const WhyTrustUs = () => {
                 <h1 className="text-black-base text-2xl font-semibold">
                   Protect your Business
                 </h1>
-                <p className="text-primary-base pr-5">
+                <p className="text-black-base pr-5">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt dolore
                 </p>
@@ -69,7 +69,7 @@ const WhyTrustUs = () => {
                 <h1 className="text-black-base text-2xl font-semibold">
                   Protect your Business
                 </h1>
-                <p className="text-primary-base pr-5">
+                <p className="text-black-base pr-5">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt dolore
                 </p>
@@ -83,7 +83,7 @@ const WhyTrustUs = () => {
                 <h1 className="text-black-base text-2xl font-semibold">
                   Protect your Business
                 </h1>
-                <p className="text-primary-base pr-5">
+                <p className="text-black-base pr-5">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt dolore
                 </p>
@@ -97,7 +97,7 @@ const WhyTrustUs = () => {
                 <h1 className="text-black-base text-2xl font-semibold">
                   Protect your Business
                 </h1>
-                <p className="text-primary-base pr-5">
+                <p className="text-black-base pr-5">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt dolore
                 </p>

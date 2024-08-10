@@ -66,7 +66,10 @@ const MarqueeServices = () => {
           {services?.map((item, index) => (
             <div key={index} className="flex items-center gap-6 mr-8">
               <span
-                className={`bg-[#${item?.variant}] size-4 rounded-full`}
+                className={`size-4 rounded-full`}
+                style={{
+                  backgroundColor: `#${item?.variant}`,
+                }}
               ></span>
               <h6 className="text-lg text-black-base font-medium">
                 {item?.name}
@@ -92,9 +95,12 @@ const MarqueeServices = () => {
           direction="left"
         >
           {services?.map((item, index) => (
-            <div key={index} className="flex items-center gap-6">
+            <div key={index} className="flex items-center gap-6 mr-8">
               <span
-                className={`bg-[#${item?.variant}] size-4 rounded-full`}
+                className={`size-4 rounded-full`}
+                style={{
+                  backgroundColor: `#${item?.variant}`,
+                }}
               ></span>
               <h6 className="text-lg text-black-base font-medium">
                 {item?.name}

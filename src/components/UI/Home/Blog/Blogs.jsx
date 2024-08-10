@@ -1,7 +1,6 @@
 import ButtonOutline from "../../Button/ButtonOutline";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import BlogCard from "./BlogCard";
-import iii from "../../../../../public/assets/images/blog/Ellipse0.png";
 
 const Blogs = () => {
   return (

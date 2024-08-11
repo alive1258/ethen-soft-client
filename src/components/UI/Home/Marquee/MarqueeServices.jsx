@@ -46,7 +46,7 @@ const MarqueeServices = () => {
   ];
 
   return (
-    <div className="relative max-w-[1440px] mx-auto">
+    <div className="relative">
       <div
         className="bg-[#C9F31D] absolute w-full top-0 left-0 rotate-3 h-[59px] flex items-center gap-8 z-20"
         styl={{
@@ -92,7 +92,7 @@ const MarqueeServices = () => {
           pauseOnClick={true}
           delay={0}
           play={true}
-          direction="left"
+          direction="right"
         >
           {services?.map((item, index) => (
             <div key={index} className="flex items-center gap-6 mr-8">

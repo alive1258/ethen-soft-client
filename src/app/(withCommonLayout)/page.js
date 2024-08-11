@@ -5,6 +5,7 @@ import Hero from "@/components/UI/Home/Hero/Hero";
 import MarqueeServices from "@/components/UI/Home/Marquee/MarqueeServices";
 import OurClients from "@/components/UI/Home/OurClients/OurClients";
 import Services from "@/components/UI/Home/Services/Services";
+import Testimonials from "@/components/UI/Home/Testimonials/Testimonials";
 import WhyTrustUs from "@/components/UI/Home/WhyTrustUs/WhyTrustUs";
 
 const page = async () => {
@@ -21,6 +22,7 @@ const page = async () => {
       <WhyTrustUs />
       <OurClients />
       <Blogs />
+      <Testimonials />
       <Faq />
     </>
   );

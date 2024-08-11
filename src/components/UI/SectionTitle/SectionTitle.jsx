@@ -6,7 +6,7 @@ const SectionTitle = ({ subTitle, title, description, width = "270px" }) => {
         style={{ maxWidth: width }}
       >
         <h2 className="section-heading relative text-primary-base">
-          <span className="text-primary-base font-medium relative bg-white px-3 z-10">
+          <span className="text-primary-base font-medium uppercase relative bg-white px-3 z-10">
             {subTitle}
           </span>
         </h2>

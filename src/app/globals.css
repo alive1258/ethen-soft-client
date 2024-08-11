@@ -58,3 +58,42 @@
 .list-white::marker {
   color: #f1f1f1;
 }
+
+/* swiper custom bullets design  */
+.swiper-pagination {
+  bottom: 20px !important;
+}
+
+.swiper-pagination-bullet {
+  margin-top: 40px !important;
+  width: 12px !important;
+  height: 8px !important;
+  background-color: #ad7cc5 !important;
+  border-radius: 16px !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 24px !important;
+  background-color: #8e4fae !important;
+}
+
+/* Custom Navigation Arrows */
+
+.swiper-button-prev,
+.swiper-button-next {
+  height: 40px !important;
+  width: 40px !important;
+  padding: 5px;
+  font-size: 10px;
+  background-color: #8e4fae;
+  color: white !important;
+  border-radius: 50%;
+  z-index: 50px;
+}
+.swiper-button-prev ::after,
+.swiper-button-prev ::before,
+.swiper-button-next ::after,
+.swiper-button-next ::before {
+  font-size: 5px;
+  color: black;
+}

@@ -7,7 +7,7 @@ import Button from "@/components/UI/Button/Button";
 const Navbar = () => {
   return (
     <>
-      <div className="sticky top-0 -translate-y-0 bg-[#ffffff] z-[500] shadow duration-300  transition-transform transform ">
+      <div className="stick top-0 -translate-y-0 bg-[#ffffff] z-[500] shadow duration-300  transition-transform transform ">
         <div className="max-w-[1440px] w-full px-20 mx-auto h-[88px] flex items-center justify-between ">
           {/* logo */}
           <div>

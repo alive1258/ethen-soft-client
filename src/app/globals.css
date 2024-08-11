@@ -60,8 +60,9 @@
 }
 
 /* swiper custom bullets design  */
+
 .swiper-pagination {
-  bottom: 20px !important;
+  bottom: 0px !important;
 }
 
 .swiper-pagination-bullet {

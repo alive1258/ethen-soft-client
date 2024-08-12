@@ -72,6 +72,61 @@ const AllWork = () => {
             <WorkHoverEffect />
           </div>
         </div>
+
+        <div className="grid grid-cols-2 grid-rows-3 gap-5">
+          <div className="relative group col-span-2 row-span-2">
+            <Image
+              className="rounded-lg object-cover w-full h-full"
+              src={image7}
+              alt="work"
+            />
+            <WorkHoverEffect />
+          </div>
+          <div className="relative group col-span-1">
+            <Image
+              className="rounded-lg object-cover w-full h-full"
+              src={image10}
+              alt="work"
+            />
+            <WorkHoverEffect />
+          </div>
+          <div className="relative group col-span-1">
+            <Image
+              className="rounded-lg object-cover w-full h-full"
+              src={image11}
+              alt="work"
+            />
+            <WorkHoverEffect />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 grid-rows-3 gap-5">
+          <div className="relative group col-span-1">
+            <Image
+              className="rounded-lg object-cover w-full h-full"
+              src={image7}
+              alt="work"
+            />
+            <WorkHoverEffect />
+          </div>
+
+          <div className="relative group col-span-1">
+            <Image
+              className="rounded-lg object-cover w-full h-full"
+              src={image8}
+              alt="work"
+            />
+            <WorkHoverEffect />
+          </div>
+          <div className="relative group col-span-2 row-span-2">
+            <Image
+              className="rounded-lg object-cover w-full h-full"
+              src={image12}
+              alt="work"
+            />
+            <WorkHoverEffect />
+          </div>
+        </div>
       </div>
     </>
   );

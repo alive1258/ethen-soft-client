@@ -110,7 +110,7 @@ const Services = () => {
         }}
       >
         <div
-          className="container mt-40 bg-no-repeat"
+          className="container mt-10 bg-no-repeat"
           style={{
             backgroundImage: "url(/assets/images/icons.png)",
           }}

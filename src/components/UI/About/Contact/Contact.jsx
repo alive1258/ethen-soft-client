@@ -13,7 +13,7 @@ const Contact = () => {
           title="Contact Us For Any Questions"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolore. "
         />
-        <div className="mt-[60px] flex items-center justify-between">
+        <div className="mt-[60px] flex flex-col-reverse md:flex-row gap-10 items-center justify-between">
           <div className="w-full">
             <h1 className="text-black-base text-2xl font-semibold pb-10 text-nowrap">
               Contact Info :

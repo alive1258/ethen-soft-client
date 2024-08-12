@@ -12,19 +12,19 @@ const ContactForm = () => {
   const onSubmit = (data) => console.log(data);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex items-center gap-6">
-        <div className="flex flex-col gap-2">
+      <div className="md:flex items-center gap-6 space-y-4 md:space-y-0">
+        <div className="w-full flex flex-col gap-2">
           <label className="text-black-base font-medium"> Name </label>
           <input
-            className="px-2 py-4 border border-[#BDBDBD] rounded focus:border-primary-base focus:outline-none"
+            className="w-full px-2 py-4 border border-[#BDBDBD] rounded focus:border-primary-base focus:outline-none"
             placeholder="Enter your name"
             {...register("name")}
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="w-full flex flex-col gap-2">
           <label className="text-black-base font-medium"> Subject </label>
           <input
-            className="px-2 py-4 border border-[#BDBDBD] rounded focus:border-primary-base focus:outline-none"
+            className="w-full px-2 py-4 border border-[#BDBDBD] rounded focus:border-primary-base focus:outline-none"
             placeholder="Enter your subject"
             {...register("subject")}
           />
@@ -33,7 +33,7 @@ const ContactForm = () => {
       <div className="flex flex-col gap-2 my-4">
         <label className="text-black-base font-medium"> E-mail </label>
         <input
-          className="px-2 py-4 border border-[#BDBDBD] rounded focus:border-primary-base focus:outline-none"
+          className="w-full px-2 py-4 border border-[#BDBDBD] rounded focus:border-primary-base focus:outline-none"
           placeholder="Enter your Email"
           {...register("email")}
         />
@@ -41,7 +41,7 @@ const ContactForm = () => {
       <div className="flex flex-col gap-2">
         <label className="text-black-base font-medium"> Message </label>
         <textarea
-          className="h-[170px] px-2 py-4 border border-[#BDBDBD] rounded focus:border-primary-base focus:outline-none"
+          className="h-[170px] w-full px-2 py-4 border border-[#BDBDBD] rounded focus:border-primary-base focus:outline-none"
           placeholder="Type your massage"
           {...register("massage")}
         />

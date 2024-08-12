@@ -98,3 +98,26 @@
   font-size: 5px;
   color: black;
 }
+
+/* banner title  */
+.banner-title::before,
+.banner-title::after {
+  content: "";
+  position: absolute;
+  width: 240%;
+  height: 70px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.banner-title::before {
+  right: 350px;
+  background-image: url("/assets/images/left.png");
+}
+
+.banner-title::after {
+  left: 360px;
+  background-image: url("/assets/images/right.png");
+}

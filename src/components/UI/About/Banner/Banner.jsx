@@ -17,7 +17,7 @@ const Banner = () => {
         }}
       >
         <div
-          className="pt-[125px] flex items-center justify-between"
+          className="pt-[180px] flex items-center justify-between"
           styl={{
             backgroundImage: "url(/assets/images/aboutUs/Frame.png)",
             backgroundPosition: "left top",

@@ -55,7 +55,7 @@ const SwiperTestimonial = () => {
             <TestimonialCard />
           </SwiperSlide>
         </Swiper>
-        {/* Custom Navigation Arrows  */}S
+        {/* Custom Navigation Arrows  */}
       </div>
     </>
   );

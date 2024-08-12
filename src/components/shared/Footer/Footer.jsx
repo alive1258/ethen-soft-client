@@ -8,7 +8,7 @@ import FooterBottom from "./FooterBottom";
 const Footer = () => {
   return (
     <>
-      <div className="bg-black-base">
+      <footer className="bg-black-base">
         <div className="container py-14">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[55px]">
             <div>
@@ -109,7 +109,7 @@ const Footer = () => {
           </div>
         </div>
         <FooterBottom />
-      </div>
+      </footer>
     </>
   );
 };

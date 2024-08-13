@@ -38,7 +38,7 @@ const Products = () => {
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10">
             <div className="relative group">
               <Image
-                className="rounded-lg object-cover w-full h-full"
+                className="rounded-lg object-cover w-full h-[294px]"
                 src={image4}
                 alt="product"
               />
@@ -46,7 +46,7 @@ const Products = () => {
             </div>
             <div className="relative group">
               <Image
-                className="rounded-lg object-cover w-full h-full"
+                className="rounded-lg object-cover w-full h-[294px]"
                 src={image2}
                 alt="product"
               />
@@ -54,7 +54,7 @@ const Products = () => {
             </div>
             <div className="relative group">
               <Image
-                className="rounded-lg object-cover w-full h-full"
+                className="rounded-lg object-cover w-full h-[294px]"
                 src={image3}
                 alt="product"
               />
@@ -62,7 +62,7 @@ const Products = () => {
             </div>
             <div className="relative group">
               <Image
-                className="rounded-lg object-cover w-full h-full"
+                className="rounded-lg object-cover w-full h-[294px]"
                 src={image5}
                 alt="product"
               />
@@ -70,7 +70,7 @@ const Products = () => {
             </div>
             <div className="relative group">
               <Image
-                className="rounded-lg object-cover w-full h-full"
+                className="rounded-lg object-cover w-full h-[294px]"
                 src={image3}
                 alt="product"
               />
@@ -78,7 +78,7 @@ const Products = () => {
             </div>
             <div className="relative group">
               <Image
-                className="rounded-lg object-cover w-full h-full"
+                className="rounded-lg object-cover w-full h-[294px]"
                 src={image5}
                 alt="product"
               />
@@ -86,7 +86,7 @@ const Products = () => {
             </div>
             <div className="relative group">
               <Image
-                className="rounded-lg object-cover w-full h-full"
+                className="rounded-lg object-cover w-full h-[294px]"
                 src={image3}
                 alt="product"
               />
@@ -94,7 +94,7 @@ const Products = () => {
             </div>
             <div className="relative group">
               <Image
-                className="rounded-lg object-cover w-full h-full"
+                className="rounded-lg object-cover w-full h-[294px]"
                 src={image6}
                 alt="product"
               />
@@ -102,7 +102,7 @@ const Products = () => {
             </div>
             <div className="relative group">
               <Image
-                className="rounded-lg object-cover w-full h-full"
+                className="rounded-lg object-cover w-full h-[294px]"
                 src={image4}
                 alt="product"
               />

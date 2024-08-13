@@ -1,10 +1,10 @@
 import Products from "@/components/UI/Products/Products";
 
-const ProductPage = () => {
+const page = () => {
   return (
     <>
-      <section className="">
-        {/* product banner  */}
+      <section>
+        {/* work banner  */}
         <div
           className="h-[374px] bg-no-repeat bg-cover relative"
           style={{
@@ -20,16 +20,16 @@ const ProductPage = () => {
         /> */}
           <div className="absolute top-[40%] left-[42%]">
             <h1 className="banner-title before:w-full after:w-full relative text-[56px] font-semibold text-white shadow-lrge bg-no-repeat">
-              Our Products
+              Our Works
             </h1>
           </div>
         </div>
 
-        {/* products section */}
+        {/* work section */}
         <Products />
       </section>
     </>
   );
 };
 
-export default ProductPage;
+export default page;

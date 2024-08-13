@@ -1,8 +1,7 @@
 import Image from "next/image";
 import blend from "../../../../public/assets/images/noisy-gradients.png";
-import Contact from "@/components/UI/About/Contact/Contact";
 
-const ContactPage = () => {
+const PrivacyPage = () => {
   return (
     <>
       <div
@@ -20,13 +19,12 @@ const ContactPage = () => {
         />
         <div className="absolute top-[40%] left-[45%]">
           <h1 className="banner-title before:right-[170px] after:left-[170px] relative text-[56px] font-semibold text-white shadow-lrge bg-no-repeat z-30">
-            Career
+            Privacy Policy
           </h1>
         </div>
       </div>
-      <Contact />
     </>
   );
 };
 
-export default ContactPage;
+export default PrivacyPage;

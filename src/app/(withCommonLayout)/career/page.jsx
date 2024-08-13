@@ -1,8 +1,8 @@
 import Image from "next/image";
 import blend from "../../../../public/assets/images/noisy-gradients.png";
-import Blogs from "@/components/UI/Home/Blog/Blogs";
+import CareerOppertunities from "@/components/UI/Career/CareerOppertunities";
 
-const page = () => {
+const CareerPage = () => {
   return (
     <>
       <div
@@ -18,21 +18,21 @@ const page = () => {
           height={374}
           alt="blend image"
         />
-        <div className="absolute top-[40%] left-[47%]">
+        <div className="absolute top-[40%] left-[45%]">
           <h1
-            className="banner-title before:right-[140px] after:left-[140px] relative text-[56px] font-semibold text-white shadow-lrge bg-no-repeat z-30"
+            className="banner-titl before:right-[140px] after:left-[140px] relative text-[56px] font-semibold text-white shadow-lrge bg-no-repeat z-30"
             // style={{
             //   backgroundImage: `url(/assets/images/left.png), url(/assets/images/left.png)`,
             //   backgroundPosition: "left, right",
             // }}
           >
-            Blog
+            Career
           </h1>
         </div>
       </div>
-      <Blogs />
+      <CareerOppertunities />
     </>
   );
 };
 
-export default page;
+export default CareerPage;

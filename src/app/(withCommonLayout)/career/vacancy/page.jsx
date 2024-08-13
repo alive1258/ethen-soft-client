@@ -1,8 +1,8 @@
+import { GrEmptyCircle } from "react-icons/gr";
+import blend from "../../../../../public/assets/images/noisy-gradients.png";
 import Image from "next/image";
-import blend from "../../../../public/assets/images/noisy-gradients.png";
-import CareerOppertunities from "@/components/UI/Career/CareerOppertunities";
 
-const CareerPage = () => {
+const CareerVacancy = () => {
   return (
     <>
       <div
@@ -24,9 +24,14 @@ const CareerPage = () => {
           </h1>
         </div>
       </div>
-      <CareerOppertunities />
+      <div className="container bg-[#f1f1f1] p-8 border-2 border-[#686C72] my-24 rounded-lg flex flex-col justify-center items-center gap-7">
+        <GrEmptyCircle className="size-36 bg-[#D2D2D2] text-[72px] text-[#bebaba] p-4 rounded-full" />
+        <h1 className="text-[32px] font-semibold text-[#4B4F56]">
+          We Currently have no vacancies
+        </h1>
+      </div>
     </>
   );
 };
 
-export default CareerPage;
+export default CareerVacancy;

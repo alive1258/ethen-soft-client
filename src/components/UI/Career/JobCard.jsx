@@ -11,7 +11,7 @@ const JobCard = () => {
           width={413}
           height={250}
           src={job}
-          alt="job cercular icon"
+          alt="job circular icon"
         />
         <div className="p-5">
           <span className="text-sm text-primary-base font-medium pb-4">

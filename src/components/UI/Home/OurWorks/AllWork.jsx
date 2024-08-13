@@ -1,4 +1,6 @@
+import Link from "next/link";
 import Image from "next/image";
+import WorkHoverEffect from "./WorkHoverEffect";
 import image1 from "../../../../../public/assets/images/works/1.png";
 import image2 from "../../../../../public/assets/images/works/image 2.png";
 import image3 from "../../../../../public/assets/images/works/3.png";
@@ -11,8 +13,6 @@ import image9 from "../../../../../public/assets/images/works/9.png";
 import image10 from "../../../../../public/assets/images/works/10.png";
 import image11 from "../../../../../public/assets/images/works/11.png";
 import image12 from "../../../../../public/assets/images/works/12.png";
-import Link from "next/link";
-import WorkHoverEffect from "./WorkHoverEffect";
 
 const AllWork = () => {
   return (

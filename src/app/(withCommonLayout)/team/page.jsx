@@ -1,35 +1,33 @@
 import Image from "next/image";
-import blendImage from "../../../../public/assets/images/Gradient2.png";
-import Clients from "@/components/UI/Clients/Clients";
-import Testimonials from "@/components/UI/Home/Testimonials/Testimonials";
+import blend from "../../../../public/assets/images/Gradient2.png";
+import Team from "@/components/UI/Team/Team";
 
-const ClientPage = () => {
+const TeamPage = () => {
   return (
     <>
-      {/* client banner  */}
+      {/* product banner  */}
       <div
         className="h-[374px] bg-no-repeat bg-cover relative"
         style={{
-          backgroundImage: `url(/assets/images/customer.png)`,
+          backgroundImage: `url(/assets/images/team.png)`,
         }}
       >
-        <Image
+        {/* <Image
           className="w-full h-[374px] mix-blend-difference"
-          src={""}
+          src={blend}
           width={1440}
           height={374}
           alt="blend image"
-        />
+        /> */}
         <div className="absolute top-[40%] left-[42%]">
           <h1 className="banner-title before:w-full after:w-full relative text-[56px] font-semibold text-white shadow-lrge bg-no-repeat">
-            Our Clients
+            Our Creative Team
           </h1>
         </div>
       </div>
-      <Clients />
-      <Testimonials />
+      <Team />
     </>
   );
 };
 
-export default ClientPage;
+export default TeamPage;

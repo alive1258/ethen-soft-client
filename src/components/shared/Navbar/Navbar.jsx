@@ -8,41 +8,44 @@ import mobileLogo from "../../../../public/assets/images/mobile-logo.png";
 import Link from "next/link";
 import Button from "@/components/UI/Button/Button";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathName = usePathname();
   const [open, setOpen] = useState(false);
   const items = [
     {
-      name: "Home",
-      url: "/",
+      display: "Home",
+      path: "/",
     },
     {
-      name: "About Us",
-      url: "/aboutUs",
+      display: "About Us",
+      path: "/aboutUs",
     },
     {
-      name: "Services",
-      url: "/services",
+      display: "Services",
+      path: "/services",
     },
     {
-      name: "Products",
-      url: "/products",
+      display: "Products",
+      path: "/products",
     },
     {
-      name: "Our Work",
-      url: "/ourWork",
+      display: "Our Work",
+      path: "/ourWork",
     },
     {
-      name: "Clients",
-      url: "/clients",
+      display: "Clients",
+      path: "/clients",
     },
     {
-      name: "Team",
-      url: "/team",
+      display: "Team",
+      path: "/team",
     },
     {
-      name: "Career",
-      url: "/career",
+      display: "Career",
+      path: "/career",
     },
   ];
 
@@ -91,15 +94,21 @@ const Navbar = () => {
                 : "-top-[999px] md:border-t-0 border-t-2 border-t-primary-base"
             }`}
           >
-            {items?.map((item, index) => (
-              <Link
-                key={index}
-                className="md:ml-10 text-sm font-normal hover:text-primary-base duration-300"
-                href={item?.url}
-              >
-                {item?.name}
-              </Link>
-            ))}
+            {items?.map(({ display, path }) => {
+              const isActive = pathName.startsWith(path);
+              return (
+                <Link
+                  key={display}
+                  className={`md:ml-10 font-normal duration-300 ${
+                    isActive ? "text-primary-base font-semibold" : ""
+                  }`}
+                  href={path}
+                >
+                  {display}
+                </Link>
+              );
+            })}
+
             <Link className="md:ml-10" href="/">
               <Button content="Contact Us" />
             </Link>

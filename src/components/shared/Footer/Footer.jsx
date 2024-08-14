@@ -3,17 +3,31 @@ import Image from "next/image";
 import { CiLocationOn } from "react-icons/ci";
 import { FaFacebook } from "react-icons/fa";
 import logo from "../../../../public/assets/images/Logo-white.png";
+import mobileLogo from "../../../../public/assets/images/res-mob-logo.png";
 import FooterBottom from "./FooterBottom";
 
 const Footer = () => {
   return (
     <>
       <footer className="bg-black-base">
-        <div className="container py-14">
+        <div className="container py-8 md:py-14">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[55px]">
             <div>
-              <Image src={logo} width={181} height={48} alt="logo" />
-              <p className="text-sm text-primary-muted pt-6 pb-6">
+              <Image
+                className="hidden md:block"
+                src={logo}
+                width={181}
+                height={48}
+                alt="logo"
+              />
+              <Image
+                className="block md:hidden"
+                src={logo}
+                width={172}
+                height={48}
+                alt="logo"
+              />
+              <p className="text-sm text-primary-muted pt-6 pb-6 pr-20">
                 Sed ut perspiciatis unde omnis is natus error site voluptatem
                 more accntium doloremque laudatium totam rem aperiam, eaque ipsa
                 quae abventore veritatis.
@@ -27,11 +41,65 @@ const Footer = () => {
               </div>
             </div>
 
-            <div>
+            {/* all link  */}
+            <div className="block md:hidden col-span-2 flex items-center justify-between px-4 pr-10">
+              <div>
+                <h1 className="text-primary-muted text-lg font-semibold pb-4">
+                  Our Services
+                </h1>
+                <ul className="space-y-2 text-primary-muted list-disc list-inside text-sm md:text-base marker:text-primary-muted">
+                  <li>
+                    <Link href="/"> Web Development</Link>
+                  </li>
+                  <li>
+                    <Link href="/">Graphics Design</Link>
+                  </li>
+                  <li>
+                    <Link href="/">UI/UX Design</Link>
+                  </li>
+                  <li>
+                    <Link href="/">Video Editing</Link>
+                  </li>
+                  <li>
+                    <Link href="/">Digital Marketing</Link>
+                  </li>
+                  <li>
+                    <Link href="/">IT Solutions</Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h1 className="text-primary-muted text-lg font-semibold pb-4">
+                  Quick Links
+                </h1>
+                <ul className="space-y-2 text-primary-muted list-disc list-inside text-sm md:text-base marker:text-primary-muted">
+                  <li className="border-none hover:border-b hover:border-b-white">
+                    <Link href="/"> Web Development</Link>
+                  </li>
+                  <li>
+                    <Link href="/">Graphics Design</Link>
+                  </li>
+                  <li>
+                    <Link href="/">UI/UX Design</Link>
+                  </li>
+                  <li>
+                    <Link href="/">Video Editing</Link>
+                  </li>
+                  <li>
+                    <Link href="/">Digital Marketing</Link>
+                  </li>
+                  <li>
+                    <Link href="/">IT Solutions</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="hidden md:block">
               <h1 className="text-primary-muted text-lg font-semibold pb-4">
                 Our Services
               </h1>
-              <ul className="space-y-2 text-primary-muted list-disc list-inside marker:text-primary-muted">
+              <ul className="space-y-2 text-primary-muted list-disc list-inside text-sm md:text-base marker:text-primary-muted">
                 <li>
                   <Link href="/"> Web Development</Link>
                 </li>
@@ -52,11 +120,11 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div>
+            <div className="hidden md:block">
               <h1 className="text-primary-muted text-lg font-semibold pb-4">
                 Quick Links
               </h1>
-              <ul className="space-y-2 text-primary-muted list-disc list-inside marker:text-primary-muted">
+              <ul className="space-y-2 text-primary-muted list-disc list-inside text-sm md:text-base marker:text-primary-muted">
                 <li>
                   <Link href="/"> Web Development</Link>
                 </li>

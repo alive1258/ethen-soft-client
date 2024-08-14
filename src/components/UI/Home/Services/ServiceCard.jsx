@@ -9,7 +9,7 @@ const ServiceCard = ({ service }) => {
       <div className="text-center px-2 py-4 hover:shadow-primary hover:rounded-lg duration-200 bg-white z-10">
         <Image
           src={image1}
-          className={`size-[100px] mx-auto p-6 rounded-full`}
+          className={`size-14 md:size-[100px] mx-auto p-2 md:p-6 rounded-full`}
           style={{
             backgroundColor: `#${service?.variant}`,
           }}

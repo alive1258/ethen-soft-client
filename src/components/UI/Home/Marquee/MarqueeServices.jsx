@@ -46,7 +46,7 @@ const MarqueeServices = () => {
   ];
 
   return (
-    <div className="hidden md:block relative">
+    <div className="hidden md:block relative mb-32">
       <div
         className="bg-[#C9F31D] absolute w-full top-0 left-0 rotate-3 h-[59px] flex items-center gap-8 z-20"
         styl={{

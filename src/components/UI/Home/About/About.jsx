@@ -38,7 +38,7 @@ const About = () => {
           </div>
           <div className="w-full">
             <Image
-              className="w-[630px] h-[464px] rounded-lg"
+              className="md:w-[630px] h-[288px] md:h-[464px] rounded-lg"
               src={aboutImage}
               width={630}
               height={464}

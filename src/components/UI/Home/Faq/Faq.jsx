@@ -36,12 +36,12 @@ const Faq = () => {
     <>
       <div className="bg-[#FBF9FC] py-10">
         <div
-          className="container bg-no-repeat"
-          style={{
-            backgroundImage:
-              "url(/assets/images/faq/Frame1.png), url(/assets/images/faq/Ellipse.png)",
-            backgroundPosition: "left bottom, right bottom",
-          }}
+          className="container faq-container bg-no-repeat"
+          // style={{
+          //   backgroundImage:
+          //     "url(/assets/images/faq/Frame1.png), url(/assets/images/faq/Ellipse.png)",
+          //   backgroundPosition: "left bottom, right bottom",
+          // }}
         >
           <SectionTitle
             subTitle="FAQ"
@@ -49,7 +49,7 @@ const Faq = () => {
             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolore. "
           />
 
-          <div className="flex justify-between gap-14 mt-9">
+          <div className="md:flex justify-between gap-14 mt-9">
             <div className="w-full">
               <Image src={faqImage} width={593} height={478} alt="faq image" />
             </div>

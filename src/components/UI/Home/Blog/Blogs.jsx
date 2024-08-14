@@ -6,18 +6,20 @@ const Blogs = () => {
   return (
     <>
       <div
-        className="max-w-[1440px] mx-auto bg-no-repeat py-10"
-        style={{
-          backgroundImage:
-            "url(/assets/images/blog/Ellipse1.png), url(/assets/images/blog/Ellipse0.png)",
-          backgroundPosition: "left bottom, calc(50% + 150px) bottom",
-        }}
+        className="max-w-[1440px] blog-container mx-auto bg-no-repeat py-10"
+        style={
+          {
+            // backgroundImage:
+            //   "url(/assets/images/blog/Ellipse1.png), url(/assets/images/blog/Ellipse0.png)",
+            // backgroundPosition: "left bottom, calc(50% + 150px) bottom",
+          }
+        }
       >
         <div
-          className="container bg-no-repeat bg-right-top"
-          style={{
-            backgroundImage: "url(/assets/images/blog/Union.png)",
-          }}
+          className="container bg-no-repeat blog-inner"
+          // style={{
+          //   backgroundImage: "url(/assets/images/blog/Union.png)",
+          // }}
         >
           <SectionTitle
             subTitle="Our Blog"

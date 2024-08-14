@@ -104,16 +104,16 @@ const Services = () => {
   return (
     <>
       <div
-        className="max-w-[1440px] mx-auto bg-no-repeat bg-left-bottom"
-        style={{
-          backgroundImage: "url(/assets/images/bg-shape.png)",
-        }}
+        className="max-w-[1440px] mx-auto bg-no-repeat bg-left-bottom bg-none md:bg-[url('/assets/images/bg-shape.png')]"
+        // style={{
+        //   backgroundImage: "url(/assets/images/bg-shape.png)",
+        // }}
       >
         <div
-          className="container mt-10 bg-no-repeat"
-          style={{
-            backgroundImage: "url(/assets/images/icons.png)",
-          }}
+          className="container mt-10 bg-no-repeat bg-none md:bg-[url('/assets/images/icons.png')]"
+          // style={{
+          //   backgroundImage: "url(/assets/images/icons.png)",
+          // }}
         >
           <SectionTitle
             subTitle="SERVICES"

@@ -15,15 +15,7 @@ const Products = () => {
   return (
     <>
       <div className="bg-[#F1F1F1] bg-opacity-[77%] pt-14">
-        <div
-          className="container bg-no-repeat pb-14"
-          style={{
-            backgroundImage:
-              "url(/assets/images/works/Vector.png), url(/assets/images/bag.png), url(/assets/images/round.png)",
-            backgroundPosition:
-              "calc(100% - 100px) top, calc(60% + 115px) 100px, right bottom",
-          }}
-        >
+        <div className="container bg-no-repeat pb-14 bg-none md:bg-[url('/assets/images/works/Vector.png'),url('/assets/images/bag.png'),url('/assets/images/round.png')] md:bg-[calc(100%_-_100px)_top,calc(60%_+_115px)_100px,right_bottom]">
           {/* section title and description  */}
           <SectionTitle
             subTitle="PRODUCTS"

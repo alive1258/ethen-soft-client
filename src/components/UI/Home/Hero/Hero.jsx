@@ -16,11 +16,11 @@ import image8 from "../../../.././../public/assets/images/hero/Frame 598 (1).png
 const zoomInOut = {
   initial: { scale: 1 },
   animate: {
-    scale: [1, 1.2, 1],
+    scale: [1, 1.2, 1], // Zoom in to 1.2 and then back to 1
     transition: {
-      duration: 2,
-      repeat: Infinity,
-      repeatType: "mirror",
+      duration: 2, // Duration for one cycle
+      repeat: Infinity, // Repeat the animation indefinitely
+      repeatType: "mirror", // Alternate the animation direction
     },
   },
 };
@@ -29,14 +29,14 @@ const Hero = () => {
   return (
     <>
       <div
-        className="bg-cover bg-no-repeat h-[197px] md:h-screen flex justify-between items-center"
+        className="bg-cover bg-no-repeat h-screen flex justify-between items-center"
         style={{
           backgroundImage: "url(/assets/images/banner.png)",
         }}
       >
         <div className="container relative flex items-center justify-between md:gap-40">
           <div className="pl-1 md:pl-0">
-            <h1 className="text-base md:text-[56px] font-semibold text-white">
+            <h1 className="text-base md:text-[56px] font-semibold text-white md:leading-[70px]">
               We Provide Best Technology Solutions
             </h1>
             <p className="text-[10px] md:text-base font-medium my-4 md:my-0 md:pt-8 md:pb-12 text-[#f1f1f1]">
@@ -51,8 +51,10 @@ const Hero = () => {
               height={100}
               alt="icon"
             />
-            <Button content="How it works" className="hidden md:block mr-6" />
-            <Button content="Contact Us" />
+            <div className="flex gap-6">
+              <Button content="How it works" className="hidden md:block" />
+              <Button content="Contact Us" />
+            </div>
           </div>
           <div className="hidden lg:block">
             <div className="relative size-[464px] border border-white border-dashed rounded-full flex justify-center items-center">
@@ -141,3 +143,45 @@ const Hero = () => {
 };
 
 export default Hero;
+
+// <div className="pl-1 md:pl-0">
+//   <h1 className="text-base md:text-[56px] font-semibold text-white">
+//     We Provide Best Technology Solutions
+//   </h1>
+//   <p className="text-[10px] md:text-base font-medium my-4 md:my-0 md:pt-8 md:pb-12 text-[#f1f1f1]">
+//     We are passionate about bringing enterprise-level productivity,
+//     scalability, and security to small and medium businesses. How it
+//     works Contact Us
+//   </p>
+//   <Image
+//     className="hidden md:block absolute top-2/3 left-1/3"
+//     src={icon}
+//     width={100}
+//     height={100}
+//     alt="icon"
+//   />
+//   <div className="flex gap-6">
+//     <Button content="How it works" className="hidden md:block" />
+//     <Button content="Contact Us" />
+//   </div>
+// </div>
+
+// <div className="">
+//   <h1 className="text-[56px] font-semibold text-white">
+//     We Provide Best Technology Solutions
+//   </h1>
+//   <p className="text-base font-medium pt-8 pb-12 text-white">
+//     We are passionate about bringing enterprise-level productivity,
+//     scalability, and security to small and medium businesses. How it
+//     works Contact Us
+//   </p>
+//   <Image
+//     className="absolute top-2/3 left-1/3"
+//     src={icon}
+//     width={100}
+//     height={100}
+//     alt="icon"
+//   />
+//   <Button content="How it works" className="mr-6" />
+//   <Button content="Contact Us" />
+// </div>

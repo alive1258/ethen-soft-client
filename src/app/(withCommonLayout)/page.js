@@ -8,6 +8,7 @@ import OurWorks from "@/components/UI/Home/OurWorks/OurWorks";
 import Services from "@/components/UI/Home/Services/Services";
 import Testimonials from "@/components/UI/Home/Testimonials/Testimonials";
 import WhyTrustUs from "@/components/UI/Home/WhyTrustUs/WhyTrustUs";
+import Products from "@/components/UI/Products/Products";
 
 const page = async () => {
   //   const res = await fetch("http://localhost:5000/api/v1/products", {
@@ -22,9 +23,12 @@ const page = async () => {
       <About />
       <WhyTrustUs />
       <OurWorks />
+      <div className="block md:hidden">
+        <Products />
+      </div>
       <OurClients />
-      <Blogs />
       <Testimonials />
+      <Blogs />
       <Faq />
     </>
   );

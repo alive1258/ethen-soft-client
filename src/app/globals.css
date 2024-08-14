@@ -121,3 +121,24 @@
   left: 360px;
   background-image: url("/assets/images/right.png");
 }
+
+@media (min-width: 768px) {
+  .faq-container {
+    background-image: url(/assets/images/faq/Frame1.png),
+      url(/assets/images/faq/Ellipse.png), url(/assets/images/faq/Frame.png);
+    background-position: left bottom, right bottom, top left;
+  }
+  .blog-container {
+    background-image: url(/assets/images/blog/Ellipse1.png),
+      url(/assets/images/blog/Ellipse0.png);
+    background-position: left bottom, calc(50% + 150px) bottom;
+  }
+  .blog-inner {
+    background-image: url(/assets/images/blog/Union.png);
+    background-position: right top;
+  }
+  .trust-section {
+    background-image: url(/assets/images/star.png);
+    background-position: right top;
+  }
+}

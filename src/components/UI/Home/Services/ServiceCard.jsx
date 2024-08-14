@@ -18,7 +18,7 @@ const ServiceCard = ({ service }) => {
           alt="service icon"
         />
         <ServiceTitle service={service} />
-        <p className="text-black-base">
+        <p className="text-black-base text-[10px] md:text-base">
           {truncateDescription(service?.description, 15)}
         </p>
       </div>

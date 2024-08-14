@@ -16,11 +16,11 @@ import image8 from "../../../.././../public/assets/images/hero/Frame 598 (1).png
 const zoomInOut = {
   initial: { scale: 1 },
   animate: {
-    scale: [1, 1.2, 1], // Zoom in to 1.2 and then back to 1
+    scale: [1, 1.2, 1], 
     transition: {
-      duration: 2, // Duration for one cycle
-      repeat: Infinity, // Repeat the animation indefinitely
-      repeatType: "mirror", // Alternate the animation direction
+      duration: 2, 
+      repeat: Infinity, 
+      repeatType: "mirror",
     },
   },
 };

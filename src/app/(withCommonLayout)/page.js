@@ -22,7 +22,9 @@ const page = async () => {
       <Services />
       <About />
       <WhyTrustUs />
-      <OurWorks />
+      <div className="hidden md:block">
+        <OurWorks />
+      </div>
       <div className="block md:hidden">
         <Products />
       </div>

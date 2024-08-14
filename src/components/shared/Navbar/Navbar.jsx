@@ -1,15 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
-import { HiOutlineBars3BottomLeft } from "react-icons/hi2";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { HiMiniXMark } from "react-icons/hi2";
+import Button from "@/components/UI/Button/Button";
+import { HiOutlineBars3BottomLeft } from "react-icons/hi2";
 import logo from "../../../../public/assets/images/Logo.png";
 import mobileLogo from "../../../../public/assets/images/mobile-logo.png";
-import Link from "next/link";
-import Button from "@/components/UI/Button/Button";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const pathName = usePathname();

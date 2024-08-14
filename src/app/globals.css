@@ -141,4 +141,10 @@
     background-image: url(/assets/images/star.png);
     background-position: right top;
   }
+  .footer-container {
+    background-image: url(/assets/images/Shapes.png), url(/assets/images/fs.png),
+      url(/assets/images/fb.png), url(/assets/images/fbt.png);
+    background-position: right bottom, left, bottom,
+      calc(50% + 20px) calc(100% - 20px);
+  }
 }

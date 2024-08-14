@@ -1,16 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
-import { CiLocationOn } from "react-icons/ci";
-import { FaFacebook } from "react-icons/fa";
-import logo from "../../../../public/assets/images/Logo-white.png";
-import mobileLogo from "../../../../public/assets/images/res-mob-logo.png";
 import FooterBottom from "./FooterBottom";
+import { FaFacebook } from "react-icons/fa";
+import { CiLocationOn } from "react-icons/ci";
+import logo from "../../../../public/assets/images/Logo-white.png";
+import shape from "../../../../public/assets/images/Shapes.png";
+import mobileLogo from "../../../../public/assets/images/res-mob-logo.png";
 
 const Footer = () => {
   return (
     <>
       <footer className="bg-black-base">
-        <div className="container py-8 md:py-14">
+        <div className="container footer-container py-8 md:pt-14 bg-no-repeat">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[55px]">
             <div>
               <Image
@@ -22,7 +23,7 @@ const Footer = () => {
               />
               <Image
                 className="block md:hidden"
-                src={logo}
+                src={mobileLogo}
                 width={172}
                 height={48}
                 alt="logo"
@@ -175,8 +176,8 @@ const Footer = () => {
               </div>
             </div>
           </div>
+          <FooterBottom />
         </div>
-        <FooterBottom />
       </footer>
     </>
   );

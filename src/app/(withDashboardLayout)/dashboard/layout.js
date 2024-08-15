@@ -5,14 +5,14 @@ import DashboardSidebar from "@/components/Dashboard/DashboardShared/DashboardSi
 const layout = ({ children }) => {
   return (
     <>
-      <div className="">
+      <div className="bg-black-solid">
         <div className=" flex items-start">
           <div className="w-72">
             <DashboardSidebar />
           </div>
-          <div className={` w-full  min-w-[50%] p-0 m-0   pl-`}>
+          <div className={` w-full  min-w-[50%]`}>
             <DashboardNavbar />
-            <div className="h-screen bg-black-solid pt-2">{children}</div>
+            <div className="h-screen bg-black-solid px-10 pt-6">{children}</div>
             <DashboardFooter />
           </div>
         </div>

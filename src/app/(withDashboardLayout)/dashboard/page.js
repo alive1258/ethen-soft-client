@@ -1,10 +1,9 @@
-import DashboardNavbar from "@/components/Dashboard/DashboardShared/DashboardNavbar/DashboardNavbar";
-import React from "react";
+import DataAnalysis from "@/components/Dashboard/DataAnalysis/DataAnalysis";
 
 const page = () => {
   return (
     <>
-      {/* <DashboardNavbar /> */}
+      <DataAnalysis />
       <h1>DashboardLoyout</h1>
     </>
   );

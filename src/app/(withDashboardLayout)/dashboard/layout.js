@@ -12,7 +12,9 @@ const layout = ({ children }) => {
           </div>
           <div className={` w-full  min-w-[50%]`}>
             <DashboardNavbar />
-            <div className="h-screen bg-black-solid px-10 pt-6">{children}</div>
+            <div className="min-h-screen bg-black-solid px-10 pt-6">
+              {children}
+            </div>
             <DashboardFooter />
           </div>
         </div>

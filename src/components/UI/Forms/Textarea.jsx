@@ -1,16 +1,11 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-
 const Textarea = ({
   label,
   text,
   placeholder = "Write your message here ",
+  register,
 }) => {
-  const {
-    register,
-    formState: { errors },
-  } = useForm();
   return (
     <>
       <div className=" flex flex-col gap-3">

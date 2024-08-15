@@ -20,7 +20,7 @@ const Navbar = () => {
     },
     {
       display: "About Us",
-      path: "/aboutUs",
+      path: "/about-us",
     },
     {
       display: "Services",
@@ -108,7 +108,7 @@ const Navbar = () => {
               );
             })}
 
-            <Link className="md:ml-10" href="/">
+            <Link className="md:ml-10" href="/contact-us">
               <Button content="Contact Us" />
             </Link>
           </ul>

@@ -27,7 +27,7 @@ const BlogCard = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore veniam dolore.
           </p>
-          <button className="font-semibold text-black-muted hover:text-primary-base hover:border-b hover:border-b-primary-base duration-200">
+          <button className="font-semibold text-[#4b4f56] hover:text-primary-base hover:border-b hover:border-b-primary-base duration-200">
             <Link className="flex items-center gap-1" href="/">
               {" "}
               <TiPlus />

@@ -35,6 +35,7 @@ module.exports = {
         },
         black: {
           base: `var(--color-black-base)`,
+          solid: `var(--color-black-solid)`,
           muted: `var(--color-black-muted)`,
         },
       },
@@ -66,6 +67,8 @@ module.exports = {
         },
         black: {
           base: `var(--color-black-base)`,
+          solid: `var(--color-black-solid)`,
+          muted: `var(--color-black-muted)`,
         },
       },
       // border color  declaration

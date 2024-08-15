@@ -6,9 +6,7 @@ const RelatedBlogs = () => {
     <>
       <div className="flex items-center gap-3">
         <MdOutlineUpdate className="text-3xl text-primary-base" />
-        <h1 className="text-black-muted text-[32px] font-medium">
-          Latest Blogs
-        </h1>
+        <h1 className="text-[#4b4f56] text-[32px] font-medium">Latest Blogs</h1>
       </div>
       {/* blogs  */}
       <div className="mt-[28px]">

@@ -16,7 +16,8 @@
     --color-neutral-base: #444444;
     --color-neutral-muted: #767676;
     --color-black-base: #1e232c;
-    --color-black-muted: #4b4f56;
+    --color-black-solid: #000000;
+    --color-black-muted: #151819;
   }
 }
 

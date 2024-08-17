@@ -150,25 +150,71 @@
   }
 }
 
-/* custom progress  */
-.circular-chart {
+/* Common progress bar styles */
+.circular-chart,
+.circular-chart-earning,
+.circular-chart-earning-inner {
   display: block;
   margin: 0 auto;
+}
+
+.circular-chart {
   width: 68px;
   height: 68px;
-  /* filter: drop-shadow(1px 7px 8px #5c6ca5); */
 }
-.circle-bg {
-  fill: none;
-  stroke: #5c6ca5;
-  stroke-width: 1.7;
+
+.circular-chart-earning {
+  width: 190px;
+  height: 190px;
 }
-.circle {
+
+.circular-chart-earning-inner {
+  width: 130px;
+  height: 130px;
+}
+
+/* Common circle styles */
+.circle-bg,
+.circle-bg-earning,
+.circle-bg-earning-inner {
   fill: none;
-  stroke-width: 2.8;
+  stroke: #8a92a6;
+}
+
+.circle,
+.circle-earning,
+.circle-earning-inner {
+  fill: none;
   stroke-linecap: butt;
   animation: progress 1s ease-out forwards;
 }
+
+/* Specific stroke colors and widths */
+.circle-bg {
+  stroke: #5c6ca5;
+  stroke-width: 1.7;
+}
+
+.circle {
+  stroke-width: 2.8;
+}
+
+.circle-bg-earning {
+  stroke-width: 2;
+}
+
+.circle-earning {
+  stroke-width: 2.7;
+}
+
+.circle-bg-earning-inner {
+  stroke-width: 1.8;
+}
+
+.circle-earning-inner {
+  stroke-width: 2.3;
+}
+
 @keyframes progress {
   0% {
     stroke-dasharray: 0 100;

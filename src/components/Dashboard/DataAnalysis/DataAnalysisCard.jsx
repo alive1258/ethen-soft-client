@@ -4,24 +4,24 @@ const DataAnalysisCard = () => {
     <>
       <div className="h-[145px] rounded-lg bg-black-muted p-6">
         <div className="flex items-center justify-center gap-6">
-          <div class="relative">
-            <svg viewBox="0 0 36 36" class="circular-chart">
+          <div className="relative">
+            <svg viewBox="0 0 36 36" className="circular-chart">
               <path
-                class="circle-bg"
+                className="circle-bg"
                 d="M18 2.0845
                                   a 15.9155 15.9155 0 0 1 0 31.831
                                   a 15.9155 15.9155 0 0 1 0 -31.831"
               />
               <path
-                class="circle stroke-[#08B1BA]"
-                stroke-dasharray="56, 100"
+                className="circle stroke-[#08B1BA]"
+                strokeDasharray="56, 100"
                 d="M18 2.0845
                                   a 15.9155 15.9155 0 0 1 0 31.831
                                   a 15.9155 15.9155 0 0 1 0 -31.831"
               />
             </svg>
 
-            <div class="absolute top-5 left-5">
+            <div className="absolute top-5 left-5">
               <GoArrowUpRight className="text-3xl text-[#5c6ca5]" />
             </div>
           </div>

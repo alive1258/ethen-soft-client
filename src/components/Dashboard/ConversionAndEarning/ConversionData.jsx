@@ -9,6 +9,8 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  ReferenceLine,
+  Brush,
 } from "recharts";
 
 const data = [
@@ -56,32 +58,37 @@ const data = [
   },
 ];
 
-export default class Example extends PureComponent {
-  static demoUrl = "https://codesandbox.io/p/sandbox/stacked-bar-chart-7fwfgj";
-
+export default class ConversionData extends PureComponent {
   render() {
     return (
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 20,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="pv" stackId="a" fill="#8884d8" />
-          <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
-        </BarChart>
-      </ResponsiveContainer>
+      <>
+        <div>
+          <BarChart
+            width={800}
+            height={300}
+            data={data}
+            margin={{
+              top: 20,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+            barSize={10}
+          >
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+
+            <Bar className="w-20" dataKey="pv" stackId="a" fill="#85F4FA" />
+            <Bar
+              dataKey="uv"
+              stackId="a"
+              fill="#3A57E8"
+              radius={[10, 10, 0, 0]}
+            />
+          </BarChart>
+        </div>
+      </>
     );
   }
 }

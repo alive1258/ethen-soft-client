@@ -1,4 +1,4 @@
-import Example from "./ConversionData";
+import ConversionData from "./ConversionData";
 import Select from "./Select/Select";
 
 const Conversions = () => {
@@ -9,7 +9,7 @@ const Conversions = () => {
           <h1 className="text-xl text-[#D3D3D3] font-medium"> Conversions</h1>
           <Select />
         </div>
-        <Example />
+        <ConversionData />
       </div>
     </>
   );

@@ -229,3 +229,23 @@
     background-position: 0 0;
   }
 }
+
+.circular-chart {
+  display: block;
+  margin: 0 auto;
+  width: 68px;
+  height: 68px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #5c6ca5;
+  stroke-width: 1.7;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: square;
+  animation: progress 1s ease-out forwards;
+}

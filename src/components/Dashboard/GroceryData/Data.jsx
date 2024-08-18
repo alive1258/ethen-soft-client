@@ -1,61 +1,50 @@
-import React, { PureComponent } from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
-
-const data = [
-  {
-    name: "Jan",
-    uv: 48,
-    pv: 20,
-    amt: 61,
-  },
-  {
-    name: "Feb",
-    uv: 87,
-    pv: 59,
-    amt: 67,
-  },
-  {
-    name: "Mar",
-    uv: 98,
-    pv: 80,
-    amt: 93,
-  },
-  {
-    name: "Apr",
-    uv: 78,
-    pv: 65,
-    amt: 82,
-  },
-  {
-    name: "Jun  ",
-    uv: 53,
-    pv: 27,
-    amt: 56,
-  },
-  {
-    name: "Jul",
-    uv: 74,
-    pv: 60,
-    amt: 80,
-  },
-  {
-    name: "Aug",
-    uv: 69,
-    pv: 56,
-    amt: 73,
-  },
-];
+import { LineChart, Line, XAxis, YAxis, Tooltip } from "recharts";
 
 const Data = () => {
+  const data = [
+    {
+      name: "Jan",
+      uv: 48,
+      pv: 20,
+      amt: 61,
+    },
+    {
+      name: "Feb",
+      uv: 87,
+      pv: 59,
+      amt: 67,
+    },
+    {
+      name: "Mar",
+      uv: 98,
+      pv: 80,
+      amt: 93,
+    },
+    {
+      name: "Apr",
+      uv: 78,
+      pv: 65,
+      amt: 82,
+    },
+    {
+      name: "Jun  ",
+      uv: 53,
+      pv: 27,
+      amt: 56,
+    },
+    {
+      name: "Jul",
+      uv: 74,
+      pv: 60,
+      amt: 80,
+    },
+    {
+      name: "Aug",
+      uv: 69,
+      pv: 56,
+      amt: 73,
+    },
+  ];
   return (
     <div>
       <LineChart

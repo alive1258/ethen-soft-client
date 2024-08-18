@@ -7,20 +7,20 @@ const layout = ({ children }) => {
   return (
     <>
       <div className="bg-black-solid">
-        {/* <Providers> */}
-        <div className=" flex items-start">
-          <div className="w-72">
-            <DashboardSidebar />
-          </div>
-          <div className={` w-full  min-w-[50%]`}>
-            <DashboardNavbar />
-            <div className="min-h-screen bg-black-solid px-10 pt-6">
-              {children}
+        <Providers>
+          <div className=" flex items-start">
+            <div className="w-72">
+              <DashboardSidebar />
             </div>
-            <DashboardFooter />
+            <div className={` w-full  min-w-[50%]`}>
+              <DashboardNavbar />
+              <div className="min-h-screen bg-black-solid px-10 pt-6">
+                {children}
+              </div>
+              <DashboardFooter />
+            </div>
           </div>
-        </div>
-        {/* </Providers> */}
+        </Providers>
       </div>
     </>
   );

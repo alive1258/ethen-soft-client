@@ -4,7 +4,7 @@ import TableRow from "./TableRow";
 const ClientTable = () => {
   return (
     <>
-      <table class="w-full">
+      <table className="w-full mb-6">
         <thead className="bg-[#1D1D1D]">
           <tr className="text-[#8A92A6] font-medium uppercase">
             <th className="py-3 pl-10 mb-2 text-start">COMPANIES</th>
@@ -13,7 +13,7 @@ const ClientTable = () => {
             <th className="py-3 mb-2 text-start">COMPLETION</th>
           </tr>
         </thead>
-        <tbody className="text-[#D3D3D3]">
+        <tbody className="bg-[#151819] rounded-lg text-[#D3D3D3]">
           <TableRow />
           <TableRow />
           <TableRow />

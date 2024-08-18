@@ -4,8 +4,11 @@ import companyLogo from "../../../../public/assets/images/company.png";
 const TableRow = () => {
   return (
     <>
-      <tr className="px-6 border-b border-b-slate-800">
-        <td className="flex items-center gap-4 py-5">
+      <tr className="border-b border-b-slate-800">
+        <td
+          className="flex items-center gap-4 py-5"
+          style={{ paddingLeft: "24px" }}
+        >
           <Image src={companyLogo} width={45} height={45} alt="client logo" />
           <span>Addidas Sportwear</span>
         </td>

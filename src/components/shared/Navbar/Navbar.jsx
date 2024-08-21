@@ -45,12 +45,12 @@ const Navbar = () => {
           : "text-[#fff] bg-transparent"
       }`}
     >
-      <div className="max-w-[1440px] w-full px-5 md:px-20 mx-auto h-[88px] flex items-center justify-between">
+      <div className="max-w-[1440px] w-full px-5 md:px-20 mx-auto md:h-[75px] h-[70px] flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
           <div className="flex items-center space-x-2">
             <Image
-              className="size-14"
+              className="md:size-14 size-9"
               src={ethenSoftLogo}
               height={28}
               width={151}
@@ -71,13 +71,13 @@ const Navbar = () => {
           <button className="pt-1.5 rounded-md" onClick={() => setOpen(!open)}>
             {open ? (
               <HiMiniXMark
-                className={`size-10 text-lg ${
+                className={`size-9 text-lg ${
                   isScrolled ? "text-gray-900" : "text-white"
                 }`}
               />
             ) : (
               <HiOutlineBars3BottomLeft
-                className={`size-10 bg-[#F4EDF7] rounded-lg p-2 text-xl ${
+                className={`size-10 bg-[#F4EDF7] rounded-lg p-2 text-lg ${
                   isScrolled ? "text-gray-900" : "text-primary-base"
                 }`}
               />
@@ -85,12 +85,12 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Nav Items */}
+        {/*  Nav Items */}
         <ul
-          className={`flex flex-col md:flex-row items-center gap-y-8 md:pb-0 pb-10 pt-8 md:pt-0 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-10 transition-all duration-500 ease-in ${
+          className={`flex  flex-col md:flex-row items-center md:gap-y-8 gap-y-4 md:pb-0 pb-10 pt-8 md:pt-0 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto   transition-all duration-500 ease-in ${
             open
-              ? "top-[89px] z-10"
-              : "-top-[999px] md:border-t-0 border-t-2 border-t-primary-base"
+              ? "top-[70px] z-10 bg-white text-gray-900 h-dvh w-full"
+              : "-left-[999px] top-[70px] md:border-t-0 border-t-2 border-t-primary-base h-dvh w-full"
           }`}
         >
           {items.map(({ display, path }) => {
@@ -98,12 +98,14 @@ const Navbar = () => {
             return (
               <Link
                 key={display}
-                className={`md:ml-10 font-normal duration-300 ${
+                className={`md:ml-6 font-normal duration-300 ${
                   isActive
                     ? `font-semibold  ${
-                        isScrolled ? "text-primary-base" : " text-primary-base"
+                        isScrolled
+                          ? "md:text-primary-base"
+                          : " md:text-primary-base"
                       }`
-                    : `${isScrolled ? "text-gray-900" : "text-white"}`
+                    : `${isScrolled ? "md:text-gray-900" : "md:text-white"}`
                 }`}
                 href={path}
               >
@@ -112,7 +114,7 @@ const Navbar = () => {
             );
           })}
 
-          <Link className="md:ml-10" href="/contact-us">
+          <Link className="md:ml-8" href="/contact-us">
             <Button content="Contact Us" />
           </Link>
         </ul>

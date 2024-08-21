@@ -7,15 +7,16 @@ import icon from "../../../../../public/assets/images/icon.png";
 const HeroDescription = () => {
   return (
     <>
-      <div className="container relative flex items-center justify-between md:gap-40">
+      <div className="container relative md:flex items-center justify-between md:gap-40">
         <div className="pl-1 md:pl-0">
-          <h1 className="text-base md:text-[56px] font-semibold text-white md:leading-[70px]">
+          <h1 className=" md:text-[56px] text-2xl font-semibold text-white md:leading-[70px]">
             We Provide Best Technology Solutions
           </h1>
-          <p className="text-[10px] md:text-base font-medium my-4 md:my-0 md:pt-8 md:pb-12 text-[#f1f1f1]">
+          <p className="text-sm md:text-base font-medium my-4 md:my-0 md:pt-8 md:pb-12 text-[#f1f1f1]">
             We are passionate about bringing enterprise-level productivity,
             scalability, and security to small and medium businesses. How it
-            works Contact Us
+            works Contact Us scalability, and security to small and medium
+            businesses. How it works Contact Us
           </p>
           <Image
             className="hidden md:block absolute top-2/3 left-1/3"
@@ -30,7 +31,7 @@ const HeroDescription = () => {
           </div>
         </div>
 
-        <div className="hidden lg:block">
+        <div className="md:pt-0 pt-20 md:pl-0 pl-3">
           <OurTechnology />
         </div>
       </div>

@@ -1,10 +1,8 @@
-"use client";
-
 import { axiosBaseQuery } from "@/axios/axiosBaseQuery";
 import { createApi } from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
   reducerPath: "baseApi",
-  baseQuery: axiosBaseQuery({ baseUrl: "http://localhost:3000" }),
+  baseQuery: axiosBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_API_URL}` }),
   endpoints: () => ({}),
 });

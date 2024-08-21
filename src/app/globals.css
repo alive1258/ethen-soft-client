@@ -29,6 +29,83 @@
     @apply size-10 rounded-lg bg-primary-muted text-primary-base hover:bg-primary-base hover:text-primary-muted duration-200 p-2;
   }
 }
+/* hero section home  */
+.scene {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom right,
+    #111425,
+    var(--color-info-base),
+    var(--color-primary-base)
+  );
+  background-attachment: fixed;
+}
+
+.scene i {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  10%,
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+
+/* .moon {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0)
+  );
+  animation: moon-rotate 15s linear infinite;
+} */
+/* .moon {
+  position: absolute;
+  top: 100px;
+  left: 400px;
+  width: 100px;
+  width: 100px;
+  background: #fff;
+  border-radius: 50%;
+  z-index: 1000;
+}
+.moon::after {
+  content: "";
+  position: absolute;
+
+  top: -15px;
+  left: 15px;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(
+
+      #111425,
+    #3751e0
+  );
+  background-attachment: fixed;
+} */
 
 /* section title */
 .section-heading::before,

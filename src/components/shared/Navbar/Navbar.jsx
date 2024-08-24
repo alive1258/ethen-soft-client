@@ -14,6 +14,12 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const topFunction = () => {
+    setOpen(!open);
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
@@ -58,7 +64,7 @@ const Navbar = () => {
             />
             <h3
               className={`md:text-xl text-lg font-semibold ${
-                isScrolled ? "text-gray-900" : "text-white"
+                isScrolled ? "text-gray-900" : "text-[#fff]"
               }`}
             >
               Ethen Soft
@@ -68,11 +74,11 @@ const Navbar = () => {
 
         {/* Hamburger Button for Mobile */}
         <div className="md:hidden">
-          <button className="pt-1.5 rounded-md" onClick={() => setOpen(!open)}>
+          <button className="pt-1.5 rounded-md" onClick={topFunction}>
             {open ? (
               <HiMiniXMark
                 className={`size-9 text-lg ${
-                  isScrolled ? "text-gray-900" : "text-white"
+                  isScrolled ? "text-gray-900" : "text-red-900"
                 }`}
               />
             ) : (
@@ -87,16 +93,17 @@ const Navbar = () => {
 
         {/*  Nav Items */}
         <ul
-          className={`flex  flex-col md:flex-row items-center md:gap-y-8 gap-y-4 md:pb-0 pb-10 pt-8 md:pt-0 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto   transition-all duration-500 ease-in ${
+          className={`flex flex-col md:flex-row items-center md:gap-y-0 gap-y-4 md:pb-0 pb-10 pt-20 md:pt-0 absolute md:static md:z-auto z-[-1] top-0 w-full md:w-auto transition-all duration-500 ease-in ${
             open
-              ? "top-[70px] z-10 bg-white text-gray-900 h-dvh w-full"
-              : "-left-[999px] top-[70px] md:border-t-0 border-t-2 border-t-primary-base h-dvh w-full"
-          }`}
+              ? "left-0 right-0 z-10 bg-white text-gray-900 h-screen md:h-auto w-full"
+              : "-left-full right-0 md:left-0 md:right-auto h-screen md:h-auto"
+          } md:bg-transparent md:text-[#fff]`}
         >
           {items.map(({ display, path }) => {
             const isActive = pathName === path;
             return (
               <Link
+                onClick={topFunction}
                 key={display}
                 className={`md:ml-6 font-normal duration-300 ${
                   isActive

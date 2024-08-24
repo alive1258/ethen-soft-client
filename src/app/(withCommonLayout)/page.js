@@ -11,10 +11,6 @@ import WhyTrustUs from "@/components/UI/Home/WhyTrustUs/WhyTrustUs";
 import Products from "@/components/UI/Products/Products";
 
 const page = async () => {
-  //   const res = await fetch("http://localhost:5000/api/v1/products", {
-  //     cache: "no-store",
-  //   });
-  //   const products = await res.json();
   return (
     <>
       <Hero />
@@ -22,12 +18,8 @@ const page = async () => {
       <Services />
       <About />
       <WhyTrustUs />
-      <div className="hidden md:block">
-        <OurWorks />
-      </div>
-      <div className="block md:hidden">
-        <Products />
-      </div>
+      <OurWorks />
+      <Products />
       <OurClients />
       <Testimonials />
       <Blogs />

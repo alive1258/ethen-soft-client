@@ -11,9 +11,9 @@ import image7 from "../../../.././../public/assets/images/hero/Frame 603.png";
 import image8 from "../../../.././../public/assets/images/hero/Frame 598 (1).png";
 import Image from "next/image";
 import { useEffect } from "react";
-
 import Script from "next/script";
-const OurTechnology = () => {
+
+const OurTechnology = ({ ourTechnology }) => {
   const zoomInOut = {
     initial: { scale: 1 },
     animate: {
@@ -79,7 +79,7 @@ const OurTechnology = () => {
           <Image src={image3} className="md:size-20 size-10" alt="technology" />
         </motion.div>
         <motion.div
-          className="absolute md:bottom-8 bottom-2 right-8"
+          className="absolute md:bottom-14 bottom-2 right-4"
           variants={zoomInOut}
           initial="initial"
           animate="animate"

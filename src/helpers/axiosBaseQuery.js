@@ -2,9 +2,9 @@ import { instance as axiosInstance } from "./axiosInstance";
 
 // Function to create a base axios query
 export const axiosBaseQuery =
-  ({ baseUrl } = { baseUrl: "" }) =>
+  ({ baseUrl } = { baseUrl: process.env.NEXT_PUBLIC_API_URL }) =>
   // Async function to execute the axios query
-  async ({ url, method, data, params, headers, contentType, meta }) => {
+  async ({ url, method, data, params, headers, contentType }) => {
     try {
       // Execute the axios instance with provided parameters
       const result = await axiosInstance({

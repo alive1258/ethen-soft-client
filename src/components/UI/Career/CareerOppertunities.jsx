@@ -31,11 +31,6 @@ const CareerOppertunities = () => {
           {/* all jobs  */}
           <div className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10">
             <JobCard />
-            <JobCard />
-            <JobCard />
-            <JobCard />
-            <JobCard />
-            <JobCard />
           </div>
           <ButtonOutline content="View More" url="/" />
         </div>

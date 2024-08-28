@@ -12,7 +12,8 @@ const About = async () => {
     return (
       <>
         <div
-          className="bg-[#f4edf7] py-2 bg-no-repeat bg-bottom"
+          className="bg-[#f4edf7]  py-2 bg-no-repeat bg-bottom"
+          // className="bg-[#f4edf7]  py-2 bg-no-repeat bg-bottom"
           style={{
             backgroundImage: "url(/assets/images/about/Ellipse-18.pn)",
           }}

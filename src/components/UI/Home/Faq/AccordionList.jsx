@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Accordion from "./Accordion";
 
-const AccordionList = ({ accordions }) => {
+const AccordionList = ({ faqs }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const handleAccordionClick = (index) => {
@@ -11,7 +11,7 @@ const AccordionList = ({ accordions }) => {
 
   return (
     <div>
-      {accordions.map((accordion, index) => (
+      {faqs?.data?.map((accordion, index) => (
         <Accordion
           key={index}
           accordion={accordion}

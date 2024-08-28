@@ -6,6 +6,7 @@
 @layer base {
   :root {
     --color-primary-base: #8e4fae;
+    --color-tertiary-base: #c07fe0;
     --color-primary-muted: #f1f1f1;
     --color-secondary-base: #e8292f;
     --color-info-base: #106bda;
@@ -81,32 +82,6 @@
   );
   animation: moon-rotate 15s linear infinite;
 }
-/* .moon {
-  position: absolute;
-  top: 100px;
-  left: 400px;
-  width: 100px;
-  width: 100px;
-  background: #fff;
-  border-radius: 50%;
-  z-index: 1000;
-}
-.moon::after {
-  content: "";
-  position: absolute;
-
-  top: -15px;
-  left: 15px;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: linear-gradient(
-
-      #111425,
-    #3751e0
-  );
-  background-attachment: fixed;
-} */
 
 /* section title */
 .section-heading::before,
@@ -183,7 +158,7 @@
 .banner-title::after {
   content: "";
   position: absolute;
-  width: 240%;
+  width: 100%;
   height: 70px;
   background-repeat: no-repeat;
   background-size: cover;

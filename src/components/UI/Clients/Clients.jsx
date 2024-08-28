@@ -36,7 +36,7 @@ const Clients = () => {
   return (
     <>
       <div
-        className="container pt-14 bg-no-repeat"
+        className="pt-14 bg-no-repeat"
         style={{
           backgroundImage:
             "url(/assets/images/aboutUs/Frame.png), url(/assets/images/clients/1.png), url(/assets/images/clients/2.png), url(/assets/images/clients/3.png)",

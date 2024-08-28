@@ -38,7 +38,6 @@ const Accordion = ({ accordion, isActive, onClick }) => {
       </div>
       {isActive && (
         <div className="flex gap-1.5 pt-2">
-          <p className="text-primary-base italic">Ans:</p>
           <h6 className="italic text-xs md:text-base text-black-base pr-4">
             {accordion?.description}
           </h6>

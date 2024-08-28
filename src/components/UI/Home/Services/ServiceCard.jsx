@@ -1,28 +1,37 @@
 import Image from "next/image";
 import { truncateDescription } from "@/utils/descriptionTruncate";
-import image1 from "../../../../../public/assets/images/services.png";
 import ServiceTitle from "./ServiceTitle";
+import icon from "../../../../../public/assets/images/blog/blog-1.png";
 
-const ServiceCard = ({ service }) => {
+const ServiceCard = ({ service, index }) => {
+  const isImageLeft = index % 2 === 0;
+
   return (
-    <>
-      <div className="text-center px-2 py-4 hover:shadow-primary hover:rounded-lg duration-200 bg-white z-10">
+    <div
+      className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${
+        isImageLeft ? "" : "md:grid-cols-2-reverse"
+      }`}
+    >
+      {/* Left Side: Image or Description */}
+      <div className={`flex  ${isImageLeft ? "order-1" : "order-2"}`}>
         <Image
-          src={image1}
-          className={`size-14 md:size-[100px] mx-auto p-2 md:p-6 rounded-full`}
-          style={{
-            backgroundColor: `#${service?.variant}`,
-          }}
-          width={56}
-          height={56}
-          alt="service icon"
+          src={service?.image}
+          className="h-[400px] p-2 md:p-6 w-full"
+          // className="size-14 md:size-[100px] mx-auto p-2 md:p-6 rounded-full"
+          height={200}
+          width={200}
+          alt="service image"
         />
+      </div>
+
+      {/* Right Side: Description or Image */}
+      <div className={`flex flex-col ${isImageLeft ? "order-2" : "order-1"}`}>
         <ServiceTitle service={service} />
         <p className="text-black-base text-[10px] md:text-base">
           {truncateDescription(service?.description, 15)}
         </p>
       </div>
-    </>
+    </div>
   );
 };
 

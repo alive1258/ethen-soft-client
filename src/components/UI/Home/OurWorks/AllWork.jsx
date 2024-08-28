@@ -24,6 +24,8 @@ const AllWork = ({ ourWorkDetails }) => {
               <Image
                 className="rounded-lg object-cover w-full h-full"
                 src={image1}
+                height={200}
+                width={200}
                 alt="work"
               />
 
@@ -36,6 +38,8 @@ const AllWork = ({ ourWorkDetails }) => {
               <Image
                 className="rounded-lg object-cover w-full h-full"
                 src={image2}
+                height={200}
+                width={200}
                 alt="work"
               />
 
@@ -47,6 +51,8 @@ const AllWork = ({ ourWorkDetails }) => {
               <Image
                 className="rounded-lg object-cover w-full h-full"
                 src={image3}
+                height={200}
+                width={200}
                 alt="work"
               />
 
@@ -61,6 +67,8 @@ const AllWork = ({ ourWorkDetails }) => {
               <Image
                 className="rounded-lg object-cover w-full h-full"
                 src={image4}
+                height={200}
+                width={200}
                 alt="work"
               />
 
@@ -72,6 +80,8 @@ const AllWork = ({ ourWorkDetails }) => {
               <Image
                 className="rounded-lg object-cover w-full h-full"
                 src={image5}
+                height={200}
+                width={200}
                 alt="work"
               />
 
@@ -83,6 +93,8 @@ const AllWork = ({ ourWorkDetails }) => {
               <Image
                 className="rounded-lg object-cover w-full h-full"
                 src={image6}
+                height={200}
+                width={200}
                 alt="work"
               />
 
@@ -97,6 +109,8 @@ const AllWork = ({ ourWorkDetails }) => {
               <Image
                 className="rounded-lg object-cover w-full h-full"
                 src={image7}
+                height={200}
+                width={200}
                 alt="work"
               />
 
@@ -109,6 +123,8 @@ const AllWork = ({ ourWorkDetails }) => {
               <Image
                 className="rounded-lg object-cover w-full h-full"
                 src={image8}
+                height={200}
+                width={200}
                 alt="work"
               />
 
@@ -120,6 +136,8 @@ const AllWork = ({ ourWorkDetails }) => {
               <Image
                 className="rounded-lg object-cover w-full h-full"
                 src={image9}
+                height={200}
+                width={200}
                 alt="work"
               />
 
@@ -134,6 +152,8 @@ const AllWork = ({ ourWorkDetails }) => {
               <Image
                 className="rounded-lg object-cover w-full h-full"
                 src={image10}
+                height={200}
+                width={200}
                 alt="work"
               />
 
@@ -146,6 +166,8 @@ const AllWork = ({ ourWorkDetails }) => {
               <Image
                 className="rounded-lg object-cover w-full h-full"
                 src={image11}
+                height={200}
+                width={200}
                 alt="work"
               />
 
@@ -157,6 +179,8 @@ const AllWork = ({ ourWorkDetails }) => {
               <Image
                 className="rounded-lg object-cover w-full h-full"
                 src={image12}
+                height={200}
+                width={200}
                 alt="work"
               />
 

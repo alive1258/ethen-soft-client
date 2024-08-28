@@ -22,7 +22,7 @@ const Hero = async () => {
 
     return (
       <>
-        <div className="scene md:pt-0 pt-24 bg-cover bg-no-repeat h-screen md:flex items-center">
+        <div className="scene md:pt-0 pt-24 md:flex items-center">
           <div className="container relative md:flex items-center justify-between md:gap-40">
             <div>
               <div className="moon md:block hidden"></div>

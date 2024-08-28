@@ -6,7 +6,7 @@ import Conversions from "./Conversions";
 const ConversionAndFation = () => {
   return (
     <>
-      <div className="flex items-center gap-6">
+      <div className="flex my-4 items-center gap-6">
         <Earnings />
         <Conversions />
       </div>

@@ -11,8 +11,8 @@ const Footer = () => {
   return (
     <>
       <footer className="bg-black-base">
-        <div className="container footer-container py-8 md:pt-14 bg-no-repeat">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[55px]">
+        <div className=" footer-container py-8 md:pt-14 bg-no-repeat">
+          <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[55px]">
             <div>
               <Image
                 className="hidden md:block"

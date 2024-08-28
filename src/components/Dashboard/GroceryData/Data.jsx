@@ -48,7 +48,7 @@ const Data = () => {
   return (
     <div>
       <LineChart
-        width={1700}
+        width={1500}
         height={500}
         data={data}
         syncId="anyId"

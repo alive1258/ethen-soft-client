@@ -145,6 +145,19 @@ export const SidebarItemsData = [
         path: "/dashboard/admin/about/company-galleries",
         Icon: <MdOutlinePermMedia />,
       },
+
+      {
+        id: 3,
+        name: "Our Deals",
+        path: "/dashboard/admin/about/our-deals",
+        Icon: <FaDelicious />,
+      },
+      {
+        id: 3,
+        name: "Professional Service",
+        path: "/dashboard/admin/about/professional-services",
+        Icon: <SiPrivatedivision />,
+      },
     ],
   },
 ];

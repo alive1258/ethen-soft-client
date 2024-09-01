@@ -19,5 +19,7 @@ export const baseApi = createApi({
     "faqs",
     "about-heros",
     "company-galleries",
+    "our-deals",
+    "professional-services",
   ],
 });

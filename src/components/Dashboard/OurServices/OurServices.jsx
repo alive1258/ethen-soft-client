@@ -12,6 +12,7 @@ import {
   useDeleteOurServiceMutation,
   useGetAllOurServicesQuery,
 } from "@/redux/api/ourServiceApi";
+import Image from "next/image";
 
 const OurServices = () => {
   const { data, error, isLoading } = useGetAllOurServicesQuery();
@@ -30,7 +31,7 @@ const OurServices = () => {
       });
       if (result.isConfirmed) {
         const response = await deleteOurServices(data?._id).unwrap();
-        if (response?.status === true) {
+        if (response?.success === true) {
           Swal.fire({
             title: "Deleted!",
             text: `The Our Services "${data?.title}" has been successfully deleted.`,
@@ -107,7 +108,7 @@ const OurServices = () => {
                     <span>Meta key</span>
                   </th>
                   <th className="py-4 px-4 text-start">
-                    <span>Meta description</span>
+                    <span>Color Code</span>
                   </th>
 
                   <th className="py-4 px-4 text-end rounded-r-xl">
@@ -126,22 +127,35 @@ const OurServices = () => {
                     } text-[13px] px-[10px]`}
                   >
                     <td className="py-3 rounded-l-xl px-4">{index + 1}</td>
-                    <td className="py-3 px-4">{item?.title}</td>
-                    {/* <td className="py-3 px-4">
-                      <div
-                        dangerouslySetInnerHTML={{ __html: item?.description }}
-                        // {truncateText(item?.description, 20)
-                      ></div>
-                    </td> */}
                     <td className="py-3 px-4">
-                      {truncateCharacters(item?.description, 20)}
+                      <Image
+                        width={14}
+                        height={14}
+                        className="h-12 w-12 py-1 bg-[#FFF3D4]"
+                        src={item?.image}
+                        alt="image"
+                      />
+                    </td>
+                    <td className="py-3 px-4">{item?.title}</td>
+
+                    <td className="py-3 px-4">
+                      <Image
+                        width={14}
+                        height={14}
+                        className="h-12 w-12 py-1 bg-[#FFF3D4]"
+                        src={item?.icon}
+                        alt="image"
+                      />
+                    </td>
+                    <td className="py-3 px-4">
+                      {truncateCharacters(item?.sub_description, 20)}
                     </td>
                     <td className="py-3 px-4">{item?.meta_key}</td>
-                    <td className="py-3 px-4">{item?.meta_description}</td>
+                    <td className="py-3 px-4">{item?.color_code}</td>
                     <td className="my-2 px-4 text-end rounded-r-xl">
                       <div className="flex items-center justify-end w-full gap-4">
                         <Link
-                          href={`/dashboard/admin/home/hero-description/update/${item?._id}`}
+                          href={`/dashboard/admin/home/our-services/update/${item?.slug}`}
                         >
                           <LiaEditSolid className="text-info-base text-2xl" />
                         </Link>

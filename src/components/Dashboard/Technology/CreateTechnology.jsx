@@ -67,7 +67,7 @@ const CreateTechnology = () => {
             )}
           </div>
 
-          {/* description */}
+          {/* Image */}
           <div className="pt-3">
             <div>
               <span className="text-[16px] py-2 block"> Image *</span>

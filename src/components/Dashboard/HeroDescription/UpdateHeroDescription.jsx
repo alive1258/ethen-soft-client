@@ -15,7 +15,7 @@ const UpdateHeroDescription = ({ id }) => {
     handleSubmit,
     formState: { errors },
     watch,
-    setValue, // <-- Import setValue to manually set form values
+    setValue,
   } = useForm();
 
   const {
@@ -23,7 +23,7 @@ const UpdateHeroDescription = ({ id }) => {
     isLoading: fetchLoading,
     error,
   } = useGetSingleHeroDescriptionQuery(id);
-  console.log(data);
+
   const [updateHeroDescription, { isLoading }] =
     useUpdateHeroDescriptionMutation();
 

@@ -14,7 +14,7 @@ const Faq = async () => {
 
     return (
       <>
-        <div className="bg-[#FBF9FC] py-10">
+        <div className="bg-[#FBF9FC] py-10 md:pb-28">
           <div
             className="container faq-container bg-no-repeat"
             // style={{

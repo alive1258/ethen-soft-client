@@ -1,4 +1,3 @@
-"use client";
 import { useForm } from "react-hook-form";
 import Input from "@/components/UI/Forms/Input";
 import Textarea from "@/components/UI/Forms/Textarea";
@@ -11,7 +10,14 @@ const ContactForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      console.log(data);
+      // Submit the form data to your API or server
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -25,13 +31,15 @@ const ContactForm = () => {
               placeholder="Enter your first name"
               text="firstName"
               label="First Name"
-              register={register}
+              register={register("firstName", { required: true })}
+              error={errors.firstName}
             />
             <Input
               placeholder="Enter your last name"
               text="lastName"
               label="Last Name"
-              register={register}
+              register={register("lastName", { required: true })}
+              error={errors.lastName}
             />
           </div>
           <Input
@@ -39,15 +47,25 @@ const ContactForm = () => {
             text="email"
             type="email"
             label="Email"
-            register={register}
+            register={register("email", {
+              required: true,
+              pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            })}
+            error={errors.email}
           />
           <Input
             placeholder="Enter your subject"
             text="subject"
             label="Subject"
-            register={register}
+            register={register("subject", { required: true })}
+            error={errors.subject}
           />
-          <Textarea register={register} text="messate" label="Message" />
+          <Textarea
+            register={register("message", { required: true })}
+            text="message"
+            label="Message"
+            error={errors.message}
+          />
           <SubmitButton text="Send Message" />
         </form>
       </div>

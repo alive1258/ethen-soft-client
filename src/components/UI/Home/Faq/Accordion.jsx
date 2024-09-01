@@ -10,7 +10,7 @@ const Accordion = ({ accordion, isActive, onClick }) => {
       } border-[#CBAEDA] rounded-lg p-1`}
     >
       <div
-        className={`flex items-center justify-between font-medium cursor-pointer p-3 rounded-sm duration-150 ${
+        className={`flex items-center justify-between font-medium cursor-pointer p-3 rounded-lg duration-150 ${
           isActive
             ? "bg-[#106bda] text-white"
             : "bg-white hover:bg-primary-base text-black-base group group"

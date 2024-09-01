@@ -34,7 +34,7 @@ const HeroDescription = () => {
       });
       if (result.isConfirmed) {
         const response = await deleteHeroDescription(data?._id).unwrap();
-        if (response?.status === true) {
+        if (response?.success === true) {
           Swal.fire({
             title: "Deleted!",
             text: `The Hero Description "${data?.title}" has been successfully deleted.`,

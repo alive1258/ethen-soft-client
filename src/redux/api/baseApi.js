@@ -6,5 +6,18 @@ export const baseApi = createApi({
   baseQuery: axiosBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_API_URL}` }),
   endpoints: () => ({}),
 
-  tagTypes: ["hero-description", "technology", "our-services"],
+  tagTypes: [
+    "banner",
+    "hero-description",
+    "technology",
+    "our-services",
+    "home-about",
+    "trust-us",
+    "our-works",
+    "our-clients",
+    "testimonials",
+    "faqs",
+    "about-heros",
+    "company-galleries",
+  ],
 });

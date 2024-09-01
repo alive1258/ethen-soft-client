@@ -94,16 +94,16 @@ const UpdateTechnology = ({ id }) => {
             )}
           </div>
 
-          {/* Description */}
+          {/* Image */}
           <div className="pt-3">
             <div>
               <span className="text-[16px] py-2 block">Image *</span>
               <input
                 {...register("image", {
-                  required: "Description is required",
+                  required: "Image is required",
                 })}
                 rows={2}
-                placeholder="Sub Description"
+                placeholder=" Image"
                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
               ></input>
               {errors.image && (

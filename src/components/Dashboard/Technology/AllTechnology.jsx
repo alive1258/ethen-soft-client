@@ -31,7 +31,7 @@ const AllTechnology = () => {
       });
       if (result.isConfirmed) {
         const response = await deleteTechnology(data?._id).unwrap();
-        if (response?.status === true) {
+        if (response?.success === true) {
           Swal.fire({
             title: "Deleted!",
             text: `The Technology "${data?.title}" has been successfully deleted.`,

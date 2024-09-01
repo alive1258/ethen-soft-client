@@ -3,7 +3,7 @@ import image4 from "../../../../public/assets/images/works/7.png";
 import Button from "@/components/UI/Button/Button";
 import SectionTitle from "@/components/UI/SectionTitle/SectionTitle";
 import WorkHoverEffect from "@/components/UI/Home/OurWorks/WorkHoverEffect";
-import ProductsTab from "./ProductsTab";
+
 import ProductHoverEffect from "./ProductHoverEffect";
 
 const Products = async () => {

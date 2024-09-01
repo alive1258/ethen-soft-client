@@ -25,7 +25,7 @@ const NotFoundPage = () => {
           {/* Button to navigate back to home page */}
           <div className="text-center mt-6">
             <Link href="/">
-              <Button content="Go Back to Home" uel="/" />
+              <Button content="Go Back to Home" />
             </Link>
           </div>
         </div>

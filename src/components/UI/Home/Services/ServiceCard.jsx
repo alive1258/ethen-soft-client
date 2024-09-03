@@ -27,9 +27,9 @@ const ServiceCard = ({ service, index }) => {
       {/* Right Side: Description or Image */}
       <div className={`flex flex-col ${isImageLeft ? "order-2" : "order-1"}`}>
         <ServiceTitle service={service} />
-        <p className="text-black-base text-[10px] md:text-base">
-          {truncateDescription(service?.description, 15)}
-        </p>
+        <div className="text-black-base text-[10px] md:text-base">
+          <div dangerouslySetInnerHTML={{ __html: service?.description }}></div>
+        </div>
       </div>
     </div>
   );

@@ -89,6 +89,12 @@ export const SidebarItemsData = [
       },
       {
         id: 11,
+        name: "Blogs",
+        path: "/dashboard/admin/home/blogs",
+        Icon: <FaFirstOrderAlt />,
+      },
+      {
+        id: 12,
         name: "Faqs",
         path: "/dashboard/admin/home/faqs",
         Icon: <FaQuoteLeft />,
@@ -157,6 +163,26 @@ export const SidebarItemsData = [
         name: "Professional Service",
         path: "/dashboard/admin/about/professional-services",
         Icon: <SiPrivatedivision />,
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: "Setting",
+    path: "/setting",
+    Icon: <LiaBlogSolid size={24} />,
+    sub: [
+      {
+        id: 1,
+        name: "Privacy Policies",
+        path: "/dashboard/admin/setting/privacy-policies",
+        Icon: <CiCompass1 />,
+      },
+      {
+        id: 2,
+        name: "Terms Condition",
+        path: "/dashboard/admin/setting/terms-conditions",
+        Icon: <RiCreativeCommonsByLine />,
       },
     ],
   },

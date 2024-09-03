@@ -26,7 +26,7 @@ const Earnings = () => {
               />
             </svg>
 
-            <div className="absolute top-[16%] left-[34%]">
+            <div className="absolute top-[16%] left-[28%]">
               <svg viewBox="0 0 36 36" className="circular-chart-earning-inner">
                 <path
                   className="circle-bg-earning-inner"

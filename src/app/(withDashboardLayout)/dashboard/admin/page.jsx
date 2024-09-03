@@ -8,7 +8,7 @@ const page = () => {
     <>
       <DataAnalysis />
       <GroceryData />
-      {/* <ConversionAndEarning /> */}
+      <ConversionAndEarning />
       <EnterpriseClients />
     </>
   );

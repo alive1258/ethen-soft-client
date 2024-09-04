@@ -14,8 +14,10 @@ export const axiosBaseQuery =
         method,
         // Data to be sent with the request
         data,
-        params,
         // URL parameters
+        params,
+
+        //headers
         headers: {
           // Set Content-Type header, defaulting to "application/json" if not provided
           "Content-Type": contentType || "application/json",

@@ -26,5 +26,6 @@ export const baseApi = createApi({
     "terms-conditions",
     "teams",
     "auth",
+    "user",
   ],
 });

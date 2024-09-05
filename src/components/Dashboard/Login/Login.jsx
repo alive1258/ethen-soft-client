@@ -5,14 +5,16 @@ import Input from "@/components/UI/Forms/Input";
 import SubmitButton from "@/components/UI/Button/SubmitButton";
 import { useLoginMutation } from "@/redux/api/authApi";
 import { setToLocalStorage } from "@/hooks/local-storage";
-import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const [login] = useLoginMutation();
@@ -22,10 +24,12 @@ const Login = () => {
       const res = await login(data).unwrap();
 
       if (res?.success) {
+        reset();
         await setToLocalStorage("accessToken", res?.data?.accessToken);
-        toast.success(res?.message || "Singed in successful!", {
+        toast.success(res?.message || "Singed is successful!", {
           position: toast.TOP_RIGHT,
         });
+        router.push("/dashboard/admin");
       }
       if (!res?.success) {
         toast.error(res?.message || "Something Went wrong!", {
@@ -73,7 +77,7 @@ const Login = () => {
               Forget password?
             </Link>
           </div>
-          <SubmitButton text="Sign Up" />
+          <SubmitButton text="Sign In" />
         </form>
       </div>
     </div>

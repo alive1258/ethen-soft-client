@@ -4,6 +4,7 @@ import { persistReducer, persistStore } from "redux-persist";
 import { baseApi } from "./api/baseApi";
 import authSlice from "./features/authSlice";
 import adminAuthSlice from "./features/adminAuthSlice";
+import otpSlice from "./features/otp/otpSlice";
 
 const persistConfig = {
   key: "root",
@@ -12,11 +13,13 @@ const persistConfig = {
 
 const persistedAuth = persistReducer(persistConfig, authSlice);
 const persistedAdminAuth = persistReducer(persistConfig, adminAuthSlice);
+const persisetOTP = persistReducer(persistConfig, otpSlice);
 
 const rootReducer = {
   [baseApi.reducerPath]: baseApi.reducer,
   auth: persistedAuth,
   admin: persistedAdminAuth,
+  otpData: persisetOTP,
 };
 
 export const store = configureStore({

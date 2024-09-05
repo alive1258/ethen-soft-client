@@ -18,9 +18,10 @@ const CreateHomeDescription = () => {
   const [createHeroDescription, { isLoading }] =
     useCreateHeroDescriptionMutation();
 
+  const router = useRouter();
+
   const [slug, setSlug] = useState("");
 
-  const router = useRouter();
   const watchProductName = watch("title");
 
   useEffect(() => {
@@ -30,7 +31,6 @@ const CreateHomeDescription = () => {
   }, [watchProductName]);
 
   const onSubmit = async (data) => {
- 
     try {
       const res = await createHeroDescription({ ...data, slug }).unwrap();
       if (res?.success === true) {

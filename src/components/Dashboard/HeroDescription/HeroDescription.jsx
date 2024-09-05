@@ -5,15 +5,17 @@ import { PiAlarmFill } from "react-icons/pi";
 import { MdDelete } from "react-icons/md";
 import Link from "next/link";
 import Swal from "sweetalert2";
+
+import { truncateCharacters } from "@/utils/descriptionTextCounter";
+import { LiaEditSolid } from "react-icons/lia";
 import {
   useDeleteHeroDescriptionMutation,
   useGetAllHeroDescriptionQuery,
 } from "@/redux/api/heroDescriptionApi";
-import { truncateCharacters } from "@/utils/descriptionTextCounter";
-import { LiaEditSolid } from "react-icons/lia";
 
 const HeroDescription = () => {
   const { data, error, isLoading } = useGetAllHeroDescriptionQuery();
+
   const [deleteHeroDescription] = useDeleteHeroDescriptionMutation();
 
   if (error) {

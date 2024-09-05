@@ -15,6 +15,7 @@ import { truncateCharacters } from "@/utils/descriptionTextCounter";
 
 const Blogs = () => {
   const { data, error, isLoading } = useGetAllBlogsQuery();
+  console.log(data);
 
   const [deleteBlogs] = useDeleteBlogMutation();
 

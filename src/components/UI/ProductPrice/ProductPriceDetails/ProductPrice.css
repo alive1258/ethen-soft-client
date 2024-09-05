@@ -1,0 +1,33 @@
+/* Custom Navigation Arrows */
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none;
+}
+
+.slider-controler .swiper-button-next {
+  left: calc(100% - 2px) !important;
+  transform: translateX(-100%) !important;
+}
+.slider-controler .slider-arrow {
+  /* margin-top: 105px; */
+  color: #0fad4a;
+  left: 90%;
+  transform: translateX(-90%);
+}
+
+.slider-controler {
+  margin-top: 265px;
+}
+
+.slider-controler .slider-arrow::after {
+  content: "";
+}
+
+@media only screen and (min-width: 768px) {
+  .slider-controler .slider-arrow {
+    margin-top: 100px;
+    color: #0fad4a;
+    left: 95%;
+    transform: translateX(-95%);
+  }
+}

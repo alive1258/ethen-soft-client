@@ -5,6 +5,8 @@ import Image from "next/image";
 import product1 from "../../../../../public/assets/images/price/image 22.png";
 import product2 from "../../../../../public/assets/images/price/image 23.png";
 import SwiperPages from "./SwiperPages";
+import Testimonials from "../../Home/Testimonials/Testimonials";
+import PriceAndPlan from "./PriceAndPlan";
 
 const ProductPriceDetails = () => {
   return (
@@ -145,6 +147,8 @@ const ProductPriceDetails = () => {
           <SwiperPages />
         </div>
       </div>
+      <PriceAndPlan />
+      {/* <Testimonials /> */}
     </>
   );
 };

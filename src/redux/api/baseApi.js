@@ -25,5 +25,6 @@ export const baseApi = createApi({
     "privacy-policies",
     "terms-conditions",
     "teams",
+    "auth",
   ],
 });

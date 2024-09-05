@@ -2,7 +2,6 @@
 
 import SubmitButton from "@/components/UI/Button/SubmitButton";
 import Input from "@/components/UI/Forms/Input";
-import { getFromLocalStorage } from "@/hooks/local-storage";
 import {
   useGetSingleUserQuery,
   useVerifyOTPMutation,
@@ -13,6 +12,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import ResendOTP from "./ResendOTP";
 
 const OTP = () => {
   const dispatch = useDispatch();
@@ -25,8 +25,6 @@ const OTP = () => {
   } = useForm();
 
   const { otpData } = useSelector((state) => state?.otpData);
-  const accessToken = getFromLocalStorage("accessToken");
-  console.log(otpData?.userId);
 
   const { data: userData } = useGetSingleUserQuery(otpData?.userId);
   const role = userData?.data?.role;
@@ -56,8 +54,7 @@ const OTP = () => {
         });
       }
     } catch (error) {
-      console.log(error);
-      toast.error(error?.data || "Something Went wrong!", {
+      toast.error(error?.message || "Something Went wrong!", {
         position: toast.TOP_RIGHT,
       });
     }
@@ -79,6 +76,7 @@ const OTP = () => {
           />
           <SubmitButton text="Verify OTP" />
         </form>
+        <ResendOTP />
       </div>
     </div>
   );

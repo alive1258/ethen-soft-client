@@ -1,5 +1,5 @@
 import { AiOutlineStock } from "react-icons/ai";
-import { MdManageHistory } from "react-icons/md";
+import { MdManageHistory, MdCategory } from "react-icons/md";
 import { CgShutterstock } from "react-icons/cg";
 import { FaProductHunt, FaUser } from "react-icons/fa";
 import { CiBasketball } from "react-icons/ci";
@@ -11,10 +11,8 @@ import { FaDelicious } from "react-icons/fa";
 import { SiPrivatedivision } from "react-icons/si";
 import { LiaBlogSolid } from "react-icons/lia";
 import { CiCompass1 } from "react-icons/ci";
-import { FaQuestion } from "react-icons/fa";
-import { FaUserFriends } from "react-icons/fa";
 import { FaFirstOrderAlt } from "react-icons/fa";
-import { RiCreativeCommonsByLine, RiAdminFill, RiUser2Fill, RiUser4Fill, RiUserFill } from "react-icons/ri";
+import { RiCreativeCommonsByLine, RiAdminFill } from "react-icons/ri";
 import { BsFillFileEarmarkRuledFill } from "react-icons/bs";
 import { FaQuoteLeft } from "react-icons/fa";
 import { GiVerticalBanner } from "react-icons/gi";
@@ -99,6 +97,12 @@ export const SidebarItemsData = [
         path: "/dashboard/admin/home/faqs",
         Icon: <FaQuoteLeft />,
       },
+      {
+        id: 13,
+        name: "Service Category",
+        path: "/dashboard/admin/home/service-category",
+        Icon: <MdCategory />,
+      },
     ],
   },
   {
@@ -119,7 +123,6 @@ export const SidebarItemsData = [
         path: "/dashboard/admin/user/customers",
         Icon: <FaUsers />,
       },
-      
     ],
   },
   {

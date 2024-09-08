@@ -20,7 +20,7 @@ const ServiceCategory = () => {
 
   const [deleteOurServices] = useDeleteServiceCategoryMutation();
   console.log(categories);
-  const handleDeleteOurServices = async (services) => {
+  const handleDeleteOurServices = async (categories) => {
     try {
       const result = await Swal.fire({
         title: "Are you sure?",

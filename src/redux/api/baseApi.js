@@ -13,6 +13,7 @@ export const baseApi = createApi({
     "services",
     "service-category",
     "service-images",
+    "service-faq",
     "home-about",
     "trust-us",
     "our-works",

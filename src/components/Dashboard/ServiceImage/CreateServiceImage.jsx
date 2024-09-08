@@ -26,8 +26,8 @@ const CreateServiceImage = () => {
 
   const [slug, setSlug] = useState("");
 
-  // logo url pattern check
-  const logoPattern = {
+  // Image url pattern check
+  const imagePattern = {
     value: /\.(jpg|jpeg|png|gif|svg)$/i,
     message: "Logo must be a valid image URL (.jpg, .jpeg, .png, .gif, .svg)",
   };
@@ -100,15 +100,15 @@ const CreateServiceImage = () => {
             errors={errors}
           />
 
-          {/* logo */}
+          {/* image */}
           <Input
-            placeholder="Category Image"
+            placeholder="Category Image URL"
             text="image"
             type="text"
             label="Image"
             register={register}
             errors={errors}
-            pattern={logoPattern}
+            pattern={imagePattern}
           />
         </div>
 

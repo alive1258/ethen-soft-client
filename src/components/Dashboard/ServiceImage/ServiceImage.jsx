@@ -131,7 +131,7 @@ const ServiceImage = () => {
                     <td className="my-2 px-4 text-end rounded-r-xl">
                       <div className="flex items-center justify-end w-full gap-4">
                         <Link
-                          href={`/dashboard/admin/home/service-category/update/${item?._id}`}
+                          href={`/dashboard/admin/home/service-image/update/${item?._id}`}
                         >
                           <LiaEditSolid className="text-info-base text-2xl" />
                         </Link>

@@ -11,7 +11,7 @@ import { FaDelicious } from "react-icons/fa";
 import { SiPrivatedivision } from "react-icons/si";
 import { LiaBlogSolid } from "react-icons/lia";
 import { CiCompass1 } from "react-icons/ci";
-import { FaFirstOrderAlt } from "react-icons/fa";
+import { FaFirstOrderAlt, FaQuestion } from "react-icons/fa";
 import { RiCreativeCommonsByLine, RiAdminFill } from "react-icons/ri";
 import { BsFillFileEarmarkRuledFill } from "react-icons/bs";
 import { FaQuoteLeft } from "react-icons/fa";
@@ -108,6 +108,12 @@ export const SidebarItemsData = [
         name: "Service Images",
         path: "/dashboard/admin/home/service-image",
         Icon: <FaImages />,
+      },
+      {
+        id: 15,
+        name: "Service FAQs",
+        path: "/dashboard/admin/home/service-faq",
+        Icon: <FaQuestion />,
       },
     ],
   },

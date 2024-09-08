@@ -10,7 +10,7 @@ export const baseApi = createApi({
     "banner",
     "hero-description",
     "technology",
-    "our-services",
+    "services",
     "home-about",
     "trust-us",
     "our-works",

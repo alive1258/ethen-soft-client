@@ -29,6 +29,7 @@ const CreateOurServices = () => {
   }, [watchProductName]);
 
   const onSubmit = async (data) => {
+    console.log({ ...data, slug, content });
     try {
       const res = await createOurServices({
         ...data,
@@ -38,7 +39,7 @@ const CreateOurServices = () => {
       if (res?.success === true) {
         reset();
         router.back();
-        toast.success("Our Services added successfully!", {
+        toast.success(res?.message || "Our Services added successfully!", {
           position: toast.TOP_RIGHT,
         });
       } else {
@@ -70,11 +71,11 @@ const CreateOurServices = () => {
         <div className="flex flex-col gap-2">
           {/* Input for Our Services title */}
           <div className="relative w-full">
-            <span className="text-[16px] py-2 block">Our Services title *</span>
+            <span className="text-[16px] py-2 block">Title *</span>
             <input
               className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary-base disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
               type="text"
-              placeholder="Please enter your HOur Services title"
+              placeholder="Service Title"
               {...register("title", {
                 required: "Our Services title is required",
               })}
@@ -106,68 +107,63 @@ const CreateOurServices = () => {
               <TextEditor content={content} setContent={setContent} />
             </div>
           </div>
-          {/* sub_description */}
+          {/* sub description */}
           <div className="pt-3">
             <div>
-              <span className="text-[16px] py-2 block"> sub_description *</span>
+              <span className="text-[16px] py-2 block"> Sub Description *</span>
               <textarea
-                {...register("sub_description")}
+                {...register("subDescription", {
+                  required: "Sub Description required.",
+                })}
                 rows={2}
                 placeholder="Sub Description"
                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
               ></textarea>
-              {errors.sub_description && (
+              {errors.subDescription && (
                 <span className="text-red-600 text-sm">
-                  {errors.sub_description.message}
+                  {errors.subDescription.message}
                 </span>
               )}
             </div>
           </div>
 
-          {/* icon */}
+          {/* logo */}
           <div className="pt-3">
             <div>
-              <span className="text-[16px] py-2 block"> icon *</span>
+              <span className="text-[16px] py-2 block"> Logo *</span>
               <input
-                {...register("icon")}
-                placeholder="icon"
+                {...register("logo", {
+                  required: "Logo required!",
+                  pattern: {
+                    value: /\.(jpg|jpeg|png|gif|svg)$/i,
+                    message:
+                      "Logo must be a valid image URL (.jpg, .jpeg, .png, .gif, .svg)",
+                  },
+                })}
+                placeholder="Service Logo"
                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
               ></input>
-              {errors.icon && (
+              {errors.logo && (
                 <span className="text-red-600 text-sm">
-                  {errors.icon.message}
+                  {errors.logo.message}
                 </span>
               )}
             </div>
           </div>
-          {/* Image */}
+          {/* color code */}
           <div className="pt-3">
             <div>
-              <span className="text-[16px] py-2 block"> Image *</span>
+              <span className="text-[16px] py-2 block"> Color Code *</span>
               <input
-                {...register("image")}
-                placeholder="Image"
+                {...register("colorCode", {
+                  required: "Color code is required !",
+                })}
+                placeholder="Color code"
                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
               ></input>
-              {errors.image && (
+              {errors.colorCode && (
                 <span className="text-red-600 text-sm">
-                  {errors.image.message}
-                </span>
-              )}
-            </div>
-          </div>
-          {/* color_code */}
-          <div className="pt-3">
-            <div>
-              <span className="text-[16px] py-2 block"> color_code *</span>
-              <input
-                {...register("color_code")}
-                placeholder="color_code"
-                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
-              ></input>
-              {errors.color_code && (
-                <span className="text-red-600 text-sm">
-                  {errors.color_code.message}
+                  {errors.colorCode.message}
                 </span>
               )}
             </div>
@@ -175,15 +171,17 @@ const CreateOurServices = () => {
           {/* meta_key */}
           <div className="pt-3">
             <div>
-              <span className="text-[16px] py-2 block"> meta_key *</span>
+              <span className="text-[16px] py-2 block"> Meta Key *</span>
               <input
-                {...register("meta_key")}
-                placeholder="meta_key"
+                {...register("metaKey", {
+                  required: "Meta Key is required!",
+                })}
+                placeholder="Meta Key"
                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
               ></input>
-              {errors.meta_key && (
+              {errors.metaKey && (
                 <span className="text-red-600 text-sm">
-                  {errors.meta_key.message}
+                  {errors.metaKey.message}
                 </span>
               )}
             </div>
@@ -193,17 +191,19 @@ const CreateOurServices = () => {
             <div>
               <span className="text-[16px] py-2 block">
                 {" "}
-                meta_description *
+                Meta Description *
               </span>
               <textarea
-                {...register("meta_description")}
+                {...register("metaDescription", {
+                  required: "Meta Description is required!",
+                })}
                 rows={2}
-                placeholder=" meta_description"
+                placeholder="Meta Description"
                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
               ></textarea>
-              {errors.meta_description && (
+              {errors.metaDescription && (
                 <span className="text-red-600 text-sm">
-                  {errors.meta_description.message}
+                  {errors.metaDescription.message}
                 </span>
               )}
             </div>

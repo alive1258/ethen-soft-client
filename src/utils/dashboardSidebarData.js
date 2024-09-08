@@ -16,7 +16,7 @@ import { RiCreativeCommonsByLine, RiAdminFill } from "react-icons/ri";
 import { BsFillFileEarmarkRuledFill } from "react-icons/bs";
 import { FaQuoteLeft } from "react-icons/fa";
 import { GiVerticalBanner } from "react-icons/gi";
-import { FaFeather } from "react-icons/fa";
+import { FaFeather, FaImages } from "react-icons/fa";
 
 export const SidebarItemsData = [
   {
@@ -102,6 +102,12 @@ export const SidebarItemsData = [
         name: "Service Category",
         path: "/dashboard/admin/home/service-category",
         Icon: <MdCategory />,
+      },
+      {
+        id: 14,
+        name: "Service Images",
+        path: "/dashboard/admin/home/service-image",
+        Icon: <FaImages />,
       },
     ],
   },

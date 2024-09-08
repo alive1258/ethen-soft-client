@@ -4,58 +4,93 @@ import Input from "@/components/UI/Forms/Input";
 import SelectForm from "@/components/UI/Forms/SelectForm";
 import Textarea from "@/components/UI/Forms/Textarea";
 import { useGetAllOurServicesQuery } from "@/redux/api/ourServiceApi";
-import { useCreateServiceFAQMutation } from "@/redux/api/serviceFAQApi";
+import {
+  useGetSingleServiceFAQQuery,
+  useUpdateServiceFAQMutation,
+} from "@/redux/api/serviceFAQApi";
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-const CreateServiceFAQ = () => {
-  const router = useRouter();
-
-  // define useForm from react-form-hooks
+const UpdateServiceFAQ = ({ id }) => {
+  // require useForm from react-hook-form
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    setValue,
   } = useForm();
 
-  // fetched all services
-  const { data, error } = useGetAllOurServicesQuery();
+  // fetched the specific data for update.
+  const {
+    data,
+    isLoading: fetchLoading,
+    error,
+  } = useGetSingleServiceFAQQuery(id);
 
-  // define services and meta
-  const services = data?.data?.data;
-  const meta = data?.data?.meta;
+  // defined data as data name
+  const serviceFAQ = data?.data;
+  const serviceFAQId = serviceFAQ?._id;
 
-  // for create faq service
-  const [createServiceFAQ, { isLoading }] = useCreateServiceFAQMutation();
+  // get all service data
+  const { data: serviceData } = useGetAllOurServicesQuery();
 
-  // create faq function
+  const services = serviceData?.data?.data;
+
+  // updated the data
+  const [updateServiceFAQ, { isLoading }] = useUpdateServiceFAQMutation();
+
+  const router = useRouter();
+
+  //set default value
+  useEffect(() => {
+    if (serviceFAQ) {
+      setValue("question", serviceFAQ?.question || "");
+      setValue("answer", serviceFAQ?.answer || "");
+    }
+  }, [serviceFAQ, setValue]);
+
+  // update data submit function
   const onSubmit = async (data) => {
     try {
-      const res = await createServiceFAQ(data).unwrap();
+      const res = await updateServiceFAQ({
+        id: serviceFAQId,
+        data,
+      }).unwrap();
+
+      // show success message
       if (res?.success) {
-        reset();
         router.back();
-        toast.success(res?.message || "Service FAQ added successfully!", {
+        toast.success(res?.message || "Service FAQ updated successfully!", {
           position: toast.TOP_RIGHT,
         });
       } else {
+        // show error message
         toast.error(res.message, {
           position: toast.TOP_RIGHT,
         });
       }
     } catch (error) {
+      // show error message
       toast.error(error?.message || "Something went wrong!", {
         position: toast.TOP_RIGHT,
       });
     }
   };
 
+  if (fetchLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <div className="max-w-[1000px] bg-black-muted text-[#ADB5BD] mx-auto my-10 p-8 rounded-lg">
       <h1 className="text-[#ADB5BD] text-[23px] font-bold">
-        Create New Service FAQ
+        Update Service FAQ
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -79,8 +114,7 @@ const CreateServiceFAQ = () => {
               <p>Loading...</p>
             )}
           </SelectForm>
-
-          {/*  question */}
+          {/* question */}
           <Input
             placeholder="Service FAQ Question"
             text="question"
@@ -89,7 +123,6 @@ const CreateServiceFAQ = () => {
             register={register}
             errors={errors}
           />
-
           {/* answer */}
           <Textarea
             placeholder="Service FAQ Answer"
@@ -106,10 +139,11 @@ const CreateServiceFAQ = () => {
           className="bg-info-base w-full rounded-md text-white font-semibold mt-10 py-3 px-5"
           type="submit"
         >
-          {isLoading ? "Loading..." : "Submit"}
+          {isLoading ? "Loading..." : "Update"}
         </button>
       </form>
     </div>
   );
 };
-export default CreateServiceFAQ;
+
+export default UpdateServiceFAQ;

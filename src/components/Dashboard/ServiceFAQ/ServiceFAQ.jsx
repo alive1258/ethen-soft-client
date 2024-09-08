@@ -12,12 +12,17 @@ import {
 } from "@/redux/api/serviceFAQApi";
 
 const ServiceFAQ = () => {
+  // fetched all faqs
   const { data, error, isLoading } = useGetAllServiceFAQsQuery();
+
+  // define the faqs and meta
   const faqs = data?.data?.data;
   const meta = data?.data?.meta;
 
+  // for delete faq
   const [deleteServiceFAQ] = useDeleteServiceFAQMutation();
 
+  // delete faq function
   const handleDelete = async (faq) => {
     try {
       const result = await Swal.fire({

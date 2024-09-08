@@ -22,7 +22,7 @@ const ServiceFAQ = () => {
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
-        text: `Are you sure you want to delete the FAQ "${faq?.title}"?`,
+        text: `Are you sure you want to delete the FAQ?`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",
@@ -79,7 +79,7 @@ const ServiceFAQ = () => {
           className="flex items-center gap-1 cursor-pointer text-[#4D69FA] bg-[#F0EFFB] rounded-[50px] py-1 px-[10px]"
         >
           <MdOutlineCloudUpload />
-          <span className="text-[13px] font-semibold">Add Service FAQ</span>
+          <span className="text-[13px] font-semibold">Create Service FAQ</span>
         </Link>
       </div>
 

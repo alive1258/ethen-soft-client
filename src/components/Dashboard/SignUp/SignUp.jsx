@@ -87,21 +87,21 @@ const SignUp = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col md:flex-row gap-3">
             <Input
-              placeholder="Enter your first name."
+              placeholder="First Name"
               text="firstName"
               label="First Name"
               register={register}
               errors={errors}
             />
             <Input
-              placeholder="Enter your middle name"
+              placeholder="Middle Name"
               text="middleName"
               label="Middle Name"
               register={register}
               errors={errors}
             />
             <Input
-              placeholder="Enter your last name"
+              placeholder="Last Name"
               text="lastName"
               label="Last Name"
               register={register}
@@ -115,14 +115,13 @@ const SignUp = () => {
               register={register}
               errors={errors}
             >
-              {" "}
               <option value={"male"}>Male</option>
               <option value={"female"}>Female</option>
               <option value={"others"}>Others</option>
             </SelectForm>
 
             <Input
-              placeholder="Enter your contact number."
+              placeholder="ContactNo."
               text="contactNo"
               type="number"
               label="Contact Number"

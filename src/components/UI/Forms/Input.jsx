@@ -42,12 +42,12 @@ const Input = ({
           (showPass ? (
             <FaEye
               onClick={() => handleShowPassword("password")}
-              className="text-white absolute right-2 top-0 mt-3 cursor-pointer"
+              className="text-white absolute right-2 top-0 mt-4 cursor-pointer"
             />
           ) : (
             <FaEyeSlash
               onClick={() => handleShowPassword("text")}
-              className="text-white absolute right-2 top-0 mt-3 cursor-pointer"
+              className="text-white absolute right-2 top-0 mt-4 cursor-pointer"
             />
           ))}
       </div>

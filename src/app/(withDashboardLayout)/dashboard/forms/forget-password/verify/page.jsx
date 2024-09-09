@@ -1,7 +1,7 @@
 import VerifyOTP from "@/components/Dashboard/ForgetPassword/VerifyOTP";
 import React from "react";
 
-const Verify = () => {
+const VerifyPage = () => {
   return (
     <>
       <VerifyOTP />
@@ -9,4 +9,4 @@ const Verify = () => {
   );
 };
 
-export default Verify;
+export default VerifyPage;

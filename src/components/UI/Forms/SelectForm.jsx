@@ -2,10 +2,10 @@
 
 const SelectForm = ({ label, text, register, errors, children }) => {
   return (
-    <div className="flex flex-col gap-3">
-      <label className="text-[#ADB5BD] mt-4">{label}</label>
+    <div className="flex flex-col gap-3 text-[#ADB5BD]">
+      <label className="mt-4">{label}</label>
       <select
-        className="w-full rounded-lg border-[1.5px] border-stroke py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary bg-black-muted"
+        className="w-full rounded-lg border-[1.5px] border-stroke py-3 px-5 outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary bg-black-muted"
         {...register(text, {
           required: `${label} is required`,
         })}

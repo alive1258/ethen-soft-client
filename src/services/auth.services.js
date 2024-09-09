@@ -1,4 +1,4 @@
-import { authKey } from "@/contents/authKey";
+import { AUTH_KEY } from "@/contents/authKey";
 import { decodedToken } from "@/hooks/jwt";
 import {
   getFromLocalStorage,
@@ -10,11 +10,11 @@ export const storeUserInfo = (accessToken) => {
   if (!accessToken) {
     return; // or handle the absence of accessToken accordingly
   }
-  return setToLocalStorage(authKey, accessToken);
+  return setToLocalStorage(AUTH_KEY, accessToken);
 };
 
 export const getUserinfo = () => {
-  const authToken = getFromLocalStorage(authKey);
+  const authToken = getFromLocalStorage(AUTH_KEY);
   if (authToken) {
     const decodedData = decodedToken(authToken);
     return {
@@ -25,12 +25,12 @@ export const getUserinfo = () => {
 };
 
 export const isLoggedIn = () => {
-  const authToken = getFromLocalStorage(authKey);
+  const authToken = getFromLocalStorage(AUTH_KEY);
   if (authToken) {
     return !!authToken;
   }
 };
 
 export const removeUser = () => {
-  return removeFromLocalStorage(authKey);
+  return removeFromLocalStorage(AUTH_KEY);
 };

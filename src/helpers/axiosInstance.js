@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-import { authKey } from "@/contents/authKey";
+import { AUTH_KEY } from "@/contents/authKey";
 import { getFromLocalStorage } from "@/hooks/local-storage";
 import axios from "axios";
 
@@ -20,7 +20,7 @@ instance.defaults.timeout = 60000;
 instance.interceptors.request.use(
   function (config) {
     // Do something before the request is sent
-    const accessToken = getFromLocalStorage(authKey);
+    const accessToken = getFromLocalStorage(AUTH_KEY);
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }

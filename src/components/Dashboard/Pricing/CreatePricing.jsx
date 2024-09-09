@@ -38,7 +38,6 @@ const CreatePricing = () => {
 
   // create faq function
   const onSubmit = async (data) => {
-    console.log;
     try {
       const res = await createPricing(data).unwrap();
       if (res?.success) {

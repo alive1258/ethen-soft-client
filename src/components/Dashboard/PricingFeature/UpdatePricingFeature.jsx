@@ -2,16 +2,15 @@
 
 import Input from "@/components/UI/Forms/Input";
 import {
-  useGetSinglePricingCategoryQuery,
-  useUpdatePricingCategoryMutation,
-} from "@/redux/api/pricingCategory";
-
+  useGetSinglePricingFeatureQuery,
+  useUpdatePricingFeatureMutation,
+} from "@/redux/api/pricingFeatureApi";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-const UpdatePricingCategory = ({ id }) => {
+const UpdatePricingFeature = ({ id }) => {
   const router = useRouter();
 
   // require useForm from react-hook-form
@@ -27,40 +26,37 @@ const UpdatePricingCategory = ({ id }) => {
     data,
     isLoading: fetchLoading,
     error,
-  } = useGetSinglePricingCategoryQuery(id);
+  } = useGetSinglePricingFeatureQuery(id);
 
   // defined data as data name
-  const pricingCategory = data?.data;
-  const pricingCategoryId = pricingCategory?._id;
+  const pricingFeature = data?.data;
+  const pricingFeatureId = pricingFeature?._id;
 
   // updated the data
-  const [updatePricingCategory, { isLoading }] =
-    useUpdatePricingCategoryMutation();
+  const [updatePricingFeature, { isLoading }] =
+    useUpdatePricingFeatureMutation();
 
   //set default value
   useEffect(() => {
-    if (pricingCategory) {
-      setValue("name", pricingCategory?.name || "");
+    if (pricingFeature) {
+      setValue("name", pricingFeature?.name || "");
     }
-  }, [pricingCategory, setValue]);
+  }, [pricingFeature, setValue]);
 
   // update data submit function
   const onSubmit = async (data) => {
     try {
-      const res = await updatePricingCategory({
-        id: pricingCategoryId,
+      const res = await updatePricingFeature({
+        id: pricingFeatureId,
         data,
       }).unwrap();
 
       // show success message
       if (res?.success) {
         router.back();
-        toast.success(
-          res?.message || "Pricing category updated successfully!",
-          {
-            position: toast.TOP_RIGHT,
-          }
-        );
+        toast.success(res?.message || "Pricing feature updated successfully!", {
+          position: toast.TOP_RIGHT,
+        });
       } else {
         // show error message
         toast.error(res.message, {
@@ -86,7 +82,7 @@ const UpdatePricingCategory = ({ id }) => {
   return (
     <div className="max-w-[1000px] bg-black-muted text-[#ADB5BD] mx-auto my-10 p-8 rounded-lg">
       <h1 className="text-[#ADB5BD] text-[23px] font-bold">
-        Update Pricing Category
+        Update Pricing Feature
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -95,7 +91,7 @@ const UpdatePricingCategory = ({ id }) => {
         <div className="flex flex-col gap-2">
           {/* name */}
           <Input
-            placeholder="Type Pricing Category Name"
+            placeholder="Type Pricing Feature Name"
             text="name"
             type="text"
             label="Name"
@@ -116,4 +112,4 @@ const UpdatePricingCategory = ({ id }) => {
   );
 };
 
-export default UpdatePricingCategory;
+export default UpdatePricingFeature;

@@ -28,7 +28,7 @@ const FeatureAssignedToPricing = () => {
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
-        text: `Are you sure you want to delete the  assigned featured "${data?.name}"?`,
+        text: `Are you sure you want to delete?`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",
@@ -103,7 +103,10 @@ const FeatureAssignedToPricing = () => {
                     <span>ID</span>
                   </th>
                   <th className="py-4 px-4 text-start">
-                    <span>Pricing Feaute</span>
+                    <span>Pricing Title</span>
+                  </th>
+                  <th className="py-4 px-4 text-start">
+                    <span>Pricing Feature</span>
                   </th>
                   <th className="py-4 px-4 text-end rounded-r-xl">
                     <span>Action</span>
@@ -121,14 +124,10 @@ const FeatureAssignedToPricing = () => {
                     } text-[13px] px-[10px]`}
                   >
                     <td className="py-3 rounded-l-xl px-4">{index + 1}</td>
-                    <td className="py-3 px-4">{item?.name}</td>
+                    <td className="py-3 px-4">{item?.pricing?.title}</td>
+                    <td className="py-3 px-4">{item?.pricingFeature?.name}</td>
                     <td className="my-2 px-4 text-end rounded-r-xl">
                       <div className="flex items-center justify-end w-full gap-4">
-                        <Link
-                          href={`/dashboard/admin/home/pricing-feature/update/${item?._id}`}
-                        >
-                          <LiaEditSolid className="text-info-base text-2xl" />
-                        </Link>
                         <button onClick={() => handleDelete(item)}>
                           <MdDelete className="text-danger-base text-2xl" />
                         </button>

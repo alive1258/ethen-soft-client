@@ -14,12 +14,17 @@ import {
 } from "@/redux/api/serviceCategoryApi";
 
 const ServiceCategory = () => {
+  // fetched all the service categories
   const { data, error, isLoading } = useGetAllServiceCategoriesQuery();
+
+  // define the service category and meta
   const categories = data?.data?.data;
   const meta = data?.data?.meta;
 
+  // for delete service category
   const [deleteOurServices] = useDeleteServiceCategoryMutation();
-  console.log(categories);
+
+  // delete service category function
   const handleDeleteOurServices = async (categories) => {
     try {
       const result = await Swal.fire({

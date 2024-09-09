@@ -1,9 +1,15 @@
 import { AiOutlineStock } from "react-icons/ai";
-import { MdManageHistory, MdCategory } from "react-icons/md";
+import { MdManageHistory, MdCategory, MdCreateNewFolder } from "react-icons/md";
 import { CgShutterstock } from "react-icons/cg";
-import { FaProductHunt, FaUser } from "react-icons/fa";
+import {
+  FaDollarSign,
+  FaFileInvoiceDollar,
+  FaListAlt,
+  FaProductHunt,
+  FaUser,
+} from "react-icons/fa";
 import { CiBasketball } from "react-icons/ci";
-import { FaServicestack, FaUsers } from "react-icons/fa6";
+import { FaSackDollar, FaServicestack, FaUsers } from "react-icons/fa6";
 import { MdOutlineCategory } from "react-icons/md";
 import { TbBrandAirbnb } from "react-icons/tb";
 import { MdOutlinePermMedia } from "react-icons/md";
@@ -114,6 +120,30 @@ export const SidebarItemsData = [
         name: "Service FAQs",
         path: "/dashboard/admin/home/service-faq",
         Icon: <FaQuestion />,
+      },
+      {
+        id: 16,
+        name: "Pricing",
+        path: "/dashboard/admin/home/pricing",
+        Icon: <FaDollarSign />,
+      },
+      {
+        id: 17,
+        name: "Pricing Categories",
+        path: "/dashboard/admin/home/pricing-category",
+        Icon: <FaFileInvoiceDollar />,
+      },
+      {
+        id: 18,
+        name: "Pricing Features",
+        path: "/dashboard/admin/home/pricing-feature",
+        Icon: <FaListAlt />,
+      },
+      {
+        id: 19,
+        name: "Assigned Feature",
+        path: "/dashboard/admin/home/feature-assigned-pricing",
+        Icon: <MdCreateNewFolder />,
       },
     ],
   },

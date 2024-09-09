@@ -22,7 +22,7 @@ const pricingCategoryApi = baseApi.injectEndpoints({
     }),
 
     // Query for fetching a single Pricing Category by its ID
-    getSingleOurService: builder.query({
+    getSinglePricingCategory: builder.query({
       query: (id) => ({
         url: `/pricing-categories/${id}`,
         method: "GET",
@@ -41,7 +41,7 @@ const pricingCategoryApi = baseApi.injectEndpoints({
     }),
 
     // Mutation for deleting a Pricing Category by its ID
-    deleteOurService: builder.mutation({
+    deletePricingCategory: builder.mutation({
       query: (id) => ({
         url: `/pricing-categories/${id}`,
         method: "DELETE",
@@ -54,7 +54,7 @@ const pricingCategoryApi = baseApi.injectEndpoints({
 export const {
   useCreatePricingCategoryMutation,
   useGetAllPricingCategoriesQuery,
-  useGetSingleOurServiceQuery,
+  useGetSinglePricingCategoryQuery,
   useUpdatePricingCategoryMutation,
-  useDeleteOurServiceMutation,
+  useDeletePricingCategoryMutation,
 } = pricingCategoryApi;

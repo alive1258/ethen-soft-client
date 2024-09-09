@@ -22,7 +22,7 @@ const pricingApi = baseApi.injectEndpoints({
     }),
 
     // Query for fetching a single Pricing by its ID
-    getSingleOurService: builder.query({
+    getSinglePricing: builder.query({
       query: (id) => ({
         url: `/pricing/${id}`,
         method: "GET",
@@ -41,7 +41,7 @@ const pricingApi = baseApi.injectEndpoints({
     }),
 
     // Mutation for deleting a Pricing by its ID
-    deleteOurService: builder.mutation({
+    deletePricing: builder.mutation({
       query: (id) => ({
         url: `/pricing/${id}`,
         method: "DELETE",
@@ -54,7 +54,7 @@ const pricingApi = baseApi.injectEndpoints({
 export const {
   useCreatePricingMutation,
   useGetAllPricingQuery,
-  useGetSingleOurServiceQuery,
+  useGetSinglePricingQuery,
   useUpdatePricingMutation,
-  useDeleteOurServiceMutation,
+  useDeletePricingMutation,
 } = pricingApi;

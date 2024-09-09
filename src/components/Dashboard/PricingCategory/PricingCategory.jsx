@@ -118,7 +118,6 @@ const PricingCategory = () => {
                   >
                     <td className="py-3 rounded-l-xl px-4">{index + 1}</td>
                     <td className="py-3 px-4">{item?.name}</td>
-
                     <td className="my-2 px-4 text-end rounded-r-xl">
                       <div className="flex items-center justify-end w-full gap-4">
                         <Link

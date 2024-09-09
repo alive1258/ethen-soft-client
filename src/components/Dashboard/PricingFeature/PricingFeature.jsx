@@ -5,28 +5,29 @@ import { MdDelete } from "react-icons/md";
 import Link from "next/link";
 import Swal from "sweetalert2";
 import { LiaEditSolid } from "react-icons/lia";
+
 import {
-  useDeletePricingCategoryMutation,
-  useGetAllPricingCategoriesQuery,
-} from "@/redux/api/pricingCategory";
+  useDeletePricingFeatureMutation,
+  useGetAllPricingFeaturesQuery,
+} from "@/redux/api/pricingFeatureApi";
 
-const PricingCategory = () => {
-  // fetched all pricing categories
-  const { data, error, isLoading } = useGetAllPricingCategoriesQuery();
+const PricingFeature = () => {
+  // fetched all pricing features
+  const { data, error, isLoading } = useGetAllPricingFeaturesQuery();
 
-  // define the pricing category and meta
-  const pricingCategories = data?.data;
+  // define the pricing feature and meta
+  const pricingFeatures = data?.data?.data;
   const meta = data?.data?.meta;
 
-  // for deleting pricing category
-  const [deletePricingCategory] = useDeletePricingCategoryMutation();
+  // for deleting pricing feature
+  const [deletePricingFeature] = useDeletePricingFeatureMutation();
 
-  // delete pricing category function
+  // delete pricing feature function
   const handleDelete = async (data) => {
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
-        text: `Are you sure you want to delete the  pricing category "${data?.name}"?`,
+        text: `Are you sure you want to delete the  pricing feature "${data?.name}"?`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",
@@ -34,11 +35,11 @@ const PricingCategory = () => {
         confirmButtonText: "Yes, delete it!",
       });
       if (result.isConfirmed) {
-        const response = await deletePricingCategory(data?._id).unwrap();
+        const response = await deletePricingFeature(data?._id).unwrap();
         if (response?.success) {
           Swal.fire({
             title: "Deleted!",
-            text: `The pricing category "${data?.title}" has been successfully deleted.`,
+            text: `The pricing feature "${data?.title}" has been successfully deleted.`,
             icon: "success",
           });
         } else {
@@ -50,7 +51,7 @@ const PricingCategory = () => {
         }
       }
     } catch (error) {
-      console.error("Delete pricing category error:", error);
+      console.error("Delete pricing feature error:", error);
       Swal.fire({
         title: "Error!",
         text: `An error occurred: ${error.data || error.message}`,
@@ -76,15 +77,15 @@ const PricingCategory = () => {
       <div className="h-[75px] md:px-10 mt-5 rounded-t-[26px] flex justify-between items-center px-3 text-[#ADB5BD] bg-black-muted">
         <div className="flex items-center gap-1 text-[#ADB5BD] text-base font-semibold">
           <PiAlarmFill />
-          <span>All Pricing Categories</span>
+          <span>All Pricing Features</span>
         </div>
         <Link
-          href={"/dashboard/admin/home/pricing-category/create"}
+          href={"/dashboard/admin/home/pricing-feature/create"}
           className="flex items-center gap-1 cursor-pointer text-[#4D69FA] bg-[#F0EFFB] rounded-[50px] py-1 px-[10px]"
         >
           <MdOutlineCloudUpload />
           <span className="text-[13px] font-semibold">
-            Add Pricing Categories
+            Add Pricing Features
           </span>
         </Link>
       </div>
@@ -107,7 +108,7 @@ const PricingCategory = () => {
                 </tr>
               </thead>
               <tbody>
-                {pricingCategories?.map((item, index) => (
+                {pricingFeatures?.map((item, index) => (
                   <tr
                     key={item.id}
                     className={`${
@@ -118,11 +119,10 @@ const PricingCategory = () => {
                   >
                     <td className="py-3 rounded-l-xl px-4">{index + 1}</td>
                     <td className="py-3 px-4">{item?.name}</td>
-
                     <td className="my-2 px-4 text-end rounded-r-xl">
                       <div className="flex items-center justify-end w-full gap-4">
                         <Link
-                          href={`/dashboard/admin/home/pricing-category/update/${item?._id}`}
+                          href={`/dashboard/admin/home/pricing-feature/update/${item?._id}`}
                         >
                           <LiaEditSolid className="text-info-base text-2xl" />
                         </Link>
@@ -142,4 +142,4 @@ const PricingCategory = () => {
   );
 };
 
-export default PricingCategory;
+export default PricingFeature;

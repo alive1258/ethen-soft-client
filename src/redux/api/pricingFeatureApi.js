@@ -12,7 +12,7 @@ const pricingFeatureApi = baseApi.injectEndpoints({
       invalidatesTags: ["pricing-feature"],
     }),
 
-    // Query for fetching all Pricing
+    // Query for fetching all Pricing Feature
     getAllPricingFeatures: builder.query({
       query: () => ({
         url: "/pricing-features",

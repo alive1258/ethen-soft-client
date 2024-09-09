@@ -5,15 +5,15 @@ import SelectForm from "@/components/UI/Forms/SelectForm";
 import Textarea from "@/components/UI/Forms/Textarea";
 import { useGetAllOurServicesQuery } from "@/redux/api/ourServiceApi";
 import {
-  useGetSingleServiceFAQQuery,
-  useUpdateServiceFAQMutation,
-} from "@/redux/api/serviceFAQApi";
+  useGetSinglePricingQuery,
+  useUpdatePricingMutation,
+} from "@/redux/api/pricingApi";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-const UpdateServiceFAQ = ({ id }) => {
+const UpdatePricing = ({ id }) => {
   // require useForm from react-hook-form
   const {
     register,
@@ -23,41 +23,37 @@ const UpdateServiceFAQ = ({ id }) => {
   } = useForm();
 
   // fetched the specific data for update.
-  const {
-    data,
-    isLoading: fetchLoading,
-    error,
-  } = useGetSingleServiceFAQQuery(id);
+  const { data, isLoading: fetchLoading, error } = useGetSinglePricingQuery(id);
 
   // defined data as data name
-  const serviceFAQ = data?.data;
-  const serviceFAQId = serviceFAQ?._id;
+  const pricing = data?.data;
+  const pricingId = pricing?._id;
 
   // updated the data
-  const [updateServiceFAQ, { isLoading }] = useUpdateServiceFAQMutation();
+  const [updatePricing, { isLoading }] = useUpdatePricingMutation();
 
   const router = useRouter();
 
   //set default value
   useEffect(() => {
-    if (serviceFAQ) {
-      setValue("question", serviceFAQ?.question || "");
-      setValue("answer", serviceFAQ?.answer || "");
+    if (pricing) {
+      setValue("title", pricing?.title || "");
+      setValue("price", pricing?.price || "");
     }
-  }, [serviceFAQ, setValue]);
+  }, [pricing, setValue]);
 
   // update data submit function
   const onSubmit = async (data) => {
     try {
-      const res = await updateServiceFAQ({
-        id: serviceFAQId,
+      const res = await updatePricing({
+        id: pricingId,
         data,
       }).unwrap();
 
       // show success message
       if (res?.success) {
         router.back();
-        toast.success(res?.message || "Service FAQ updated successfully!", {
+        toast.success(res?.message || "Pricing updated successfully!", {
           position: toast.TOP_RIGHT,
         });
       } else {
@@ -84,29 +80,27 @@ const UpdateServiceFAQ = ({ id }) => {
 
   return (
     <div className="max-w-[1000px] bg-black-muted text-[#ADB5BD] mx-auto my-10 p-8 rounded-lg">
-      <h1 className="text-[#ADB5BD] text-[23px] font-bold">
-        Update Service FAQ
-      </h1>
+      <h1 className="text-[#ADB5BD] text-[23px] font-bold">Update Pricing</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col space-y-3 mt-4"
       >
         <div className="flex flex-col gap-2">
-          {/* question */}
+          {/* Title */}
           <Input
-            placeholder="Service FAQ Question"
-            text="question"
+            placeholder="Pricing Title"
+            text="title"
             type="text"
-            label="Question"
+            label="Title"
             register={register}
             errors={errors}
           />
-          {/* answer */}
-          <Textarea
-            placeholder="Service FAQ Answer"
-            text="answer"
+          {/* price */}
+          <Input
+            placeholder="Pricing Price"
+            text="price"
             type="text"
-            label="Answer"
+            label="Price"
             register={register}
             errors={errors}
           />
@@ -124,4 +118,4 @@ const UpdateServiceFAQ = ({ id }) => {
   );
 };
 
-export default UpdateServiceFAQ;
+export default UpdatePricing;

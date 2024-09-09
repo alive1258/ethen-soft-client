@@ -1,4 +1,5 @@
 "use client";
+
 import { MdOutlineCloudUpload } from "react-icons/md";
 import { PiAlarmFill } from "react-icons/pi";
 import { MdDelete } from "react-icons/md";
@@ -7,28 +8,27 @@ import Swal from "sweetalert2";
 import { LiaEditSolid } from "react-icons/lia";
 
 import {
-  useDeleteFeatureAssignedToPricingMutation,
-  useGetAllFeatureAssignedToPricingQuery,
-} from "@/redux/api/featureAssignedToPricingApi";
+  useDeletePricingMutation,
+  useGetAllPricingQuery,
+} from "@/redux/api/pricingApi";
 
-const FeatureAssignedToPricing = () => {
-  // fetched all FeatureAssignedToPricing
-  const { data, error, isLoading } = useGetAllFeatureAssignedToPricingQuery();
+const Pricing = () => {
+  // fetched all pricing
+  const { data, error, isLoading } = useGetAllPricingQuery();
 
-  // define the assignedFeature and meta
-  const pricingFeatures = data?.data?.data;
+  // define the pricing and meta
+  const pricings = data?.data;
   const meta = data?.data?.meta;
 
-  // for deleting assignedFeature
-  const [deleteFeatureAssignedToPricing] =
-    useDeleteFeatureAssignedToPricingMutation();
+  // for delete pricing
+  const [deletePricing] = useDeletePricingMutation();
 
-  // delete pricing feature function
-  const handleDelete = async (data) => {
+  // delete faq function
+  const handleDelete = async (pricing) => {
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
-        text: `Are you sure you want to delete the  assigned featured "${data?.name}"?`,
+        text: `Are you sure you want to delete the pricing named "${pricing?.title}"?`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",
@@ -36,13 +36,11 @@ const FeatureAssignedToPricing = () => {
         confirmButtonText: "Yes, delete it!",
       });
       if (result.isConfirmed) {
-        const response = await deleteFeatureAssignedToPricing(
-          data?._id
-        ).unwrap();
-        if (response?.success) {
+        const response = await deletePricing(pricing?._id).unwrap();
+        if (response?.success === true) {
           Swal.fire({
             title: "Deleted!",
-            text: `The assigned feature "${data?.title}" has been successfully deleted.`,
+            text: `The Pricing "${pricing?.title}" has been successfully deleted.`,
             icon: "success",
           });
         } else {
@@ -54,7 +52,7 @@ const FeatureAssignedToPricing = () => {
         }
       }
     } catch (error) {
-      console.error("Delete pricing feature error:", error);
+      console.error("Delete Pricing error:", error);
       Swal.fire({
         title: "Error!",
         text: `An error occurred: ${error.data || error.message}`,
@@ -80,16 +78,14 @@ const FeatureAssignedToPricing = () => {
       <div className="h-[75px] md:px-10 mt-5 rounded-t-[26px] flex justify-between items-center px-3 text-[#ADB5BD] bg-black-muted">
         <div className="flex items-center gap-1 text-[#ADB5BD] text-base font-semibold">
           <PiAlarmFill />
-          <span>All Assigned Features</span>
+          <span>All Pricing</span>
         </div>
         <Link
-          href={"/dashboard/admin/home/feature-assigned-pricing/create"}
+          href={"/dashboard/admin/home/pricing/create"}
           className="flex items-center gap-1 cursor-pointer text-[#4D69FA] bg-[#F0EFFB] rounded-[50px] py-1 px-[10px]"
         >
           <MdOutlineCloudUpload />
-          <span className="text-[13px] font-semibold">
-            Add Assign Feature To Pricing
-          </span>
+          <span className="text-[13px] font-semibold">Create Pricing</span>
         </Link>
       </div>
 
@@ -101,9 +97,18 @@ const FeatureAssignedToPricing = () => {
                 <tr className="bg-black-muted text-start text-[13px] overflow-hidden">
                   <th className="py-4 px-4 text-start rounded-l-xl">
                     <span>ID</span>
+                  </th>{" "}
+                  <th className="py-4 px-4 text-start">
+                    <span>Title</span>
                   </th>
                   <th className="py-4 px-4 text-start">
-                    <span>Pricing Feaute</span>
+                    <span>Price</span>
+                  </th>
+                  <th className="py-4 px-4 text-start">
+                    <span>Service</span>
+                  </th>
+                  <th className="py-4 px-4 text-start">
+                    <span>Pricing Category</span>
                   </th>
                   <th className="py-4 px-4 text-end rounded-r-xl">
                     <span>Action</span>
@@ -111,7 +116,7 @@ const FeatureAssignedToPricing = () => {
                 </tr>
               </thead>
               <tbody>
-                {pricingFeatures?.map((item, index) => (
+                {pricings?.map((item, index) => (
                   <tr
                     key={item.id}
                     className={`${
@@ -121,11 +126,14 @@ const FeatureAssignedToPricing = () => {
                     } text-[13px] px-[10px]`}
                   >
                     <td className="py-3 rounded-l-xl px-4">{index + 1}</td>
-                    <td className="py-3 px-4">{item?.name}</td>
+                    <td className="py-3 px-4">{item?.title}</td>
+                    <td className="py-3 px-4 text-info-base">{item?.price}</td>
+                    <td className="py-3 px-4">{item?.service?.title}</td>
+                    <td className="py-3 px-4">{item?.pricingCategory?.name}</td>
                     <td className="my-2 px-4 text-end rounded-r-xl">
                       <div className="flex items-center justify-end w-full gap-4">
                         <Link
-                          href={`/dashboard/admin/home/pricing-feature/update/${item?._id}`}
+                          href={`/dashboard/admin/home/pricing/update/${item?._id}`}
                         >
                           <LiaEditSolid className="text-info-base text-2xl" />
                         </Link>
@@ -145,4 +153,4 @@ const FeatureAssignedToPricing = () => {
   );
 };
 
-export default FeatureAssignedToPricing;
+export default Pricing;

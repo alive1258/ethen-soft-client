@@ -2,12 +2,14 @@
 
 import SubmitButton from "@/components/UI/Button/SubmitButton";
 import Input from "@/components/UI/Forms/Input";
+import { useResetPasswordMutation } from "@/redux/api/authApi";
+import { getUserinfo } from "@/services/auth.services";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const ResetPassword = () => {
-  const dispatch = useDispatch();
   const router = useRouter();
 
   // for strong password
@@ -25,30 +27,37 @@ const ResetPassword = () => {
     reset,
   } = useForm();
 
-  //   const [createUser] = useCreateUserMutation();
+  const accessToken = getUserinfo();
+
+  if (!accessToken) {
+    router.push("/dashboard/forms/login");
+  }
+
+  const [resetPassword] = useResetPasswordMutation();
 
   const onSubmit = async (data) => {
-    // try {
-    //   const res = await createUser(user).unwrap();
-    //   if (res?.success) {
-    //     reset();
-    //     console.log(res?.data);
-    //     await dispatch(sotreOTPInfo(res?.data));
-    //     toast.success(res?.message || "Sing up is successful!", {
-    //       position: toast.TOP_RIGHT,
-    //     });
-    //     router.push("/dashboard/forms/otp");
-    //   }
-    //   if (!res?.success) {
-    //     toast.error(res?.message || "Something Went wrong!", {
-    //       position: toast.TOP_RIGHT,
-    //     });
-    //   }
-    // } catch (error) {
-    //   toast.error(error?.data || "Something Went wrong!", {
-    //     position: toast.TOP_RIGHT,
-    //   });
-    // }
+    try {
+      const res = await resetPassword({
+        newPassword: data?.password,
+      }).unwrap();
+      console.log(res);
+      if (res?.success) {
+        reset();
+        toast.success(res?.message || "Singed is successful!", {
+          position: toast.TOP_RIGHT,
+        });
+        router.push("/dashboard/admin");
+      }
+      if (!res?.success) {
+        toast.error(res?.message || "Something Went wrong!", {
+          position: toast.TOP_RIGHT,
+        });
+      }
+    } catch (error) {
+      toast.error(error?.message || "Something Went wrong!", {
+        position: toast.TOP_RIGHT,
+      });
+    }
   };
   return (
     <div className="bg-black-solid h-lvh w-svw grid place-items-center">

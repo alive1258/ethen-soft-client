@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import ResendOTP from "./ResendOTP";
+import { storeUserInfo } from "@/services/auth.services";
 
 const OTP = () => {
   const dispatch = useDispatch();
@@ -42,11 +43,12 @@ const OTP = () => {
       if (res?.success) {
         reset();
         dispatch(removeOTPInfo());
+        await storeUserInfo(res?.data?.accessToken);
         toast.success(res?.message || "Singed is successful!", {
           position: toast.TOP_RIGHT,
         });
 
-        router.push("/dashboard/forms/login");
+        router.push("/dashboard/admin");
       }
       if (!res?.success) {
         toast.error(res?.message || "Something Went wrong!", {

@@ -7,6 +7,7 @@ import { useLoginMutation } from "@/redux/api/authApi";
 import { setToLocalStorage } from "@/hooks/local-storage";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { storeUserInfo } from "@/services/auth.services";
 
 const Login = () => {
   const router = useRouter();
@@ -25,7 +26,7 @@ const Login = () => {
 
       if (res?.success) {
         reset();
-        await setToLocalStorage("accessToken", res?.data?.accessToken);
+        await storeUserInfo(res?.data?.accessToken);
         toast.success(res?.message || "Singed is successful!", {
           position: toast.TOP_RIGHT,
         });
@@ -69,11 +70,12 @@ const Login = () => {
           <div className="flex items-center justify-between mt-6 mb-2 px-[1px]">
             <div className="flex items-center gap-2">
               <input className="text-2xl size-4" type="checkbox" />
-              <span className="text-white text-sm font-light">
-                Remember me{" "}
-              </span>
+              <span className="text-white text-sm font-light">Remember me</span>
             </div>
-            <Link className="text-sm text-[#3A57E8] font-light" href="/">
+            <Link
+              className="text-sm text-[#3A57E8] font-light"
+              href="/dashboard/forms/forget-password"
+            >
               Forget password?
             </Link>
           </div>

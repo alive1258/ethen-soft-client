@@ -2,11 +2,17 @@
 
 import SubmitButton from "@/components/UI/Button/SubmitButton";
 import Input from "@/components/UI/Forms/Input";
-import { useGetSingleUserQuery } from "@/redux/api/userApi";
+import {
+  useGetSingleUserQuery,
+  useVerifyOTPMutation,
+} from "@/redux/api/userApi";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import ResendOTP from "../OTP/ResendOTP";
+import { toast } from "react-toastify";
+import { removeOTPInfo } from "@/redux/features/otp/otpSlice";
+import { storeUserInfo } from "@/services/auth.services";
 
 const VerifyOTP = () => {
   const dispatch = useDispatch();
@@ -23,32 +29,33 @@ const VerifyOTP = () => {
   const { data: userData } = useGetSingleUserQuery(otpData?.userId);
   const role = userData?.data?.role;
 
-  //   const [verifyOTP] = useVerifyOTPMutation();
+  const [verifyOTP] = useVerifyOTPMutation();
 
   const onSubmit = async (data) => {
-    // try {
-    //   data["userId"] = otpData?.userId;
-    //   data["role"] = role;
-    //   data.otp.trim();
-    //   const res = await verifyOTP(data).unwrap();
-    //   if (res?.success) {
-    //     reset();
-    //     dispatch(removeOTPInfo());
-    //     toast.success(res?.message || "Singed is successful!", {
-    //       position: toast.TOP_RIGHT,
-    //     });
-    //     router.push("/dashboard/forms/login");
-    //   }
-    //   if (!res?.success) {
-    //     toast.error(res?.message || "Something Went wrong!", {
-    //       position: toast.TOP_RIGHT,
-    //     });
-    //   }
-    // } catch (error) {
-    //   toast.error(error?.message || "Something Went wrong!", {
-    //     position: toast.TOP_RIGHT,
-    //   });
-    // }
+    try {
+      data["userId"] = otpData?.userId;
+      data["role"] = role;
+      data.otp.trim();
+      const res = await verifyOTP(data).unwrap();
+      if (res?.success) {
+        reset();
+        dispatch(removeOTPInfo());
+        await storeUserInfo(res?.data?.accessToken);
+        toast.success(res?.message || "Singed is successful!", {
+          position: toast.TOP_RIGHT,
+        });
+        router.push("/dashboard/forms/forget-password/reset-password");
+      }
+      if (!res?.success) {
+        toast.error(res?.message || "Something Went wrong!", {
+          position: toast.TOP_RIGHT,
+        });
+      }
+    } catch (error) {
+      toast.error(error?.message || "Something Went wrong!", {
+        position: toast.TOP_RIGHT,
+      });
+    }
   };
   return (
     <div className="bg-black-solid h-lvh w-lvw grid place-items-center">

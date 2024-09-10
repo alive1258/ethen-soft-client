@@ -32,8 +32,8 @@ const ourWorkApi = baseApi.injectEndpoints({
 
     // Mutation for updating an existing OurWorks
     updateOurWorks: builder.mutation({
-      query: ({ id, data }) => ({
-        url: `/our-works/${id}`,
+      query: ({ data }) => ({
+        url: `/our-works/${data?.id}`,
         method: "PATCH",
         data,
       }),

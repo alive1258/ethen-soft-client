@@ -11,7 +11,7 @@ const Testimonials = async () => {
     const testimonials = await res.json();
     return (
       <>
-        <div className="bg-[#F4EDF7] bg-opacity-35">
+        <div className="bg-[#F4EDF7] mt-28 bg-opacity-35">
           <div
             className="max-w-[1440px] h-[700px] mx-auto pt-10 bg-no-repeat bg-right-bottom"
             styl={{
@@ -22,7 +22,7 @@ const Testimonials = async () => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="container bg-no-repeat">
+            <div className="container md:pt-12 bg-no-repeat">
               <SectionTitle
                 subTitle="TESTIMONIALS"
                 title="What clients say"

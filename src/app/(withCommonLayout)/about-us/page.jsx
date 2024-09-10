@@ -9,6 +9,7 @@ import OurClients from "@/components/UI/Home/OurClients/OurClients";
 const AboutPage = () => {
   return (
     <>
+      <div className="bg-blue-400 md:h-[350px] h-[200px]"></div>
       <Banner />
       <ImageGallery />
       <ItServices />

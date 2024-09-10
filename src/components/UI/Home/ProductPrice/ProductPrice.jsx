@@ -2,6 +2,7 @@ import Link from "next/link";
 import Button from "../../Button/Button";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import PricingCard from "./PricingCard";
+import ProductPriceSection from "./ProductPriceSection";
 
 const ProductPrice = () => {
   const prices = [
@@ -88,22 +89,19 @@ const ProductPrice = () => {
   ];
   return (
     <>
-      <div className="container py-10 bg-white z-30">
+      <div className="container md:mt-28 mt-16 bg-white z-30">
         <SectionTitle
           subTitle="PRODUCT PRICING"
           title="Our Product Price"
           description="We take digital experience to the next level"
         />
         {/* all pricing  */}
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6">
-          {prices?.map((item) => (
-            // price card
-            <PricingCard item={item} key={item?._id} />
-          ))}
+        <div>
+          <ProductPriceSection prices={prices} />
         </div>
         {/* View All Products button  */}
-        <div className="text-center mt-10">
-          <Link href="/price">
+        <div className="mx-auto mt-10 w-44 text-center">
+          <Link href="/pricing">
             <Button content="View All Products" />
           </Link>
         </div>

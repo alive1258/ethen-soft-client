@@ -16,6 +16,7 @@ const UpdateBlogs = ({ id }) => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
     setValue, // <-- Import setValue to manually set form values
   } = useForm();
 
@@ -23,7 +24,10 @@ const UpdateBlogs = ({ id }) => {
 
   const [updateBlogs, { isLoading }] = useUpdateBlogsMutation();
   const [content, setContent] = useState("");
+  const [slug, setSlug] = useState("");
   const router = useRouter();
+  const watchTitle = watch("title");
+  const blogId = data?.data?._id;
 
   useEffect(() => {
     if (data) {
@@ -32,15 +36,25 @@ const UpdateBlogs = ({ id }) => {
       setValue("subject", data?.data?.subject || "");
       setValue("sub_description", data?.data?.sub_description || "");
       setContent(data?.data?.description || "");
+      setSlug(data?.data?.slug || "");
     }
   }, [data, setValue]);
+
+  useEffect(() => {
+    if (watchTitle) {
+      setSlug(watchTitle.toLowerCase().replace(/[^a-z0-9-]/g, "-"));
+    }
+  }, [watchTitle]);
 
   const onSubmit = async (data) => {
     try {
       const res = await updateBlogs({
-        id,
-        data,
-        content,
+        id: blogId,
+        slug,
+        data: {
+          ...data,
+          description: content,
+        },
       }).unwrap();
 
       if (res?.success === true) {
@@ -58,6 +72,10 @@ const UpdateBlogs = ({ id }) => {
         position: toast.TOP_RIGHT,
       });
     }
+  };
+  const handleSlugChange = (e) => {
+    const value = e.target.value;
+    setSlug(value.toLowerCase().replace(/[^a-z0-9-]/g, ""));
   };
 
   if (fetchLoading) {
@@ -92,6 +110,19 @@ const UpdateBlogs = ({ id }) => {
                 {errors.title.message}
               </span>
             )}
+          </div>
+
+          {/* Slug */}
+          <div className="mt-2">
+            <span className="text-[16px] py-2">Blog Slug *</span>
+            <input
+              value={slug}
+              onChange={handleSlugChange}
+              className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary mt-1"
+              type="text"
+              placeholder="Slug"
+              required={true}
+            />
           </div>
 
           {/* Image */}

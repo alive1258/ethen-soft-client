@@ -12,7 +12,7 @@ const Accordion = ({ accordion, isActive, onClick }) => {
       <div
         className={`flex items-center justify-between font-medium cursor-pointer p-3 rounded-lg duration-150 ${
           isActive
-            ? "bg-[#106bda] text-white"
+            ? "bg-btn text-white"
             : "bg-white hover:bg-primary-base text-black-base group group"
         }`}
         onClick={onClick}
@@ -38,7 +38,7 @@ const Accordion = ({ accordion, isActive, onClick }) => {
       </div>
       {isActive && (
         <div className="flex gap-1.5 pt-2">
-          <h6 className="italic text-xs md:text-base text-black-base pr-4">
+          <h6 className="text-[13px] md:text-base text-black-base pr-4">
             {accordion?.description}
           </h6>
         </div>

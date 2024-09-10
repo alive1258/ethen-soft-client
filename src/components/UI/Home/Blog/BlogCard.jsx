@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { TiPlus } from "react-icons/ti";
-import blogImage from "../../../../../public/assets/images/blog/blog-1.png";
 
 const BlogCard = ({ blog }) => {
   // Format the date
@@ -12,10 +11,10 @@ const BlogCard = ({ blog }) => {
   });
   return (
     <>
-      <div className="shadow-custom-10px bg-[#fff] rounded-lg hover:scale-105 delay-150 duration-300 transition-all">
+      <div className="reveal shadow-custom-10px bg-[#fff] rounded-lg hover:scale-105 delay-150 duration-300 transition-all">
         <Image
-          className="rounded-tr-lg"
-          src={blogImage}
+          className="rounded-t-lg"
+          src={blog?.image}
           width={413}
           height={250}
           alt="blog"
@@ -31,7 +30,10 @@ const BlogCard = ({ blog }) => {
           </h1>
           <p className="text-black-base">{blog?.sub_description}</p>
           <button className="font-semibold text-[#4b4f56] hover:text-primary-base hover:border-b hover:border-b-primary-base duration-200">
-            <Link className="flex items-center gap-1" href="/">
+            <Link
+              className="flex items-center gap-1"
+              href={`/blogs/${blog?.slug}`}
+            >
               {" "}
               <TiPlus />
               <span>Read More </span>

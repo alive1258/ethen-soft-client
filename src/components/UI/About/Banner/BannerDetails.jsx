@@ -7,26 +7,22 @@ import ButtonOutline from "../../Button/ButtonOutline";
 const BannerDetails = ({ aboutHero }) => {
   return (
     <>
-      <div
-        className="pt-[180px]  flex items-center justify-between"
-        styl={{
-          backgroundImage: "url(/assets/images/aboutUs/Frame.png)",
-          backgroundPosition: "left top",
-        }}
-      >
+      <div className="md:pt-[180px] pt-[30px]  md:flex items-center justify-between">
         <div className="w-full ">
-          <div className="md:flex items-center space-x-3 text-primary-base font-medium marker:border-r-[1px] ">
-            <p>{aboutHero?.service_one}</p> <span>|</span>{" "}
-            <p>{aboutHero?.service_two}</p> <span>|</span>{" "}
-            <p>{aboutHero?.service_three}</p> <span>|</span>{" "}
+          <div className="md:flex md:text-[17px] text-[14px] items-center md:space-y-0 space-y-2 space-x-3 text-primary-base font-medium marker:border-r-[1px] ">
+            <p className="pl-2.5 md:pl-0">{aboutHero?.service_one}</p>{" "}
+            <span className="md:block hidden">|</span>{" "}
+            <p>{aboutHero?.service_two}</p>{" "}
+            <span className="md:block hidden">|</span>{" "}
+            <p>{aboutHero?.service_three}</p>{" "}
+            <span className="md:block hidden">|</span>{" "}
             <p>{aboutHero?.service_four}</p>
-            {/* <p>{aboutHero?.service_five}</p> */}
           </div>
-          <h1 className="text-black-base text-[40px] font-semibold py-5">
+          <h1 className="text-black-base md:text-[40px] text-[22px] font-semibold md:py-5 py-2">
             {aboutHero?.title}
           </h1>
           <p className="text-black-base">{aboutHero?.description}</p>
-          <div className="flex justify-start mt-6">
+          <div className="flex justify-start md:my-6 my-3">
             <ButtonOutline content="Join Now" url="/" />
           </div>
         </div>
@@ -39,7 +35,7 @@ const BannerDetails = ({ aboutHero }) => {
             alt="banner"
           />
           <Image
-            className="absolute -top-20 left-0"
+            className="absolute md:block hidden -top-20 left-0"
             src={star2}
             width={86}
             height={86}

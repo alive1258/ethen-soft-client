@@ -3,32 +3,32 @@ import Image from "next/image";
 import FooterBottom from "./FooterBottom";
 import { FaFacebook } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
-import logo from "../../../../public/assets/images/Logo-white.png";
-import shape from "../../../../public/assets/images/Shapes.png";
-import mobileLogo from "../../../../public/assets/images/res-mob-logo.png";
+import ethenSoftLogo from "../../../../public/assets/images/about/ethensoftlogo.svg";
+import FooterOurService from "./FooterOurService";
 
 const Footer = () => {
   return (
     <>
       <footer className="bg-black-base">
-        <div className=" footer-container py-8 md:pt-14 bg-no-repeat">
-          <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[55px]">
+        <div className="footer-container py-8 md:pt-14 bg-no-repeat">
+          <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
-              <Image
-                className="hidden md:block"
-                src={logo}
-                width={181}
-                height={48}
-                alt="logo"
-              />
-              <Image
-                className="block md:hidden"
-                src={mobileLogo}
-                width={172}
-                height={48}
-                alt="logo"
-              />
-              <p className="text-sm text-primary-muted pt-6 pb-6 pr-20">
+              <Link href="/">
+                <div className="flex items-center  space-x-2">
+                  <Image
+                    className="md:size-14 size-9"
+                    src={ethenSoftLogo}
+                    height={28}
+                    width={151}
+                    alt="logo"
+                  />
+                  <h3 className="md:text-xl text-lg font-semibold text-[#fff]">
+                    Ethen Soft
+                  </h3>
+                </div>
+              </Link>
+
+              <p className="text-sm text-primary-muted pt-6 pb-6">
                 Sed ut perspiciatis unde omnis is natus error site voluptatem
                 more accntium doloremque laudatium totam rem aperiam, eaque ipsa
                 quae abventore veritatis.
@@ -42,109 +42,45 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* all link  */}
-            <div className="block md:hidden col-span-2 flex items-center justify-between px-4 pr-10">
+            <div className="md:pl-7">
               <div>
                 <h1 className="text-primary-muted text-lg font-semibold pb-4">
-                  Our Services
+                  Popular Links
                 </h1>
                 <ul className="space-y-2 text-primary-muted list-disc list-inside text-sm md:text-base marker:text-primary-muted">
                   <li>
-                    <Link href="/"> Web Development</Link>
+                    <Link href="/about-us">About Us</Link>
                   </li>
                   <li>
-                    <Link href="/">Graphics Design</Link>
+                    <Link href="/contact-us">Contact Us</Link>
                   </li>
                   <li>
-                    <Link href="/">UI/UX Design</Link>
+                    <Link href="/products">Products</Link>
                   </li>
                   <li>
-                    <Link href="/">Video Editing</Link>
+                    <Link href="/pricing">Pricing</Link>
                   </li>
                   <li>
-                    <Link href="/">Digital Marketing</Link>
+                    <Link href="/our-work">Our Work</Link>
                   </li>
                   <li>
-                    <Link href="/">IT Solutions</Link>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h1 className="text-primary-muted text-lg font-semibold pb-4">
-                  Quick Links
-                </h1>
-                <ul className="space-y-2 text-primary-muted list-disc list-inside text-sm md:text-base marker:text-primary-muted">
-                  <li className="border-none hover:border-b hover:border-b-white">
-                    <Link href="/"> Web Development</Link>
+                    <Link href="/clients">Clients</Link>
                   </li>
                   <li>
-                    <Link href="/">Graphics Design</Link>
-                  </li>
-                  <li>
-                    <Link href="/">UI/UX Design</Link>
-                  </li>
-                  <li>
-                    <Link href="/">Video Editing</Link>
-                  </li>
-                  <li>
-                    <Link href="/">Digital Marketing</Link>
-                  </li>
-                  <li>
-                    <Link href="/">IT Solutions</Link>
+                    <Link href="/team">Team</Link>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div className="hidden md:block">
-              <h1 className="text-primary-muted text-lg font-semibold pb-4">
-                Our Services
-              </h1>
-              <ul className="space-y-2 text-primary-muted list-disc list-inside text-sm md:text-base marker:text-primary-muted">
-                <li>
-                  <Link href="/"> Web Development</Link>
-                </li>
-                <li>
-                  <Link href="/">Graphics Design</Link>
-                </li>
-                <li>
-                  <Link href="/">UI/UX Design</Link>
-                </li>
-                <li>
-                  <Link href="/">Video Editing</Link>
-                </li>
-                <li>
-                  <Link href="/">Digital Marketing</Link>
-                </li>
-                <li>
-                  <Link href="/">IT Solutions</Link>
-                </li>
-              </ul>
-            </div>
-            <div className="hidden md:block">
-              <h1 className="text-primary-muted text-lg font-semibold pb-4">
-                Quick Links
-              </h1>
-              <ul className="space-y-2 text-primary-muted list-disc list-inside text-sm md:text-base marker:text-primary-muted">
-                <li>
-                  <Link href="/"> Web Development</Link>
-                </li>
-                <li>
-                  <Link href="/">Graphics Design</Link>
-                </li>
-                <li>
-                  <Link href="/">UI/UX Design</Link>
-                </li>
-                <li>
-                  <Link href="/">Video Editing</Link>
-                </li>
-                <li>
-                  <Link href="/">Digital Marketing</Link>
-                </li>
-                <li>
-                  <Link href="/">IT Solutions</Link>
-                </li>
-              </ul>
+            {/* aService  */}
+            <div className=" ">
+              <div>
+                <h1 className="text-primary-muted text-lg font-semibold pb-4">
+                  Our Services
+                </h1>
+                <FooterOurService />
+              </div>
             </div>
 
             <div>

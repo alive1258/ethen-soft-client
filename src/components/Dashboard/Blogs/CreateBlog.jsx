@@ -4,7 +4,7 @@ import TextEditor from "@/components/TextEditor/TextEditor";
 import { useCreateBlogsMutation } from "@/redux/api/blogsApi";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
@@ -14,16 +14,27 @@ const CreateBlog = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
   } = useForm();
 
   const [createBlogs, { isLoading }] = useCreateBlogsMutation();
   const [content, setContent] = useState("");
+  const [slug, setSlug] = useState("");
   const router = useRouter();
+
+  const watchProductName = watch("title");
+
+  useEffect(() => {
+    if (watchProductName) {
+      setSlug(watchProductName.toLowerCase().replace(/[^a-z0-9-]/g, "-"));
+    }
+  }, [watchProductName]);
 
   const onSubmit = async (data) => {
     try {
       const res = await createBlogs({
         ...data,
+        slug,
         description: content,
       }).unwrap();
 
@@ -43,6 +54,10 @@ const CreateBlog = () => {
         position: toast.TOP_RIGHT,
       });
     }
+  };
+  const handleSlugChange = (e) => {
+    const value = e.target.value;
+    setSlug(value.toLowerCase().replace(/[^a-z0-9-]/g, ""));
   };
 
   return (
@@ -69,6 +84,18 @@ const CreateBlog = () => {
                 {errors.title.message}
               </span>
             )}
+          </div>
+          {/* Slug */}
+          <div className="mt-2">
+            <span className="text-[16px] py-2"> Slug *</span>
+            <input
+              value={slug}
+              onChange={(e) => handleSlugChange(e)}
+              className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary mt-1"
+              type="text"
+              placeholder="Slug"
+              required={true}
+            />
           </div>
 
           {/* description */}

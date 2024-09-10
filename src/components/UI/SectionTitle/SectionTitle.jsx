@@ -6,7 +6,7 @@ const SectionTitle = ({ subTitle, title, description, width = "270px" }) => {
         style={{ maxWidth: width }}
       >
         <h2 className="section-heading relative text-primary-base">
-          <span className="text-primary-base text-xs md:text-base font-medium uppercase relative bg-white px-1 z-10">
+          <span className="text-primary-base  text-base font-medium uppercase relative bg-white px-1 z-10">
             {subTitle}
           </span>
         </h2>
@@ -19,10 +19,10 @@ const SectionTitle = ({ subTitle, title, description, width = "270px" }) => {
           <div className="section-dot bg-primary-base ml-1"></div>
         </div>
       </div>
-      <h1 className="text-center text-primary-base text-2xl md:text-[40px] font-semibold  my-3 md:my-4">
+      <h1 className="text-center text-primary-base text-[28px] md:text-[40px] font-semibold  my-3 md:my-4">
         {title}
       </h1>
-      <h4 className="max-w-[500px] mx-auto text-black-base text-xs md:text-xl text-center">
+      <h4 className="max-w-[500px] mx-auto text-black-base text-[15px] md:text-xl text-center">
         {description}
       </h4>
     </>

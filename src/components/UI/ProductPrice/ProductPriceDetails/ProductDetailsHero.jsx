@@ -5,8 +5,9 @@ import Button from "../../Button/Button";
 import Image from "next/image";
 import { useGetAllServiceImagesQuery } from "@/redux/api/serviceImageApi";
 import Loading from "@/app/loading";
+import Link from "next/link";
 
-const ProductDetailsHero = ({ title, description, serviceId }) => {
+const ProductDetailsHero = ({ slug, title, description, serviceId }) => {
   const { data, isLoading } = useGetAllServiceImagesQuery({
     service: serviceId,
   });
@@ -26,12 +27,15 @@ const ProductDetailsHero = ({ title, description, serviceId }) => {
                 <h1 className="text-primary-muted text-[32px] font-semibold">
                   {title}
                 </h1>
-                <p className="text-base font-normal text-white">
-                  {description}
-                </p>
+                <div
+                  className="text-[#fff]"
+                  dangerouslySetInnerHTML={{ __html: description }}
+                ></div>
                 <div className="flex items-center gap-4">
                   <ButtonOutline content="See Demos " />
-                  <Button content="Buy Now" />
+                  <Link href={`/pricing/${slug}#pricing`}>
+                    <Button content="Buy Now" />
+                  </Link>
                 </div>
               </div>
             </div>

@@ -23,7 +23,7 @@ const CreateAssignedPricingFeature = () => {
   const { data: pricingData } = useGetAllPricingQuery();
 
   // define pricing
-  const pricing = pricingData?.data;
+  const pricing = pricingData?.data?.data;
 
   //fetched all pricing features
   const { data: pricingFeatureData } = useGetAllPricingFeaturesQuery();

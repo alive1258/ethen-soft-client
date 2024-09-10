@@ -1,8 +1,26 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { truncateDescription } from "@/utils/descriptionTruncate";
 import Button from "../../Button/Button";
+import { useGetAllPricingQuery } from "@/redux/api/pricingApi";
+import Loading from "@/app/loading";
+
 const PricingCard = ({ item }) => {
+  const { data, isLoading } = useGetAllPricingQuery({
+    service: item?._id,
+    sortOrder: "asc",
+  });
+
+  const pricing = data?.data?.data;
+
+  console.log(pricing);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <div
@@ -22,12 +40,10 @@ const PricingCard = ({ item }) => {
         <h1 className="md:text-xl text-lg text-black-base font-medium ">
           {item?.title}
         </h1>
-        <p className="text-black-base text-[13px] md:text-base z-[500]">
-          {truncateDescription(item?.description, 15)}
-        </p>
+        <div dangerouslySetInnerHTML={{ __html: item?.description }}></div>
         <div className="flex items-center justify-between">
           <h1 className="text-base text-black-base font-medium z-[500]">
-            Start at $<span>{item?.price}</span>{" "}
+            Start at $<span>{pricing.length && pricing[0]?.price}</span>{" "}
           </h1>
           <Link href={`/pricing/${item?.slug}`}>
             <Button content="Buy Now" className="p-2" />

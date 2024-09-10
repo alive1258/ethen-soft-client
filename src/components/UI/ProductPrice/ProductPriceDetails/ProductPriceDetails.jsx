@@ -27,6 +27,7 @@ const ProductPriceDetails = ({ slug }) => {
       <div>
         <ProductDetailsHero
           title={service?.title}
+          slug={slug}
           description={service?.description}
           serviceId={service?._id}
         />
@@ -39,9 +40,9 @@ const ProductPriceDetails = ({ slug }) => {
           backgroundPosition: " right top 200px",
         }}
       >
-        {/* Product Services */}
+        {/* Product Service categories */}
         <div className="pb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-4">
-          {/* pricing cards  */}
+          {/* service category cards  */}
           {serviceCategory?.map((item, index) => (
             <ProductServiceCard
               key={index}
@@ -64,7 +65,7 @@ const ProductPriceDetails = ({ slug }) => {
             <h1 className="text-black-solid font-semibold">Our All Pages</h1>
             <p className="text-sm text-[#0D0F12] pt-2">
               There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration{" "}
+              but the majority have suffered alteration
             </p>
           </div>
           <SwiperPages service={service?._id} />

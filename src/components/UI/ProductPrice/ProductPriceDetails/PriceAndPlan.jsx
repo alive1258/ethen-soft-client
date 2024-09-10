@@ -5,14 +5,16 @@ import PriceCard from "./PriceCard";
 import { useGetAllPricingQuery } from "@/redux/api/pricingApi";
 
 const PriceAndPlan = ({ serviceId }) => {
+  console.log(serviceId);
   const { data, error, isLoading } = useGetAllPricingQuery({
     service: serviceId,
+    sortOrder: "asc",
   });
 
-  const pricing = data?.data;
+  const pricing = data?.data?.data;
   return (
     <>
-      <div className="container my-20">
+      <div id="pricing" className="container my-20">
         <h1 className="text-[#15191F] text-2xl font-semibold border-b border-b-primary-base pb-2">
           Pricing & Plans
         </h1>

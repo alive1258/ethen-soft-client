@@ -1,10 +1,20 @@
+"use client";
+
 import ButtonOutline from "../../Button/ButtonOutline";
 import Button from "../../Button/Button";
 import Image from "next/image";
-import product1 from "../../../../../public/assets/images/price/image 22.png";
-import product2 from "../../../../../public/assets/images/price/image 23.png";
+import { useGetAllServiceImagesQuery } from "@/redux/api/serviceImageApi";
+import Loading from "@/app/loading";
 
-const ProductDetailsHero = ({ title, description }) => {
+const ProductDetailsHero = ({ title, description, serviceId }) => {
+  const { data, isLoading } = useGetAllServiceImagesQuery({
+    service: serviceId,
+  });
+  const serviceImages = data?.data?.data;
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
       <div className="contain">
@@ -27,16 +37,27 @@ const ProductDetailsHero = ({ title, description }) => {
             </div>
             <div className="w-full flex items-end justify-end relative">
               <div className="absolute -bottom-2.5 -left-3">
-                <Image src={product2} width={148} height={358} alt="product" />
+                {serviceImages[0] && (
+                  <Image
+                    className="w-[148px] h-[358px] rounded-lg"
+                    src={serviceImages[1]?.image}
+                    width={148}
+                    height={358}
+                    alt="product"
+                  />
+                )}
               </div>
               <div>
                 <div className="">
-                  <Image
-                    src={product1}
-                    width={522}
-                    height={396}
-                    alt="product"
-                  />
+                  {serviceImages[1] && (
+                    <Image
+                      src={serviceImages[0]?.image}
+                      className="w-[522px] h-[396px] rounded-lg"
+                      width={522}
+                      height={396}
+                      alt="product"
+                    />
+                  )}
                 </div>
               </div>
             </div>

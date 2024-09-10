@@ -3,14 +3,7 @@
 import { useGetAllFeatureAssignedToPricingQuery } from "@/redux/api/featureAssignedToPricingApi";
 import { FaCheckCircle } from "react-icons/fa";
 
-const PriceCard = ({
-  title,
-  price,
-  pricingCategory,
-
-  serviceId,
-  pricingId,
-}) => {
+const PriceCard = ({ title, price, pricingCategory, serviceId, pricingId }) => {
   const { data, isLoading } = useGetAllFeatureAssignedToPricingQuery({
     pricing: pricingId,
   });

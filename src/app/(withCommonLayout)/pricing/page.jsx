@@ -1,21 +1,7 @@
-"use client";
-
-import Loading from "@/app/loading";
-import ProductPriceSection from "@/components/UI/Home/ProductPrice/ProductPriceSection";
+import ProductPrice from "@/components/UI/Home/ProductPrice/ProductPrice";
 import SectionTitle from "@/components/UI/SectionTitle/SectionTitle";
-import { useGetAllOurServicesQuery } from "@/redux/api/ourServiceApi";
 
 const PricingPage = () => {
-  //fetched all service products
-  const { data, error, isLoading } = useGetAllOurServicesQuery();
-
-  // specify the name
-  const services = data?.data?.data;
-  const meta = data?.data?.meta;
-
-  if (isLoading) {
-    return <Loading />;
-  }
   return (
     <>
       {/* banner section  */}
@@ -38,7 +24,7 @@ const PricingPage = () => {
           ))}
         </div> */}
         <div className="container">
-          <ProductPriceSection prices={services} />
+          <ProductPrice />
         </div>
         {/* View All Products button  */}
         {/* <div className="mx-auto mt-10 w-44 text-center">

@@ -28,6 +28,7 @@ const ProductPriceDetails = ({ slug }) => {
         <ProductDetailsHero
           title={service?.title}
           description={service?.description}
+          serviceId={service?._id}
         />
       </div>
 

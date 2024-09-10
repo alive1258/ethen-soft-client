@@ -22,7 +22,6 @@ const UpdateOurService = ({ id }) => {
 
   const {
     data,
-
     isLoading: fetchLoading,
     error,
   } = useGetSingleOurServiceQuery(id);
@@ -46,9 +45,12 @@ const UpdateOurService = ({ id }) => {
       setValue("meta_key", data?.data?.meta_key || "");
       setValue("meta_description", data?.data?.meta_description || "");
       setSlug(data?.data?.slug || "");
-      setContent(data?.data?.description || "");
+
+      if (!content && data?.data?.description) {
+        setContent(data?.data?.description || "");
+      }
     }
-  }, [data, setValue]);
+  }, [data, setValue, content]);
 
   useEffect(() => {
     if (watchTitle) {
@@ -59,15 +61,17 @@ const UpdateOurService = ({ id }) => {
   const onSubmit = async (data) => {
     try {
       const res = await updateOurServices({
-        data,
+        data: {
+          ...data,
+          description: content,
+        },
         id: serviceId,
         slug,
-        content,
       }).unwrap();
 
       if (res?.success === true) {
         router.back();
-        toast.success(" Our Service updated successfully!", {
+        toast.success("Our Service updated successfully!", {
           position: toast.TOP_RIGHT,
         });
       } else {

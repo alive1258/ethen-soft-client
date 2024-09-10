@@ -20,12 +20,12 @@ const SwiperTestimonial = ({ testimonials }) => {
       <div>
         {/* Testimonials  */}
         <div>
-          <div className="flex space-x-4 mb-4 justify-between relative top-[17vh] z-[500] pr-7 md:pt-0 pt-6">
+          <div className="flex space-x-4 mb-4 md:justify-between justify-end relative md:top-[17vh] z-[500] pr-7 md:pt-0 pt-6">
             <div className="custom-prev-button ">
-              <IoIosArrowBack className="text-white bg-primary-base rounded-full md:size-12 size-8 p-2 cursor-pointer z-[500]" />
+              <IoIosArrowBack className="text-white hover:bg-gradient-to-l bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  rounded-full md:size-10 size-8 p-1 cursor-pointer z-[500]" />
             </div>
             <div className="custom-next-button">
-              <IoIosArrowForward className="text-white bg-primary-base rounded-full md:size-12 size-8 p-2 cursor-pointer z-[500]" />
+              <IoIosArrowForward className="text-white hover:bg-gradient-to-l bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  rounded-full md:size-10 size-8 p-1 cursor-pointer z-[500]" />
             </div>
           </div>
           <div className="px-4">

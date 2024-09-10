@@ -15,7 +15,6 @@ import { truncateCharacters } from "@/utils/descriptionTextCounter";
 
 const Blogs = () => {
   const { data, error, isLoading } = useGetAllBlogsQuery();
-  console.log(data);
 
   const [deleteBlogs] = useDeleteBlogMutation();
 
@@ -100,6 +99,9 @@ const Blogs = () => {
                     <span>title</span>
                   </th>
                   <th className="py-4 px-4 text-start">
+                    <span>Slug</span>
+                  </th>
+                  <th className="py-4 px-4 text-start">
                     <span>subject</span>
                   </th>
                   <th className="py-4 px-4 text-start">
@@ -133,6 +135,7 @@ const Blogs = () => {
                     </td>
 
                     <td className="py-3 px-4">{item?.title}</td>
+                    <td className="py-3 px-4">{item?.slug}</td>
                     <td className="py-3 px-4">{item?.subject}</td>
                     <td className="py-3 px-4">
                       {truncateCharacters(item?.sub_description, 30)}
@@ -141,7 +144,7 @@ const Blogs = () => {
                     <td className="my-2 px-4 text-end rounded-r-xl">
                       <div className="flex items-center justify-end w-full gap-4">
                         <Link
-                          href={`/dashboard/admin/home/blogs/update/${item?._id}`}
+                          href={`/dashboard/admin/home/blogs/update/${item?.slug}`}
                         >
                           <LiaEditSolid className="text-info-base text-2xl" />
                         </Link>

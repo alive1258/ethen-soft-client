@@ -8,7 +8,8 @@ const ServiceCard = ({ service, index }) => {
 
   return (
     <div
-      className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${
+      id={service?.slug || service?.id}
+      className={`grid grid-cols-1 md:grid-cols-2 gap-6 md:space-y-5 space-y-2 ${
         isImageLeft ? "" : "md:grid-cols-2-reverse"
       }`}
     >
@@ -16,7 +17,7 @@ const ServiceCard = ({ service, index }) => {
       <div className={`flex  ${isImageLeft ? "order-1" : "order-2"}`}>
         <Image
           src={service?.image}
-          className="h-[400px] p-2 md:p-6 w-full"
+          className="md:h-[550px] h-[200px] p-2 md:p-6 w-full"
           // className="size-14 md:size-[100px] mx-auto p-2 md:p-6 rounded-full"
           height={200}
           width={200}
@@ -27,7 +28,7 @@ const ServiceCard = ({ service, index }) => {
       {/* Right Side: Description or Image */}
       <div className={`flex flex-col ${isImageLeft ? "order-2" : "order-1"}`}>
         <ServiceTitle service={service} />
-        <div className="text-black-base text-[10px] md:text-base">
+        <div className="text-black-base text-[10px] md:text-base description">
           <div dangerouslySetInnerHTML={{ __html: service?.description }}></div>
         </div>
       </div>

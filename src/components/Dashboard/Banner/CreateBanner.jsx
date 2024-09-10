@@ -49,7 +49,7 @@ const CreateBanners = () => {
       });
     }
   };
-
+  // done
   const handleSlugChange = (e) => {
     const value = e.target.value;
     setSlug(value.toLowerCase().replace(/[^a-z0-9-]/g, ""));

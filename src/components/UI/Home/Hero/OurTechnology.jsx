@@ -53,7 +53,7 @@ const OurTechnology = ({ ourTechnology }) => {
   }, []);
   return (
     <>
-      <div className="relative md:size-[510px] size-[260px] border border-white border-dashed rounded-full flex justify-center items-center">
+      <div className="relative md:size-[510px] size-[270px] border border-white border-dashed rounded-full flex justify-center items-center">
         <motion.div
           className="absolute md:-top-10 -top-5"
           variants={zoomInOut}

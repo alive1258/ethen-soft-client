@@ -32,6 +32,7 @@ const ourServiceApi = baseApi.injectEndpoints({
 
     // Mutation for updating an existing OurServices
     updateOurServices: builder.mutation({
+
       query: ({ id, data }) => ({
         url: `/services/${id}`,
         method: "PATCH",

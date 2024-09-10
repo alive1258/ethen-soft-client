@@ -7,9 +7,15 @@ const TestimonialCard = ({ testimonial }) => {
   const rating = testimonial?.rating || 0;
   return (
     <>
-      <div className="flex items-center gap-10 mr-5">
-        <div className="w-full h-full bg-gradient-to-b from-[#DCC8E6] to-[#FDF8FF] rounded-lg p-4">
-          <Image src={image} width={140} height={168} alt="testimonial" />
+      <div className="md:flex items-center gap-10 md:mr-5">
+        <div className="w-full md:h-full bg-gradient-to-b from-[#DCC8E6] to-[#FDF8FF] rounded-lg p-4">
+          <Image
+            className="md:h-40 h-32"
+            src={image}
+            width={140}
+            height={168}
+            alt="testimonial"
+          />
           <h1 className="text-black-base font-semibold pt-3 text-nowrap">
             {testimonial?.name}
           </h1>
@@ -28,7 +34,7 @@ const TestimonialCard = ({ testimonial }) => {
             <span className="text-primary-base "> ” </span>
           </h1>
           <div className="relative">
-            <p className="text-sx italic text-black-base my-4 z-20 pr-3">
+            <p className="text-sm italic text-black-base my-4 z-20 pr-3">
               {testimonial?.description}
             </p>
             <BiSolidQuoteRight className="absolute top-[16%] left-[31%] text-[#DCC8E6] text-9xl -z-20" />

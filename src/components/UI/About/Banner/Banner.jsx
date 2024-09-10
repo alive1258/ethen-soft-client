@@ -11,7 +11,7 @@ const Banner = async () => {
     return (
       <>
         <div
-          className=" h-[80vh]  container bg-no-repeat"
+          className="h-[80vh] container bg-no-repeat"
           style={{
             backgroundImage:
               "url(/assets/images/aboutUs/bg.png), url(/assets/images/aboutUs/Frame.png), url(/assets/images/works/Vecto.png)",
@@ -19,9 +19,11 @@ const Banner = async () => {
               "right top,  80px top,  right bottom, right calc(100% - 100px) top",
           }}
         >
-          {aboutHeros?.data?.slice(0, 1).map((aboutHero) => (
-            <BannerDetails key={aboutHero?._id} aboutHero={aboutHero} />
-          ))}
+          <div className="">
+            {aboutHeros?.data?.slice(0, 1).map((aboutHero) => (
+              <BannerDetails key={aboutHero?._id} aboutHero={aboutHero} />
+            ))}
+          </div>
         </div>
       </>
     );

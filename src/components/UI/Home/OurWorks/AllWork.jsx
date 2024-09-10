@@ -1,191 +1,200 @@
-import Link from "next/link";
+"use client";
 import Image from "next/image";
 import WorkHoverEffect from "./WorkHoverEffect";
-import image1 from "../../../../../public/assets/images/works/1.png";
-import image2 from "../../../../../public/assets/images/works/image 2.png";
-import image3 from "../../../../../public/assets/images/works/3.png";
-import image4 from "../../../../../public/assets/images/works/4.png";
-import image5 from "../../../../../public/assets/images/works/5.png";
-import image6 from "../../../../../public/assets/images/works/6.png";
-import image7 from "../../../../../public/assets/images/works/7.png";
-import image8 from "../../../../../public/assets/images/works/Group 8.png";
-import image9 from "../../../../../public/assets/images/works/9.png";
-import image10 from "../../../../../public/assets/images/works/10.png";
-import image11 from "../../../../../public/assets/images/works/11.png";
-import image12 from "../../../../../public/assets/images/works/12.png";
+import { useEffect } from "react";
+import { applyScrollAnimation } from "@/utils/applyScrollAnimation ";
 
 const AllWork = ({ ourWorkDetails }) => {
+  useEffect(() => {
+    // Use the utility function and pass the section and reveal classes
+    const cleanup = applyScrollAnimation("section", ".reveal");
+
+    // Clean up event listeners when the component is unmounted
+    return cleanup;
+  }, []);
   return (
     <>
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="grid grid-cols-2 grid-rows-3 gap-5">
           {ourWorkDetails?.data?.slice(0, 1).map((ourWorkDetail, index) => (
-            <div key={index} className="relative group col-span-2 row-span-2">
+            <section
+              key={index}
+              className="relative reveal group col-span-2 row-span-2"
+            >
               <Image
                 className="rounded-lg object-cover w-full h-full"
-                src={image1}
+                src={ourWorkDetail?.image}
                 height={200}
                 width={200}
                 alt="work"
               />
 
               <WorkHoverEffect ourWorkDetail={ourWorkDetail} />
-            </div>
+            </section>
           ))}
 
           {ourWorkDetails?.data?.slice(1, 2).map((ourWorkDetail, index) => (
-            <div key={index} className="relative group col-span-1">
+            <section key={index} className="relative reveal group col-span-1">
               <Image
                 className="rounded-lg object-cover w-full h-full"
-                src={image2}
+                src={ourWorkDetail?.image}
                 height={200}
                 width={200}
                 alt="work"
               />
 
               <WorkHoverEffect ourWorkDetail={ourWorkDetail} />
-            </div>
+            </section>
           ))}
           {ourWorkDetails?.data?.slice(2, 3).map((ourWorkDetail, index) => (
-            <div key={index} className="relative group col-span-1">
+            <section key={index} className="relative reveal group col-span-1">
               <Image
                 className="rounded-lg object-cover w-full h-full"
-                src={image3}
+                src={ourWorkDetail?.image}
                 height={200}
                 width={200}
                 alt="work"
               />
 
               <WorkHoverEffect ourWorkDetail={ourWorkDetail} />
-            </div>
+            </section>
           ))}
         </div>
 
         <div className="grid grid-cols-2 grid-rows-3 gap-5">
           {ourWorkDetails?.data?.slice(3, 4).map((ourWorkDetail, index) => (
-            <div key={index} className="relative group col-span-1">
+            <section key={index} className="relative reveal group col-span-1">
               <Image
                 className="rounded-lg object-cover w-full h-full"
-                src={image4}
+                src={ourWorkDetail?.image}
                 height={200}
                 width={200}
                 alt="work"
               />
 
               <WorkHoverEffect ourWorkDetail={ourWorkDetail} />
-            </div>
+            </section>
           ))}
           {ourWorkDetails?.data?.slice(4, 5).map((ourWorkDetail, index) => (
-            <div key={index} className="relative group col-span-1">
+            <section key={index} className="relative reveal group col-span-1">
               <Image
                 className="rounded-lg object-cover w-full h-full"
-                src={image5}
+                src={ourWorkDetail?.image}
                 height={200}
                 width={200}
                 alt="work"
               />
 
               <WorkHoverEffect ourWorkDetail={ourWorkDetail} />
-            </div>
+            </section>
           ))}
           {ourWorkDetails?.data?.slice(5, 6).map((ourWorkDetail, index) => (
-            <div key={index} className="relative group col-span-2 row-span-2">
+            <section
+              key={index}
+              className="relative reveal group col-span-2 row-span-2"
+            >
               <Image
                 className="rounded-lg object-cover w-full h-full"
-                src={image6}
+                src={ourWorkDetail?.image}
                 height={200}
                 width={200}
                 alt="work"
               />
 
               <WorkHoverEffect ourWorkDetail={ourWorkDetail} />
-            </div>
+            </section>
           ))}
         </div>
 
         <div className="grid grid-cols-2 grid-rows-3 gap-5">
           {ourWorkDetails?.data?.slice(6, 7).map((ourWorkDetail, index) => (
-            <div key={index} className="relative group col-span-2 row-span-2">
+            <section
+              key={index}
+              className="relative reveal group col-span-2 row-span-2"
+            >
               <Image
                 className="rounded-lg object-cover w-full h-full"
-                src={image7}
+                src={ourWorkDetail?.image}
                 height={200}
                 width={200}
                 alt="work"
               />
 
               <WorkHoverEffect ourWorkDetail={ourWorkDetail} />
-            </div>
+            </section>
           ))}
 
           {ourWorkDetails?.data?.slice(7, 8).map((ourWorkDetail, index) => (
-            <div key={index} className="relative group col-span-1">
+            <section key={index} className="relative reveal group col-span-1">
               <Image
                 className="rounded-lg object-cover w-full h-full"
-                src={image8}
+                src={ourWorkDetail?.image}
                 height={200}
                 width={200}
                 alt="work"
               />
 
               <WorkHoverEffect ourWorkDetail={ourWorkDetail} />
-            </div>
+            </section>
           ))}
           {ourWorkDetails?.data?.slice(8, 9).map((ourWorkDetail, index) => (
-            <div key={index} className="relative group col-span-1">
+            <section key={index} className="relative reveal group col-span-1">
               <Image
                 className="rounded-lg object-cover w-full h-full"
-                src={image9}
+                src={ourWorkDetail?.image}
                 height={200}
                 width={200}
                 alt="work"
               />
 
               <WorkHoverEffect ourWorkDetail={ourWorkDetail} />
-            </div>
+            </section>
           ))}
         </div>
 
         <div className="grid grid-cols-2 grid-rows-3 gap-5">
           {ourWorkDetails?.data?.slice(9, 10).map((ourWorkDetail, index) => (
-            <div key={index} className="relative group col-span-1">
+            <section key={index} className="relative reveal group col-span-1">
               <Image
                 className="rounded-lg object-cover w-full h-full"
-                src={image10}
+                src={ourWorkDetail?.image}
                 height={200}
                 width={200}
                 alt="work"
               />
 
               <WorkHoverEffect ourWorkDetail={ourWorkDetail} />
-            </div>
+            </section>
           ))}
 
           {ourWorkDetails?.data?.slice(10, 11).map((ourWorkDetail, index) => (
-            <div key={index} className="relative group col-span-1">
+            <section key={index} className="relative reveal group col-span-1">
               <Image
                 className="rounded-lg object-cover w-full h-full"
-                src={image11}
+                src={ourWorkDetail?.image}
                 height={200}
                 width={200}
                 alt="work"
               />
 
               <WorkHoverEffect ourWorkDetail={ourWorkDetail} />
-            </div>
+            </section>
           ))}
           {ourWorkDetails?.data?.slice(11, 12).map((ourWorkDetail, index) => (
-            <div key={index} className="relative group col-span-2 row-span-2">
+            <section
+              key={index}
+              className="relative reveal group col-span-2 row-span-2"
+            >
               <Image
                 className="rounded-lg object-cover w-full h-full"
-                src={image12}
+                src={ourWorkDetail?.image}
                 height={200}
                 width={200}
                 alt="work"
               />
 
               <WorkHoverEffect ourWorkDetail={ourWorkDetail} />
-            </div>
+            </section>
           ))}
         </div>
       </div>

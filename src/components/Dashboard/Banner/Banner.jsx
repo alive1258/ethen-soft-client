@@ -97,6 +97,9 @@ const Banner = () => {
                   <th className="py-4 px-4 text-start">
                     <span>Name</span>
                   </th>
+                  <th className="py-4 px-4 text-start">
+                    <span>Slug</span>
+                  </th>
 
                   <th className="py-4 px-4 text-end rounded-r-xl">
                     <span>Action</span>
@@ -124,6 +127,7 @@ const Banner = () => {
                       />
                     </td>
                     <td className="py-3 px-4">{item?.name}</td>
+                    <td className="py-3 px-4">{item?.slug}</td>
 
                     <td className="my-2 px-4 text-end rounded-r-xl">
                       <div className="flex items-center justify-end w-full gap-4">

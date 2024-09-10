@@ -41,9 +41,12 @@ const UpdateOurWorks = ({ id }) => {
       setValue("meta_key", data?.data?.meta_key || "");
       setValue("meta_description", data?.data?.meta_description || "");
       setSlug(data?.data?.slug || "");
-      setContent(data?.data?.description || "");
+
+      if (!content && data?.data?.description) {
+        setContent(data?.data?.description || "");
+      }
     }
-  }, [data, setValue]);
+  }, [data, setValue, content]);
 
   useEffect(() => {
     if (watchTitle) {
@@ -54,10 +57,12 @@ const UpdateOurWorks = ({ id }) => {
   const onSubmit = async (data) => {
     try {
       const res = await updateOurWorks({
-        data,
+        data: {
+          ...data,
+          description: content, // Ensure content (description) is included
+        },
         id: ourWorkId,
         slug,
-        content,
       }).unwrap();
 
       if (res?.success === true) {

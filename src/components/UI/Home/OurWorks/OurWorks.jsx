@@ -15,7 +15,7 @@ const OurWorks = async () => {
     return (
       <>
         <div
-          className="bg-[#FBF9FC] bg-no-repeat"
+          className="bg-[#FBF9FC] bg-no-repeat mt-28"
           style={{
             backgroundImage:
               "url(/assets/images/works/Group.pn), url(/assets/images/works/Ellipse.pn)",
@@ -23,7 +23,7 @@ const OurWorks = async () => {
           }}
         >
           <div
-            className="container py-10 bg-no-repeat"
+            className="container py-16 bg-no-repeat"
             style={{
               backgroundImage:
                 "url(/assets/images/works/Group.png), url(/assets/images/works/Ellipse.png), url(/assets/images/works/Frame.png), url(/assets/images/works/Vector.png)",
@@ -36,7 +36,7 @@ const OurWorks = async () => {
               title="Our Works"
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolore. "
             />
-            <div className="mt-20">
+            <div className="md:mt-28 mt-12">
               <AllWork ourWorkDetails={ourWorkDetails} />
             </div>
             <div className="flex justify-center mt-10">

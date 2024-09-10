@@ -15,17 +15,17 @@ const OurClients = async () => {
 
     return (
       <>
-        <div className="relative px-10 bg-no-repeat bg-none md:bg-[url('/assets/images/stars.png')]">
-          <div className="py-10">
+        <div className="relative md:mt-28 mt-12 px-10 bg-no-repeat bg-none md:bg-[url('/assets/images/stars.png')]">
+          <div className="">
             <h1 className="text-center text-primary-base text-2xl md:text-[40px] font-semibold">
               OurClients
             </h1>
-            <div className="flex gap-20 mt-10 md:mt-14 mb-12 px-4">
+            <div className="flex gap-20 mt-16 md:mt-14 mb-12 px-4">
               {ourClients?.data?.map((ourClient) => (
                 <AllClients key={ourClient?._id} ourClient={ourClient} />
               ))}
             </div>
-            <div className="mt-6 flex justify-center items-center">
+            <div className="my-6 flex justify-center items-center">
               <ButtonOutline className="" content="More Clients" />
             </div>
           </div>

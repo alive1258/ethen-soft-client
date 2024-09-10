@@ -22,7 +22,7 @@ const Hero = async () => {
 
     return (
       <>
-        <div className="scene md:pt-0 pt-24 md:flex items-center">
+        <div className="scene md:pt-0 pt-28 md:flex items-center">
           <div className="container relative md:flex items-center justify-between md:gap-40">
             <div>
               <div className="moon md:block hidden"></div>
@@ -34,7 +34,7 @@ const Hero = async () => {
               ))}
             </div>
 
-            <div className="md:pt-0 pt-20 md:pl-0 pl-3">
+            <div className="md:pt-0 pt-20 md:pl-0 pl-7">
               {ourTechnologies?.data?.slice(0, 1)?.map((ourTechnology) => (
                 <OurTechnology
                   key={ourTechnology?._id}

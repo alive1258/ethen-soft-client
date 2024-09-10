@@ -10,7 +10,7 @@ const Services = ({ ourServices }) => {
           title="Our Services"
           description="We take digital experience to the next level"
         />
-        <div className="my-10 grid grid-cols-1 gap-x-5 gap-y-6">
+        <div className="md:my-10 my-4 grid grid-cols-1 gap-x-5 md:gap-y-16">
           {ourServices?.data?.map((service, index) => (
             <ServiceCard
               service={service}

@@ -1,92 +1,24 @@
+"use client";
+
 import Link from "next/link";
 import Button from "../../Button/Button";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import PricingCard from "./PricingCard";
 import ProductPriceSection from "./ProductPriceSection";
+import { useGetAllOurServicesQuery } from "@/redux/api/ourServiceApi";
+import Loading from "@/app/loading";
 
 const ProductPrice = () => {
-  const prices = [
-    {
-      _id: 1,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-    {
-      _id: 2,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-    {
-      _id: 3,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-    {
-      _id: 4,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-    {
-      _id: 5,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-    {
-      _id: 6,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-    {
-      _id: 7,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-    {
-      _id: 8,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-  ];
+  //fetched all service products
+  const { data, error, isLoading } = useGetAllOurServicesQuery();
+
+  // specify the name
+  const services = data?.data?.data;
+  const meta = data?.data?.meta;
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <div className="container md:mt-28 mt-16 bg-white z-30">
@@ -97,7 +29,7 @@ const ProductPrice = () => {
         />
         {/* all pricing  */}
         <div>
-          <ProductPriceSection prices={prices} />
+          <ProductPriceSection prices={services} />
         </div>
         {/* View All Products button  */}
         <div className="mx-auto mt-10 w-44 text-center">

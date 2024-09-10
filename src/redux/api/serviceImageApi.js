@@ -14,9 +14,10 @@ const serviceImage = baseApi.injectEndpoints({
 
     // Query for fetching all service image
     getAllServiceImages: builder.query({
-      query: () => ({
+      query: (arg) => ({
         url: "/service-images",
         method: "GET",
+        params: arg,
       }),
       providesTags: ["service-image"],
     }),

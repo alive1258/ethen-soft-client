@@ -4,7 +4,7 @@ import Image from "next/image";
 import product1 from "../../../../../public/assets/images/price/image 22.png";
 import product2 from "../../../../../public/assets/images/price/image 23.png";
 
-const ProductDetailsHero = () => {
+const ProductDetailsHero = ({ title, description }) => {
   return (
     <div>
       <div className="contain">
@@ -14,14 +14,10 @@ const ProductDetailsHero = () => {
             <div className="w-full">
               <div className="space-y-8 w-[522px]">
                 <h1 className="text-primary-muted text-[32px] font-semibold">
-                  Creative Multi-Prepose Next.js Project{" "}
+                  {title}
                 </h1>
                 <p className="text-base font-normal text-white">
-                  There are many variations of passages of Lorem Ipsum
-                  available, but the majority have suffered alteration in some
-                  form, by injected humour, or randomised words which dont look
-                  even slightly believable. If you are going to use a passage of
-                  Lorem Ipsum,{" "}
+                  {description}
                 </p>
                 <div className="flex items-center gap-4">
                   <ButtonOutline content="See Demos " />

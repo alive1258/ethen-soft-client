@@ -22,7 +22,7 @@ const Accordion = ({ accordion, isActive, onClick }) => {
             isActive ? "text-white" : "text-black-base group-hover:text-white"
           }`}
         >
-          {accordion?.title}
+          {accordion?.question}
         </h1>
         <div
           className={`${
@@ -39,7 +39,7 @@ const Accordion = ({ accordion, isActive, onClick }) => {
       {isActive && (
         <div className="flex gap-1.5 pt-2">
           <h6 className="text-[13px] md:text-base text-black-base pr-4">
-            {accordion?.description}
+            {accordion?.answer}
           </h6>
         </div>
       )}

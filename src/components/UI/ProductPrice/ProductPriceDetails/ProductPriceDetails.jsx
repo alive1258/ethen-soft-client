@@ -1,16 +1,34 @@
+"use client";
+
 import SwiperPages from "./SwiperPages";
-import Testimonials from "../../Home/Testimonials/Testimonials";
 import PriceAndPlan from "./PriceAndPlan";
 import ProductDetailsHero from "./ProductDetailsHero";
 
 import ProductServiceCard from "./ProductServiceCard";
 import Faq from "../../Home/Faq/Faq";
+import { useGetSingleOurServiceQuery } from "@/redux/api/ourServiceApi";
+import { useGetAllServiceCategoriesQuery } from "@/redux/api/serviceCategoryApi";
+import Loading from "@/app/loading";
 
-const ProductPriceDetails = () => {
+const ProductPriceDetails = ({ slug }) => {
+  const { data, error, isLoading } = useGetSingleOurServiceQuery(slug);
+  const service = data?.data;
+  const { data: serviceCategoryData } = useGetAllServiceCategoriesQuery({
+    service: service?._id,
+  });
+  const serviceCategory = serviceCategoryData?.data?.data;
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <div>
-        <ProductDetailsHero />
+        <ProductDetailsHero
+          title={service?.title}
+          description={service?.description}
+        />
       </div>
 
       <div
@@ -22,13 +40,15 @@ const ProductPriceDetails = () => {
       >
         {/* Product Services */}
         <div className="pb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-4">
-          {/* single card  */}
-          <ProductServiceCard />
-          <ProductServiceCard />
-          <ProductServiceCard />
-          <ProductServiceCard />
-          <ProductServiceCard />
-          <ProductServiceCard />
+          {/* pricing cards  */}
+          {serviceCategory?.map((item, index) => (
+            <ProductServiceCard
+              key={index}
+              logo={item?.logo}
+              title={item?.title}
+              description={item?.description}
+            />
+          ))}
         </div>
 
         {/* Our All Pages  */}
@@ -46,7 +66,7 @@ const ProductPriceDetails = () => {
               but the majority have suffered alteration{" "}
             </p>
           </div>
-          <SwiperPages />
+          <SwiperPages service={service?._id} />
         </div>
       </div>
 
@@ -58,9 +78,9 @@ const ProductPriceDetails = () => {
           <h1>testimonial</h1>{" "}
         </div>
       </div>
-      <PriceAndPlan />
+      <PriceAndPlan serviceId={service?._id} />
       {/* <Testimonials /> */}
-      <Faq />
+      <Faq service={service?._id} />
     </>
   );
 };

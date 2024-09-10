@@ -15,11 +15,12 @@ import {
 import Image from "next/image";
 
 const OurServices = () => {
+  // fetched all services
   const { data, error, isLoading } = useGetAllOurServicesQuery();
-  const [deleteOurServices] = useDeleteOurServiceMutation();
-
+  // user formate name for better understand
   const services = data?.data?.data;
   const meta = data?.data?.meta;
+  const [deleteOurServices] = useDeleteOurServiceMutation();
   const handleDeleteOurServices = async (services) => {
     try {
       const result = await Swal.fire({

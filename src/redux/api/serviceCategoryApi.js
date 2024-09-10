@@ -14,9 +14,10 @@ const serviceCategoryApi = baseApi.injectEndpoints({
 
     // Query for fetching all service categories
     getAllServiceCategories: builder.query({
-      query: () => ({
+      query: (arg) => ({
         url: "/categories",
         method: "GET",
+        params: arg,
       }),
       providesTags: ["service-categories"],
     }),

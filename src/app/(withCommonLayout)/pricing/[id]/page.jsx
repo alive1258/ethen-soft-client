@@ -1,9 +1,9 @@
 import ProductPriceDetails from "@/components/UI/ProductPrice/ProductPriceDetails/ProductPriceDetails";
 
-const page = () => {
+const page = ({ params }) => {
   return (
     <>
-      <ProductPriceDetails />
+      <ProductPriceDetails slug={params?.id} />
     </>
   );
 };

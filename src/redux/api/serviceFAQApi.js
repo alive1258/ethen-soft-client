@@ -14,9 +14,10 @@ const serviceFAQApi = baseApi.injectEndpoints({
 
     // Query for fetching all service faq
     getAllServiceFAQs: builder.query({
-      query: () => ({
+      query: (arg) => ({
         url: "/service-faqs",
         method: "GET",
+        params: arg,
       }),
       providesTags: ["service-faq"],
     }),

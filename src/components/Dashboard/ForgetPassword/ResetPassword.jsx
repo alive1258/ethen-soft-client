@@ -63,7 +63,7 @@ const ResetPassword = () => {
     <div className="bg-black-solid h-lvh w-svw grid place-items-center">
       <div className="md:w-[600px] max-w-[650px] mx-auto bg-black-muted rounded-lg p-6">
         <p className="text-white border-0 border-b border-b-[#828282] pb-4">
-          Sign Up Form
+          Reset Your Password
         </p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col gap-3">

@@ -11,14 +11,15 @@ const AccordionList = ({ faqs }) => {
 
   return (
     <div>
-      {faqs?.data?.map((accordion, index) => (
-        <Accordion
-          key={index}
-          accordion={accordion}
-          isActive={activeIndex === index}
-          onClick={() => handleAccordionClick(index)}
-        />
-      ))}
+      {faqs?.data?.length &&
+        faqs?.data?.map((accordion, index) => (
+          <Accordion
+            key={index}
+            accordion={accordion}
+            isActive={activeIndex === index}
+            onClick={() => handleAccordionClick(index)}
+          />
+        ))}
     </div>
   );
 };

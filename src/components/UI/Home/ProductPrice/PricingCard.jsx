@@ -6,15 +6,14 @@ const PricingCard = ({ item }) => {
   return (
     <>
       <div
-        // className={`relative text-center cursor-pointer p-4 flex flex-col justify-center border rounded-lg duration-200 hover:duration-300 bg-white z-10 hover:shadow-primary  space-y-4 group overflow-hidden border-#${item?.color_code}`}
-        className=" reveal relative hover:scale-105 transition-all duration-300 ease-in-out text-center cursor-pointer p-4 flex flex-col justify-center border rounded-lg  bg-white z-10 hover:shadow-primary  space-y-4 group overflow-hidden"
-        // style={{ borderColor: item?.color_code }}
+        className={`relative text-center cursor-pointer p-4 flex flex-col justify-center border rounded-lg duration-200 hover:duration-300 bg-white z-10 hover:shadow-primary  space-y-4 group overflow-hidden border-#${item?.colorCode}`}
+        style={{ borderColor: item?.colorCode }}
       >
         <Image
-          src={item?.icon}
+          src={item?.logo}
           className={`size-14 md:size-[100px] mx-auto p-2 md:p-6 rounded-full`}
           style={{
-            backgroundColor: `${item?.color_code}`,
+            backgroundColor: `${item?.colorCode}`,
           }}
           width={56}
           height={56}
@@ -30,7 +29,7 @@ const PricingCard = ({ item }) => {
           <h1 className="text-base text-black-base font-medium z-[500]">
             Start at $<span>{item?.price}</span>{" "}
           </h1>
-          <Link href={`/pricing/${item?._id}`}>
+          <Link href={`/pricing/${item?.slug}`}>
             <Button content="Buy Now" className="p-2" />
           </Link>
         </div>

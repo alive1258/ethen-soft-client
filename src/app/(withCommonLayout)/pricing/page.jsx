@@ -1,89 +1,7 @@
-import ProductPriceSection from "@/components/UI/Home/ProductPrice/ProductPriceSection";
+import ProductPrice from "@/components/UI/Home/ProductPrice/ProductPrice";
 import SectionTitle from "@/components/UI/SectionTitle/SectionTitle";
 
-const page = () => {
-  const prices = [
-    {
-      _id: 1,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-    {
-      _id: 2,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-    {
-      _id: 3,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-    {
-      _id: 4,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-    {
-      _id: 5,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-    {
-      _id: 6,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-    {
-      _id: 7,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-    {
-      _id: 8,
-      title: "Advertising Content Development",
-      price: 5,
-      description:
-        "They say content is king. Well our content is not just catchy but downright magnetic!...",
-      sub_description: "ui/ux designui/ux design",
-      icon: "/assets/images/services.png",
-      color_code: "#62C288",
-    },
-  ];
+const PricingPage = () => {
   return (
     <>
       {/* banner section  */}
@@ -106,7 +24,7 @@ const page = () => {
           ))}
         </div> */}
         <div className="container">
-          <ProductPriceSection prices={prices} />
+          <ProductPrice />
         </div>
         {/* View All Products button  */}
         {/* <div className="mx-auto mt-10 w-44 text-center">
@@ -119,4 +37,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default PricingPage;

@@ -14,10 +14,10 @@ import {
 
 const Pricing = () => {
   // fetched all pricing
-  const { data, error, isLoading } = useGetAllPricingQuery();
+  const { data, error, isLoading } = useGetAllPricingQuery({});
 
   // define the pricing and meta
-  const pricings = data?.data;
+  const pricings = data?.data?.data;
   const meta = data?.data?.meta;
 
   // for delete pricing

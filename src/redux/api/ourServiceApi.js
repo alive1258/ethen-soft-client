@@ -23,8 +23,8 @@ const ourServiceApi = baseApi.injectEndpoints({
 
     // Query for fetching a single OurServices by its ID
     getSingleOurService: builder.query({
-      query: (id) => ({
-        url: `/services/${id}`,
+      query: (slug) => ({
+        url: `/services/${slug}`,
         method: "GET",
       }),
       providesTags: ["services"],
@@ -32,7 +32,6 @@ const ourServiceApi = baseApi.injectEndpoints({
 
     // Mutation for updating an existing OurServices
     updateOurServices: builder.mutation({
-
       query: ({ id, data }) => ({
         url: `/services/${id}`,
         method: "PATCH",

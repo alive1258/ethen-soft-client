@@ -1,10 +1,21 @@
+"use client";
+
 import ButtonOutline from "../../Button/ButtonOutline";
 import Button from "../../Button/Button";
 import Image from "next/image";
-import product1 from "../../../../../public/assets/images/price/image 22.png";
-import product2 from "../../../../../public/assets/images/price/image 23.png";
+import { useGetAllServiceImagesQuery } from "@/redux/api/serviceImageApi";
+import Loading from "@/app/loading";
+import Link from "next/link";
 
-const ProductDetailsHero = () => {
+const ProductDetailsHero = ({ slug, title, description, serviceId }) => {
+  const { data, isLoading } = useGetAllServiceImagesQuery({
+    service: serviceId,
+  });
+  const serviceImages = data?.data?.data;
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
       <div className="contain">
@@ -14,33 +25,43 @@ const ProductDetailsHero = () => {
             <div className="w-full">
               <div className="space-y-8 w-[522px]">
                 <h1 className="text-primary-muted text-[32px] font-semibold">
-                  Creative Multi-Prepose Next.js Project{" "}
+                  {title}
                 </h1>
-                <p className="text-base font-normal text-white">
-                  There are many variations of passages of Lorem Ipsum
-                  available, but the majority have suffered alteration in some
-                  form, by injected humour, or randomised words which dont look
-                  even slightly believable. If you are going to use a passage of
-                  Lorem Ipsum,{" "}
-                </p>
+                <div
+                  className="text-[#fff]"
+                  dangerouslySetInnerHTML={{ __html: description }}
+                ></div>
                 <div className="flex items-center gap-4">
                   <ButtonOutline content="See Demos " />
-                  <Button content="Buy Now" />
+                  <Link href={`/pricing/${slug}#pricing`}>
+                    <Button content="Buy Now" />
+                  </Link>
                 </div>
               </div>
             </div>
             <div className="w-full flex items-end justify-end relative">
               <div className="absolute -bottom-2.5 -left-3">
-                <Image src={product2} width={148} height={358} alt="product" />
+                {serviceImages[0] && (
+                  <Image
+                    className="w-[148px] h-[358px] rounded-lg"
+                    src={serviceImages[1]?.image}
+                    width={148}
+                    height={358}
+                    alt="product"
+                  />
+                )}
               </div>
               <div>
                 <div className="">
-                  <Image
-                    src={product1}
-                    width={522}
-                    height={396}
-                    alt="product"
-                  />
+                  {serviceImages[1] && (
+                    <Image
+                      src={serviceImages[0]?.image}
+                      className="w-[522px] h-[396px] rounded-lg"
+                      width={522}
+                      height={396}
+                      alt="product"
+                    />
+                  )}
                 </div>
               </div>
             </div>

@@ -15,8 +15,12 @@ import "swiper/css/pagination";
 // import required modules
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 import PageCard from "./PageCard";
+import { useGetAllServiceImagesQuery } from "@/redux/api/serviceImageApi";
 
-const SwiperPages = () => {
+const SwiperPages = ({ service }) => {
+  const { data, error, isLoading } = useGetAllServiceImagesQuery({ service });
+  const serviceImages = data?.data?.data;
+
   return (
     <>
       <div>
@@ -43,24 +47,11 @@ const SwiperPages = () => {
           modules={[Navigation, Pagination, Mousewheel, Keyboard]}
           className="swiper_container mySwipr"
         >
-          <SwiperSlide>
-            <PageCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <PageCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <PageCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <PageCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <PageCard />
-          </SwiperSlide>
-          <SwiperSlide>
-            <PageCard />
-          </SwiperSlide>
+          {serviceImages?.map((image, index) => (
+            <SwiperSlide key={index}>
+              <PageCard title={image?.title} image={image?.image} />
+            </SwiperSlide>
+          ))}
 
           {/* Custom Navigation Arrows  */}
           <div className="slider-controler">

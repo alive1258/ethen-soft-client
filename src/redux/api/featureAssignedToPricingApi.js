@@ -14,9 +14,10 @@ const featureAssignedToPricingApi = baseApi.injectEndpoints({
 
     // Query for fetching all Pricing
     getAllFeatureAssignedToPricing: builder.query({
-      query: () => ({
+      query: (arg) => ({
         url: "/feature-assigned-pricing",
         method: "GET",
+        params: arg,
       }),
       providesTags: ["feature-assigned-pricing"],
     }),

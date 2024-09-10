@@ -1,20 +1,37 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { truncateDescription } from "@/utils/descriptionTruncate";
 import Button from "../../Button/Button";
+import { useGetAllPricingQuery } from "@/redux/api/pricingApi";
+import Loading from "@/app/loading";
+
 const PricingCard = ({ item }) => {
+  const { data, isLoading } = useGetAllPricingQuery({
+    service: item?._id,
+    sortOrder: "asc",
+  });
+
+  const pricing = data?.data?.data;
+
+  console.log(pricing);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <div
-        // className={`relative text-center cursor-pointer p-4 flex flex-col justify-center border rounded-lg duration-200 hover:duration-300 bg-white z-10 hover:shadow-primary  space-y-4 group overflow-hidden border-#${item?.color_code}`}
-        className=" reveal relative hover:scale-105 transition-all duration-300 ease-in-out text-center cursor-pointer p-4 flex flex-col justify-center border rounded-lg  bg-white z-10 hover:shadow-primary  space-y-4 group overflow-hidden"
-        // style={{ borderColor: item?.color_code }}
+        className={`relative text-center cursor-pointer p-4 flex flex-col justify-center border rounded-lg duration-200 hover:duration-300 bg-white z-10 hover:shadow-primary  space-y-4 group overflow-hidden border-#${item?.colorCode}`}
+        style={{ borderColor: item?.colorCode }}
       >
         <Image
-          src={item?.icon}
+          src={item?.logo}
           className={`size-14 md:size-[100px] mx-auto p-2 md:p-6 rounded-full`}
           style={{
-            backgroundColor: `${item?.color_code}`,
+            backgroundColor: `${item?.colorCode}`,
           }}
           width={56}
           height={56}
@@ -23,14 +40,12 @@ const PricingCard = ({ item }) => {
         <h1 className="md:text-xl text-lg text-black-base font-medium ">
           {item?.title}
         </h1>
-        <p className="text-black-base text-[13px] md:text-base z-[500]">
-          {truncateDescription(item?.description, 15)}
-        </p>
+        <div dangerouslySetInnerHTML={{ __html: item?.description }}></div>
         <div className="flex items-center justify-between">
           <h1 className="text-base text-black-base font-medium z-[500]">
-            Start at $<span>{item?.price}</span>{" "}
+            Start at $<span>{pricing.length && pricing[0]?.price}</span>{" "}
           </h1>
-          <Link href={`/pricing/${item?._id}`}>
+          <Link href={`/pricing/${item?.slug}`}>
             <Button content="Buy Now" className="p-2" />
           </Link>
         </div>

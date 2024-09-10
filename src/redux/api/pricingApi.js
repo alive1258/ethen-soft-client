@@ -14,9 +14,10 @@ const pricingApi = baseApi.injectEndpoints({
 
     // Query for fetching all Pricing
     getAllPricing: builder.query({
-      query: () => ({
+      query: (arg) => ({
         url: "/pricing",
         method: "GET",
+        params: arg,
       }),
       providesTags: ["pricing"],
     }),

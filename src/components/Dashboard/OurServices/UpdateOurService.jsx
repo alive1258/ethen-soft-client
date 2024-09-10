@@ -1,6 +1,8 @@
 "use client";
 
 import TextEditor from "@/components/TextEditor/TextEditor";
+import Input from "@/components/UI/Forms/Input";
+import Textarea from "@/components/UI/Forms/Textarea";
 
 import {
   useGetSingleOurServiceQuery,
@@ -12,6 +14,13 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 const UpdateOurService = ({ id }) => {
+  // logo url pattern check
+  const logoPattern = {
+    value: /\.(jpg|jpeg|png|gif|svg)$/i,
+    message: "Logo must be a valid image URL (.jpg, .jpeg, .png, .gif, .svg)",
+  };
+
+  // require useForm from react-hook-form
   const {
     register,
     handleSubmit,
@@ -20,72 +29,83 @@ const UpdateOurService = ({ id }) => {
     setValue,
   } = useForm();
 
+  // fetched the specific data for update.
   const {
     data,
     isLoading: fetchLoading,
     error,
   } = useGetSingleOurServiceQuery(id);
 
+  // defined data as data name
+  const service = data?.data;
+  const serviceId = service?._id;
+
+  // updated the data
   const [updateOurServices, { isLoading }] = useUpdateOurServicesMutation();
 
+  //set slug and description
   const [slug, setSlug] = useState("");
   const [content, setContent] = useState("");
 
   const router = useRouter();
   const watchTitle = watch("title");
-  const serviceId = data?.data?._id;
 
+  //set default value
   useEffect(() => {
-    if (data) {
-      setValue("title", data?.data?.title || "");
-      setValue("sub_description", data?.data?.sub_description || "");
-      setValue("image", data?.data?.image || "");
-      setValue("icon", data?.data?.icon || "");
-      setValue("color_code", data?.data?.color_code || "");
-      setValue("meta_key", data?.data?.meta_key || "");
-      setValue("meta_description", data?.data?.meta_description || "");
-      setSlug(data?.data?.slug || "");
 
-      if (!content && data?.data?.description) {
-        setContent(data?.data?.description || "");
-      }
+    if (service) {
+      setValue("title", service?.title || "");
+      setValue("subDescription", service?.subDescription || "");
+      setValue("logo", service?.logo || "");
+      setValue("colorCode", service?.colorCode || "");
+      setValue("metaKey", service?.metaKey || "");
+      setValue("metaDescription", service?.metaDescription || "");
+      setSlug(service?.slug || "");
+      setContent(service?.description || "");
     }
-  }, [data, setValue, content]);
+  }, [service, setValue, setContent, setSlug]);
 
+
+  // converting title
   useEffect(() => {
     if (watchTitle) {
       setSlug(watchTitle.toLowerCase().replace(/[^a-z0-9-]/g, "-"));
     }
   }, [watchTitle]);
 
+  // update data submit function
   const onSubmit = async (data) => {
     try {
+      data["slug"] = slug;
+      data["description"] = content;
       const res = await updateOurServices({
-        data: {
-          ...data,
-          description: content,
-        },
         id: serviceId,
-        slug,
+        data,
+
       }).unwrap();
 
-      if (res?.success === true) {
+      // show success message
+      if (res?.success) {
         router.back();
-        toast.success("Our Service updated successfully!", {
+
+        toast.success(res?.message || "Our Service updated successfully!", {
           position: toast.TOP_RIGHT,
         });
       } else {
+        // show error message
         toast.error(res.message, {
           position: toast.TOP_RIGHT,
         });
       }
     } catch (error) {
+      // show error message
       toast.error(error?.message || "An error occurred", {
         position: toast.TOP_RIGHT,
       });
     }
   };
 
+  //converting slug
   const handleSlugChange = (e) => {
     const value = e.target.value;
     setSlug(value.toLowerCase().replace(/[^a-z0-9-]/g, ""));
@@ -110,153 +130,80 @@ const UpdateOurService = ({ id }) => {
       >
         <div className="flex flex-col gap-2">
           {/* Input for Hero Description title */}
-          <div className="relative w-full">
-            <span className="text-[16px] py-2 block">
-              Hero Description title *
-            </span>
-            <input
-              className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary-base disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
-              type="text"
-              placeholder="Please enter your Hero Description title"
-              {...register("title", {
-                required: "Hero Description title is required",
-              })}
-            />
-            {errors.title && (
-              <span className="text-red-600 text-sm">
-                {errors.title.message}
-              </span>
-            )}
-          </div>
+          <Input
+            placeholder="Service Title"
+            text="title"
+            type="text"
+            label="Title"
+            register={register}
+            errors={errors}
+          />
 
           {/* Slug */}
-          <div className="mt-2">
-            <span className="text-[16px] py-2">Hero Description Slug *</span>
-            <input
-              value={slug}
-              onChange={handleSlugChange}
-              className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary mt-1"
-              type="text"
-              placeholder="Slug"
-              required={true}
-            />
-          </div>
+          <Input
+            placeholder="Service Slug"
+            text="slug"
+            type="text"
+            label="Slug"
+            onChange={handleSlugChange}
+            register={register}
+            errors={errors}
+            value={slug}
+          />
 
           {/* Description */}
           <div className="pt-3">
             <span className="text-[16px] py-2 block">Description *</span>
             <TextEditor content={content} setContent={setContent} />
           </div>
-          {/* sub_description */}
+          {/* sub description */}
           <div className="pt-3">
-            <div>
-              <span className="text-[16px] py-2 block">sub_description *</span>
-              <textarea
-                {...register("sub_description", {
-                  required: "sub_description is required",
-                })}
-                rows={2}
-                placeholder="sub_description"
-                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
-              ></textarea>
-              {errors.sub_description && (
-                <span className="text-red-600 text-sm">
-                  {errors.sub_description.message}
-                </span>
-              )}
-            </div>
+            <Textarea
+              placeholder="Service Sub Description"
+              text="subDescription"
+              type="text"
+              label="Sub Description"
+              register={register}
+              errors={errors}
+            />
           </div>
-          {/* Image */}
-          <div className="pt-3">
-            <div>
-              <span className="text-[16px] py-2 block">Image *</span>
-              <input
-                {...register("image", {
-                  required: "Image is required",
-                })}
-                rows={2}
-                placeholder=" Image"
-                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
-              ></input>
-              {errors.image && (
-                <span className="text-red-600 text-sm">
-                  {errors.image.message}
-                </span>
-              )}
-            </div>
-          </div>
-          {/* icon */}
-          <div className="pt-3">
-            <div>
-              <span className="text-[16px] py-2 block">icon *</span>
-              <input
-                {...register("icon", {
-                  required: "icon is required",
-                })}
-                rows={2}
-                placeholder="icon"
-                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
-              ></input>
-              {errors.image && (
-                <span className="text-red-600 text-sm">
-                  {errors.image.message}
-                </span>
-              )}
-            </div>
-          </div>
-          {/* color_code */}
-          <div className="pt-3">
-            <div>
-              <span className="text-[16px] py-2 block">color_code *</span>
-              <input
-                {...register("color_code", {
-                  required: "color_code is required",
-                })}
-                rows={2}
-                placeholder="color_code"
-                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
-              ></input>
-              {errors.color_code && (
-                <span className="text-red-600 text-sm">
-                  {errors.color_code.message}
-                </span>
-              )}
-            </div>
-          </div>
-          {/* meta_key */}
-          <div className="pt-3">
-            <div>
-              <span className="text-[16px] py-2 block">meta_key *</span>
-              <input
-                {...register("meta_key")}
-                rows={2}
-                placeholder="meta_key"
-                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
-              ></input>
-              {errors.meta_key && (
-                <span className="text-red-600 text-sm">
-                  {errors.meta_key.message}
-                </span>
-              )}
-            </div>
-          </div>
-          {/* meta_description */}
-          <div className="pt-3">
-            <div>
-              <span className="text-[16px] py-2 block">meta_description *</span>
-              <textarea
-                {...register("meta_description")}
-                rows={2}
-                placeholder="meta_description"
-                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
-              ></textarea>
-              {errors.meta_description && (
-                <span className="text-red-600 text-sm">
-                  {errors.meta_description.message}
-                </span>
-              )}
-            </div>
-          </div>
+          {/* Logo */}
+          <Input
+            placeholder="Service Logo URL"
+            text="logo"
+            type="text"
+            label="Logo"
+            register={register}
+            errors={errors}
+            pattern={logoPattern}
+          />
+          {/* color code */}
+          <Input
+            placeholder="Service Color Code"
+            text="colorCode"
+            type="text"
+            label="Color Code"
+            register={register}
+            errors={errors}
+          />
+          {/* meta key */}
+          <Input
+            placeholder="Service Meta Key"
+            text="metaKey"
+            type="text"
+            label="Meta Key"
+            register={register}
+            errors={errors}
+          />
+          {/* meta description */}
+          <Textarea
+            placeholder="Service Meta Description"
+            text="metaDescription"
+            type="text"
+            label="Meta Description"
+            register={register}
+            errors={errors}
+          />
         </div>
 
         <button

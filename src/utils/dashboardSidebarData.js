@@ -1,9 +1,15 @@
 import { AiOutlineStock } from "react-icons/ai";
-import { MdManageHistory } from "react-icons/md";
+import { MdManageHistory, MdCategory, MdCreateNewFolder } from "react-icons/md";
 import { CgShutterstock } from "react-icons/cg";
-import { FaProductHunt, FaUser } from "react-icons/fa";
+import {
+  FaDollarSign,
+  FaFileInvoiceDollar,
+  FaListAlt,
+  FaProductHunt,
+  FaUser,
+} from "react-icons/fa";
 import { CiBasketball } from "react-icons/ci";
-import { FaServicestack, FaUsers } from "react-icons/fa6";
+import { FaSackDollar, FaServicestack, FaUsers } from "react-icons/fa6";
 import { MdOutlineCategory } from "react-icons/md";
 import { TbBrandAirbnb } from "react-icons/tb";
 import { MdOutlinePermMedia } from "react-icons/md";
@@ -11,14 +17,12 @@ import { FaDelicious } from "react-icons/fa";
 import { SiPrivatedivision } from "react-icons/si";
 import { LiaBlogSolid } from "react-icons/lia";
 import { CiCompass1 } from "react-icons/ci";
-import { FaQuestion } from "react-icons/fa";
-import { FaUserFriends } from "react-icons/fa";
-import { FaFirstOrderAlt } from "react-icons/fa";
-import { RiCreativeCommonsByLine, RiAdminFill, RiUser2Fill, RiUser4Fill, RiUserFill } from "react-icons/ri";
+import { FaFirstOrderAlt, FaQuestion } from "react-icons/fa";
+import { RiCreativeCommonsByLine, RiAdminFill } from "react-icons/ri";
 import { BsFillFileEarmarkRuledFill } from "react-icons/bs";
 import { FaQuoteLeft } from "react-icons/fa";
 import { GiVerticalBanner } from "react-icons/gi";
-import { FaFeather } from "react-icons/fa";
+import { FaFeather, FaImages } from "react-icons/fa";
 
 export const SidebarItemsData = [
   {
@@ -99,6 +103,48 @@ export const SidebarItemsData = [
         path: "/dashboard/admin/home/faqs",
         Icon: <FaQuoteLeft />,
       },
+      {
+        id: 13,
+        name: "Service Category",
+        path: "/dashboard/admin/home/service-category",
+        Icon: <MdCategory />,
+      },
+      {
+        id: 14,
+        name: "Service Images",
+        path: "/dashboard/admin/home/service-image",
+        Icon: <FaImages />,
+      },
+      {
+        id: 15,
+        name: "Service FAQs",
+        path: "/dashboard/admin/home/service-faq",
+        Icon: <FaQuestion />,
+      },
+      {
+        id: 16,
+        name: "Pricing",
+        path: "/dashboard/admin/home/pricing",
+        Icon: <FaDollarSign />,
+      },
+      {
+        id: 17,
+        name: "Pricing Categories",
+        path: "/dashboard/admin/home/pricing-category",
+        Icon: <FaFileInvoiceDollar />,
+      },
+      {
+        id: 18,
+        name: "Pricing Features",
+        path: "/dashboard/admin/home/pricing-feature",
+        Icon: <FaListAlt />,
+      },
+      {
+        id: 19,
+        name: "Assigned Feature",
+        path: "/dashboard/admin/home/feature-assigned-pricing",
+        Icon: <MdCreateNewFolder />,
+      },
     ],
   },
   {
@@ -119,7 +165,6 @@ export const SidebarItemsData = [
         path: "/dashboard/admin/user/customers",
         Icon: <FaUsers />,
       },
-      
     ],
   },
   {

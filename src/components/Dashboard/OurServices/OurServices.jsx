@@ -18,23 +18,25 @@ const OurServices = () => {
   const { data, error, isLoading } = useGetAllOurServicesQuery();
   const [deleteOurServices] = useDeleteOurServiceMutation();
 
-  const handleDeleteOurServices = async (data) => {
+  const services = data?.data?.data;
+  const meta = data?.data?.meta;
+  const handleDeleteOurServices = async (services) => {
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
-        text: `Are you sure you want to delete the Our Services "${data?.title}"?`,
+        text: `Are you sure you want to delete the Our Services "${services?.title}"?`,
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
         confirmButtonText: "Yes, delete it!",
       });
       if (result.isConfirmed) {
-        const response = await deleteOurServices(data?._id).unwrap();
+        const response = await deleteOurServices(services?._id).unwrap();
         if (response?.success === true) {
           Swal.fire({
             title: "Deleted!",
-            text: `The Our Services "${data?.title}" has been successfully deleted.`,
+            text: `The Our Services "${services?.title}" has been successfully deleted.`,
             icon: "success",
           });
         } else {
@@ -91,15 +93,12 @@ const OurServices = () => {
                 <tr className="bg-black-muted text-start text-[13px] overflow-hidden">
                   <th className="py-4 px-4 text-start rounded-l-xl">
                     <span>ID</span>
-                  </th>
+                  </th>{" "}
                   <th className="py-4 px-4 text-start">
-                    <span>Image</span>
+                    <span>Logo</span>
                   </th>
                   <th className="py-4 px-4 text-start">
                     <span>Title</span>
-                  </th>
-                  <th className="py-4 px-4 text-start">
-                    <span>Icon</span>
                   </th>
                   <th className="py-4 px-4 text-start">
                     <span>Sub Description</span>
@@ -110,14 +109,13 @@ const OurServices = () => {
                   <th className="py-4 px-4 text-start">
                     <span>Color Code</span>
                   </th>
-
                   <th className="py-4 px-4 text-end rounded-r-xl">
                     <span>Action</span>
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {data?.data?.map((item, index) => (
+                {services?.map((item, index) => (
                   <tr
                     key={item.id}
                     className={`${
@@ -132,30 +130,22 @@ const OurServices = () => {
                         width={14}
                         height={14}
                         className="h-12 w-12 py-1 bg-[#FFF3D4]"
-                        src={item?.image}
+                        src={item?.logo}
                         alt="image"
                       />
                     </td>
                     <td className="py-3 px-4">{item?.title}</td>
-
                     <td className="py-3 px-4">
-                      <Image
-                        width={14}
-                        height={14}
-                        className="h-12 w-12 py-1 bg-[#FFF3D4]"
-                        src={item?.icon}
-                        alt="image"
-                      />
+                      {truncateCharacters(item?.subDescription, 20)}
                     </td>
                     <td className="py-3 px-4">
-                      {truncateCharacters(item?.sub_description, 20)}
+                      {truncateCharacters(item?.metaKey, 20)}
                     </td>
-                    <td className="py-3 px-4">{item?.meta_key}</td>
-                    <td className="py-3 px-4">{item?.color_code}</td>
+                    <td className="py-3 px-4">{item?.colorCode}</td>
                     <td className="my-2 px-4 text-end rounded-r-xl">
                       <div className="flex items-center justify-end w-full gap-4">
                         <Link
-                          href={`/dashboard/admin/home/our-services/update/${item?.slug}`}
+                          href={`/dashboard/admin/home/our-services/update/${item?._id}`}
                         >
                           <LiaEditSolid className="text-info-base text-2xl" />
                         </Link>

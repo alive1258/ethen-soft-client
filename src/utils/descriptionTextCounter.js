@@ -8,8 +8,8 @@ export const truncateText = (text, wordLimit) => {
 };
 
 export const truncateCharacters = (text, characterLimit) => {
-  if (text.length > characterLimit) {
-    return text.slice(0, characterLimit) + "...";
+  if (text?.length > characterLimit) {
+    return text?.slice(0, characterLimit) + "...";
   }
   return text;
 };

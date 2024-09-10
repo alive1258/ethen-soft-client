@@ -5,14 +5,17 @@ import Input from "@/components/UI/Forms/Input";
 import SubmitButton from "@/components/UI/Button/SubmitButton";
 import { useLoginMutation } from "@/redux/api/authApi";
 import { setToLocalStorage } from "@/hooks/local-storage";
-import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import { storeUserInfo } from "@/services/auth.services";
 
 const Login = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const [login] = useLoginMutation();
@@ -22,10 +25,12 @@ const Login = () => {
       const res = await login(data).unwrap();
 
       if (res?.success) {
-        await setToLocalStorage("accessToken", res?.data?.accessToken);
-        toast.success(res?.message || "Singed in successful!", {
+        reset();
+        await storeUserInfo(res?.data?.accessToken);
+        toast.success(res?.message || "Singed is successful!", {
           position: toast.TOP_RIGHT,
         });
+        router.push("/dashboard/admin");
       }
       if (!res?.success) {
         toast.error(res?.message || "Something Went wrong!", {
@@ -65,15 +70,16 @@ const Login = () => {
           <div className="flex items-center justify-between mt-6 mb-2 px-[1px]">
             <div className="flex items-center gap-2">
               <input className="text-2xl size-4" type="checkbox" />
-              <span className="text-white text-sm font-light">
-                Remember me{" "}
-              </span>
+              <span className="text-white text-sm font-light">Remember me</span>
             </div>
-            <Link className="text-sm text-[#3A57E8] font-light" href="/">
+            <Link
+              className="text-sm text-[#3A57E8] font-light"
+              href="/dashboard/forms/forget-password"
+            >
               Forget password?
             </Link>
           </div>
-          <SubmitButton text="Sign Up" />
+          <SubmitButton text="Sign In" />
         </form>
       </div>
     </div>

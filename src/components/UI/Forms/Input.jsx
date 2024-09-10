@@ -10,6 +10,10 @@ const Input = ({
   placeholder,
   register,
   errors,
+  pattern,
+  value,
+  validate,
+  onchange,
 }) => {
   const [inputType, setInputType] = useState(type);
   const [showPass, setShowPass] = useState(false);
@@ -19,25 +23,31 @@ const Input = ({
     setInputType(type);
   };
   return (
-    <div className="flex flex-col gap-3">
-      <label className="text-white mt-4">{label}</label>
+    <div className="flex flex-col gap-3 text-[#ADB5BD]">
+      <label className="mt-4">{label} *</label>
       <div className="relative">
         <input
+          className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
           type={inputType}
-          className="w-full px-4 py-2 bg-transparent text-white border border-[#828282] rounded focus:border-[#3A57E8] focus:outline-none placeholder:text-[#919191]"
+          value={value}
+          onchange={onchange}
           placeholder={placeholder}
-          {...register(text, { required: `${label} is required` })}
+          {...register(text, {
+            required: `${label} is required`,
+            pattern: pattern,
+            validate: validate,
+          })}
         />
         {type === "password" &&
           (showPass ? (
             <FaEye
               onClick={() => handleShowPassword("password")}
-              className="text-white absolute right-2 top-0 mt-3"
+              className="text-white absolute right-2 top-0 mt-4 cursor-pointer"
             />
           ) : (
             <FaEyeSlash
               onClick={() => handleShowPassword("text")}
-              className="text-white absolute right-2 top-0 mt-3"
+              className="text-white absolute right-2 top-0 mt-4 cursor-pointer"
             />
           ))}
       </div>

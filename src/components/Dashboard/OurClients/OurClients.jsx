@@ -12,6 +12,7 @@ import {
 } from "@/redux/api/ourClientsApi";
 
 const OurClients = () => {
+  // fetched all the clients query
   const { data, error, isLoading } = useGetAllOurClientsQuery();
 
   const [deleteClients] = useDeleteOurClientsMutation();
@@ -23,8 +24,8 @@ const OurClients = () => {
         text: `Are you sure you want to delete the  Clients "${data?.name}"?`,
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
         confirmButtonText: "Yes, delete it!",
       });
       if (result.isConfirmed) {

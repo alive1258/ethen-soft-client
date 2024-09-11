@@ -1,14 +1,17 @@
-import FaqAnimation from "./FaqAnimation";
-import AccordionList from "./AccordionList";
-import SectionTitle from "../../SectionTitle/SectionTitle";
+import AccordionList from "@/components/UI/Home/Faq/AccordionList";
+import FaqAnimation from "@/components/UI/Home/Faq/FaqAnimation";
+import SectionTitle from "@/components/UI/SectionTitle/SectionTitle";
 
-const Faq = async () => {
+const ServiceFaq = async ({ service }) => {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/faqs`, {
-      next: {
-        revalidate: 30,
-      },
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/service-faqs?service=${service}`,
+      {
+        next: {
+          revalidate: 30,
+        },
+      }
+    );
     const faqs = await res.json();
 
     return (
@@ -34,7 +37,7 @@ const Faq = async () => {
                 <FaqAnimation />
               </div>
               <div className="w-full md:mt-14 my-5">
-                <AccordionList faqs={faqs?.data} />
+                <AccordionList faqs={faqs?.data?.data} />
               </div>
             </div>
           </div>
@@ -46,4 +49,4 @@ const Faq = async () => {
   }
 };
 
-export default Faq;
+export default ServiceFaq;

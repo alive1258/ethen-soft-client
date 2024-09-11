@@ -122,8 +122,8 @@ const ServiceFAQ = () => {
                     } text-[13px] px-[10px]`}
                   >
                     <td className="py-3 rounded-l-xl px-4">{index + 1}</td>
-                    <td className="py-3 px-4">{item?.question}</td>
-                    <td className="py-3 px-4">{item?.answer}</td>
+                    <td className="py-3 px-4">{item?.title}</td>
+                    <td className="py-3 px-4">{item?.description}</td>
                     <td className="py-3 px-4">{item?.service?.title}</td>
                     <td className="my-2 px-4 text-end rounded-r-xl">
                       <div className="flex items-center justify-end w-full gap-4">

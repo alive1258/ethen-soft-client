@@ -11,8 +11,8 @@ const AccordionList = ({ faqs }) => {
 
   return (
     <div>
-      {faqs?.data?.length &&
-        faqs?.data?.map((accordion, index) => (
+      {faqs?.length &&
+        faqs?.map((accordion, index) => (
           <Accordion
             key={index}
             accordion={accordion}

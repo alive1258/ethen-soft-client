@@ -5,10 +5,10 @@ import PriceAndPlan from "./PriceAndPlan";
 import ProductDetailsHero from "./ProductDetailsHero";
 
 import ProductServiceCard from "./ProductServiceCard";
-import Faq from "../../Home/Faq/Faq";
 import { useGetSingleOurServiceQuery } from "@/redux/api/ourServiceApi";
 import { useGetAllServiceCategoriesQuery } from "@/redux/api/serviceCategoryApi";
 import Loading from "@/app/loading";
+import ServiceFaq from "../../Home/Faq/ServiceFaq";
 
 const ProductPriceDetails = ({ slug }) => {
   const { data, error, isLoading } = useGetSingleOurServiceQuery(slug);
@@ -82,7 +82,7 @@ const ProductPriceDetails = ({ slug }) => {
       </div>
       <PriceAndPlan serviceId={service?._id} />
       {/* <Testimonials /> */}
-      <Faq service={service?._id} />
+      <ServiceFaq service={service?._id} />
     </>
   );
 };

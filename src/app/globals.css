@@ -94,7 +94,7 @@
     @apply max-w-[1440px] w-full mx-auto px-5 md:px-20;
   }
   .social-icons {
-    @apply size-10 rounded-lg bg-primary-muted text-primary-base hover:bg-primary-base hover:text-primary-muted duration-200 p-2;
+    @apply size-10 cursor-pointer rounded-lg bg-primary-muted  hover:scale-110 hover:text-primary-muted duration-300 transition-all ease-in-out p-2;
   }
   .bg-btn {
     @apply bg-gradient-to-r md:text-[15px] text-[13px] from-indigo-500 via-purple-500 to-pink-500 cursor-pointer hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg py-[10px];

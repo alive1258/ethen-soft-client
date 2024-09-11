@@ -1,6 +1,4 @@
 import SectionTitle from "../../SectionTitle/SectionTitle";
-
-import HomeServiceCard from "./HomeServiceCard";
 import ServiceSection from "./ServiceSection";
 
 const HomeService = async () => {

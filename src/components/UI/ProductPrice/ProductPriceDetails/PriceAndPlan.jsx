@@ -1,6 +1,7 @@
 import PriceCard from "./PriceCard";
 
 const PriceAndPlan = async ({ serviceId }) => {
+  console.log(serviceId);
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/pricing?service=${serviceId}`,

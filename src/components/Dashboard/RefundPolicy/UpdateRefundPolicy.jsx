@@ -2,16 +2,16 @@
 
 import TextEditor from "@/components/TextEditor/TextEditor";
 import {
-  useGetSingleTermsConditionQuery,
-  useUpdateTermsConditionMutation,
-} from "@/redux/api/privacyPolicyApi";
+  useGetSingleRefundPolicyQuery,
+  useUpdateRefundPolicyMutation,
+} from "@/redux/api/refundPolicyApi";
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-const UpdateTermsCondition = ({ id }) => {
+const UpdateRefundPolicy = ({ id }) => {
   const {
     register,
     handleSubmit,
@@ -23,11 +23,11 @@ const UpdateTermsCondition = ({ id }) => {
     data,
     isLoading: fetchLoading,
     error,
-  } = useGetSingleTermsConditionQuery(id);
+  } = useGetSingleRefundPolicyQuery(id);
 
-  const termsConditionId = data?.data?._id;
-  const [updateTermsCondition, { isLoading }] =
-    useUpdateTermsConditionMutation();
+  const refundPolicyId = data?.data?._id;
+
+  const [updateRefundPolicy, { isLoading }] = useUpdateRefundPolicyMutation();
   const [content, setContent] = useState("");
   const router = useRouter();
 
@@ -43,14 +43,14 @@ const UpdateTermsCondition = ({ id }) => {
   const onSubmit = async (data) => {
     try {
       data["description"] = content;
-      const res = await updateTermsCondition({
-        id: termsConditionId,
+      const res = await updateRefundPolicy({
+        id: refundPolicyId,
         data,
       }).unwrap();
 
       if (res?.success === true) {
         router.back();
-        toast.success("TermsCondition updated successfully!", {
+        toast.success("RefundPolicy updated successfully!", {
           position: toast.TOP_RIGHT,
         });
       } else {
@@ -76,24 +76,22 @@ const UpdateTermsCondition = ({ id }) => {
   return (
     <div className="max-w-[1000px] bg-black-muted text-[#ADB5BD] mx-auto my-10 p-8 rounded-lg">
       <h1 className="text-[#ADB5BD] text-[23px] font-bold">
-        Update TermsCondition
+        Update RefundPolicy
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col space-y-3 mt-4"
       >
         <div className="flex flex-col gap-2">
-          {/* Input for TermsConditionname */}
+          {/* Input for RefundPolicyname */}
           <div className="relative w-full">
-            <span className="text-[16px] py-2 block">
-              TermsCondition title *
-            </span>
+            <span className="text-[16px] py-2 block">RefundPolicy title *</span>
             <input
               className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary-base disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
               type="text"
-              placeholder="Please enter your TermsCondition title"
+              placeholder="Please enter your RefundPolicy title"
               {...register("title", {
-                required: "TermsCondition title is required",
+                required: "RefundPolicy title is required",
               })}
             />
             {errors.title && (
@@ -142,4 +140,4 @@ const UpdateTermsCondition = ({ id }) => {
   );
 };
 
-export default UpdateTermsCondition;
+export default UpdateRefundPolicy;

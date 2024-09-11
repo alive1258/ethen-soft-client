@@ -30,6 +30,7 @@ export const baseApi = createApi({
     "our-deals",
     "professional-services",
     "privacy-policies",
+    "refund-policies",
     "terms-conditions",
     "teams",
     "auth",

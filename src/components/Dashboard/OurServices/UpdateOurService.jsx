@@ -52,7 +52,6 @@ const UpdateOurService = ({ id }) => {
 
   //set default value
   useEffect(() => {
-
     if (service) {
       setValue("title", service?.title || "");
       setValue("subDescription", service?.subDescription || "");
@@ -64,7 +63,6 @@ const UpdateOurService = ({ id }) => {
       setContent(service?.description || "");
     }
   }, [service, setValue, setContent, setSlug]);
-
 
   // converting title
   useEffect(() => {
@@ -81,7 +79,6 @@ const UpdateOurService = ({ id }) => {
       const res = await updateOurServices({
         id: serviceId,
         data,
-
       }).unwrap();
 
       // show success message

@@ -7,7 +7,7 @@ const layout = ({ children }) => {
     <>
       <div className="bg-black-solid">
         <div className="flex items-start">
-          <div className="w-72">
+          <div className="w-72 ">
             <DashboardSidebar />
           </div>
           <div className={` w-full  min-w-[50%]`}>

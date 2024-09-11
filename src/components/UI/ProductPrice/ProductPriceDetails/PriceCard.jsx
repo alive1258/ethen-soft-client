@@ -1,13 +1,17 @@
-"use client";
-
-import { useGetAllFeatureAssignedToPricingQuery } from "@/redux/api/featureAssignedToPricingApi";
 import { FaCheckCircle } from "react-icons/fa";
 
-const PriceCard = ({ title, price, pricingCategory, serviceId, pricingId }) => {
-  const { data, isLoading } = useGetAllFeatureAssignedToPricingQuery({
-    pricing: pricingId,
-  });
+const PriceCard = async ({
+  title,
+  price,
+  pricingCategory,
+  serviceId,
+  pricingId,
+}) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/feature-assigned-pricing?pricing=${pricingId}`
+  );
 
+  const data = await res?.json();
   const features = data?.data?.data;
   const meta = data?.data?.meta;
 

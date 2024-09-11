@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Button from "../../Button/Button";
 import SectionTitle from "../../SectionTitle/SectionTitle";
-import ProductPriceSection from "./ProductPriceSection";
 import ProductPrice from "./ProductPrice";
 
 const ProductPrices = async () => {

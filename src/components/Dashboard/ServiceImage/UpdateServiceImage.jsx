@@ -39,7 +39,6 @@ const UpdateServiceImage = ({ id }) => {
     error,
   } = useGetSingleServiceImageQuery(id);
 
-  console.log(data);
   // defined data as data name
   const serviceImage = data?.data;
   const serviceImageId = serviceImage?._id;

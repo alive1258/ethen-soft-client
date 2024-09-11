@@ -40,7 +40,6 @@ const ResetPassword = () => {
       const res = await resetPassword({
         newPassword: data?.password,
       }).unwrap();
-      console.log(res);
       if (res?.success) {
         reset();
         toast.success(res?.message || "Singed is successful!", {

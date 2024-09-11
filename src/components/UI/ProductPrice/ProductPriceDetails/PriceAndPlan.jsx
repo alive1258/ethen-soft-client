@@ -1,10 +1,9 @@
 import PriceCard from "./PriceCard";
 
 const PriceAndPlan = async ({ serviceId }) => {
-  console.log(serviceId);
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/pricing?service=${serviceId}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/pricing?service=${serviceId}&sortOrder=asc`,
       {
         next: {
           revalidate: 30,
@@ -13,7 +12,6 @@ const PriceAndPlan = async ({ serviceId }) => {
     );
 
     const pricing = await res?.json();
-    console.log(pricing);
     return (
       <>
         <div id="pricing" className="container my-20">

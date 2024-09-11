@@ -27,7 +27,6 @@ const ResendOTP = () => {
     const differenceInMilliseconds =
       Number(expirationDate) - Number(currentDate);
     const differenceInSeconds = Math.floor(differenceInMilliseconds / 1000);
-    console.log(differenceInSeconds);
 
     setOTPTime(differenceInSeconds);
   }, [otpData]);

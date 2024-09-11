@@ -250,6 +250,12 @@ export const SidebarItemsData = [
         path: "/dashboard/admin/setting/terms-conditions",
         Icon: <RiCreativeCommonsByLine />,
       },
+      {
+        id: 3,
+        name: "Refund Policy",
+        path: "/dashboard/admin/setting/refund-policies",
+        Icon: <FaSackDollar />,
+      },
     ],
   },
 ];

@@ -1,10 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import FooterBottom from "./FooterBottom";
-import { FaFacebook } from "react-icons/fa";
+import { FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
 import ethenSoftLogo from "../../../../public/assets/images/about/ethensoftlogo.svg";
 import FooterOurService from "./FooterOurService";
+import { FaXTwitter } from "react-icons/fa6";
+import { BsFacebook } from "react-icons/bs";
+import { AiOutlineMail } from "react-icons/ai";
 
 const Footer = () => {
   return (
@@ -35,10 +38,24 @@ const Footer = () => {
               </p>
               <h5 className="text-[#E9E9EA] pb-4">Follow Us</h5>
               <div className="flex items-center gap-4">
-                <FaFacebook className="social-icons" />
-                <FaFacebook className="social-icons" />
-                <FaFacebook className="social-icons" />
-                <FaFacebook className="social-icons" />
+                <a
+                  href="https://www.facebook.com/profile.php?id=61562726343346"
+                  target="_blank"
+                >
+                  <BsFacebook className="social-icons hover:bg-[#3b5998] text-[#3b5998]" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/ethen-soft/about/?viewAsMember=true"
+                  target="_blank"
+                >
+                  <FaLinkedin className="social-icons hover:bg-[#0A66C2] text-[#0A66C2]" />
+                </a>
+                <a
+                  href="https://x.com/EthenSoft?fbclid=IwZXh0bgNhZW0CMTAAAR0t8rfRbeXgm5_8S060kghWEk_PHGc7UWKmQ67ECQsZkEJVw55xt2h5tgU_aem_MYkBOm5VjCMXThOKu09RLA"
+                  target="_blank"
+                >
+                  <FaXTwitter className="social-icons hover:bg-[#14171A] text-[#14171A]" />
+                </a>
               </div>
             </div>
 
@@ -85,28 +102,28 @@ const Footer = () => {
 
             <div>
               <h1 className="text-primary-muted text-lg font-semibold pb-4 text-nowrap">
-                Feel Free to Contact Us! Say Hello
+                Contact Us
               </h1>
               <div className="space-y-4">
+                <div className="">
+                  <div className="text-primary-muted text-[16px] space-y-1 gap-1.5">
+                    <p> Notun Vngbari,</p>
+                    <p> Plastic factory beside building,</p>
+                    <p>Ground floor, Ma Sufiya Moholo,</p>
+                    <p>Sirajganj-6770, Bangladesh</p>
+                  </div>
+                </div>
+
                 <div className="flex items-center gap-2">
-                  <CiLocationOn className="bg-[#E9E9EA] w-[50px] h-[49px] p-2 rounded-full text-primary-base" />
+                  <FaPhoneAlt className="bg-[#E9E9EA] size-9 p-2 rounded-full text-primary-base" />
                   <div className="text-primary-muted flex flex-col gap-1.5">
-                    <h6 className="font-medium">Address</h6>
-                    <p className="text-sm">Bahir Gala, Sirajganj, Bangladesh</p>
+                    <h6 className="font-medium">+880 1793-636735</h6>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CiLocationOn className="bg-[#E9E9EA] w-[50px] h-[49px] p-2 rounded-full text-primary-base" />
+                  <AiOutlineMail className="bg-[#E9E9EA] size-9 p-2 rounded-full text-primary-base" />
                   <div className="text-primary-muted flex flex-col gap-1.5">
-                    <h6 className="font-medium">Address</h6>
-                    <p className="text-sm">Bahir Gala, Sirajganj, Bangladesh</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CiLocationOn className="bg-[#E9E9EA] w-[50px] h-[49px] p-2 rounded-full text-primary-base" />
-                  <div className="text-primary-muted flex flex-col gap-1.5">
-                    <h6 className="font-medium">Address</h6>
-                    <p className="text-sm">Bahir Gala, Sirajganj, Bangladesh</p>
+                    <h6 className="font-medium">support@ethensoft.com</h6>
                   </div>
                 </div>
               </div>

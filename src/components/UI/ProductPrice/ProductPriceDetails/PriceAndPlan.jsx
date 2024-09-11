@@ -5,8 +5,7 @@ import PriceCard from "./PriceCard";
 import { useGetAllPricingQuery } from "@/redux/api/pricingApi";
 
 const PriceAndPlan = ({ serviceId }) => {
-  console.log(serviceId);
-  const { data, error, isLoading } = useGetAllPricingQuery({
+  const { data } = useGetAllPricingQuery({
     service: serviceId,
     sortOrder: "asc",
   });

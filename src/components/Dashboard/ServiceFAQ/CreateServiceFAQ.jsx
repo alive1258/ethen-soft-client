@@ -83,7 +83,7 @@ const CreateServiceFAQ = () => {
           {/*  question */}
           <Input
             placeholder="Service FAQ Question"
-            text="question"
+            text="title"
             type="text"
             label="Question"
             register={register}
@@ -93,7 +93,7 @@ const CreateServiceFAQ = () => {
           {/* answer */}
           <Textarea
             placeholder="Service FAQ Answer"
-            text="answer"
+            text="description"
             type="text"
             label="Answer"
             register={register}

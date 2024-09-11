@@ -1,4 +1,3 @@
-"use client";
 import { GoPlus } from "react-icons/go";
 import { FiMinus } from "react-icons/fi";
 
@@ -22,7 +21,7 @@ const Accordion = ({ accordion, isActive, onClick }) => {
             isActive ? "text-white" : "text-black-base group-hover:text-white"
           }`}
         >
-          {accordion?.question}
+          {accordion?.title}
         </h1>
         <div
           className={`${
@@ -39,7 +38,7 @@ const Accordion = ({ accordion, isActive, onClick }) => {
       {isActive && (
         <div className="flex gap-1.5 pt-2">
           <h6 className="text-[13px] md:text-base text-black-base pr-4">
-            {accordion?.answer}
+            {accordion?.description}
           </h6>
         </div>
       )}

@@ -48,7 +48,6 @@ const CreateServiceCategory = () => {
   }, [watchProductName]);
 
   const onSubmit = async (data) => {
-    console.log({ ...data, slug, content });
     try {
       const res = await createServiceCategory({
         ...data,

@@ -5,7 +5,6 @@ export const axiosBaseQuery =
   ({ baseUrl } = { baseUrl: process.env.NEXT_PUBLIC_API_URL }) =>
   // Async function to execute the axios query
   async ({ url, method, data, params, headers, contentType }) => {
-    console.log(baseUrl + url);
     try {
       // Execute the axios instance with provided parameters
       const result = await axiosInstance({

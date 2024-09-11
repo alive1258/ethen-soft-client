@@ -1,9 +1,7 @@
 "use client";
 
 import Input from "@/components/UI/Forms/Input";
-import SelectForm from "@/components/UI/Forms/SelectForm";
 import Textarea from "@/components/UI/Forms/Textarea";
-import { useGetAllOurServicesQuery } from "@/redux/api/ourServiceApi";
 import {
   useGetSingleServiceFAQQuery,
   useUpdateServiceFAQMutation,
@@ -41,8 +39,8 @@ const UpdateServiceFAQ = ({ id }) => {
   //set default value
   useEffect(() => {
     if (serviceFAQ) {
-      setValue("question", serviceFAQ?.question || "");
-      setValue("answer", serviceFAQ?.answer || "");
+      setValue("title", serviceFAQ?.title || "");
+      setValue("description", serviceFAQ?.description || "");
     }
   }, [serviceFAQ, setValue]);
 
@@ -95,7 +93,7 @@ const UpdateServiceFAQ = ({ id }) => {
           {/* question */}
           <Input
             placeholder="Service FAQ Question"
-            text="question"
+            text="title"
             type="text"
             label="Question"
             register={register}
@@ -104,7 +102,7 @@ const UpdateServiceFAQ = ({ id }) => {
           {/* answer */}
           <Textarea
             placeholder="Service FAQ Answer"
-            text="answer"
+            text="description"
             type="text"
             label="Answer"
             register={register}

@@ -14,14 +14,11 @@ const ContactForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log(errors);
       // Submit the form data to your API or server
     } catch (error) {
       console.error(error);
     }
   };
-
-  console.log(errors);
 
   return (
     <>

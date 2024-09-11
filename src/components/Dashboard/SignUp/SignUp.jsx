@@ -59,7 +59,6 @@ const SignUp = () => {
 
       if (res?.success) {
         reset();
-        console.log(res?.data);
         await dispatch(sotreOTPInfo(res?.data));
         toast.success(res?.message || "Sing up is successful!", {
           position: toast.TOP_RIGHT,

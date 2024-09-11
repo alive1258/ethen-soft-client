@@ -35,7 +35,6 @@ const UpdateServiceCategory = ({ id }) => {
     error,
   } = useGetSingleServiceCategoryQuery(id);
 
-  console.log(data);
   // defined data as data name
   const category = data?.data;
   const categoryId = category?._id;

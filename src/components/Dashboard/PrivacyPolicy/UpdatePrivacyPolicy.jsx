@@ -25,13 +25,14 @@ const UpdatePrivacyPolicy = ({ id }) => {
     error,
   } = useGetSinglePrivacyPolicyQuery(id);
 
+  const privacyPolicyId = data?.data?._id;
   const [updatePrivacyPolicy, { isLoading }] = useUpdatePrivacyPolicyMutation();
   const [content, setContent] = useState("");
   const router = useRouter();
 
   useEffect(() => {
     if (data) {
-      setValue("name", data?.data?.title || ""); // Set initial name value
+      setValue("title", data?.data?.title || ""); // Set initial name value
       setValue("image", data?.data?.image || ""); // Set initial image value
       setValue("description", data?.data?.description || "");
       setContent(data?.data?.description || "");
@@ -40,10 +41,10 @@ const UpdatePrivacyPolicy = ({ id }) => {
 
   const onSubmit = async (data) => {
     try {
+      data["description"] = content;
       const res = await updatePrivacyPolicy({
-        id,
+        id: privacyPolicyId,
         data,
-        content,
       }).unwrap();
 
       if (res?.success === true) {

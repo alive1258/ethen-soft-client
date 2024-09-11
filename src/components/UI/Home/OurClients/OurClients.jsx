@@ -2,7 +2,8 @@ import Image from "next/image";
 
 import icon2 from "../../../../../public/assets/images/Frame9.png";
 import ButtonOutline from "../../Button/ButtonOutline";
-import AllClients from "./AllClients";
+
+import Clients from "../../Clients/Clients";
 
 const OurClients = async () => {
   try {
@@ -16,19 +17,16 @@ const OurClients = async () => {
     return (
       <>
         <div className="relative md:mt-28 mt-12 px-10 bg-no-repeat bg-none md:bg-[url('/assets/images/stars.png')]">
-          <div className="">
-            <h1 className="text-center text-primary-base text-2xl md:text-[40px] font-semibold">
-              OurClients
-            </h1>
-            <div className="flex gap-20 mt-16 md:mt-14 mb-12 px-4">
-              {ourClients?.data?.map((ourClient) => (
+          {/* <div className="flex gap-20 mt-16 md:mt-14 mb-12 px-4"> */}
+          <Clients />
+          {/* {ourClients?.data?.map((ourClient) => (
                 <AllClients key={ourClient?._id} ourClient={ourClient} />
-              ))}
-            </div>
-            <div className="my-6 flex justify-center items-center">
-              <ButtonOutline className="" content="More Clients" />
-            </div>
+              ))} */}
+          {/* </div> */}
+          <div className="my-6 flex justify-center items-center">
+            <ButtonOutline className="" content="More Clients" />
           </div>
+
           <Image
             className="hidden md:block absolute bottom-0 right-16"
             src={icon2}

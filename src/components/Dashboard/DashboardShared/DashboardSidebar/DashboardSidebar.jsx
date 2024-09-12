@@ -17,7 +17,7 @@ const DashboardSidebar = () => {
       </div>
       {/* home part  */}
       <div className="text-[#ADB5BD] scroll-smooth">
-        <ul className="mr-6 border-b border-b-[#343948] overflow-auto">
+        <ul className="mr-6 border-b border-b-[#343948]">
           <li>
             <Link href="/dashboard/admin">
               <span className="px-3 py-2 flex items-center gap-2 rounded hover:bg-[#3A57E...]">

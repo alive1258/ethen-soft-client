@@ -1,6 +1,5 @@
 import PriceCard from "./PriceCard";
 
-
 const PriceAndPlan = async ({ serviceId }) => {
   try {
     const res = await fetch(
@@ -12,12 +11,12 @@ const PriceAndPlan = async ({ serviceId }) => {
       }
     );
 
-const PriceAndPlan = ({ serviceId }) => {
-  const { data } = useGetAllPricingQuery({
-    service: serviceId,
-    sortOrder: "asc",
-  });
-
+    const PriceAndPlan = ({ serviceId }) => {
+      const { data } = useGetAllPricingQuery({
+        service: serviceId,
+        sortOrder: "asc",
+      });
+    };
 
     const pricing = await res?.json();
     return (

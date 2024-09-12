@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../../Button/Button";
+import { truncateCharacters } from "@/utils/descriptionTextCounter";
 
 const PricingCard = async ({ item }) => {
   try {
@@ -36,7 +37,7 @@ const PricingCard = async ({ item }) => {
           <h1 className="md:text-xl text-lg text-black-base font-medium ">
             {item?.title}
           </h1>
-          <div dangerouslySetInnerHTML={{ __html: item?.description }}></div>
+          <p>{truncateCharacters(item?.subDescription, 70)}</p>
           <div className="flex items-center justify-between">
             <h1 className="text-base text-black-base font-medium z-[500]">
               Start at $<span>{pricing.length && pricing[0]?.price}</span>{" "}

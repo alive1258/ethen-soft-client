@@ -47,10 +47,10 @@ const SidebarCard = ({ item }) => {
               <Collapse isOpened={active}>
                 {/* sub category  */}
                 {active ? (
-                  <>
+                  <div className="max-h-72 overflow-y-auto">
                     {item?.sub?.map((item, index) => (
-                      <div key={index} className=" py-2 ml-5">
-                        <div className="  flex items-center justify-center gap-3 rounded-lg p-2 text-body-5 md:text-body-4 font-normal text-metal-900 hover:bg-metal-100">
+                      <div key={index} className=" py-2 ml-5 sticky ">
+                        <div className=" flex items-center justify-center gap-3 rounded-lg p-2 text-body-5 md:text-body-4 font-normal text-metal-900 hover:bg-metal-100">
                           <span className="h-6 w-6 flex-shrink-0 text-metal-500 transition duration-75 group-hover:text-metal-900">
                             {item?.Icon}
                           </span>
@@ -72,7 +72,7 @@ const SidebarCard = ({ item }) => {
                         </div>
                       </div>
                     ))}
-                  </>
+                  </div>
                 ) : null}
               </Collapse>
             </>

@@ -4,7 +4,7 @@ import SectionTitle from "../../SectionTitle/SectionTitle";
 import ProductPrice from "./ProductPrice";
 
 const ProductPrices = async () => {
-  const limit = 4;
+  const limit = 8;
   return (
     <>
       <div className="container md:mt-28 mt-16 bg-white z-30">

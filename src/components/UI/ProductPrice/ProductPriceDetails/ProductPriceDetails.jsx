@@ -3,6 +3,7 @@ import PriceAndPlan from "./PriceAndPlan";
 import ProductDetailsHero from "./ProductDetailsHero";
 import ProductServiceCard from "./ProductServiceCard";
 import ServiceFaq from "../../Home/Faq/ServiceFaq";
+import ProductServiceCards from "./ProductServiceCards";
 
 const ProductPriceDetails = async ({ slug }) => {
   try {
@@ -16,16 +17,6 @@ const ProductPriceDetails = async ({ slug }) => {
     );
 
     const service = await serviceData?.json();
-    const serviceCategoryData = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/service-categories?service=${service?.data?._id}`,
-      {
-        next: {
-          revalidate: 30,
-        },
-      }
-    );
-
-    const serviceCategories = await serviceCategoryData?.json();
 
     return (
       <>
@@ -46,17 +37,7 @@ const ProductPriceDetails = async ({ slug }) => {
           }}
         >
           {/* Product Service categories */}
-          <div className="pb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-4">
-            {/* service category cards  */}
-            {serviceCategories?.data?.data?.map((item, index) => (
-              <ProductServiceCard
-                key={index}
-                logo={item?.logo}
-                title={item?.title}
-                description={item?.description}
-              />
-            ))}
-          </div>
+          <ProductServiceCards serviceId={service?.data?._id} />
 
           {/* Our All Pages  */}
           <div

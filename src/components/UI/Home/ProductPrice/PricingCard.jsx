@@ -21,8 +21,11 @@ const PricingCard = async ({ item }) => {
     return (
       <>
         <div
-          className={`relative text-center cursor-pointer p-4 flex flex-col justify-center border rounded-lg duration-200 hover:duration-300 bg-white z-10 hover:shadow-primary  space-y-4 group overflow-hidden border-#${item?.colorCode}`}
-          style={{ borderColor: item?.colorCode }}
+          className={`relative text-center cursor-pointer p-4 flex flex-col opacity-70 justify-center border rounded-lg duration-200 hover:duration-300 bg-white z-10 space-y-4 group overflow-hidden dynamic-hover`}
+          style={{
+            borderColor: item?.colorCode,
+            "--dynamic-shadow": `0px 0px 16px 0px ${item?.colorCode}`,
+          }}
         >
           <Image
             src={item?.logo}
@@ -50,10 +53,22 @@ const PricingCard = async ({ item }) => {
           {/* hover effect */}
           <div className="absolute top-36 right-32 opacity-0 group-hover:opacity-100 duration-300">
             <div className="relative w-[536px] h-[536px] opacity-40 ">
-              <div className="absolute w-[488px] h-[488px] left-[48px] top-0 bg-[#E8F6ED] rounded-full group-hover:opacity-80"></div>
-              <div className="absolute w-[488px] h-[488px] left-[32px] top-[16px] bg-[#B6E3C8] rounded-full group-hover:opacity-80"></div>
-              <div className="absolute w-[488px] h-[488px] left-[16px] top-[32px] bg-[#93D5AD] rounded-full group-hover:opacity-80"></div>
-              <div className="absolute w-[488px] h-[488px] left-0 top-[48px] bg-[#62C288] rounded-full group-hover:opacity-80"></div>
+              <div
+                className="absolute w-[488px] h-[488px] left-[48px] top-0 rounded-full"
+                style={{ backgroundColor: item?.colorCode, opacity: "16%" }}
+              ></div>
+              <div
+                className="absolute w-[488px] h-[488px] left-[32px] top-[16px] rounded-full"
+                style={{ backgroundColor: item?.colorCode, opacity: "16%" }}
+              ></div>
+              <div
+                className="absolute w-[488px] h-[488px] left-[16px] top-[32px] rounded-full"
+                style={{ backgroundColor: item?.colorCode, opacity: "16%" }}
+              ></div>
+              <div
+                className="absolute w-[488px] h-[488px] left-0 top-[48px] rounded-full"
+                style={{ backgroundColor: item?.colorCode, opacity: "16%" }}
+              ></div>
             </div>
           </div>
         </div>

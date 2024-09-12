@@ -32,7 +32,10 @@ const ProductDetailsHero = async ({ slug, title, description, serviceId }) => {
                     dangerouslySetInnerHTML={{ __html: description }}
                   ></div>
                   <div className="flex items-center gap-4">
-                    <ButtonOutline content="See Demos " />
+                    <ButtonOutline
+                      url={`/pricing/${slug}#swiper-pages`}
+                      content="See Demos "
+                    />
                     <Link href={`/pricing/${slug}#pricing`}>
                       <Button content="Buy Now" />
                     </Link>

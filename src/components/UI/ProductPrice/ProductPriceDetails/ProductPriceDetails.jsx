@@ -47,7 +47,7 @@ const ProductPriceDetails = async ({ slug }) => {
               backgroundPosition: "left",
             }}
           >
-            <div className="text-center mb-10">
+            <div id="swiper-pages" className="text-center mb-10">
               <h1 className="text-black-solid font-semibold">Our All Pages</h1>
               <p className="text-sm text-[#0D0F12] pt-2">
                 There are many variations of passages of Lorem Ipsum available,

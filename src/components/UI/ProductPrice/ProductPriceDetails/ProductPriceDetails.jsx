@@ -16,6 +16,7 @@ const ProductPriceDetails = async ({ slug }) => {
     );
 
     const service = await serviceData?.json();
+
     const serviceCategoryData = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/service-categories?service=${service?.data?._id}`,
       {
@@ -35,6 +36,7 @@ const ProductPriceDetails = async ({ slug }) => {
             slug={slug}
             description={service?.data?.description}
             serviceId={service?.data?._id}
+            image={service?.data?.logo}
           />
         </div>
 

@@ -22,6 +22,17 @@
     --color-primary-shadow: 0px 0px 16px 0px rgba(187, 1, 252, 0.5);
   }
 }
+
+.text-gradient {
+  background: linear-gradient(
+    to right,
+    #4f46e5,
+    #7c3aed,
+    #ec4899
+  ); /* Adjust colors as needed */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .dynamic-hover {
   transition: box-shadow 0.3s ease-in-out;
 }

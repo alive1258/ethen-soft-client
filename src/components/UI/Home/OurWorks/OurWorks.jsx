@@ -1,7 +1,8 @@
 import SectionTitle from "../../SectionTitle/SectionTitle";
-import image from "../../../../../public/assets/images/works/Frame.png";
+
 import AllWork from "./AllWork";
 import Button from "../../Button/Button";
+import Link from "next/link";
 
 const OurWorks = async () => {
   try {
@@ -40,7 +41,9 @@ const OurWorks = async () => {
               <AllWork ourWorkDetails={ourWorkDetails} />
             </div>
             <div className="flex justify-center mt-10">
-              <Button content="View More" />
+              <Link href="/our-works">
+                <Button content="View More" />
+              </Link>
             </div>
           </div>
         </div>

@@ -48,27 +48,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <meta name="description" content={metadata?.description} />
-        <meta name="keywords" content={metadata.keywords.join(", ")} />
-        <meta property="og:type" content={metadata.openGraph.type} />
-        <meta property="og:url" content={metadata.openGraph.url} />
-        <meta property="og:title" content={metadata.openGraph.title} />
-        <meta
-          property="og:description"
-          content={metadata.openGraph.description}
-        />
-        <meta property="og:image" content={metadata.openGraph.images[0].url} />
-        <meta name="twitter:card" content={metadata.twitter.card} />
-        <meta name="twitter:site" content={metadata.twitter.site} />
-        <meta name="twitter:title" content={metadata.twitter.title} />
-        <meta
-          name="twitter:description"
-          content={metadata.twitter.description}
-        />
-        <meta name="twitter:image" content={metadata.twitter.image} />
-        <link rel="icon" href="../../public/assets/images/logo.png" />
-      </head>
       <body className={`${inter.className} bg-[#fff]`}>
         <Providers>
           {children}

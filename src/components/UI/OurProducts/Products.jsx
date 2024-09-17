@@ -29,21 +29,17 @@ const Products = async () => {
     const ourProducts = await res.json();
     return (
       <>
-        {/* banner  */}
-        <div className="h-[342px] bg-gradient-to-r from-[#2c6bdf] via-[#cfe2ff] to-[#2c6bdf] pt-32 py-12">
-          {/* section title and description  */}
-          <SectionTitle
-            subTitle="PRODUCTS"
-            title="Our Products"
-            width="250px"
-            description="All the products are created our team. You can check our projects by clicking on each products."
-          />
-        </div>
         <div className="bg-[#F1F1F1] bg-opacity-[77%] pt-14">
           <div className="container bg-no-repeat pb-14 bg-none md:bg-[url('/assets/images/works/Vector.png'),url('/assets/images/bag.png'),url('/assets/images/round.png')] md:bg-[calc(100%_-_100px)_top,calc(60%_+_115px)_100px,right_bottom]">
             {/* tab  */}
             {/* <ProductsTab /> */}
-
+            {/* section title and description  */}
+            <SectionTitle
+              subTitle="PRODUCTS"
+              title="Our Products"
+              width="250px"
+              description="All the products are created our team. You can check our projects by clicking on each products."
+            />
             {/* all product  */}
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10">
               {ourProducts?.data?.map((product) => (

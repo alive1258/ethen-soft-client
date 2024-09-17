@@ -38,7 +38,6 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@ethensoft",
     title: "Ethen Soft - Web and Mobile Solutions",
     description: "Custom web and mobile app solutions tailored for businesses.",
     image: "https://www.ethensoft.com/images/twitter",

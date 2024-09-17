@@ -1,4 +1,3 @@
-import Head from "next/head";
 import ProductPriceDetails from "@/components/UI/ProductPrice/ProductPriceDetails/ProductPriceDetails";
 
 // Metadata function to generate dynamic metadata for SEO
@@ -8,7 +7,7 @@ export async function generateMetadata({ params }) {
       `${process.env.NEXT_PUBLIC_API_URL}/services/${params?.id}`,
       {
         next: {
-          revalidate: 30, // Revalidate the cache every 30 seconds
+          revalidate: 30,
         },
       }
     );
@@ -26,11 +25,17 @@ export async function generateMetadata({ params }) {
         description: service?.metaDescription || "Learn more about our service",
         images: [
           {
-            url: service?.logo || "/default-image.png", // Default image if logo is not available
+            url: service?.logo || "/default-image.png",
             alt: `${service?.title} logo`,
           },
         ],
         url: `https://www.ethensoft.com/pircing/${params?.id}`,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: service?.title || "Service Details",
+        description: service?.metaDescription || "Learn more about our service",
+        image: service?.logo || "/default-image.png",
       },
     };
   } catch (error) {
@@ -43,14 +48,47 @@ export async function generateMetadata({ params }) {
     };
   }
 }
-const page = ({ params }) => {
+
+// Generate static paths for SSG
+export async function generateStaticParams({ params }) {
+  const serviceData = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/services/${params?.id}`
+  );
+  const data = await serviceData?.json();
+  const service = data?.data;
+
+  // Generate paths for each service slug
+  return [{ id: service?.slug }];
+}
+
+// Static Page Component
+const Page = async ({ params }) => {
   const { id } = params;
+
+  // Fetch service data for the static page
+  const serviceData = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/services/${id}`,
+    {
+      next: {
+        revalidate: 30,
+      },
+    }
+  );
+
+  const data = await serviceData?.json();
+  const service = data?.data;
+
+  // If service not found, show a message
+  if (!service) {
+    return <div>Service not found</div>;
+  }
 
   return (
     <>
-      <ProductPriceDetails slug={id} />
+      {/* Render product price details with the fetched service data */}
+      <ProductPriceDetails service={service} />
     </>
   );
 };
 
-export default page;
+export default Page;

@@ -22,7 +22,7 @@ const teamApi = baseApi.injectEndpoints({
     }),
 
     // Query for fetching a single Teams by its ID
-    getSingleBlog: builder.query({
+    getSingleTeams: builder.query({
       query: (id) => ({
         url: `/teams/${id}`,
         method: "GET",
@@ -54,7 +54,7 @@ const teamApi = baseApi.injectEndpoints({
 export const {
   useCreateTeamsMutation,
   useGetAllTeamsQuery,
-  useGetSingleBlogQuery,
+  useGetSingleTeamsQuery,
   useUpdateTeamsMutation,
   useDeleteTeamMutation,
 } = teamApi;

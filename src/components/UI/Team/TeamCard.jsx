@@ -1,22 +1,34 @@
 import Image from "next/image";
-import team from "../../../../public/assets/images/testimonials/avatar.png";
+import { IoLogoLinkedin } from "react-icons/io5";
+import { MdMarkEmailUnread } from "react-icons/md";
 
-const TeamCard = () => {
+const TeamCard = ({ team }) => {
   return (
     <>
-      <div className="bg-gradient-to-b from-[#0000004D] to-[#00000099] rounded-lg relative  z-20">
+      <div className="rounded-lg shadow-lg group  hover:scale-105 duration-300 ease-in-out transition-all ">
         <Image
-          className="pt-2 duration-500"
-          src={team}
+          className="md:h-[330px] rounded-t-lg w-full duration-500"
+          src={team?.image}
           width={305}
-          height={396}
+          height={350}
           alt="team"
         />
-        <div className="absolute bottom-6 left-6">
-          <h1 className="text-primary-muted text-2xl font-semibold border-none border-b-2 border-b-primary-base">
-            Steve Johnson
-          </h1>
-          <p className="text-primary-muted text-sm">Chief Executive Officer </p>
+        <div className="p-3 w-full">
+          <h1 className="text-2xl text-center font-semibold">{team?.name}</h1>
+
+          <p className="text-lg text-center font-medium">{team?.position}</p>
+          <div className="text-sm text-center font-semibold opacity-0 group-hover:opacity-100 duration-300 flex space-x-2 items-center justify-center">
+            <a href={`mailto:${team?.email}`} className="flex items-center ">
+              <MdMarkEmailUnread className=" social-icons hover:bg-[#c07fe0] text-[#c07fe0]" />
+            </a>
+            <a
+              target="blank"
+              href={`${team?.linked_in_url}`}
+              className="flex items-center "
+            >
+              <IoLogoLinkedin className="social-icons hover:bg-[#0A66C2] text-[#0A66C2]" />
+            </a>
+          </div>
         </div>
       </div>
     </>

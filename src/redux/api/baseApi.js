@@ -21,6 +21,7 @@ export const baseApi = createApi({
     "home-about",
     "trust-us",
     "our-works",
+    "our-products",
     "our-clients",
     "testimonials",
     "blogs",

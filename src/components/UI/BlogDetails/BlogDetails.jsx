@@ -3,7 +3,7 @@ import blogImage from "../../../../public/assets/images/image 17.png";
 import RelatedBlogs from "./RelatedBlogs/RelatedBlogs";
 
 // Assuming this is a Next.js Page component
-const BlogDetails = async ({ blog }) => {
+const BlogDetails = ({ blog }) => {
   return (
     <div className="container mb-12">
       {/* Blog Image Section */}

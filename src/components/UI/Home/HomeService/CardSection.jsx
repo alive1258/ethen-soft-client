@@ -8,7 +8,7 @@ const CardSection = ({ service }) => {
     <>
       <Image
         src={service?.icon}
-        className={`size-14 md:size-[110px] mx-auto p-2 md:p-4 rounded-full hover:animate-spin hover:scale-110  delay-100 transition-transform duration-300 ease-in-out`} // Add animation classes here
+        className={`size-14 md:size-[110px] mx-auto  p-2 md:p-4 rounded-full hover:animate-spin hover:scale-110  delay-100 transition-transform duration-300 ease-in-out`} // Add animation classes here
         style={{
           backgroundColor: `${service?.color_code}`,
         }}

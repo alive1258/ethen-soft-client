@@ -27,18 +27,18 @@ import { FaFeather, FaImages } from "react-icons/fa";
 export const SidebarItemsData = [
   {
     id: 1,
-    name: "Services",
-    path: "/dashboard/admin/services",
+    name: "Products",
+    path: "/dashboard/admin/our-products",
     Icon: <FaServicestack size={24} />,
   },
   {
-    id: 4,
+    id: 2,
     name: "Banners",
     path: "/dashboard/admin/banner",
     Icon: <BsFillFileEarmarkRuledFill size={24} />,
   },
   {
-    id: 2,
+    id: 3,
     name: "Home ",
     path: "/dashboard/admin/home",
     Icon: <FaProductHunt size={24} />,
@@ -148,7 +148,7 @@ export const SidebarItemsData = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     name: "User",
     path: "/user",
     Icon: <FaUser size={24} />,
@@ -168,7 +168,7 @@ export const SidebarItemsData = [
     ],
   },
   {
-    id: 3,
+    id: 5,
     name: "Category",
     path: "/category",
     Icon: <MdOutlineCategory size={24} />,
@@ -200,7 +200,7 @@ export const SidebarItemsData = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     name: "About",
     path: "/about",
     Icon: <MdOutlineCategory size={24} />,
@@ -233,7 +233,7 @@ export const SidebarItemsData = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     name: "Setting",
     path: "/setting",
     Icon: <LiaBlogSolid size={24} />,
@@ -257,5 +257,11 @@ export const SidebarItemsData = [
         Icon: <FaSackDollar />,
       },
     ],
+  },
+  {
+    id: 8,
+    name: "Team",
+    path: "/dashboard/admin/team",
+    Icon: <FaServicestack size={24} />,
   },
 ];

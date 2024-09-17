@@ -6,7 +6,6 @@ import HomeService from "@/components/UI/Home/HomeService/HomeService";
 import MarqueeServices from "@/components/UI/Home/Marquee/MarqueeServices";
 import OurClients from "@/components/UI/Home/OurClients/OurClients";
 import OurWorks from "@/components/UI/Home/OurWorks/OurWorks";
-import ProductPrice from "@/components/UI/Home/ProductPrice/ProductPrice";
 import ProductPrices from "@/components/UI/Home/ProductPrice/ProductPrices";
 import Testimonials from "@/components/UI/Home/Testimonials/Testimonials";
 import WhyTrustUs from "@/components/UI/Home/WhyTrustUs/WhyTrustUs";

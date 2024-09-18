@@ -84,19 +84,18 @@
   background-size: 1000px 100px;
 }
 .contain .wave.wave1 {
- 
   animation: waveAnimation1 30s linear infinite;
   z-index: 1;
-  animation-delay : 0s;
+  animation-delay: 0s;
   bottom: 0;
 }
 @keyframes waveAnimation1 {
   0% {
-   background-position-x:0 ;
+    background-position-x: 0;
   }
- 
+
   100% {
-    background-position-x:1000px;
+    background-position-x: 1000px;
   }
 }
 

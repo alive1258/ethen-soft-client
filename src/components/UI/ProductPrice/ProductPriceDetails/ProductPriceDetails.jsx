@@ -1,7 +1,7 @@
 import SwiperPages from "./SwiperPages";
 import PriceAndPlan from "./PriceAndPlan";
 import ProductDetailsHero from "./ProductDetailsHero";
-import ProductServiceCard from "./ProductServiceCard";
+
 import ServiceFaq from "../../Home/Faq/ServiceFaq";
 import ProductServiceCards from "./ProductServiceCards";
 

@@ -1,44 +1,40 @@
 "use client";
 
-import { MdOutlineCloudUpload, MdOutlineModeEditOutline } from "react-icons/md";
+import { MdOutlineCloudUpload } from "react-icons/md";
 import { PiAlarmFill } from "react-icons/pi";
 import { MdDelete } from "react-icons/md";
 import Link from "next/link";
 import Swal from "sweetalert2";
-
-import { truncateCharacters } from "@/utils/descriptionTextCounter";
 import { LiaEditSolid } from "react-icons/lia";
-import {
-  useDeleteOurServiceMutation,
-  useGetAllOurServicesQuery,
-} from "@/redux/api/ourServiceApi";
 import Image from "next/image";
 
-const OurServices = () => {
-  // fetched all services
-  const { data, error, isLoading } = useGetAllOurServicesQuery();
-  // user formate name for better understand
-  //done
-  const services = data?.data?.data;
-  const meta = data?.data?.meta;
-  const [deleteOurServices] = useDeleteOurServiceMutation();
-  const handleDeleteOurServices = async (services) => {
+import {
+  useDeleteTeamMutation,
+  useGetAllTeamsQuery,
+} from "@/redux/api/teamsApi";
+
+const OurTeam = () => {
+  const { data, error, isLoading } = useGetAllTeamsQuery();
+
+  const [deleteBlogs] = useDeleteTeamMutation();
+
+  const handleDeleteBlogs = async (data) => {
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
-        text: `Are you sure you want to delete the Our Services "${services?.title}"?`,
+        text: `Are you sure you want to delete the  Teams "${data?.title}"?`,
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#d33",
-        cancelButtonColor: "#3085d6",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!",
       });
       if (result.isConfirmed) {
-        const response = await deleteOurServices(services?._id).unwrap();
+        const response = await deleteBlogs(data?._id).unwrap();
         if (response?.success === true) {
           Swal.fire({
             title: "Deleted!",
-            text: `The Our Services "${services?.title}" has been successfully deleted.`,
+            text: `The Teams "${data?.title}" has been successfully deleted.`,
             icon: "success",
           });
         } else {
@@ -50,7 +46,7 @@ const OurServices = () => {
         }
       }
     } catch (error) {
-      console.error("Delete Our Services error:", error);
+      console.error("Delete Blogs error:", error);
       Swal.fire({
         title: "Error!",
         text: `An error occurred: ${error.data || error.message}`,
@@ -76,14 +72,14 @@ const OurServices = () => {
       <div className="h-[75px] md:px-10 mt-5 rounded-t-[26px] flex justify-between items-center px-3 text-[#ADB5BD] bg-black-muted">
         <div className="flex items-center gap-1 text-[#ADB5BD] text-base font-semibold">
           <PiAlarmFill />
-          <span>All Our Services</span>
+          <span>All Teams</span>
         </div>
         <Link
-          href={"/dashboard/admin/home/our-services/create"}
+          href={"/dashboard/admin/team/create"}
           className="flex items-center gap-1 cursor-pointer text-[#4D69FA] bg-[#F0EFFB] rounded-[50px] py-1 px-[10px]"
         >
           <MdOutlineCloudUpload />
-          <span className="text-[13px] font-semibold">Add Our Services</span>
+          <span className="text-[13px] font-semibold">Add Teams</span>
         </Link>
       </div>
 
@@ -95,29 +91,25 @@ const OurServices = () => {
                 <tr className="bg-black-muted text-start text-[13px] overflow-hidden">
                   <th className="py-4 px-4 text-start rounded-l-xl">
                     <span>ID</span>
-                  </th>{" "}
-                  <th className="py-4 px-4 text-start">
-                    <span>Logo</span>
                   </th>
                   <th className="py-4 px-4 text-start">
-                    <span>Title</span>
+                    <span>Image</span>
                   </th>
                   <th className="py-4 px-4 text-start">
-                    <span>Sub Description</span>
+                    <span>Name</span>
                   </th>
+
                   <th className="py-4 px-4 text-start">
-                    <span>Meta key</span>
+                    <span>Position</span>
                   </th>
-                  <th className="py-4 px-4 text-start">
-                    <span>Color Code</span>
-                  </th>
+
                   <th className="py-4 px-4 text-end rounded-r-xl">
                     <span>Action</span>
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {services?.map((item, index) => (
+                {data?.data?.map((item, index) => (
                   <tr
                     key={item.id}
                     className={`${
@@ -132,26 +124,23 @@ const OurServices = () => {
                         width={14}
                         height={14}
                         className="h-12 w-12 py-1 bg-[#FFF3D4]"
-                        src={item?.logo}
+                        src={item?.image}
                         alt="image"
                       />
                     </td>
-                    <td className="py-3 px-4">{item?.title}</td>
-                    <td className="py-3 px-4">
-                      {truncateCharacters(item?.subDescription, 20)}
-                    </td>
-                    <td className="py-3 px-4">
-                      {truncateCharacters(item?.metaKey, 20)}
-                    </td>
-                    <td className="py-3 px-4">{item?.colorCode}</td>
+
+                    <td className="py-3 px-4">{item?.name}</td>
+
+                    <td className="py-3 px-4">{item?.position}</td>
+
                     <td className="my-2 px-4 text-end rounded-r-xl">
                       <div className="flex items-center justify-end w-full gap-4">
                         <Link
-                          href={`/dashboard/admin/home/our-services/update/${item?.slug}`}
+                          href={`/dashboard/admin/team/update/${item?._id}`}
                         >
                           <LiaEditSolid className="text-info-base text-2xl" />
                         </Link>
-                        <button onClick={() => handleDeleteOurServices(item)}>
+                        <button onClick={() => handleDeleteBlogs(item)}>
                           <MdDelete className="text-danger-base text-2xl" />
                         </button>
                       </div>
@@ -167,4 +156,4 @@ const OurServices = () => {
   );
 };
 
-export default OurServices;
+export default OurTeam;

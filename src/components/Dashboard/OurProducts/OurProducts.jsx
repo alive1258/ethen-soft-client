@@ -1,38 +1,45 @@
 "use client";
+
 import { MdOutlineCloudUpload } from "react-icons/md";
 import { PiAlarmFill } from "react-icons/pi";
 import { MdDelete } from "react-icons/md";
 import Link from "next/link";
 import Swal from "sweetalert2";
+
+import { truncateCharacters } from "@/utils/descriptionTextCounter";
 import { LiaEditSolid } from "react-icons/lia";
+
 import Image from "next/image";
 import {
-  useDeleteTeamMutation,
-  useGetAllTeamsQuery,
-} from "@/redux/api/teamsApi";
+  useDeleteOurProductsMutation,
+  useGetAllOurProductsQuery,
+} from "@/redux/api/ourProductApi";
 
-const Teams = () => {
-  const { data, error, isLoading } = useGetAllTeamsQuery();
+const OurProducts = () => {
+  // fetched all products
+  const { data, error, isLoading } = useGetAllOurProductsQuery();
+  // user formate name for better understand
+  const products = data?.data;
 
-  const [deleteTeams] = useDeleteTeamMutation();
+  const [deleteOurProducts] = useDeleteOurProductsMutation();
 
-  const handleDeleteTeams = async (data) => {
+  const handleDeleteOurProducts = async (data) => {
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
-        text: `Are you sure you want to delete the  Teams "${data?.name}"?`,
+        text: `Are you sure you want to delete the Our products "${data?.title}"?`,
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
         confirmButtonText: "Yes, delete it!",
       });
       if (result.isConfirmed) {
-        const response = await deleteTeams(data?._id).unwrap();
+        const response = await deleteOurProducts(data?._id).unwrap();
         if (response?.success === true) {
           Swal.fire({
             title: "Deleted!",
-            text: `The Teams "${data?.title}" has been successfully deleted.`,
+            text: `The Our products "${data?.title}" has been successfully deleted.`,
             icon: "success",
           });
         } else {
@@ -44,7 +51,7 @@ const Teams = () => {
         }
       }
     } catch (error) {
-      console.error("Delete Teams error:", error);
+      console.error("Delete Our products error:", error);
       Swal.fire({
         title: "Error!",
         text: `An error occurred: ${error.data || error.message}`,
@@ -70,14 +77,14 @@ const Teams = () => {
       <div className="h-[75px] md:px-10 mt-5 rounded-t-[26px] flex justify-between items-center px-3 text-[#ADB5BD] bg-black-muted">
         <div className="flex items-center gap-1 text-[#ADB5BD] text-base font-semibold">
           <PiAlarmFill />
-          <span>All Teams</span>
+          <span>All Our products</span>
         </div>
         <Link
-          href={"/dashboard/admin/teams/create"}
+          href={"/dashboard/admin/our-products/create"}
           className="flex items-center gap-1 cursor-pointer text-[#4D69FA] bg-[#F0EFFB] rounded-[50px] py-1 px-[10px]"
         >
           <MdOutlineCloudUpload />
-          <span className="text-[13px] font-semibold">Add Teams</span>
+          <span className="text-[13px] font-semibold">Add Our products</span>
         </Link>
       </div>
 
@@ -89,27 +96,32 @@ const Teams = () => {
                 <tr className="bg-black-muted text-start text-[13px] overflow-hidden">
                   <th className="py-4 px-4 text-start rounded-l-xl">
                     <span>ID</span>
+                  </th>{" "}
+                  <th className="py-4 px-4 text-start">
+                    <span>Logo</span>
                   </th>
                   <th className="py-4 px-4 text-start">
-                    <span>Image</span>
+                    <span>Title</span>
                   </th>
                   <th className="py-4 px-4 text-start">
-                    <span>Name</span>
+                    <span>Slug</span>
                   </th>
                   <th className="py-4 px-4 text-start">
-                    <span>position</span>
+                    <span>Sub Description</span>
                   </th>
                   <th className="py-4 px-4 text-start">
-                    <span>email</span>
+                    <span>Meta key</span>
                   </th>
-
+                  <th className="py-4 px-4 text-start">
+                    <span>Color Code</span>
+                  </th>
                   <th className="py-4 px-4 text-end rounded-r-xl">
                     <span>Action</span>
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {data?.data?.map((item, index) => (
+                {products?.map((item, index) => (
                   <tr
                     key={item.id}
                     className={`${
@@ -128,16 +140,23 @@ const Teams = () => {
                         alt="image"
                       />
                     </td>
-                    <td className="py-3 px-4">{item?.name}</td>
-
+                    <td className="py-3 px-4">{item?.title}</td>
+                    <td className="py-3 px-4">{item?.slug}</td>
+                    <td className="py-3 px-4">
+                      {truncateCharacters(item?.sub_description, 20)}
+                    </td>
+                    <td className="py-3 px-4">
+                      {truncateCharacters(item?.meta_key, 20)}
+                    </td>
+                    <td className="py-3 px-4">{item?.color_code}</td>
                     <td className="my-2 px-4 text-end rounded-r-xl">
                       <div className="flex items-center justify-end w-full gap-4">
                         <Link
-                          href={`/dashboard/admin/teams/update/${item?._id}`}
+                          href={`/dashboard/admin/our-products/update/${item?.slug}`}
                         >
                           <LiaEditSolid className="text-info-base text-2xl" />
                         </Link>
-                        <button onClick={() => handleDeleteTeams(item)}>
+                        <button onClick={() => handleDeleteOurProducts(item)}>
                           <MdDelete className="text-danger-base text-2xl" />
                         </button>
                       </div>
@@ -153,4 +172,4 @@ const Teams = () => {
   );
 };
 
-export default Teams;
+export default OurProducts;

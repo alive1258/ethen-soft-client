@@ -1,19 +1,10 @@
-import Image from "next/image";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import TeamCard from "./TeamCard";
 
 const Team = ({ teams }) => {
   return (
     <>
-      <div
-        className="container py-14 bg-no-repeat -z-20"
-        style={{
-          backgroundImage:
-            "url(/assets/images/works/Vector.png), url(/assets/images/star3.png), url(/assets/images/round.png)",
-          backgroundPosition:
-            "calc(100% - 100px) top, 100px 100px, right bottom",
-        }}
-      >
+      <div className="container py-14 bg-no-repeat -z-20">
         <SectionTitle
           subTitle="TEAM"
           title="Our Professional Team"

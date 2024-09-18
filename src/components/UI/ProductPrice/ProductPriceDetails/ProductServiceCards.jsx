@@ -22,7 +22,8 @@ const ProductServiceCards = async ({ serviceId }) => {
             key={index}
             logo={item?.logo}
             title={item?.title}
-            description={item?.description}
+            // description={item?.description}
+            subDescription={item?.subDescription}
           />
         ))}
       </div>

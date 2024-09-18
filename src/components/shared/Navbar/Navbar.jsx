@@ -38,7 +38,7 @@ const Navbar = () => {
     { display: "Services", path: "/services" },
     { display: "Products", path: "/products" },
     { display: "Pricing", path: "/pricing" },
-    { display: "Our Work", path: "/our-works" },
+    { display: "Our Works", path: "/our-works" },
     { display: "Clients", path: "/clients" },
     { display: "Team", path: "/team" },
     { display: "Career", path: "/career" },
@@ -57,15 +57,15 @@ const Navbar = () => {
         <Link href="/">
           <div className="flex items-center space-x-2">
             <Image
-              className="md:size-14 size-9"
+              className="md:size-12 size-9"
               src={ethenSoftLogo}
               height={28}
               width={151}
               alt="logo"
             />
             <h3
-              className={`md:text-xl text-lg font-semibold ${
-                isScrolled ? "text-gray-900" : "text-[#fff]"
+              className={`md:text-2xl text-lg font-bold ${
+                isScrolled ? "text-gradient" : "text-gradient"
               }`}
             >
               Ethen Soft

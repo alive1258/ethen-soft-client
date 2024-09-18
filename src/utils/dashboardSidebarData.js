@@ -30,18 +30,18 @@ const user = getUserinfo();
 export const SidebarItemsData = [
   {
     id: 1,
-    name: "Services",
-    path: "/dashboard/admin/services",
+    name: "Products",
+    path: "/dashboard/admin/our-products",
     Icon: <FaServicestack size={24} />,
   },
   {
-    id: 4,
+    id: 2,
     name: "Banners",
     path: "/dashboard/admin/banner",
     Icon: <BsFillFileEarmarkRuledFill size={24} />,
   },
   {
-    id: 2,
+    id: 3,
     name: "Home ",
     path: "/dashboard/admin/home",
     Icon: <FaProductHunt size={24} />,
@@ -151,7 +151,31 @@ export const SidebarItemsData = [
     ],
   },
   {
+
     id: 3,
+
+    id: 4,
+    name: "User",
+    path: "/user",
+    Icon: <FaUser size={24} />,
+    sub: [
+      {
+        id: 1,
+        name: "Admins",
+        path: "/dashboard/admin/user/admins",
+        Icon: <RiAdminFill />,
+      },
+      {
+        id: 2,
+        name: "Customers",
+        path: "/dashboard/admin/user/customers",
+        Icon: <FaUsers />,
+      },
+    ],
+  },
+  {
+    id: 5,
+
     name: "Category",
     path: "/category",
     Icon: <MdOutlineCategory size={24} />,
@@ -183,7 +207,7 @@ export const SidebarItemsData = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     name: "About",
     path: "/about",
     Icon: <MdOutlineCategory size={24} />,
@@ -215,6 +239,41 @@ export const SidebarItemsData = [
       },
     ],
   },
+
+
+  {
+    id: 7,
+    name: "Setting",
+    path: "/setting",
+    Icon: <LiaBlogSolid size={24} />,
+    sub: [
+      {
+        id: 1,
+        name: "Privacy Policies",
+        path: "/dashboard/admin/setting/privacy-policies",
+        Icon: <CiCompass1 />,
+      },
+      {
+        id: 2,
+        name: "Terms Condition",
+        path: "/dashboard/admin/setting/terms-conditions",
+        Icon: <RiCreativeCommonsByLine />,
+      },
+      {
+        id: 3,
+        name: "Refund Policy",
+        path: "/dashboard/admin/setting/refund-policies",
+        Icon: <FaSackDollar />,
+      },
+    ],
+  },
+  {
+    id: 8,
+    name: "Team",
+    path: "/dashboard/admin/team",
+    Icon: <FaServicestack size={24} />,
+  },
+
 ];
 
 const users = {

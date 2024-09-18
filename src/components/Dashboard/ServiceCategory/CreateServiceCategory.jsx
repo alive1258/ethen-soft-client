@@ -127,14 +127,16 @@ const CreateServiceCategory = () => {
             value={slug}
           />
 
-          {/* description */}
-          <div className="pt-3">
-            <div>
-              <span className="text-[16px] py-2 block">Description *</span>
-              <TextEditor content={content} setContent={setContent} />
-            </div>
-          </div>
+          {/* sub description */}
 
+          <Textarea
+            placeholder="Category Sub Description"
+            text="subDescription"
+            type="text"
+            label="Sub Description"
+            register={register}
+            errors={errors}
+          />
           {/* logo */}
           <Input
             placeholder="Category Logo"

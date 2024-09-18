@@ -55,10 +55,10 @@ const UpdateServiceCategory = ({ id }) => {
     if (category) {
       setValue("title", category?.title || "");
       setValue("logo", category?.logo || "");
+      setValue("subDescription", category?.subDescription || "");
       setValue("metaKey", category?.metaKey || "");
       setValue("metaDescription", category?.metaDescription || "");
       setSlug(category?.slug || "");
-      setContent(category?.description || "");
     }
   }, [category, setValue, setContent, setSlug]);
 
@@ -145,11 +145,15 @@ const UpdateServiceCategory = ({ id }) => {
             value={slug}
           />
 
-          {/* Description */}
-          <div className="pt-3">
-            <span className="text-[16px] py-2 block">Description *</span>
-            <TextEditor content={content} setContent={setContent} />
-          </div>
+          {/* Sub Description */}
+          <Textarea
+            placeholder="Service Sub Description"
+            text="subDescription"
+            type="text"
+            label="Sub Description"
+            register={register}
+            errors={errors}
+          />
           {/* Logo */}
           <Input
             placeholder="Service Logo URL"

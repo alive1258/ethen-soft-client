@@ -111,7 +111,7 @@ const ServiceCategory = () => {
                     <span>Service</span>
                   </th>
                   <th className="py-4 px-4 text-start">
-                    <span>Meta Description</span>
+                    <span>Sub Description</span>
                   </th>
                   <th className="py-4 px-4 text-start">
                     <span>Meta key</span>
@@ -144,7 +144,7 @@ const ServiceCategory = () => {
                     <td className="py-3 px-4">{item?.title}</td>
                     <td className="py-3 px-4">{item?.service?.title}</td>
                     <td className="py-3 px-4">
-                      {truncateCharacters(item?.metaDescription, 20)}
+                      {truncateCharacters(item?.subDescription, 20)}
                     </td>
                     <td className="py-3 px-4">
                       {truncateCharacters(item?.metaKey, 20)}

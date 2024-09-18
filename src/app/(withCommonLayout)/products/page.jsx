@@ -1,27 +1,17 @@
 import Products from "@/components/UI/OurProducts/Products";
 
-const ProductPage = async () => {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/our-products`, {
-      next: {
-        revalidate: 30,
-      },
-    });
-    const ourProducts = await res.json();
-    return (
-      <>
-        <section className="">
-          {/* product banner  */}
-          <div className="bg-blue-400 md:h-[350px] h-[200px]"></div>
+const ProductPage = () => {
+  return (
+    <>
+      <section className="">
+        {/* banner  */}
+        <div className="h-[342px] bg-gradient-to-r from-[#2c6bdf] via-[#cfe2ff] to-[#2c6bdf] pt-32 py-12"></div>
 
-          {/* products section */}
-          <Products ourProducts={ourProducts} />
-        </section>
-      </>
-    );
-  } catch {
-    return null;
-  }
+        {/* products section */}
+        <Products />
+      </section>
+    </>
+  );
 };
 
 export default ProductPage;

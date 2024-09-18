@@ -23,6 +23,9 @@ import { BsFillFileEarmarkRuledFill } from "react-icons/bs";
 import { FaQuoteLeft } from "react-icons/fa";
 import { GiVerticalBanner } from "react-icons/gi";
 import { FaFeather, FaImages } from "react-icons/fa";
+import { getUserinfo } from "@/services/auth.services";
+
+const user = getUserinfo();
 
 export const SidebarItemsData = [
   {
@@ -148,6 +151,9 @@ export const SidebarItemsData = [
     ],
   },
   {
+
+    id: 3,
+
     id: 4,
     name: "User",
     path: "/user",
@@ -169,6 +175,7 @@ export const SidebarItemsData = [
   },
   {
     id: 5,
+
     name: "Category",
     path: "/category",
     Icon: <MdOutlineCategory size={24} />,
@@ -232,6 +239,8 @@ export const SidebarItemsData = [
       },
     ],
   },
+
+
   {
     id: 7,
     name: "Setting",
@@ -264,4 +273,56 @@ export const SidebarItemsData = [
     path: "/dashboard/admin/team",
     Icon: <FaServicestack size={24} />,
   },
+
 ];
+
+const users = {
+  id: 3,
+  name: "User",
+  path: "/user",
+  Icon: <FaUser size={24} />,
+  sub: [
+    {
+      id: 1,
+      name: "Admins",
+      path: "/dashboard/admin/user/admins",
+      Icon: <RiAdminFill />,
+    },
+    {
+      id: 2,
+      name: "Customers",
+    },
+  ],
+};
+
+const settings = {
+  id: 6,
+  name: "Setting",
+  path: "/setting",
+  Icon: <LiaBlogSolid size={24} />,
+  sub: [
+    {
+      id: 1,
+      name: "Privacy Policies",
+      path: "/dashboard/admin/setting/privacy-policies",
+      Icon: <CiCompass1 />,
+    },
+    {
+      id: 2,
+      name: "Terms Condition",
+      path: "/dashboard/admin/setting/terms-conditions",
+      Icon: <RiCreativeCommonsByLine />,
+    },
+    {
+      id: 3,
+      name: "Refund Policy",
+      path: "/dashboard/admin/setting/refund-policies",
+      Icon: <FaSackDollar />,
+    },
+  ],
+};
+
+if (user?.role === "super-admin") {
+  SidebarItemsData.push(user);
+  SidebarItemsData.push(settings);
+}

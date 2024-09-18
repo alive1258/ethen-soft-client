@@ -1,7 +1,18 @@
 import ButtonOutline from "../../Button/ButtonOutline";
 import SectionTitle from "../../SectionTitle/SectionTitle";
-
 import BlogSection from "./BlogSection";
+
+// Generate static paths for SSG
+export async function generateStaticParams() {
+  const serviceData = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs`);
+  const data = await serviceData?.json();
+  const blogs = data?.data || [];
+
+  // Generate paths for each service slug
+  return blogs?.map((blog) => ({
+    id: blog?.slug,
+  }));
+}
 
 const Blogs = async () => {
   try {

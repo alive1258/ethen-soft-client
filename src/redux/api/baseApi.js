@@ -11,7 +11,7 @@ export const baseApi = createApi({
     "hero-description",
     "technology",
     "services",
-    "service-category",
+    "service-categories",
     "service-images",
     "service-faq",
     "pricing-category",

@@ -8,12 +8,13 @@ const Input = ({
   type = "text",
   text,
   placeholder,
-  register,
+  register, // Now optional
   errors,
   pattern,
   value,
   validate,
-  onchange,
+  onChange,
+  required = false, // Added 'required' prop to control required validation
 }) => {
   const [inputType, setInputType] = useState(type);
   const [showPass, setShowPass] = useState(false);
@@ -22,21 +23,27 @@ const Input = ({
     setShowPass(!showPass);
     setInputType(type);
   };
+
   return (
     <div className="flex flex-col gap-3 text-[#ADB5BD]">
-      <label className="mt-4">{label} *</label>
+      <label className="mt-4">
+        {label} {required && "*"}
+      </label>{" "}
+      {/* Display '*' if required */}
       <div className="relative">
         <input
           className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-info-base active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input text-black dark:focus:border-primary"
           type={inputType}
           value={value}
-          onchange={onchange}
+          onChange={onChange}
           placeholder={placeholder}
-          {...register(text, {
-            required: `${label} is required`,
-            pattern: pattern,
-            validate: validate,
-          })}
+          {...(register
+            ? register(text, {
+                required: required ? `${label} is required` : false,
+                pattern: pattern,
+                validate: validate,
+              })
+            : {})}
         />
         {type === "password" &&
           (showPass ? (

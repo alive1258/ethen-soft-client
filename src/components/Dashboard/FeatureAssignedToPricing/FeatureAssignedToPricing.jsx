@@ -17,7 +17,7 @@ const FeatureAssignedToPricing = () => {
 
   // define the assignedFeature and meta
   const pricingFeatures = data?.data?.data;
-  const meta = data?.data?.meta;
+  // const meta = data?.data?.meta;
 
   // for deleting assignedFeature
   const [deleteFeatureAssignedToPricing] =

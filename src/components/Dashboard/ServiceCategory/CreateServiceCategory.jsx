@@ -23,13 +23,12 @@ const CreateServiceCategory = () => {
     reset,
   } = useForm();
 
-  const { data, error } = useGetAllOurServicesQuery();
+  const { data, error } = useGetAllOurServicesQuery({});
   const services = data?.data?.data;
-  const meta = data?.data?.meta;
+  // const meta = data?.data?.meta;
 
   const [createServiceCategory, { isLoading }] =
     useCreateServiceCategoryMutation();
-  const [content, setContent] = useState("");
   const [slug, setSlug] = useState("");
 
   // logo url pattern check
@@ -52,7 +51,6 @@ const CreateServiceCategory = () => {
       const res = await createServiceCategory({
         ...data,
         slug,
-        description: content,
       }).unwrap();
       if (res?.success) {
         reset();
@@ -122,7 +120,7 @@ const CreateServiceCategory = () => {
             type="text"
             label="Slug"
             onChange={handleSlugChange}
-            register={register}
+            required={false}
             errors={errors}
             value={slug}
           />

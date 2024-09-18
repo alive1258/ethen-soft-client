@@ -18,7 +18,7 @@ const Pricing = () => {
 
   // define the pricing and meta
   const pricings = data?.data?.data;
-  const meta = data?.data?.meta;
+  // const meta = data?.data?.meta;
 
   // for delete pricing
   const [deletePricing] = useDeletePricingMutation();

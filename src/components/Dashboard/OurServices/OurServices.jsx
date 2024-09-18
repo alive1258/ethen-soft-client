@@ -20,7 +20,8 @@ const OurServices = () => {
   // user formate name for better understand
   //done
   const services = data?.data?.data;
-  const meta = data?.data?.meta;
+  // const meta = data?.data?.meta;
+
   const [deleteOurServices] = useDeleteOurServiceMutation();
   const handleDeleteOurServices = async (services) => {
     try {

@@ -20,7 +20,7 @@ const CreateServiceImage = () => {
 
   const { data, error } = useGetAllOurServicesQuery();
   const services = data?.data?.data;
-  const meta = data?.data?.meta;
+  // const meta = data?.data?.meta;
 
   const [createServiceImage, { isLoading }] = useCreateServiceImageMutation();
 

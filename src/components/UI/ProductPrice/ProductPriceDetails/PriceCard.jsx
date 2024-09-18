@@ -13,7 +13,7 @@ const PriceCard = async ({
 
   const data = await res?.json();
   const features = data?.data?.data;
-  const meta = data?.data?.meta;
+  // const meta = data?.data?.meta;
 
   // for payment
   //serviceId and pricingId given in params

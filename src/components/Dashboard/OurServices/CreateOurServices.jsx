@@ -93,7 +93,7 @@ const CreateOurServices = () => {
             type="text"
             label="Slug"
             onChange={handleSlugChange}
-            register={register}
+            required={false}
             errors={errors}
             value={slug}
           />

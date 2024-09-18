@@ -14,7 +14,7 @@ import {
 const ServiceImage = () => {
   const { data, error, isLoading } = useGetAllServiceImagesQuery();
   const images = data?.data?.data;
-  const meta = data?.data?.meta;
+  // const meta = data?.data?.meta;
 
   const [deleteServiceImage] = useDeleteServiceImageMutation();
 

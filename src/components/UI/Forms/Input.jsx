@@ -8,13 +8,13 @@ const Input = ({
   type = "text",
   text,
   placeholder,
-  register, // Now optional
+  register,
   errors,
   pattern,
   value,
   validate,
   onChange,
-  required = false, // Added 'required' prop to control required validation
+  required = true,
 }) => {
   const [inputType, setInputType] = useState(type);
   const [showPass, setShowPass] = useState(false);

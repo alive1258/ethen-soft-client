@@ -11,6 +11,7 @@ import {
   useDeleteServiceImageMutation,
   useGetAllServiceImagesQuery,
 } from "@/redux/api/serviceImageApi";
+
 const ServiceImage = () => {
   const { data, error, isLoading } = useGetAllServiceImagesQuery();
   const images = data?.data?.data;

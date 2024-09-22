@@ -96,7 +96,7 @@ const SignUp = () => {
               placeholder="Middle Name"
               text="middleName"
               label="Middle Name"
-              register={register}
+              required={false}
               errors={errors}
             />
             <Input

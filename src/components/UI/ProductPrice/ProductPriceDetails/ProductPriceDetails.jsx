@@ -27,7 +27,7 @@ const ProductPriceDetails = async ({ service }) => {
         {/* Product Service categories */}
         <ProductServiceCards serviceId={service?._id} />
 
-        {/* Our All Pages  */}
+        {/* Our All Pages  update*/}
         <div
           className="pt-10 bg-no-repeat"
           style={{

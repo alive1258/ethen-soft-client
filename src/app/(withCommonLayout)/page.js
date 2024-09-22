@@ -18,9 +18,9 @@ const page = async () => {
         <section aria-label="Hero Section">
           <Hero />
         </section>
-        <section aria-label="Marquee Services">
-          <MarqueeServices />
-        </section>
+        {/* <section aria-label="Marquee Services"> */}
+        <MarqueeServices />
+        {/* </section> */}
         <section aria-label="Home Services">
           <HomeService />
         </section>

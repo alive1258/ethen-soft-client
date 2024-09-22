@@ -12,13 +12,13 @@ const OurClients = async () => {
         revalidate: 30,
       },
     });
-    const ourClients = await res.json();
+    const clients = await res.json();
 
     return (
       <>
         <div className="relative md:mt-28 mt-12 px-10 bg-no-repeat bg-none md:bg-[url('/assets/images/stars.png')]">
           {/* <div className="flex gap-20 mt-16 md:mt-14 mb-12 px-4"> */}
-          <Clients />
+          <Clients clients={clients} />
           {/* {ourClients?.data?.map((ourClient) => (
                 <AllClients key={ourClient?._id} ourClient={ourClient} />
               ))} */}

@@ -3,36 +3,7 @@ import Marquee from "react-fast-marquee";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import ClientBox from "./ClientBox";
 
-const Clients = () => {
-  const clients = [
-    {
-      icon: "/assets/images/clients/Descript.png",
-    },
-    {
-      icon: "/assets/images/clients/Lattice.png",
-    },
-    {
-      icon: "/assets/images/clients/Lowes.png",
-    },
-    {
-      icon: "/assets/images/clients/Descript.png",
-    },
-    {
-      icon: "/assets/images/clients/Lattice.png",
-    },
-    {
-      icon: "/assets/images/clients/Lowes.png",
-    },
-    {
-      icon: "/assets/images/clients/Descript.png",
-    },
-    {
-      icon: "/assets/images/clients/Lattice.png",
-    },
-    {
-      icon: "/assets/images/clients/Lowes.png",
-    },
-  ];
+const Clients = ({ clients }) => {
   return (
     <>
       <div
@@ -60,7 +31,7 @@ const Clients = () => {
             play={true}
             direction="left"
           >
-            {clients?.map((client, index) => (
+            {clients?.data?.map((client, index) => (
               <ClientBox client={client} key={index} />
             ))}
           </Marquee>
@@ -74,7 +45,7 @@ const Clients = () => {
             play={true}
             direction="right"
           >
-            {clients?.map((client, index) => (
+            {clients?.data?.map((client, index) => (
               <ClientBox client={client} key={index} />
             ))}
           </Marquee>

@@ -16,6 +16,7 @@ import {
 const ServiceCategory = () => {
   // fetched all the service categories
   const { data, error, isLoading } = useGetAllServiceCategoriesQuery();
+  console.log(data);
 
   // define the service category and meta
   const categories = data?.data?.data;
@@ -111,7 +112,7 @@ const ServiceCategory = () => {
                     <span>Service</span>
                   </th>
                   <th className="py-4 px-4 text-start">
-                    <span>Sub Description</span>
+                    {/* <span>Sub Description</span> */}
                   </th>
                   <th className="py-4 px-4 text-start">
                     <span>Meta key</span>
@@ -144,7 +145,7 @@ const ServiceCategory = () => {
                     <td className="py-3 px-4">{item?.title}</td>
                     <td className="py-3 px-4">{item?.service?.title}</td>
                     <td className="py-3 px-4">
-                      {truncateCharacters(item?.subDescription, 20)}
+                      {/* {truncateCharacters(item?.subDescription, 20)} */}
                     </td>
                     <td className="py-3 px-4">
                       {truncateCharacters(item?.metaKey, 20)}

@@ -1,8 +1,11 @@
 import { useForm } from "react-hook-form";
-import { FaFacebook } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
 import ContactForm from "./ContactForm";
 import SectionTitle from "../../SectionTitle/SectionTitle";
+import { BsFacebook } from "react-icons/bs";
+import { FaXTwitter } from "react-icons/fa6";
+import { AiOutlineMail } from "react-icons/ai";
 
 const Contact = () => {
   return (
@@ -20,24 +23,23 @@ const Contact = () => {
             </h1>
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <CiLocationOn className="bg-[#E9E9EA] w-[50px] h-[49px] p-2 rounded-full text-primary-base" />
+                <CiLocationOn className="bg-[#E9E9EA] size-12 p-2 rounded-full text-primary-base" />
                 <div className="text-black-base flex flex-col gap-1.5">
                   <h6 className="font-medium">Address</h6>
-                  <p className="text-sm">Bahir Gala, Sirajganj, Bangladesh</p>
+
+                  <p>Sirajganj-6770, Bangladesh</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <CiLocationOn className="bg-[#E9E9EA] w-[50px] h-[49px] p-2 rounded-full text-primary-base" />
-                <div className="text-black-base flex flex-col gap-1.5">
-                  <h6 className="font-medium">Address</h6>
-                  <p className="text-sm">Bahir Gala, Sirajganj, Bangladesh</p>
+                <FaPhoneAlt className="bg-[#E9E9EA] size-12 p-2 rounded-full text-primary-base" />
+                <div className=" flex flex-col gap-1.5">
+                  <h6 className="font-medium">+880 1793-636735</h6>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <CiLocationOn className="bg-[#E9E9EA] w-[50px] h-[49px] p-2 rounded-full text-primary-base" />
-                <div className="text-black-base flex flex-col gap-1.5">
-                  <h6 className="font-medium">Address</h6>
-                  <p className="text-sm">Bahir Gala, Sirajganj, Bangladesh</p>
+                <AiOutlineMail className="bg-[#E9E9EA] size-12 p-2 rounded-full text-primary-base" />
+                <div className=" flex flex-col gap-1.5">
+                  <h6 className="font-medium">support@ethensoft.com</h6>
                 </div>
               </div>
             </div>
@@ -45,10 +47,24 @@ const Contact = () => {
               Follow Us
             </h5>
             <div className="flex items-center gap-4">
-              <FaFacebook className="social-icons" />
-              <FaFacebook className="social-icons" />
-              <FaFacebook className="social-icons" />
-              <FaFacebook className="social-icons" />
+              <a
+                href="https://www.facebook.com/profile.php?id=61562726343346"
+                target="_blank"
+              >
+                <BsFacebook className="social-icons hover:bg-[#3b5998] text-[#3b5998]" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/ethen-soft/about/?viewAsMember=true"
+                target="_blank"
+              >
+                <FaLinkedin className="social-icons hover:bg-[#0A66C2] text-[#0A66C2]" />
+              </a>
+              <a
+                href="https://x.com/EthenSoft?fbclid=IwZXh0bgNhZW0CMTAAAR0t8rfRbeXgm5_8S060kghWEk_PHGc7UWKmQ67ECQsZkEJVw55xt2h5tgU_aem_MYkBOm5VjCMXThOKu09RLA"
+                target="_blank"
+              >
+                <FaXTwitter className="social-icons hover:bg-[#14171A] text-[#14171A]" />
+              </a>
             </div>
           </div>
           <div className="w-full">

@@ -1,15 +1,18 @@
 import ProductPrice from "@/components/UI/Home/ProductPrice/ProductPrice";
-import SectionTitle from "@/components/UI/SectionTitle/SectionTitle";
 
+import productBanner from "../../../../public/assets/images/about/productprice.png";
+import Image from "next/image";
 const PricingPage = () => {
   return (
     <>
       {/* banner section  */}
-      <div className="h-[342px] bg-gradient-to-r from-[#8E37BB] via-[#EFCFFF] to-[#8D33BA] pt-32 py-12">
-        <SectionTitle
-          subTitle="PRODUCT PRICING"
-          title="Our Product Price"
-          description="We take digital experience to the next level"
+      <div>
+        <Image
+          className="w-full md:h-[350px] h-[150px]"
+          src={productBanner}
+          height={350}
+          width={900}
+          alt="productBanner"
         />
       </div>
       {/* all prcice section  */}

@@ -3,7 +3,7 @@ import blend from "../../../../public/assets/images/noisy-gradients.png";
 
 import { GrEmptyCircle } from "react-icons/gr";
 import CareerOppertunities from "@/components/UI/Career/CareerOppertunities";
-
+import careerBanner from "../../../../public/assets/images/about/career.png";
 const CareerPage = async () => {
   try {
     const res = await fetch(
@@ -19,23 +19,15 @@ const CareerPage = async () => {
       <>
         {careerOpportunities?.data ? (
           <div>
-            <div
-              className="h-[374p] bg-no-repeat bg-cover relative"
-              style={{
-                backgroundImage: `url(/assets/images/contact.png)`,
-              }}
-            >
-              <Image
-                className="w-full mix-blend-difference"
-                src={blend}
-                width={1440}
-                height={374}
-                alt="blend image"
-              />
-              <div className="absolute top-[40%] left-[45%]">
-                <h1 className="banner-title before:right-[170px] after:left-[170px] relative text-[56px] font-semibold text-white shadow-lrge bg-no-repeat z-30">
-                  Career
-                </h1>
+            <div>
+              <div>
+                <Image
+                  className="w-full md:h-[350px] h-[150px]"
+                  src={careerBanner}
+                  height={350}
+                  width={900}
+                  alt="careerBanner"
+                />
               </div>
             </div>
             <CareerOppertunities />

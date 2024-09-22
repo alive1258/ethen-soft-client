@@ -1,6 +1,7 @@
 import Image from "next/image";
-import blend from "../../../../public/assets/images/noisy-gradients.png";
+
 import Services from "@/components/UI/BlogDetails/Services/Services";
+import serviceBanner from "../../../../public/assets/images/about/service.png";
 
 const ServicesPage = async () => {
   try {
@@ -12,7 +13,15 @@ const ServicesPage = async () => {
     const ourServices = await res.json();
     return (
       <>
-        <div className="md:h-[350px] h-[200px] bg-gray-400 "></div>
+        <div>
+          <Image
+            className="w-full md:h-[350px] h-[150px]"
+            src={serviceBanner}
+            height={350}
+            width={900}
+            alt="serviceBanner"
+          />
+        </div>
         <Services ourServices={ourServices} />
       </>
     );

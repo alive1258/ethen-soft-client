@@ -18,7 +18,11 @@ import { SiPrivatedivision } from "react-icons/si";
 import { LiaBlogSolid } from "react-icons/lia";
 import { CiCompass1 } from "react-icons/ci";
 import { FaFirstOrderAlt, FaQuestion } from "react-icons/fa";
-import { RiCreativeCommonsByLine, RiAdminFill } from "react-icons/ri";
+import {
+  RiCreativeCommonsByLine,
+  RiAdminFill,
+  RiMessage2Fill,
+} from "react-icons/ri";
 import { BsFillFileEarmarkRuledFill } from "react-icons/bs";
 import { FaQuoteLeft } from "react-icons/fa";
 import { GiVerticalBanner } from "react-icons/gi";
@@ -148,10 +152,15 @@ export const SidebarItemsData = [
         path: "/dashboard/admin/home/feature-assigned-pricing",
         Icon: <MdCreateNewFolder />,
       },
+      {
+        id: 20,
+        name: "Client's Message",
+        path: "/dashboard/admin/home/contact-us",
+        Icon: <RiMessage2Fill />,
+      },
     ],
   },
   {
-
     id: 3,
 
     id: 4,
@@ -240,7 +249,6 @@ export const SidebarItemsData = [
     ],
   },
 
-
   {
     id: 7,
     name: "Setting",
@@ -273,7 +281,6 @@ export const SidebarItemsData = [
     path: "/dashboard/admin/team",
     Icon: <FaServicestack size={24} />,
   },
-
 ];
 
 const users = {

@@ -23,9 +23,10 @@ export const axiosBaseQuery =
           // Set Content-Type header, defaulting to "application/json" if not provided
           "Content-Type": contentType || "application/json",
         },
-        // withCredentials: true,
+        withCredentials: true,
         // meta use pagination limit ,pageNumber,totalData
       });
+
       // Ensure to return only the data property
       return { data: result.data };
     } catch (axiosError) {

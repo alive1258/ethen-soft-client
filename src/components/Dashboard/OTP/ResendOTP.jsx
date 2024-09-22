@@ -75,7 +75,7 @@ const ResendOTP = () => {
         {OTPTime >= 0 ? OTPTime : 0}
       </button>
       <button
-        disabled={OTPTime >= 0 && true}
+        disabled={OTPTime > 0 && true}
         onClick={handleResendOTP}
         className="text-white rounded-md bg-[#3A57E8] py-2 px-4 font-semibold"
       >

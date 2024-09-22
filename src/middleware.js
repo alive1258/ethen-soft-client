@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { decodedToken } from "./hooks/jwt";
 
 export async function middleware(request) {
-  /*
   // Get the refresh token or access token from cookies
   const token = request.cookies.get("refreshToken")?.value;
 
@@ -26,11 +25,7 @@ export async function middleware(request) {
   const pricingRoute = request.nextUrl.pathname.startsWith("/pricing");
 
   // Only allow admins to access the dashboard
-  if (dashboardRoute && role !== "admin") {
-    // Redirect to home if not an admin
-    return NextResponse.redirect(new URL("/", request.url));
-  }
-  if (dashboardRoute && role !== "super-admin") {
+  if (dashboardRoute && role !== "admin" && role !== "super-admin") {
     // Redirect to home if not an admin
     return NextResponse.redirect(new URL("/", request.url));
   }
@@ -42,11 +37,9 @@ export async function middleware(request) {
 
   // Allow the request to proceed if the role matches the required access level
   return NextResponse.next();
-
-  */
 }
 
 export const config = {
   // Protect both dashboard and pricing routes
-  matcher: ["/dashboard/:path*", "/pricing"],
+  matcher: ["/dashboard/:path*"],
 };

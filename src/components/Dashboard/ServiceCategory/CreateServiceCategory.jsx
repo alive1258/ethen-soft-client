@@ -1,14 +1,10 @@
 "use client";
 
-import TextEditor from "@/components/TextEditor/TextEditor";
 import Input from "@/components/UI/Forms/Input";
 import SelectForm from "@/components/UI/Forms/SelectForm";
 import Textarea from "@/components/UI/Forms/Textarea";
 import { useGetAllOurServicesQuery } from "@/redux/api/ourServiceApi";
-import {
-  useCreateServiceCategoryMutation,
-  useGetAllServiceCategoriesQuery,
-} from "@/redux/api/serviceCategoryApi";
+import { useCreateServiceCategoryMutation } from "@/redux/api/serviceCategoryApi";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -23,13 +19,12 @@ const CreateServiceCategory = () => {
     reset,
   } = useForm();
 
-  const { data, error } = useGetAllOurServicesQuery();
+  const { data } = useGetAllOurServicesQuery();
   const services = data?.data?.data;
-  const meta = data?.data?.meta;
 
   const [createServiceCategory, { isLoading }] =
     useCreateServiceCategoryMutation();
-  const [content, setContent] = useState("");
+
   const [slug, setSlug] = useState("");
 
   // logo url pattern check
@@ -52,7 +47,6 @@ const CreateServiceCategory = () => {
       const res = await createServiceCategory({
         ...data,
         slug,
-        description: content,
       }).unwrap();
       if (res?.success) {
         reset();

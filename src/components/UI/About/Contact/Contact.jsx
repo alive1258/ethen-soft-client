@@ -7,6 +7,7 @@ import { BsFacebook } from "react-icons/bs";
 import { FaXTwitter } from "react-icons/fa6";
 import { AiOutlineMail } from "react-icons/ai";
 
+// conatct
 const Contact = () => {
   return (
     <>

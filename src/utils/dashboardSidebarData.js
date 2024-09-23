@@ -25,7 +25,6 @@ import {
 } from "react-icons/ri";
 import { BsFillFileEarmarkRuledFill } from "react-icons/bs";
 import { FaQuoteLeft } from "react-icons/fa";
-import { GiVerticalBanner } from "react-icons/gi";
 import { FaFeather, FaImages } from "react-icons/fa";
 import { getUserinfo } from "@/services/auth.services";
 
@@ -85,12 +84,6 @@ export const SidebarItemsData = [
         name: "Our Works",
         path: "/dashboard/admin/home/our-works",
         Icon: <FaFeather />,
-      },
-      {
-        id: 9,
-        name: "Our Clients",
-        path: "/dashboard/admin/home/our-clients",
-        Icon: <GiVerticalBanner />,
       },
       {
         id: 10,
@@ -330,6 +323,6 @@ const settings = {
 };
 
 if (user?.role === "super-admin") {
-  SidebarItemsData.push(user);
+  SidebarItemsData.push(users);
   SidebarItemsData.push(settings);
 }

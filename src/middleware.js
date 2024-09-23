@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { decodedToken } from "./hooks/jwt";
 
 export async function middleware(request) {
+  /*
   // Get the refresh token or access token from cookies
   const token = request.cookies.get("refreshToken")?.value;
 
@@ -32,11 +33,13 @@ export async function middleware(request) {
 
   // Only allow users to access the pricing route
   if (pricingRoute && role !== "customer") {
-    return NextResponse.redirect(new URL("/", request.url)); // Redirect to home if not a user
+    // Redirect to home if not a user
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   // Allow the request to proceed if the role matches the required access level
   return NextResponse.next();
+  */
 }
 
 export const config = {

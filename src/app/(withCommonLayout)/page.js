@@ -15,39 +15,17 @@ const page = async () => {
     <>
       {/* main sections  */}
       <main>
-        <section aria-label="Hero Section">
-          <Hero />
-        </section>
-        <section aria-label="Marquee Services">
-          <MarqueeServices />
-        </section>
-        <section aria-label="Home Services">
-          <HomeService />
-        </section>
-        <section aria-label="About Us">
-          <About />
-        </section>
-        <section aria-label="Product Prices">
-          <ProductPrices />
-        </section>
-        <section aria-label="Why Trust Us">
-          <WhyTrustUs />
-        </section>
-        <section aria-label="Our Works">
-          <OurWorks />
-        </section>
-        <section aria-label="Our Clients">
-          <OurClients />
-        </section>
-        <section aria-label="Testimonials">
-          <Testimonials />
-        </section>
-        <section aria-label="Blogs">
-          <Blogs />
-        </section>
-        <section aria-label="FAQs">
-          <Faq />
-        </section>
+        <Hero />
+        <MarqueeServices />
+        <HomeService />
+        <About />
+        <ProductPrices />
+        <WhyTrustUs />
+        <OurWorks />
+        <OurClients />
+        <Testimonials />
+        <Blogs />
+        <Faq />
       </main>
     </>
   );

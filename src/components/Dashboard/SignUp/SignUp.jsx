@@ -5,12 +5,13 @@ import SubmitButton from "@/components/UI/Button/SubmitButton";
 import SelectForm from "@/components/UI/Forms/SelectForm";
 import { useCreateUserMutation } from "@/redux/api/userApi";
 import { toast } from "react-toastify";
-import { getFromLocalStorage, setToLocalStorage } from "@/hooks/local-storage";
+import { getFromLocalStorage } from "@/hooks/local-storage";
 import { useRouter } from "next/navigation";
 import { sotreOTPInfo } from "@/redux/features/otp/otpSlice";
 import { useDispatch } from "react-redux";
 
-const SignUp = () => {
+const SignUp = ({ role = process?.env?.CUSTOMER_ROLE }) => {
+  console.log(role);
   const dispatch = useDispatch();
   const router = useRouter();
   // for strong password
@@ -51,7 +52,7 @@ const SignUp = () => {
       password,
       gender,
       contactNo,
-      role: "admin",
+      role: role,
     };
 
     try {

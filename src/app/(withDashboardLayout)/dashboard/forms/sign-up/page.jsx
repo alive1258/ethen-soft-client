@@ -3,7 +3,7 @@ import SignUp from "@/components/Dashboard/SignUp/SignUp";
 const SignUpPage = () => {
   return (
     <>
-      <SignUp />
+      <SignUp role={process.env.ADMIN_ROLE} />
     </>
   );
 };

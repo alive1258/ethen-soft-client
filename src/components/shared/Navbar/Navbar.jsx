@@ -68,7 +68,7 @@ const Navbar = () => {
                 isScrolled ? "text-gradient" : "text-gradient"
               }`}
             >
-              Ethen Soft
+              EthenSoft
             </h3>
           </div>
         </Link>
@@ -109,9 +109,7 @@ const Navbar = () => {
                 className={`md:ml-6 font-normal duration-300 ${
                   isActive
                     ? `font-semibold  ${
-                        isScrolled
-                          ? "md:text-primary-base"
-                          : " md:text-primary-base"
+                        isScrolled ? "text-gradient" : "text-gradient"
                       }`
                     : `${isScrolled ? "md:text-gray-900" : "md:text-white"}`
                 }`}

@@ -106,10 +106,21 @@
   .social-icons {
     @apply size-10 cursor-pointer rounded-lg bg-primary-muted  hover:scale-110 hover:text-primary-muted duration-300 transition-all ease-in-out p-2;
   }
+  /* .bg-btn {
+    @apply cursor-pointer focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg py-[10px] md:text-[15px] text-[13px];
+    background: linear-gradient(90deg, #550495 0%, #ce24f8 100%);
+  }
+  .bg-btn:hover {
+    background: linear-gradient(270deg, #550495 0%, #ce24f8 100%);
+  } */
+
   .bg-btn {
     @apply bg-gradient-to-r md:text-[15px] text-[13px] from-indigo-500 via-purple-500 to-pink-500 cursor-pointer hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg py-[10px];
   }
 }
+/* .bg-btn {
+  @apply bg-gradient-to-r md:text-[15px] text-[13px] from-indigo-500 via-purple-500 to-pink-500 cursor-pointer hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg py-[10px];
+} */
 
 @layer components {
   .text-h1 {
@@ -168,7 +179,34 @@
     @apply text-p;
   }
 }
+.text-gradient {
+  background: linear-gradient(
+    to right,
+    #6366f1,
+    #a855f7,
+    #ec4899
+  ); /* Tailwind's indigo-500, purple-500, and pink-500 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.text-gradient:hover {
+  background: linear-gradient(
+    to left,
+    #6366f1,
+    #a855f7,
+    #ec4899
+  ); /* Tailwind's indigo-500, purple-500, and pink-500 */
+}
 
+/* .text-gradient {
+  background: linear-gradient(90deg, #550495 0%, #ce24f8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+} */
 /* hero section home  */
 .scene {
   position: relative;

@@ -15,6 +15,7 @@ const page = async () => {
     <>
       {/* main sections  */}
       <main>
+
         <Hero />
         <MarqueeServices />
         <HomeService />
@@ -26,6 +27,7 @@ const page = async () => {
         <Testimonials />
         <Blogs />
         <Faq />
+
       </main>
     </>
   );

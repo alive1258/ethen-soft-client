@@ -1,11 +1,21 @@
 import Products from "@/components/UI/OurProducts/Products";
+import Image from "next/image";
+import productBanner from "../../../../public/assets/images/about/productBanners.png";
 
 const ProductPage = () => {
   return (
     <>
       <section className="">
         {/* banner  */}
-        <div className="h-[342px] bg-gradient-to-r from-[#2c6bdf] via-[#cfe2ff] to-[#2c6bdf] pt-32 py-12"></div>
+        <div>
+          <Image
+            className="w-full md:h-[350px] h-[150px]"
+            src={productBanner}
+            height={350}
+            width={900}
+            alt="productBanner"
+          />
+        </div>
 
         {/* products section */}
         <Products />

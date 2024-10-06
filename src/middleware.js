@@ -22,6 +22,10 @@ export async function middleware(request) {
 
   // Check if the request is for the dashboard
   const dashboardRoute = request.nextUrl.pathname.startsWith("/dashboard");
+<<<<<<< HEAD
+=======
+  // const pricingRoute = request.nextUrl.pathname.startsWith("/pricing");
+>>>>>>> 919a0f66b649ca74ab91a62ed742b58ac04f8a80
 
   // Only allow admins to access the dashboard
   if (dashboardRoute && role !== "admin" && role !== "super-admin") {
@@ -29,8 +33,28 @@ export async function middleware(request) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
+<<<<<<< HEAD
   // Allow the request to proceed if the role matches the required access level
   return NextResponse.next();
+=======
+  // Only allow users to access the pricing route
+
+  if (pricingRoute && role !== "customer") {
+    // Redirect to home if not a user
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+
+  // Allow the request to proceed if the role matches the required access level
+  return NextResponse.next();
+
+  // if (pricingRoute && role !== "customer") {
+  //   return NextResponse.redirect(new URL("/", request.url)); // Redirect to home if not a user
+  // }
+
+  // Allow the request to proceed if the role matches the required access level
+  return NextResponse.next();
+
+>>>>>>> 919a0f66b649ca74ab91a62ed742b58ac04f8a80
 }
 
 export const config = {

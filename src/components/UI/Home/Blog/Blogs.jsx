@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ButtonOutline from "../../Button/ButtonOutline";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import BlogSection from "./BlogSection";
@@ -35,7 +36,9 @@ const Blogs = async () => {
 
             <BlogSection blogs={blogs} />
             <div className="mt-16">
-              <ButtonOutline content="More Blogs" />
+              <Link href="/blogs">
+                <ButtonOutline content="More Blogs" />
+              </Link>
             </div>
           </div>
         </div>

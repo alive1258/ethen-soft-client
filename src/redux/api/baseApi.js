@@ -3,7 +3,11 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
   reducerPath: "baseApi",
-  baseQuery: axiosBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_API_URL}` }),
+  baseQuery: axiosBaseQuery({
+    // baseUrl: "http://localhost:5000/api/v1",
+    baseUrl: `${process.env.NEXT_PUBLIC_API_URL}`,
+  }),
+
   endpoints: () => ({}),
 
   tagTypes: [

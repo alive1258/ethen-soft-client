@@ -2,7 +2,8 @@ import Image from "next/image";
 import Button from "../Button/Button";
 import job from "../../../../public/assets/images/job.png";
 
-const JobCard = () => {
+const JobCard = ({ careerOpportunity }) => {
+  console.log("careerOpportunity", careerOpportunity);
   return (
     <>
       <div className="rounded-lg bg-white hover:shadow-custom-10px duration-300">

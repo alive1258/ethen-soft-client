@@ -9,7 +9,6 @@ const Hero = async () => {
       },
     });
     const heroDescriptions = await res.json();
-
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/technologies`,
       {
@@ -35,12 +34,7 @@ const Hero = async () => {
             </div>
 
             <div className="md:pt-0 pt-20 md:pl-0 pl-7">
-              {ourTechnologies?.data?.slice(0, 1)?.map((ourTechnology) => (
-                <OurTechnology
-                  key={ourTechnology?._id}
-                  ourTechnology={ourTechnology}
-                />
-              ))}
+              <OurTechnology ourTechnologies={ourTechnologies} />
             </div>
           </div>
         </div>

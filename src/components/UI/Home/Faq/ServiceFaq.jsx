@@ -37,7 +37,7 @@ const ServiceFaq = async ({ service }) => {
                 <FaqAnimation />
               </div>
               <div className="w-full md:mt-14 my-5">
-                <AccordionList faqs={faqs?.data?.data} />
+                <AccordionList faqs={faqs?.data} />
               </div>
             </div>
           </div>

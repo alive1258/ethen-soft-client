@@ -40,6 +40,7 @@ instance.interceptors.response.use(
     // Do something with response data
     return response;
   },
+
   async function (error) {
     const config = error?.config;
 
@@ -62,6 +63,16 @@ instance.interceptors.response.use(
       };
       return Promise.reject(responseObject);
     }
+
+  function (error) {
+    // Any status codes that falls outside the range of 2xx causes this function to trigger
+    // Do something with response error
+    const responseObject = {
+      statusCode: error?.response?.data?.status || 500,
+      message: error?.response?.data?.message || "Something went wrong!",
+    };
+    return Promise.reject(responseObject);
+
   }
 );
 

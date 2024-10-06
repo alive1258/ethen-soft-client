@@ -20,7 +20,7 @@ const ProductPrices = async () => {
         {/* View All Products button  */}
         <div className="mx-auto mt-10 w-44 text-center">
           <Link href="/pricing">
-            <Button content="View All Products" />
+            <Button content="All Product Price" />
           </Link>
         </div>
       </div>

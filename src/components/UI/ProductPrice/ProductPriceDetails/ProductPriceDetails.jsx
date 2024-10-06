@@ -1,7 +1,7 @@
 import SwiperPages from "./SwiperPages";
 import PriceAndPlan from "./PriceAndPlan";
 import ProductDetailsHero from "./ProductDetailsHero";
-import ProductServiceCard from "./ProductServiceCard";
+
 import ServiceFaq from "../../Home/Faq/ServiceFaq";
 import ProductServiceCards from "./ProductServiceCards";
 
@@ -27,7 +27,7 @@ const ProductPriceDetails = async ({ service }) => {
         {/* Product Service categories */}
         <ProductServiceCards serviceId={service?._id} />
 
-        {/* Our All Pages  */}
+        {/* Our All Pages  update*/}
         <div
           className="pt-10 bg-no-repeat"
           style={{

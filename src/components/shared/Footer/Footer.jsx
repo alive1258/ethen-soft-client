@@ -3,7 +3,7 @@ import Image from "next/image";
 import FooterBottom from "./FooterBottom";
 import { FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
-import ethenSoftLogo from "../../../../public/assets/images/about/ethensoftlogo.svg";
+import ethenSoftLogo from "../../../../public/assets/images/about/eslogo.png";
 import FooterOurService from "./FooterOurService";
 import { FaXTwitter } from "react-icons/fa6";
 import { BsFacebook } from "react-icons/bs";
@@ -25,8 +25,8 @@ const Footer = () => {
                     width={151}
                     alt="logo"
                   />
-                  <h3 className="md:text-xl text-lg font-semibold text-[#fff]">
-                    Ethen Soft
+                  <h3 className="md:text-2xl text-lg font-semibold text-gradient">
+                    EthenSoft
                   </h3>
                 </div>
               </Link>

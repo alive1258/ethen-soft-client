@@ -7,12 +7,22 @@ import { usePathname } from "next/navigation";
 import { HiMiniXMark } from "react-icons/hi2";
 import Button from "@/components/UI/Button/Button";
 import { HiOutlineBars3BottomLeft } from "react-icons/hi2";
-import ethenSoftLogo from "../../../../public/assets/images/about/ethensoftlogo.svg";
+import ethenSoftLogo from "../../../../public/assets/images/about/eslogo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { registerModalToggle } from "@/redux/features/toggleSlice";
+import Modal from "@/components/Modal/Modal";
+import Register from "../Register/Register";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  // const { registerValue } = useSelector((state) => state.sidebarToggle);
   const pathName = usePathname();
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // const handleLoginModal = () => {
+  //   dispatch(registerModalToggle());
+  // };
 
   const topFunction = () => {
     setOpen(!open);
@@ -42,6 +52,7 @@ const Navbar = () => {
     { display: "Clients", path: "/clients" },
     { display: "Team", path: "/team" },
     { display: "Career", path: "/career" },
+    { display: "Contact Us", path: "/contact-us" },
   ];
 
   return (
@@ -65,10 +76,10 @@ const Navbar = () => {
             />
             <h3
               className={`md:text-2xl text-lg font-bold ${
-                isScrolled ? "text-gradient" : "text-gradient"
+                isScrolled ? "text-gradient" : "text-[#fff]"
               }`}
             >
-              Ethen Soft
+              EthenSoft
             </h3>
           </div>
         </Link>
@@ -109,9 +120,7 @@ const Navbar = () => {
                 className={`md:ml-6 font-normal duration-300 ${
                   isActive
                     ? `font-semibold  ${
-                        isScrolled
-                          ? "md:text-primary-base"
-                          : " md:text-primary-base"
+                        isScrolled ? "text-gradient" : "text-gradient"
                       }`
                     : `${isScrolled ? "md:text-gray-900" : "md:text-white"}`
                 }`}
@@ -122,9 +131,15 @@ const Navbar = () => {
             );
           })}
 
-          <Link className="md:ml-8" href="/contact-us">
-            <Button content="Contact Us" />
-          </Link>
+          <div className="md:ml-8">
+            {/* <div onClick={handleLoginModal} className="md:ml-8"> */}
+            <Button content="Login" />
+          </div>
+          {/* {registerValue && (
+            <Modal>
+              <Register />
+            </Modal>
+          )} */}
         </ul>
       </div>
     </div>

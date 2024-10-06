@@ -1,4 +1,5 @@
-import Login from "@/components/Dashboard/Login/Login";
+import Login from "@/components/UI/Login/Login";
+import React from "react";
 
 const LoginPage = () => {
   return (

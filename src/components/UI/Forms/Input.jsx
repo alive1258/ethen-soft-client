@@ -27,7 +27,7 @@ const Input = ({
   return (
     <div className="flex flex-col gap-3">
       <label className="mt-4">
-        {label} {required && "*"}
+        {label} <span className="text-red-400">{required && "*"}</span>
       </label>{" "}
       {/* Display '*' if required */}
       <div className="relative">

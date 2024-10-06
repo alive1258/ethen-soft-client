@@ -1,15 +1,14 @@
 "use client";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import Input from "@/components/UI/Forms/Input";
 import SubmitButton from "@/components/UI/Button/SubmitButton";
-import { useForgetPasswordMutation } from "@/redux/api/authApi";
+import { useLoginMutation } from "@/redux/api/authApi";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { sotreOTPInfo } from "@/redux/features/otp/otpSlice";
+import { storeUserInfo } from "@/services/auth.services";
 
-const ForgetPassword = () => {
-  const dispatch = useDispatch();
+const Login = () => {
   const router = useRouter();
   const {
     register,
@@ -18,19 +17,19 @@ const ForgetPassword = () => {
     reset,
   } = useForm();
 
-  const [forgetPassword] = useForgetPasswordMutation();
+  const [login] = useLoginMutation();
 
   const onSubmit = async (data) => {
     try {
-      const res = await forgetPassword(data).unwrap();
+      const res = await login(data).unwrap();
+
       if (res?.success) {
         reset();
-        await dispatch(sotreOTPInfo(res?.data));
-        toast.success(res?.message || "Success! Please check your email.", {
+        await storeUserInfo(res?.data?.accessToken);
+        toast.success(res?.message || "Singed is successful!", {
           position: toast.TOP_RIGHT,
         });
-
-        router.push("/dashboard/forms/forget-password/verify");
+        router.push("/");
       }
       if (!res?.success) {
         toast.error(res?.message || "Something Went wrong!", {
@@ -45,10 +44,10 @@ const ForgetPassword = () => {
   };
 
   return (
-    <div className="bg-black-solid h-lvh w-lvw grid place-items-center">
+    <div className="text-white bg-black-solid h-lvh w-lvw grid place-items-center">
       <div className="w-[556px] mx-auto bg-black-muted rounded-lg px-6 py-12">
         <p className="text-white border-0 border-b border-b-[#828282] pb-4">
-          Forget Password ?
+          Login Form
         </p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
@@ -59,12 +58,31 @@ const ForgetPassword = () => {
             register={register}
             errors={errors}
           />
-
-          <SubmitButton text="Submit" />
+          <Input
+            type="password"
+            placeholder="Enter your password"
+            text="password"
+            label="Password"
+            register={register}
+            errors={errors}
+          />
+          <div className="flex items-center justify-between mt-6 mb-2 px-[1px]">
+            <div className="flex items-center gap-2">
+              <input className="text-2xl size-4" type="checkbox" />
+              <span className="text-white text-sm font-light">Remember me</span>
+            </div>
+            <Link
+              className="text-sm text-[#3A57E8] font-light"
+              href="/forget-password"
+            >
+              Forget password?
+            </Link>
+          </div>
+          <SubmitButton text="Sign In" />
         </form>
       </div>
     </div>
   );
 };
 
-export default ForgetPassword;
+export default Login;

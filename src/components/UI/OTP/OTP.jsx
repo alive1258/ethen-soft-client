@@ -15,7 +15,7 @@ import { toast } from "react-toastify";
 import ResendOTP from "./ResendOTP";
 import { storeUserInfo } from "@/services/auth.services";
 
-const OTP = () => {
+const OTP = ({ redirectPath }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const {
@@ -48,7 +48,7 @@ const OTP = () => {
           position: toast.TOP_RIGHT,
         });
 
-        router.push("/dashboard/admin");
+        router.push(`${redirectPath}`);
       }
       if (!res?.success) {
         toast.error(res?.message || "Something Went wrong!", {
@@ -62,11 +62,9 @@ const OTP = () => {
     }
   };
   return (
-    <div className="bg-black-solid h-lvh w-lvw grid place-items-center">
+    <div className="text-white bg-black-solid h-lvh w-lvw grid place-items-center">
       <div className="w-[556px] mx-auto bg-black-muted rounded-lg px-6 py-12">
-        <p className="text-white border-0 border-b border-b-[#828282] pb-4">
-          Verify OTP
-        </p>
+        <p className="border-0 border-b border-b-[#828282] pb-4">Verify OTP</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             placeholder="Enter your OTP"

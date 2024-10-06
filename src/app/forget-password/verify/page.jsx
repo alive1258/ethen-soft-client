@@ -1,4 +1,4 @@
-import VerifyOTP from "@/components/Dashboard/ForgetPassword/VerifyOTP";
+import VerifyOTP from "@/components/UI/ForgetPassword/VerifyOTP";
 import React from "react";
 
 const VerifyPage = () => {

@@ -36,6 +36,7 @@ export const baseApi = createApi({
     "teams",
     "auth",
     "user",
+    "customer",
     "contact-us",
   ],
 });

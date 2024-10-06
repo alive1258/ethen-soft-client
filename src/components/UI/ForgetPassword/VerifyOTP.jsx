@@ -9,7 +9,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import ResendOTP from "../../UI/OTP/ResendOTP";
+import ResendOTP from "../OTP/ResendOTP";
 import { toast } from "react-toastify";
 import { removeOTPInfo } from "@/redux/features/otp/otpSlice";
 import { storeUserInfo } from "@/services/auth.services";
@@ -44,7 +44,7 @@ const VerifyOTP = () => {
         toast.success(res?.message || "Singed is successful!", {
           position: toast.TOP_RIGHT,
         });
-        router.push("/forget-password/reset-password");
+        router.push("/reset-password");
       }
       if (!res?.success) {
         toast.error(res?.message || "Something Went wrong!", {
@@ -58,11 +58,9 @@ const VerifyOTP = () => {
     }
   };
   return (
-    <div className="bg-black-solid h-lvh w-lvw grid place-items-center">
+    <div className="text-white bg-black-solid h-lvh w-lvw grid place-items-center">
       <div className="w-[556px] mx-auto bg-black-muted rounded-lg px-6 py-12">
-        <p className="text-white border-0 border-b border-b-[#828282] pb-4">
-          Verify OTP
-        </p>
+        <p className="border-0 border-b border-b-[#828282] pb-4">Verify OTP</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             placeholder="Enter your OTP"

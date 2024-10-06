@@ -1,17 +1,17 @@
 "use client";
-import { useForm } from "react-hook-form";
-import Input from "@/components/UI/Forms/Input";
-import SubmitButton from "@/components/UI/Button/SubmitButton";
-import SelectForm from "@/components/UI/Forms/SelectForm";
-import { useCreateUserMutation } from "@/redux/api/userApi";
-import { toast } from "react-toastify";
-import { getFromLocalStorage } from "@/hooks/local-storage";
-import { useRouter } from "next/navigation";
-import { sotreOTPInfo } from "@/redux/features/otp/otpSlice";
-import { useDispatch } from "react-redux";
 
-const SignUp = ({ role = process?.env?.CUSTOMER_ROLE }) => {
-  console.log(role);
+import SubmitButton from "@/components/UI/Button/SubmitButton";
+import Input from "@/components/UI/Forms/Input";
+import SelectForm from "@/components/UI/Forms/SelectForm";
+import { getFromLocalStorage } from "@/hooks/local-storage";
+import { useCreateUserMutation } from "@/redux/api/userApi";
+import { sotreOTPInfo } from "@/redux/features/otp/otpSlice";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
+const CreateAdmin = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   // for strong password
@@ -31,10 +31,10 @@ const SignUp = ({ role = process?.env?.CUSTOMER_ROLE }) => {
 
   const userId = getFromLocalStorage("userId");
   if (userId) {
-    router.push("/dashboard/forms/otp");
+    router.push("/otp");
   }
 
-  const [createUser] = useCreateUserMutation();
+  const [createAdmin] = useCreateUserMutation();
 
   const onSubmit = async (data) => {
     const {
@@ -52,12 +52,12 @@ const SignUp = ({ role = process?.env?.CUSTOMER_ROLE }) => {
       password,
       gender,
       contactNo,
-      role: role,
     };
 
     try {
-      const res = await createUser(user).unwrap();
+      const res = await createAdmin(user).unwrap();
 
+      console.log(res.data);
       if (res?.success) {
         reset();
         await dispatch(sotreOTPInfo(res?.data));
@@ -65,7 +65,7 @@ const SignUp = ({ role = process?.env?.CUSTOMER_ROLE }) => {
           position: toast.TOP_RIGHT,
         });
 
-        router.push("/dashboard/forms/otp");
+        router.push("/dashboard/admin/user/admins/otp");
       }
       if (!res?.success) {
         toast.error(res?.message || "Something Went wrong!", {
@@ -73,15 +73,16 @@ const SignUp = ({ role = process?.env?.CUSTOMER_ROLE }) => {
         });
       }
     } catch (error) {
+      console.log(error);
       toast.error(error?.data || "Something Went wrong!", {
         position: toast.TOP_RIGHT,
       });
     }
   };
   return (
-    <div className="bg-black-solid h-lvh w-svw grid place-items-center">
+    <div className="text-white">
       <div className="max-w-[650px] mx-auto bg-black-muted rounded-lg p-6">
-        <p className="text-white border-0 border-b border-b-[#828282] pb-4">
+        <p className="border-0 border-b border-b-[#828282] pb-4">
           Sign Up Form
         </p>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -158,11 +159,11 @@ const SignUp = ({ role = process?.env?.CUSTOMER_ROLE }) => {
               value === watch("password") || "Passwords do not match"
             }
           />
-          <SubmitButton text="Sign Up" />
+          <SubmitButton text="Create Admin" />
         </form>
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default CreateAdmin;

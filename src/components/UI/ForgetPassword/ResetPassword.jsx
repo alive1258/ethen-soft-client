@@ -30,7 +30,7 @@ const ResetPassword = () => {
   const accessToken = getUserinfo();
 
   if (!accessToken) {
-    router.push("/dashboard/forms/login");
+    router.push("/login");
   }
 
   const [resetPassword] = useResetPasswordMutation();
@@ -45,7 +45,7 @@ const ResetPassword = () => {
         toast.success(res?.message || "Singed is successful!", {
           position: toast.TOP_RIGHT,
         });
-        router.push("/dashboard/admin");
+        router.push("/");
       }
       if (!res?.success) {
         toast.error(res?.message || "Something Went wrong!", {
@@ -59,9 +59,9 @@ const ResetPassword = () => {
     }
   };
   return (
-    <div className="bg-black-solid h-lvh w-svw grid place-items-center">
+    <div className="text-white bg-black-solid h-lvh w-svw grid place-items-center">
       <div className="md:w-[600px] max-w-[650px] mx-auto bg-black-muted rounded-lg p-6">
-        <p className="text-white border-0 border-b border-b-[#828282] pb-4">
+        <p className="border-0 border-b border-b-[#828282] pb-4">
           Reset Your Password
         </p>
         <form onSubmit={handleSubmit(onSubmit)}>

@@ -1,11 +1,12 @@
-import React from 'react';
+import Customers from "@/components/Dashboard/Users/Customers/Customers";
+import React from "react";
 
 const CustomersPage = () => {
-    return (
-        <div>
-            this is customers page
-        </div>
-    );
+  return (
+    <>
+      <Customers />
+    </>
+  );
 };
 
 export default CustomersPage;

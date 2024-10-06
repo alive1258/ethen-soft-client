@@ -28,7 +28,7 @@ export const userApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["user"],
     }),
-    getUsers: build.query({
+    getAllUsers: build.query({
       query: (arg) => ({
         url: USER_URL,
         method: "GET",
@@ -73,7 +73,7 @@ export const {
   useVerifyOTPMutation,
   useResendOTPMutation,
   useGetSingleUserQuery,
-  useGetUsersQuery,
+  useGetAllUsersQuery,
   useDeleteUserMutation,
   useUpdateMyProfileMutation,
 } = userApi;

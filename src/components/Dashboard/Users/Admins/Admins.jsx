@@ -8,12 +8,16 @@ import {
   useGetAllUsersQuery,
 } from "@/redux/api/userApi";
 import Link from "next/link";
+import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
+import { useState } from "react";
 
 const Admins = () => {
-  const { data, error, isLoading } = useGetAllUsersQuery({});
+  const [page, setPage] = useState(1);
+  const { data, error, isLoading } = useGetAllUsersQuery({ page });
   console.log(data?.users);
   const users = data?.users?.data;
-  // const meta = data?.data?.meta;
+  const meta = data?.users?.meta;
+  console.log(meta);
 
   const [deleteAdmin] = useDeleteUserMutation();
 
@@ -65,6 +69,13 @@ const Admins = () => {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
+
+  const previousPage = () => {
+    if (page > 1) setPage(page - 1);
+  };
+  const nextPage = () => {
+    if (page < meta.total / meta.limit) setPage(page + 1);
+  };
 
   return (
     <>
@@ -120,7 +131,11 @@ const Admins = () => {
                   >
                     <td className="py-3 rounded-l-xl px-4">{index + 1}</td>
 
-                    <td className="py-3 px-4">{item?.fullName}</td>
+                    <td className="py-3 px-4">
+                      {item?.name?.firstName}{" "}
+                      {item?.name?.middleName ?? item?.name?.middleName}{" "}
+                      {item?.name?.lastName}
+                    </td>
                     <td className="py-3 px-4">{item?.email}</td>
                     <td className="py-3 px-4 lg:max-w-40">{item?.gender}</td>
                     <td className="py-3 px-4 lg:max-w-60">{item?.contactNo}</td>
@@ -135,6 +150,26 @@ const Admins = () => {
                 ))}
               </tbody>
             </table>
+          </div>
+          {/* paginate  */}
+          <div className="flex gap-4 justify-center items-center my-6 ">
+            <button
+              onClick={previousPage}
+              className=" bg-white border hover:border-info-base rounded-sm p-2 hover:bg-info-base hover:text-white"
+            >
+              <BiLeftArrow />
+            </button>
+            <div className="text-white font-semibold">
+              <p>
+                Page {page} of {Math.ceil(meta.total / meta.limit)}
+              </p>
+            </div>
+            <button
+              onClick={nextPage}
+              className=" bg-white border hover:border-info-base rounded-sm p-2 hover:bg-info-base hover:text-white"
+            >
+              <BiRightArrow />
+            </button>
           </div>
         </div>
       </div>

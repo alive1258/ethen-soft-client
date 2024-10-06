@@ -4,6 +4,7 @@ import icon2 from "../../../../../public/assets/images/Frame9.png";
 import ButtonOutline from "../../Button/ButtonOutline";
 
 import Clients from "../../Clients/Clients";
+import Link from "next/link";
 
 const OurClients = async () => {
   try {
@@ -24,7 +25,9 @@ const OurClients = async () => {
               ))} */}
           {/* </div> */}
           <div className="my-6 flex justify-center items-center">
-            <ButtonOutline className="" content="More Clients" />
+            <Link href="/clients">
+              <ButtonOutline className="" content="More Clients" />
+            </Link>
           </div>
 
           <Image

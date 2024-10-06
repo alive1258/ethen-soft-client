@@ -180,33 +180,13 @@
   }
 }
 .text-gradient {
-  background: linear-gradient(
-    to right,
-    #6366f1,
-    #a855f7,
-    #ec4899
-  ); /* Tailwind's indigo-500, purple-500, and pink-500 */
+  background: linear-gradient(to right, #6366f1, #a855f7, #ec4899);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-}
-.text-gradient:hover {
-  background: linear-gradient(
-    to left,
-    #6366f1,
-    #a855f7,
-    #ec4899
-  ); /* Tailwind's indigo-500, purple-500, and pink-500 */
 }
 
-/* .text-gradient {
-  background: linear-gradient(90deg, #550495 0%, #ce24f8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-} */
 /* hero section home  */
 .scene {
   position: relative;

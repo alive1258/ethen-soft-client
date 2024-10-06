@@ -1,5 +1,5 @@
 import Image from "next/image";
-import privacyBanner from "../../../../public/assets/images/about/privacy.png";
+import privacyBanner from "../../../../public/assets/images/about/privacyPolicyBanner.png";
 
 const PrivacyPage = async () => {
   try {

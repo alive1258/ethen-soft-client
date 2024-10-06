@@ -1,19 +1,11 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import image1 from "../../../.././../public/assets/images/hero/Frame 598 (2).png";
-import image2 from "../../../.././../public/assets/images/hero/Frame 598.png";
-import image3 from "../../../.././../public/assets/images/hero/Frame 599.png";
-import image4 from "../../../.././../public/assets/images/hero/Frame 600.png";
-import image5 from "../../../.././../public/assets/images/hero/Frame 601.png";
-import image6 from "../../../.././../public/assets/images/hero/Frame 602.png";
-import image7 from "../../../.././../public/assets/images/hero/Frame 603.png";
-import image8 from "../../../.././../public/assets/images/hero/Frame 598 (1).png";
 import Image from "next/image";
 import { useEffect } from "react";
 import Script from "next/script";
 
-const OurTechnology = ({ ourTechnology }) => {
+const OurTechnology = ({ ourTechnologies }) => {
   const zoomInOut = {
     initial: { scale: 1 },
     animate: {
@@ -53,14 +45,22 @@ const OurTechnology = ({ ourTechnology }) => {
   }, []);
   return (
     <>
-      <div className="relative md:size-[510px] size-[270px] border border-white border-dashed rounded-full flex justify-center items-center">
+      <div className="relative md:size-[510px] size-[270px]  border border-white border-dashed rounded-full flex justify-center items-center">
         <motion.div
           className="absolute md:-top-10 -top-5"
           variants={zoomInOut}
           initial="initial"
           animate="animate"
         >
-          <Image src={image2} className="md:size-20 size-10" alt="technology" />
+          <div className="bg-[#fff] p-2 md:size-20 size-10  flex justify-center items-center  rounded-full">
+            <Image
+              height={48}
+              width={48}
+              src={ourTechnologies?.data?.[0]?.image}
+              className=" "
+              alt="technology"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="absolute md:top-8 top-4 md:right-8 right-5"
@@ -68,7 +68,15 @@ const OurTechnology = ({ ourTechnology }) => {
           initial="initial"
           animate="animate"
         >
-          <Image src={image8} className="md:size-20 size-10" alt="technology" />
+          <div className="bg-[#fff] p-2 md:size-20 size-10  flex justify-center items-center  rounded-full">
+            <Image
+              height={48}
+              width={48}
+              src={ourTechnologies?.data?.[1]?.image}
+              className=" "
+              alt="technology"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="absolute md:top-48 md:-right-8 -right-5"
@@ -76,7 +84,15 @@ const OurTechnology = ({ ourTechnology }) => {
           initial="initial"
           animate="animate"
         >
-          <Image src={image3} className="md:size-20 size-10" alt="technology" />
+          <div className="bg-[#fff] p-2 md:size-20 size-10  flex justify-center items-center  rounded-full">
+            <Image
+              height={48}
+              width={48}
+              src={ourTechnologies?.data?.[2]?.image}
+              className=" "
+              alt="technology"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="absolute md:bottom-14 bottom-2 right-4"
@@ -84,7 +100,15 @@ const OurTechnology = ({ ourTechnology }) => {
           initial="initial"
           animate="animate"
         >
-          <Image src={image6} className="md:size-20 size-10" alt="technology" />
+          <div className="bg-[#fff] p-2 md:size-20 size-10  flex justify-center items-center  rounded-full">
+            <Image
+              height={48}
+              width={48}
+              src={ourTechnologies?.data?.[3]?.image}
+              className=" "
+              alt="technology"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="absolute md:-bottom-7 -bottom-3 md:right-[193px] right-[120px]"
@@ -92,7 +116,15 @@ const OurTechnology = ({ ourTechnology }) => {
           initial="initial"
           animate="animate"
         >
-          <Image src={image5} className="md:size-20 size-10" alt="technology" />
+          <div className="bg-[#fff] p-2 md:size-20 size-10  flex justify-center items-center  rounded-full">
+            <Image
+              height={48}
+              width={48}
+              src={ourTechnologies?.data?.[4]?.image}
+              className=" "
+              alt="technology"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="absolute md:bottom-7 bottom-6 md:left-8 left-3"
@@ -100,7 +132,15 @@ const OurTechnology = ({ ourTechnology }) => {
           initial="initial"
           animate="animate"
         >
-          <Image src={image7} className="md:size-20 size-10" alt="technology" />
+          <div className="bg-[#fff] p-2 md:size-20 size-10  flex justify-center items-center  rounded-full">
+            <Image
+              height={48}
+              width={48}
+              src={ourTechnologies?.data?.[5]?.image}
+              className=" "
+              alt="technology"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="absolute md:top-48 md:-left-8 -left-4"
@@ -108,7 +148,15 @@ const OurTechnology = ({ ourTechnology }) => {
           initial="initial"
           animate="animate"
         >
-          <Image src={image4} className="md:size-20 size-10" alt="technology" />
+          <div className="bg-[#fff] p-2 md:size-20 size-10  flex justify-center items-center  rounded-full">
+            <Image
+              height={48}
+              width={48}
+              src={ourTechnologies?.data?.[6]?.image}
+              className=" "
+              alt="technology"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="absolute md:top-8 top-4 md:left-8 left-4"
@@ -116,7 +164,15 @@ const OurTechnology = ({ ourTechnology }) => {
           initial="initial"
           animate="animate"
         >
-          <Image src={image1} className="md:size-20 size-10" alt="technology" />
+          <div className="bg-[#fff] p-2 md:size-20 size-10  flex justify-center items-center  rounded-full">
+            <Image
+              height={48}
+              width={48}
+              src={ourTechnologies?.data?.[7]?.image}
+              className=" "
+              alt="technology"
+            />
+          </div>
         </motion.div>
         {/* middle  tech  */}
         <motion.div
@@ -125,7 +181,15 @@ const OurTechnology = ({ ourTechnology }) => {
           initial="initial"
           animate="animate"
         >
-          <Image src={image4} className="md:size-16 size-8" alt="technology" />
+          <div className="bg-[#fff] p-2 md:size-16 size-8  flex justify-center items-center  rounded-full">
+            <Image
+              height={48}
+              width={48}
+              src={ourTechnologies?.data?.[8]?.image}
+              className=" "
+              alt="technology"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="absolute md:top-24 top-20 md:right-72 right-44"
@@ -133,7 +197,15 @@ const OurTechnology = ({ ourTechnology }) => {
           initial="initial"
           animate="animate"
         >
-          <Image src={image4} className="md:size-16 size-8" alt="technology" />
+          <div className="bg-[#fff] p-2 md:size-16 size-8  flex justify-center items-center  rounded-full">
+            <Image
+              height={48}
+              width={48}
+              src={ourTechnologies?.data?.[9]?.image}
+              className=" "
+              alt="technology"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="absolute md:bottom-44 bottom-[185px] right-24 md:right-24"
@@ -141,7 +213,15 @@ const OurTechnology = ({ ourTechnology }) => {
           initial="initial"
           animate="animate"
         >
-          <Image src={image3} className="md:size-16 size-8" alt="technology" />
+          <div className="bg-[#fff] p-2 md:size-16 size-8  flex justify-center items-center  rounded-full">
+            <Image
+              height={48}
+              width={48}
+              src={ourTechnologies?.data?.[10]?.image}
+              className=" "
+              alt="technology"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="absolute md:left-20 left-[60px] top-40 md:top-60"
@@ -149,7 +229,15 @@ const OurTechnology = ({ ourTechnology }) => {
           initial="initial"
           animate="animate"
         >
-          <Image src={image8} className="md:size-16 size-8" alt="technology" />
+          <div className="bg-[#fff] p-2 md:size-16 size-8  flex justify-center items-center  rounded-full">
+            <Image
+              height={48}
+              width={48}
+              src={ourTechnologies?.data?.[11]?.image}
+              className=" "
+              alt="technology"
+            />
+          </div>
         </motion.div>
         <motion.div
           className="absolute  md:right-60 right-20 bottom-11 md:bottom-[88px]"
@@ -157,7 +245,15 @@ const OurTechnology = ({ ourTechnology }) => {
           initial="initial"
           animate="animate"
         >
-          <Image src={image7} className="md:size-16 size-8" alt="technology" />
+          <div className="bg-[#fff] p-2 md:size-16 size-8  flex justify-center items-center  rounded-full">
+            <Image
+              height={48}
+              width={48}
+              src={ourTechnologies?.data?.[12]?.image}
+              className=" "
+              alt="technology"
+            />
+          </div>
         </motion.div>
         <div className="md:size-[280px] size-[150px] border border-white border-dashed rounded-full flex justify-center items-center">
           <div

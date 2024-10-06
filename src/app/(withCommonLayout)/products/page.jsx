@@ -1,6 +1,6 @@
 import Products from "@/components/UI/OurProducts/Products";
 import Image from "next/image";
-import productBanner from "../../../../public/assets/images/about/productprice.png";
+import productBanner from "../../../../public/assets/images/about/productBanners.png";
 
 const ProductPage = () => {
   return (

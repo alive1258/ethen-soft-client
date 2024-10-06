@@ -43,7 +43,7 @@ instance.interceptors.response.use(
     // Any status codes that falls outside the range of 2xx causes this function to trigger
     // Do something with response error
     const responseObject = {
-      statusCode: error?.response?.status || 500,
+      statusCode: error?.response?.data?.status || 500,
       message: error?.response?.data?.message || "Something went wrong!",
     };
     return Promise.reject(responseObject);

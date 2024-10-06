@@ -17,7 +17,7 @@ const ServiceFAQ = () => {
 
   // define the faqs and meta
   const faqs = data?.data?.data;
-  const meta = data?.data?.meta;
+  // const meta = data?.data?.meta;
 
   // for delete faq
   const [deleteServiceFAQ] = useDeleteServiceFAQMutation();

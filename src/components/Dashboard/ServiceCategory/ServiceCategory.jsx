@@ -20,7 +20,7 @@ const ServiceCategory = () => {
 
   // define the service category and meta
   const categories = data?.data?.data;
-  const meta = data?.data?.meta;
+  // const meta = data?.data?.meta;
 
   // for delete service category
   const [deleteOurServices] = useDeleteServiceCategoryMutation();

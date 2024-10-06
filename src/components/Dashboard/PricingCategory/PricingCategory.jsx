@@ -16,7 +16,7 @@ const PricingCategory = () => {
 
   // define the pricing category and meta
   const pricingCategories = data?.data;
-  const meta = data?.data?.meta;
+  // const meta = data?.data?.meta;
 
   // for deleting pricing category
   const [deletePricingCategory] = useDeletePricingCategoryMutation();

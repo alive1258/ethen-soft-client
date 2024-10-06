@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */
 
 import { AUTH_KEY } from "@/contents/authKey";
-import { getFromLocalStorage } from "@/hooks/local-storage";
+import { getFromLocalStorage, setToLocalStorage } from "@/hooks/local-storage";
+import { getNewAccessToken } from "@/services/auth.services";
 import axios from "axios";
 
 // Create an instance of axios
@@ -39,6 +40,30 @@ instance.interceptors.response.use(
     // Do something with response data
     return response;
   },
+
+  async function (error) {
+    const config = error?.config;
+
+    // sent automatic request to get accessToken
+    if (error?.response?.status === 403 && !config?.sent) {
+      config.sent === true;
+      const response = await getNewAccessToken();
+      const accessToken = response?.data?.data?.accessToken;
+
+      //set token in headers
+      config.headers.Authorization = `Bearer ${accessToken}`;
+      setToLocalStorage(AUTH_KEY, accessToken);
+      return instance(config);
+    } else {
+      // Any status codes that falls outside the range of 2xx causes this function to trigger
+      // Do something with response error
+      const responseObject = {
+        statusCode: error?.response?.status || 500,
+        message: error?.response?.data?.message || "Something went wrong!",
+      };
+      return Promise.reject(responseObject);
+    }
+
   function (error) {
     // Any status codes that falls outside the range of 2xx causes this function to trigger
     // Do something with response error
@@ -47,6 +72,7 @@ instance.interceptors.response.use(
       message: error?.response?.data?.message || "Something went wrong!",
     };
     return Promise.reject(responseObject);
+
   }
 );
 

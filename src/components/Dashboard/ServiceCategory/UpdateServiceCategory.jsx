@@ -1,6 +1,5 @@
 "use client";
 
-import TextEditor from "@/components/TextEditor/TextEditor";
 import Input from "@/components/UI/Forms/Input";
 import Textarea from "@/components/UI/Forms/Textarea";
 import {
@@ -19,7 +18,6 @@ const UpdateServiceCategory = ({ id }) => {
     message: "Logo must be a valid image URL (.jpg, .jpeg, .png, .gif, .svg)",
   };
 
-  // require useForm from react-hook-form
   const {
     register,
     handleSubmit,
@@ -28,14 +26,13 @@ const UpdateServiceCategory = ({ id }) => {
     setValue,
   } = useForm();
 
-  // fetched the specific data for update.
+  // fetched the specific data for update
   const {
     data,
     isLoading: fetchLoading,
     error,
   } = useGetSingleServiceCategoryQuery(id);
 
-  // defined data as data name
   const category = data?.data;
   const categoryId = category?._id;
 
@@ -43,14 +40,13 @@ const UpdateServiceCategory = ({ id }) => {
   const [updateServiceCategory, { isLoading }] =
     useUpdateServiceCategoryMutation();
 
-  //set slug and description
+  // Slug state
   const [slug, setSlug] = useState("");
-  const [content, setContent] = useState("");
 
   const router = useRouter();
   const watchTitle = watch("title");
 
-  //set default value
+  // Set default form values and slug state
   useEffect(() => {
     if (category) {
       setValue("title", category?.title || "");
@@ -60,46 +56,45 @@ const UpdateServiceCategory = ({ id }) => {
       setValue("metaDescription", category?.metaDescription || "");
       setSlug(category?.slug || "");
     }
-  }, [category, setValue, setContent, setSlug]);
+  }, [category, setValue]);
 
-  // converting title
+  // Watch title changes to update slug dynamically
   useEffect(() => {
     if (watchTitle) {
       setSlug(watchTitle.toLowerCase().replace(/[^a-z0-9-]/g, "-"));
     }
   }, [watchTitle]);
 
-  // update data submit function
+  // Update data submission function
   const onSubmit = async (data) => {
     try {
-      data["slug"] = slug;
-      data["description"] = content;
+      // Ensure that slug is added to the form data before submission
+      setValue("slug", slug);
+      data["slug"] = slug; // Pass slug to form data
+
       const res = await updateServiceCategory({
         id: categoryId,
         data,
       }).unwrap();
 
-      // show success message
       if (res?.success) {
         router.back();
         toast.success(res?.message || "Category updated successfully!", {
           position: toast.TOP_RIGHT,
         });
       } else {
-        // show error message
         toast.error(res.message, {
           position: toast.TOP_RIGHT,
         });
       }
     } catch (error) {
-      // show error message
       toast.error(error?.message || "Something went wrong!", {
         position: toast.TOP_RIGHT,
       });
     }
   };
 
-  //converting slug
+  // Handle manual slug change
   const handleSlugChange = (e) => {
     const value = e.target.value;
     setSlug(value.toLowerCase().replace(/[^a-z0-9-]/g, ""));
@@ -123,7 +118,7 @@ const UpdateServiceCategory = ({ id }) => {
         className="flex flex-col space-y-3 mt-4"
       >
         <div className="flex flex-col gap-2">
-          {/* Input for Hero Description title */}
+          {/* Service Title */}
           <Input
             placeholder="Service Title"
             text="title"
@@ -140,20 +135,20 @@ const UpdateServiceCategory = ({ id }) => {
             type="text"
             label="Slug"
             onChange={handleSlugChange}
-            register={register}
-            errors={errors}
             value={slug}
+            required={false}
+            errors={errors}
           />
 
           {/* Sub Description */}
           <Textarea
             placeholder="Service Sub Description"
             text="subDescription"
-            type="text"
             label="Sub Description"
             register={register}
             errors={errors}
           />
+
           {/* Logo */}
           <Input
             placeholder="Service Logo URL"
@@ -164,7 +159,8 @@ const UpdateServiceCategory = ({ id }) => {
             errors={errors}
             pattern={logoPattern}
           />
-          {/* meta key */}
+
+          {/* Meta Key */}
           <Input
             placeholder="Service Meta Key"
             text="metaKey"
@@ -173,11 +169,11 @@ const UpdateServiceCategory = ({ id }) => {
             register={register}
             errors={errors}
           />
-          {/* meta description */}
+
+          {/* Meta Description */}
           <Textarea
             placeholder="Service Meta Description"
             text="metaDescription"
-            type="text"
             label="Meta Description"
             register={register}
             errors={errors}

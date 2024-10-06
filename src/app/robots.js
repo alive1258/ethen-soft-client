@@ -1,10 +1,14 @@
-export default function robots() {
+const robots = () => {
   return {
-    rule: {
-      urlAgent: "*",
-      allow: "*",
-      disallow: "/dashboard/*",
-    },
-    sitemap: "http://loaclhost:3000/sitemap.xml",
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: "/dashboard/*",
+      },
+    ],
+    sitemap: "http://localhost:3000/sitemap.xml",
   };
-}
+};
+
+export default robots;

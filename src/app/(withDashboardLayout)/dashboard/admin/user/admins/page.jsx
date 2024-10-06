@@ -1,7 +1,11 @@
-import React from "react";
+import Admins from "@/components/Dashboard/Users/Admins/Admins";
 
 const AdminsPage = () => {
-  return <div>this is admins page</div>;
+  return (
+    <>
+      <Admins />
+    </>
+  );
 };
 
 export default AdminsPage;

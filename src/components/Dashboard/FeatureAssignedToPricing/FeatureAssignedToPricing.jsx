@@ -4,7 +4,6 @@ import { PiAlarmFill } from "react-icons/pi";
 import { MdDelete } from "react-icons/md";
 import Link from "next/link";
 import Swal from "sweetalert2";
-import { LiaEditSolid } from "react-icons/lia";
 
 import {
   useDeleteFeatureAssignedToPricingMutation,
@@ -17,7 +16,7 @@ const FeatureAssignedToPricing = () => {
 
   // define the assignedFeature and meta
   const pricingFeatures = data?.data?.data;
-  const meta = data?.data?.meta;
+  // const meta = data?.data?.meta;
 
   // for deleting assignedFeature
   const [deleteFeatureAssignedToPricing] =

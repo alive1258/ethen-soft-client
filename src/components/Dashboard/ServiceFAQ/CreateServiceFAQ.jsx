@@ -25,7 +25,7 @@ const CreateServiceFAQ = () => {
 
   // define services and meta
   const services = data?.data?.data;
-  const meta = data?.data?.meta;
+  // const meta = data?.data?.meta;
 
   // for create faq service
   const [createServiceFAQ, { isLoading }] = useCreateServiceFAQMutation();

@@ -14,7 +14,7 @@ const ProductPrice = async ({ limit = 10 }) => {
     // specify the name
     const servicesData = await res?.json();
     const services = servicesData?.data?.data;
-    const meta = servicesData?.data?.meta;
+    // const meta = servicesData?.data?.meta;
 
     return (
       <>

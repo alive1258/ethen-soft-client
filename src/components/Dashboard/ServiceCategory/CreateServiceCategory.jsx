@@ -19,11 +19,18 @@ const CreateServiceCategory = () => {
     reset,
   } = useForm();
 
-  const { data } = useGetAllOurServicesQuery();
+
+  const { data, error } = useGetAllOurServicesQuery({});
   const services = data?.data?.data;
+  // const meta = data?.data?.meta;
+
+
+
+
 
   const [createServiceCategory, { isLoading }] =
     useCreateServiceCategoryMutation();
+
 
   const [slug, setSlug] = useState("");
 
@@ -116,7 +123,7 @@ const CreateServiceCategory = () => {
             type="text"
             label="Slug"
             onChange={handleSlugChange}
-            register={register}
+            required={false}
             errors={errors}
             value={slug}
           />

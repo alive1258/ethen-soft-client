@@ -26,6 +26,7 @@ export const axiosBaseQuery =
         withCredentials: true,
         // meta use pagination limit ,pageNumber,totalData
       });
+
       // Ensure to return only the data property
       return { data: result.data };
     } catch (axiosError) {

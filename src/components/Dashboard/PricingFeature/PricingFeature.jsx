@@ -17,7 +17,7 @@ const PricingFeature = () => {
 
   // define the pricing feature and meta
   const pricingFeatures = data?.data?.data;
-  const meta = data?.data?.meta;
+  // const meta = data?.data?.meta;
 
   // for deleting pricing feature
   const [deletePricingFeature] = useDeletePricingFeatureMutation();

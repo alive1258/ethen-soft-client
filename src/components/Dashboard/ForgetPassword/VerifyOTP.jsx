@@ -9,7 +9,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import ResendOTP from "../OTP/ResendOTP";
+import ResendOTP from "../../UI/OTP/ResendOTP";
 import { toast } from "react-toastify";
 import { removeOTPInfo } from "@/redux/features/otp/otpSlice";
 import { storeUserInfo } from "@/services/auth.services";
@@ -44,7 +44,7 @@ const VerifyOTP = () => {
         toast.success(res?.message || "Singed is successful!", {
           position: toast.TOP_RIGHT,
         });
-        router.push("/dashboard/forms/forget-password/reset-password");
+        router.push("/forget-password/reset-password");
       }
       if (!res?.success) {
         toast.error(res?.message || "Something Went wrong!", {

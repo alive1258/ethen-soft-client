@@ -15,7 +15,6 @@ export const baseApi = createApi({
     "hero-description",
     "technology",
     "services",
-
     "service-categories",
     "service-images",
     "service-faq",
@@ -41,5 +40,7 @@ export const baseApi = createApi({
     "teams",
     "auth",
     "user",
+    "customer",
+    "contact-us",
   ],
 });

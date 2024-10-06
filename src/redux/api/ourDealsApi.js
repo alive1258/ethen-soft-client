@@ -1,6 +1,6 @@
 import { baseApi } from "./baseApi";
 
-const ourClientsApi = baseApi.injectEndpoints({
+const ourDealsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     // Mutation for creating a new OurDeals
     createOurDeals: builder.mutation({
@@ -57,4 +57,4 @@ export const {
   useGetSingleOurDealsQuery,
   useUpdateOurDealsMutation,
   useDeleteOurDealsMutation,
-} = ourClientsApi;
+} = ourDealsApi;

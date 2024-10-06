@@ -1,13 +1,10 @@
 "use client";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import Input from "@/components/UI/Forms/Input";
 import SubmitButton from "@/components/UI/Button/SubmitButton";
 import { useForgetPasswordMutation } from "@/redux/api/authApi";
-import { setToLocalStorage } from "@/hooks/local-storage";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { storeUserInfo } from "@/services/auth.services";
 import { useDispatch } from "react-redux";
 import { sotreOTPInfo } from "@/redux/features/otp/otpSlice";
 

@@ -21,7 +21,7 @@ const PricingCard = async ({ item }) => {
     return (
       <>
         <div
-          className={`relative text-center cursor-pointer p-4 flex flex-col opacity-70 justify-center border rounded-lg duration-200 hover:duration-300 bg-white z-10 space-y-4 group overflow-hidden dynamic-hover`}
+          className={`relative text-center cursor-pointer p-4 flex flex-col  justify-center border rounded-lg duration-200 hover:duration-300 bg-[#fff] z-10 space-y-4 group overflow-hidden dynamic-hover`}
           style={{
             borderColor: item?.colorCode,
             "--dynamic-shadow": `0px 0px 16px 0px ${item?.colorCode}`,

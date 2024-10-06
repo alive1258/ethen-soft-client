@@ -1,6 +1,6 @@
 import OurWorkPage from "@/components/UI/OurWorkPage/OurWorkPage";
 import Image from "next/image";
-import workBanner from "../../../../public/assets/images/about/works.png";
+import workBanner from "../../../../public/assets/images/about/ourWorkBanner.png";
 
 const page = async () => {
   try {

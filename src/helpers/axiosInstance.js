@@ -44,13 +44,13 @@ instance.interceptors.response.use(
   async function (error) {
     const config = error?.config;
 
-    // sent automatic request to get accessToken
+    // send automatic request to get accessToken
     if (error?.response?.status === 403 && !config?.sent) {
-      config.sent === true;
+      config.sent = true; // Fixed assignment operator
       const response = await getNewAccessToken();
       const accessToken = response?.data?.data?.accessToken;
 
-      //set token in headers
+      // set token in headers
       config.headers.Authorization = `Bearer ${accessToken}`;
       setToLocalStorage(AUTH_KEY, accessToken);
       return instance(config);
@@ -63,16 +63,6 @@ instance.interceptors.response.use(
       };
       return Promise.reject(responseObject);
     }
-
-  function (error) {
-    // Any status codes that falls outside the range of 2xx causes this function to trigger
-    // Do something with response error
-    const responseObject = {
-      statusCode: error?.response?.data?.status || 500,
-      message: error?.response?.data?.message || "Something went wrong!",
-    };
-    return Promise.reject(responseObject);
-
   }
 );
 

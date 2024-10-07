@@ -44,13 +44,13 @@ instance.interceptors.response.use(
   async function (error) {
     const config = error?.config;
 
-    // sent automatic request to get accessToken
+    // send automatic request to get accessToken
     if (error?.response?.status === 403 && !config?.sent) {
-      config.sent === true;
+      config.sent = true; // Fixed assignment operator
       const response = await getNewAccessToken();
       const accessToken = response?.data?.data?.accessToken;
 
-      //set token in headers
+      // set token in headers
       config.headers.Authorization = `Bearer ${accessToken}`;
       setToLocalStorage(AUTH_KEY, accessToken);
       return instance(config);

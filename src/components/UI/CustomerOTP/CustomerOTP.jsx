@@ -6,15 +6,16 @@ import {
   useGetSingleUserQuery,
   useVerifyOTPMutation,
 } from "@/redux/api/userApi";
+import { removeOTPInfo } from "@/redux/features/otp/otpSlice";
 import { useRouter } from "next/navigation";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import ResendOTP from "../CustomerOTP/ResendCustomerOTP";
 import { toast } from "react-toastify";
-import { removeOTPInfo } from "@/redux/features/otp/otpSlice";
 import { storeUserInfo } from "@/services/auth.services";
+import ResendCustomerOTP from "./ResendCustomerOTP";
 
-const VerifyOTP = () => {
+const CustomerOTP = ({ redirectPath, closeModal }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const {
@@ -26,17 +27,15 @@ const VerifyOTP = () => {
 
   const { otpData } = useSelector((state) => state?.otpData);
 
-  const { data: userData } = useGetSingleUserQuery(otpData?.userId);
-  const role = userData?.data?.role;
-
   const [verifyOTP] = useVerifyOTPMutation();
 
   const onSubmit = async (data) => {
     try {
       data["userId"] = otpData?.userId;
-      data["role"] = role;
       data.otp.trim();
+
       const res = await verifyOTP(data).unwrap();
+
       if (res?.success) {
         reset();
         dispatch(removeOTPInfo());
@@ -44,7 +43,13 @@ const VerifyOTP = () => {
         toast.success(res?.message || "Singed is successful!", {
           position: toast.TOP_RIGHT,
         });
-        router.push("/reset-password");
+        if (closeModal) {
+          closeModal();
+        }
+
+        if (redirectPath) {
+          router.push(`${redirectPath}`);
+        }
       }
       if (!res?.success) {
         toast.error(res?.message || "Something Went wrong!", {
@@ -58,8 +63,8 @@ const VerifyOTP = () => {
     }
   };
   return (
-    <div className="text-white bg-black-solid h-lvh w-lvw grid place-items-center">
-      <div className="w-[556px] mx-auto bg-black-muted rounded-lg px-6 py-12">
+    <div className="grid place-items-center">
+      <div className="w-[556px] mx-auto rounded-lg px-6 py-12">
         <p className="border-0 border-b border-b-[#828282] pb-4">Verify OTP</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
@@ -72,10 +77,10 @@ const VerifyOTP = () => {
           />
           <SubmitButton text="Verify OTP" />
         </form>
-        <ResendOTP />
+        <ResendCustomerOTP />
       </div>
     </div>
   );
 };
 
-export default VerifyOTP;
+export default CustomerOTP;

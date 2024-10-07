@@ -12,10 +12,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import ResendOTP from "./ResendOTP";
 import { storeUserInfo } from "@/services/auth.services";
+import ResendAdminOTP from "./ResendAdminOTP";
 
-const OTP = ({ redirectPath }) => {
+const AdminOTP = ({ redirectPath, closeModal }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const {
@@ -27,15 +27,11 @@ const OTP = ({ redirectPath }) => {
 
   const { otpData } = useSelector((state) => state?.otpData);
 
-  const { data: userData } = useGetSingleUserQuery(otpData?.userId);
-  const role = userData?.data?.role;
-
   const [verifyOTP] = useVerifyOTPMutation();
 
   const onSubmit = async (data) => {
     try {
       data["userId"] = otpData?.userId;
-      data["role"] = role;
       data.otp.trim();
 
       const res = await verifyOTP(data).unwrap();
@@ -47,8 +43,13 @@ const OTP = ({ redirectPath }) => {
         toast.success(res?.message || "Singed is successful!", {
           position: toast.TOP_RIGHT,
         });
+        if (closeModal) {
+          closeModal();
+        }
 
-        router.push(`${redirectPath}`);
+        if (redirectPath) {
+          router.push(`${redirectPath}`);
+        }
       }
       if (!res?.success) {
         toast.error(res?.message || "Something Went wrong!", {
@@ -62,8 +63,8 @@ const OTP = ({ redirectPath }) => {
     }
   };
   return (
-    <div className="text-white bg-black-solid h-lvh w-lvw grid place-items-center">
-      <div className="w-[556px] mx-auto bg-black-muted rounded-lg px-6 py-12">
+    <div className="text-white grid place-items-center">
+      <div className="w-[556px] mx-auto rounded-lg px-6 py-12">
         <p className="border-0 border-b border-b-[#828282] pb-4">Verify OTP</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
@@ -76,10 +77,10 @@ const OTP = ({ redirectPath }) => {
           />
           <SubmitButton text="Verify OTP" />
         </form>
-        <ResendOTP />
+        <ResendAdminOTP />
       </div>
     </div>
   );
 };
 
-export default OTP;
+export default AdminOTP;

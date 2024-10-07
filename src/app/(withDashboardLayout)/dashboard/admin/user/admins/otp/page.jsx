@@ -1,10 +1,10 @@
-import OTP from "@/components/UI/OTP/OTP";
+import AdminOTP from "@/components/UI/AdminOTP/AdminOTP";
 import React from "react";
 
 const OTPPage = () => {
   return (
     <div>
-      <OTP redirectPath="/dashboard/admin" />
+      <AdminOTP redirectPath="/dashboard/admin" />
     </div>
   );
 };

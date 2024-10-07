@@ -14,10 +14,9 @@ import { useState } from "react";
 const Admins = () => {
   const [page, setPage] = useState(1);
   const { data, error, isLoading } = useGetAllUsersQuery({ page });
-  console.log(data?.users);
+
   const users = data?.users?.data;
   const meta = data?.users?.meta;
-  console.log(meta);
 
   const [deleteAdmin] = useDeleteUserMutation();
 

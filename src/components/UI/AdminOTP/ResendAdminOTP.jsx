@@ -1,21 +1,18 @@
-import {
-  useGetSingleUserQuery,
-  useResendOTPMutation,
-} from "@/redux/api/userApi";
+import { useResendOTPMutation } from "@/redux/api/userApi";
+import { sotreOTPInfo } from "@/redux/features/otp/otpSlice";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-const ResendOTP = () => {
+const ResendAdminOTP = () => {
+  const dispatch = useDispatch();
   const [OTPTime, setOTPTime] = useState(59);
   const [count, setCount] = useState(false);
 
   const { otpData } = useSelector((state) => state?.otpData);
 
   const userId = otpData?.userId;
-
-  const { data, isLoading } = useGetSingleUserQuery(userId);
-  const email = data?.data?.email;
+  const email = otpData?.email;
 
   const [resendOTPVerification] = useResendOTPMutation();
 
@@ -48,8 +45,10 @@ const ResendOTP = () => {
     try {
       const res = await resendOTPVerification(data).unwrap();
 
-      if (res?.userId) {
+      if (res?.success) {
         setCount(!count);
+        setOTPTime(59);
+        dispatch(sotreOTPInfo(res?.data));
         toast.success(res?.message || "OTP Re-sended successfully!", {
           position: toast.TOP_RIGHT,
         });
@@ -70,14 +69,14 @@ const ResendOTP = () => {
     <div className="flex justify-between  mt-5 items-center">
       <button
         disabled
-        className="bg-white text-gray-800 font-semibold py-2 px-5 min-w-20 rounded-md"
+        className="bg-white border border-primary-muted text-gray-800 font-semibold py-2 px-5 min-w-20 rounded-md"
       >
         {OTPTime >= 0 ? OTPTime : 0}
       </button>
       <button
         disabled={OTPTime > 0 && true}
         onClick={handleResendOTP}
-        className="text-white rounded-md bg-[#3A57E8] py-2 px-4 font-semibold"
+        className="text-white rounded-md bg-warning-base py-2 px-4 font-semibold"
       >
         Resend OTP
       </button>
@@ -85,4 +84,4 @@ const ResendOTP = () => {
   );
 };
 
-export default ResendOTP;
+export default ResendAdminOTP;

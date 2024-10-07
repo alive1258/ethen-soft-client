@@ -13,7 +13,7 @@ import { useState } from "react";
 const ContactUs = () => {
   const [page, setPage] = useState(1);
   const { data, error, isLoading } = useGetAllContactUsQuery({ page });
-  console.log(data);
+
   const messages = data?.data?.data;
   const meta = data?.data?.meta;
 

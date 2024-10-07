@@ -10,7 +10,7 @@ import { sotreOTPInfo } from "@/redux/features/otp/otpSlice";
 import { useDispatch } from "react-redux";
 import { useCreateCustomerMutation } from "@/redux/api/customerApi";
 
-const SignUp = () => {
+const SignUp = ({ isSignUp }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   // for strong password
@@ -56,15 +56,16 @@ const SignUp = () => {
 
     try {
       const res = await createCustomer(user).unwrap();
-      console.log(res);
+
       if (res?.success) {
         reset();
         await dispatch(sotreOTPInfo(res?.data));
         toast.success(res?.message || "Sing up is successful!", {
           position: toast.TOP_RIGHT,
         });
-
-        router.push("/otp");
+        if (isSignUp) {
+          isSignUp();
+        }
       }
       if (!res?.success) {
         toast.error(res?.message || "Something Went wrong!", {
@@ -78,13 +79,13 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="text-white ">
-      <div className="max-w-[650px] mx-auto bg-black-muted rounded-lg p-6">
+    <div className="text-black-base text-start md:w-[800px]">
+      <div className="w-full mx-auto rounded-lg p-6">
         <p className="border-0 border-b border-b-[#828282] pb-4">
           Sign Up Form
         </p>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col md:flex-row gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
             <Input
               placeholder="First Name"
               text="firstName"
@@ -105,9 +106,15 @@ const SignUp = () => {
               label="Last Name"
               register={register}
               errors={errors}
+            />{" "}
+            <Input
+              placeholder="ContactNo."
+              text="contactNo"
+              type="number"
+              label="Contact Number"
+              register={register}
+              errors={errors}
             />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <SelectForm
               label="Select your gender"
               text="gender"
@@ -118,45 +125,37 @@ const SignUp = () => {
               <option value={"female"}>Female</option>
               <option value={"others"}>Others</option>
             </SelectForm>
-
             <Input
-              placeholder="ContactNo."
-              text="contactNo"
-              type="number"
-              label="Contact Number"
+              placeholder="Enter your email"
+              text="email"
+              type="email"
+              label="Email"
               register={register}
               errors={errors}
             />
+            <Input
+              placeholder="Enter your password"
+              text="password"
+              type="password"
+              label="Password"
+              register={register}
+              pattern={pattern}
+              errors={errors}
+            />
+            <Input
+              placeholder="Enter your confirm password"
+              text="confirmPassword"
+              type="password"
+              label="Confirm Password"
+              register={register}
+              pattern={pattern}
+              errors={errors}
+              validate={(value) =>
+                value === watch("password") || "Passwords do not match"
+              }
+            />
           </div>
-          <Input
-            placeholder="Enter your email"
-            text="email"
-            type="email"
-            label="Email"
-            register={register}
-            errors={errors}
-          />
-          <Input
-            placeholder="Enter your password"
-            text="password"
-            type="password"
-            label="Password"
-            register={register}
-            pattern={pattern}
-            errors={errors}
-          />
-          <Input
-            placeholder="Enter your confirm password"
-            text="confirmPassword"
-            type="password"
-            label="Confirm Password"
-            register={register}
-            pattern={pattern}
-            errors={errors}
-            validate={(value) =>
-              value === watch("password") || "Passwords do not match"
-            }
-          />
+
           <SubmitButton text="Sign Up" />
         </form>
       </div>

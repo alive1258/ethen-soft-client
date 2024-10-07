@@ -16,7 +16,6 @@ import {
 const ServiceCategory = () => {
   // fetched all the service categories
   const { data, error, isLoading } = useGetAllServiceCategoriesQuery();
-  console.log(data);
 
   // define the service category and meta
   const categories = data?.data?.data;

@@ -1,4 +1,4 @@
-import OTP from "@/components/UI/OTP/OTP";
+import OTP from "@/components/UI/CustomerOTP/CustomerOTP";
 import React from "react";
 
 const OTPPage = () => {

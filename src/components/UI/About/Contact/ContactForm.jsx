@@ -18,7 +18,6 @@ const ContactForm = () => {
   const onSubmit = async (data) => {
     try {
       const res = await createContactUs(data).unwrap();
-      console.log(res);
 
       if (res?.success) {
         reset();

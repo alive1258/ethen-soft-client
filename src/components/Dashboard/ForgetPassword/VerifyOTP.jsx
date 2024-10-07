@@ -9,7 +9,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import ResendOTP from "../../UI/OTP/ResendOTP";
+import ResendOTP from "../../UI/CustomerOTP/ResendCustomerOTP";
 import { toast } from "react-toastify";
 import { removeOTPInfo } from "@/redux/features/otp/otpSlice";
 import { storeUserInfo } from "@/services/auth.services";

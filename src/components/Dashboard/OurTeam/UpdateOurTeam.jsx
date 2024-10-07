@@ -14,7 +14,6 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 const UpdateOurTeam = ({ id }) => {
-  console.log(id);
   const {
     register,
     handleSubmit,

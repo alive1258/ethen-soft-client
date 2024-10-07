@@ -110,7 +110,7 @@ const SignUp = ({ isSignUp }) => {
             <Input
               placeholder="ContactNo."
               text="contactNo"
-              type="number"
+              type="text"
               label="Contact Number"
               register={register}
               errors={errors}

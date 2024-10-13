@@ -4,7 +4,7 @@ import TextEditor from "@/components/TextEditor/TextEditor";
 import {
   useGetSingleTermsConditionQuery,
   useUpdateTermsConditionMutation,
-} from "@/redux/api/privacyPolicyApi";
+} from "@/redux/api/termsConditionsApi";
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -16,7 +16,7 @@ const UpdateTermsCondition = ({ id }) => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue, // <-- Import setValue to manually set form values
+    setValue,
   } = useForm();
 
   const {
@@ -33,8 +33,8 @@ const UpdateTermsCondition = ({ id }) => {
 
   useEffect(() => {
     if (data) {
-      setValue("title", data?.data?.title || ""); // Set initial name value
-      setValue("image", data?.data?.image || ""); // Set initial image value
+      setValue("title", data?.data?.title || "");
+      setValue("image", data?.data?.image || "");
       setValue("description", data?.data?.description || "");
       setContent(data?.data?.description || "");
     }

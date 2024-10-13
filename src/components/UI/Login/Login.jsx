@@ -45,7 +45,7 @@ const Login = ({ closeModal }) => {
 
   return (
     <div className="text-start grid place-items-center">
-      <div className="w-[556px] mx-auto rounded-lg px-6 py-12">
+      <div className="md:w-[556px] mx-auto rounded-lg p-4 md:px-6 md:py-12">
         <p className="font-semibold border-0 border-b border-b-[#828282] pb-4">
           Login Form
         </p>

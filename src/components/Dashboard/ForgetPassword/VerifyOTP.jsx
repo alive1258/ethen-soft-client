@@ -26,7 +26,7 @@ const VerifyOTP = () => {
 
   const { otpData } = useSelector((state) => state?.otpData);
 
-  const { data: userData } = useGetSingleUserQuery(otpData?.userId);
+  const { data: userData } = useGetSingleUserQuery();
   const role = userData?.data?.role;
 
   const [verifyOTP] = useVerifyOTPMutation();

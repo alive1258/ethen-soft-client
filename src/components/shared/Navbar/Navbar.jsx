@@ -3,18 +3,24 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { HiMiniXMark } from "react-icons/hi2";
 import { HiOutlineBars3BottomLeft } from "react-icons/hi2";
 import ethenSoftLogo from "../../../../public/assets/images/about/eslogo.png";
 import Modal from "@/components/Modal/Modal";
 import AuthModal from "@/components/Modal/AuthModal";
+import { getUserinfo, removeUser } from "@/services/auth.services";
+import { useLogoutMutation } from "@/redux/api/authApi";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const pathName = usePathname();
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const user = getUserinfo();
+  const [logout] = useLogoutMutation();
+  const router = useRouter();
 
   const topFunction = () => {
     setOpen(!open);
@@ -41,6 +47,17 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await logout().unwrap();
+      removeUser();
+      router.push("/");
+      toast.success("User logged out successfully");
+    } catch (error) {
+      console.error("Failed to log out:", error);
+    }
+  };
 
   const items = [
     { display: "Home", path: "/" },
@@ -132,9 +149,15 @@ const Navbar = () => {
           })}
 
           <div className="md:ml-8">
-            <button className="bg-btn px-4 py-2" onClick={handleLoginClick}>
-              Login
-            </button>
+            {user?.role ? (
+              <button className="bg-btn px-4 py-2" onClick={handleLogout}>
+                Sign Out
+              </button>
+            ) : (
+              <button className="bg-btn px-4 py-2" onClick={handleLoginClick}>
+                Login
+              </button>
+            )}
           </div>
 
           {showModal && (

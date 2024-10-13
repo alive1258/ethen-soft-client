@@ -1,45 +1,6 @@
 import Marquee from "react-fast-marquee";
 
 const AllServices = ({ ourServices }) => {
-  const services = [
-    {
-      name: "UI/UX Design",
-      variant: "A572BE",
-    },
-    {
-      name: "UI/UX Design",
-      variant: "C8455B",
-    },
-    {
-      name: "Graphics Design ",
-      variant: "43B671",
-    },
-    {
-      name: "Video Editing ",
-      variant: "DC4C64",
-    },
-    {
-      name: "Digital Marketing",
-      variant: "1E232C",
-    },
-    {
-      name: "Digital Marketing",
-      variant: "31BAAE",
-    },
-    {
-      name: "Logo Design",
-      variant: "76C3DC",
-    },
-    {
-      name: "Web Design",
-      variant: "A572BE",
-    },
-    {
-      name: "Web Development",
-      variant: "C8455B",
-    },
-  ];
-
   return (
     <div className=" relative mb-32">
       <div
@@ -58,16 +19,16 @@ const AllServices = ({ ourServices }) => {
           play={true}
           direction="left"
         >
-          {services?.map((item, index) => (
+          {ourServices?.data?.map((item, index) => (
             <div key={index} className="flex items-center gap-6 mr-8">
               <span
                 className={`size-4 rounded-full`}
                 style={{
-                  backgroundColor: `#${item?.variant}`,
+                  backgroundColor: `${item?.color_code}`,
                 }}
               ></span>
               <h6 className="text-lg text-black-base font-medium">
-                {item?.name}
+                {item?.title}
               </h6>
             </div>
           ))}
@@ -89,15 +50,15 @@ const AllServices = ({ ourServices }) => {
           play={true}
           direction="right"
         >
-          {services?.map((item, index) => (
+          {ourServices?.data?.map((item, index) => (
             <div key={index} className="flex items-center gap-6 mr-8">
               <span
                 className={`size-4 rounded-full`}
                 style={{
-                  backgroundColor: `#${item?.variant}`,
+                  backgroundColor: `${item?.color_code}`,
                 }}
               ></span>
-              <h6 className="text-lg text-[#fff] font-medium">{item?.name}</h6>
+              <h6 className="text-lg text-[#fff] font-medium">{item?.title}</h6>
             </div>
           ))}
         </Marquee>

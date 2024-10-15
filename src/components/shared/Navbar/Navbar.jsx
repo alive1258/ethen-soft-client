@@ -50,9 +50,9 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = async () => {
-    topFunction();
     try {
       await logout().unwrap();
+      topFunction();
       removeUser();
       router.push("/");
       toast.success("User logged out successfully");

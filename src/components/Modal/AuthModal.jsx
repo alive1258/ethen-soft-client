@@ -15,7 +15,7 @@ const AuthModal = ({ closeModal }) => {
   const isSignUp = () => setSignUp(!signUp);
 
   return (
-    <div className=" fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+    <div className=" mx-6 fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div className="rounded-xl relative bg-white w-fit">
         <IoCloseCircleOutline
           onClick={closeModal}

@@ -80,7 +80,7 @@ const SignUp = ({ isSignUp }) => {
   };
   return (
     <div className="text-black-base text-start md:w-[800px]">
-      <div className="w-full mx-auto rounded-lg p-6">
+      <div className="w-full mx-auto rounded-lg p-2 md:p-6">
         <p className="border-0 border-b border-b-[#828282] pb-4">
           Sign Up Form
         </p>
@@ -110,13 +110,13 @@ const SignUp = ({ isSignUp }) => {
             <Input
               placeholder="ContactNo."
               text="contactNo"
-              type="number"
+              type="text"
               label="Contact Number"
               register={register}
               errors={errors}
             />
             <SelectForm
-              label="Select your gender"
+              label="Gender"
               text="gender"
               register={register}
               errors={errors}

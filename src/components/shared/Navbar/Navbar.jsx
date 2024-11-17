@@ -52,6 +52,8 @@ const Navbar = () => {
     };
   }, []);
 
+
+
   const handleLogout = async () => {
     try {
       await logout().unwrap();
@@ -63,6 +65,7 @@ const Navbar = () => {
       console.error("Failed to log out:", error);
     }
   };
+
 
   const items = [
     { display: "Home", path: "/" },

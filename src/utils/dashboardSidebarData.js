@@ -30,7 +30,9 @@ import { getUserinfo } from "@/services/auth.services";
 
 const user = getUserinfo();
 
-export const SidebarItemsData = [
+export const SidebarItemsData = [];
+
+export const SidebarItems = [
   {
     id: 1,
     name: "Products",
@@ -154,28 +156,6 @@ export const SidebarItemsData = [
     ],
   },
   {
-    id: 3,
-
-    id: 4,
-    name: "User",
-    path: "/user",
-    Icon: <FaUser size={24} />,
-    sub: [
-      {
-        id: 1,
-        name: "Admins",
-        path: "/dashboard/admin/user/admins",
-        Icon: <RiAdminFill />,
-      },
-      {
-        id: 2,
-        name: "Customers",
-        path: "/dashboard/admin/user/customers",
-        Icon: <FaUsers />,
-      },
-    ],
-  },
-  {
     id: 5,
 
     name: "Category",
@@ -241,33 +221,6 @@ export const SidebarItemsData = [
       },
     ],
   },
-
-  {
-    id: 7,
-    name: "Setting",
-    path: "/setting",
-    Icon: <LiaBlogSolid size={24} />,
-    sub: [
-      {
-        id: 1,
-        name: "Privacy Policies",
-        path: "/dashboard/admin/setting/privacy-policies",
-        Icon: <CiCompass1 />,
-      },
-      {
-        id: 2,
-        name: "Terms Condition",
-        path: "/dashboard/admin/setting/terms-conditions",
-        Icon: <RiCreativeCommonsByLine />,
-      },
-      {
-        id: 3,
-        name: "Refund Policy",
-        path: "/dashboard/admin/setting/refund-policies",
-        Icon: <FaSackDollar />,
-      },
-    ],
-  },
   {
     id: 8,
     name: "Team",
@@ -276,7 +229,7 @@ export const SidebarItemsData = [
   },
 ];
 
-const users = {
+const usersForSuperAdmin = {
   id: 3,
   name: "User",
   path: "/user",
@@ -291,8 +244,16 @@ const users = {
     {
       id: 2,
       name: "Customers",
+      path: "/dashboard/admin/user/customers",
+      Icon: <RiAdminFill />,
     },
   ],
+};
+const usersForAdmin = {
+  id: 1,
+  name: "Customers",
+  path: "/dashboard/admin/user/admins",
+  Icon: <RiAdminFill />,
 };
 
 const settings = {
@@ -322,7 +283,22 @@ const settings = {
   ],
 };
 
+const SidebarItemsForCustomers = [
+  {
+    id: 1,
+    name: "Orders",
+    path: "/dashboard/admin/orders",
+    Icon: <CiBasketball />,
+  },
+];
+
 if (user?.role === "super-admin") {
-  SidebarItemsData.push(users);
+  SidebarItemsData.push(...SidebarItems);
+  SidebarItemsData.push(usersForSuperAdmin);
   SidebarItemsData.push(settings);
+} else if (user?.role === "admin") {
+  SidebarItemsData.push(...SidebarItems);
+  SidebarItemsData.push(usersForAdmin);
+} else if (user?.role === "customer") {
+  SidebarItemsData.push(...SidebarItemsForCustomers);
 }

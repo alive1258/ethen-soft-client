@@ -12,6 +12,7 @@ export async function middleware(request) {
 
   // Decode the token to get user information
   const user = decodedToken(token);
+  console.log("user", user);
 
   // If user is not decoded properly, redirect
   if (!user || !user.role) {
@@ -19,11 +20,15 @@ export async function middleware(request) {
   }
 
   const { role } = user;
-
   // Check if the request is for the dashboard
   const dashboardRoute = request.nextUrl.pathname.startsWith("/dashboard");
   // Only allow admins to access the dashboard
-  if (dashboardRoute && role !== "admin" && role !== "super-admin") {
+  if (
+    dashboardRoute &&
+    role !== "admin" &&
+    role !== "super-admin" &&
+    role !== "customer"
+  ) {
     // Redirect to home if not an admin
     return NextResponse.redirect(new URL("/", request.url));
   }
@@ -34,5 +39,5 @@ export async function middleware(request) {
 
 export const config = {
   // Protect both dashboard and pricing routes
-  matcher: ["/dashboard/:path*"],
+  matcher: ["/dashboard/admin:path*"],
 };

@@ -7,11 +7,15 @@ import {
   useDeleteContactUsMutation,
   useGetAllContactUsQuery,
 } from "@/redux/api/contactUsApi";
+import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
+import { useState } from "react";
 
 const ContactUs = () => {
-  const { data, error, isLoading } = useGetAllContactUsQuery();
+  const [page, setPage] = useState(1);
+  const { data, error, isLoading } = useGetAllContactUsQuery({ page });
+
   const messages = data?.data?.data;
-  // const meta = data?.data?.meta;
+  const meta = data?.data?.meta;
 
   const [deleteContactUs] = useDeleteContactUsMutation();
 
@@ -63,6 +67,13 @@ const ContactUs = () => {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
+
+  const previousPage = () => {
+    if (page > 1) setPage(page - 1);
+  };
+  const nextPage = () => {
+    if (page < meta.total / meta.limit) setPage(page + 1);
+  };
 
   return (
     <>
@@ -127,6 +138,26 @@ const ContactUs = () => {
               </tbody>
             </table>
           </div>
+        </div>
+        {/* paginate  */}
+        <div className="flex gap-4 justify-center items-center my-6 ">
+          <button
+            onClick={previousPage}
+            className=" bg-white border hover:border-info-base rounded-sm p-2 hover:bg-info-base hover:text-white"
+          >
+            <BiLeftArrow />
+          </button>
+          <div className="text-white font-semibold">
+            <p>
+              Page {page} of {Math.ceil(meta.total / meta.limit)}
+            </p>
+          </div>
+          <button
+            onClick={nextPage}
+            className=" bg-white border hover:border-info-base rounded-sm p-2 hover:bg-info-base hover:text-white"
+          >
+            <BiRightArrow />
+          </button>
         </div>
       </div>
     </>

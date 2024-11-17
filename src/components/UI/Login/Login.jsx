@@ -1,15 +1,14 @@
 "use client";
+
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import Input from "@/components/UI/Forms/Input";
 import SubmitButton from "@/components/UI/Button/SubmitButton";
 import { useLoginMutation } from "@/redux/api/authApi";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
 import { storeUserInfo } from "@/services/auth.services";
 
-const Login = () => {
-  const router = useRouter();
+const Login = ({ closeModal }) => {
   const {
     register,
     handleSubmit,
@@ -25,11 +24,12 @@ const Login = () => {
 
       if (res?.success) {
         reset();
-        await storeUserInfo(res?.data?.accessToken);
+
+        storeUserInfo(res?.data?.accessToken);
         toast.success(res?.message || "Singed is successful!", {
           position: toast.TOP_RIGHT,
         });
-        router.push("/");
+        closeModal();
       }
       if (!res?.success) {
         toast.error(res?.message || "Something Went wrong!", {
@@ -44,9 +44,9 @@ const Login = () => {
   };
 
   return (
-    <div className="text-white bg-black-solid h-lvh w-lvw grid place-items-center">
-      <div className="w-[556px] mx-auto bg-black-muted rounded-lg px-6 py-12">
-        <p className="text-white border-0 border-b border-b-[#828282] pb-4">
+    <div className="text-start grid place-items-center">
+      <div className="md:w-[556px] mx-auto rounded-lg p-4 md:px-6 md:py-12">
+        <p className="font-semibold border-0 border-b border-b-[#828282] pb-4">
           Login Form
         </p>
         <form onSubmit={handleSubmit(onSubmit)}>

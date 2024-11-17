@@ -57,7 +57,6 @@ const CreateAdmin = () => {
     try {
       const res = await createAdmin(user).unwrap();
 
-      console.log(res.data);
       if (res?.success) {
         reset();
         await dispatch(sotreOTPInfo(res?.data));
@@ -73,7 +72,6 @@ const CreateAdmin = () => {
         });
       }
     } catch (error) {
-      console.log(error);
       toast.error(error?.data || "Something Went wrong!", {
         position: toast.TOP_RIGHT,
       });

@@ -7,11 +7,14 @@ import { usePathname, useRouter } from "next/navigation";
 import { HiMiniXMark } from "react-icons/hi2";
 import { HiOutlineBars3BottomLeft } from "react-icons/hi2";
 import ethenSoftLogo from "../../../../public/assets/images/about/eslogo.png";
+
+
 import Modal from "@/components/Modal/Modal";
 import AuthModal from "@/components/Modal/AuthModal";
 import { getUserinfo, removeUser } from "@/services/auth.services";
 import { useLogoutMutation } from "@/redux/api/authApi";
 import { toast } from "react-toastify";
+
 
 const Navbar = () => {
   const pathName = usePathname();

@@ -35,7 +35,7 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
+  // updted
   const items = [
     { display: "Home", path: "/" },
     { display: "About Us", path: "/about-us" },

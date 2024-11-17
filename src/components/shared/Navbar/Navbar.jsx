@@ -52,8 +52,8 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await logout().unwrap();
-      removeUser();
       topFunction();
+      removeUser();
       router.push("/");
       toast.success("User logged out successfully");
     } catch (error) {
@@ -152,7 +152,7 @@ const Navbar = () => {
 
           <div className="md:ml-8">
             {user?.role ? (
-              <button className="bg-btn px-4 py-2" onClick={{ handleLogout }}>
+              <button className="bg-btn px-4 py-2" onClick={handleLogout}>
                 Sign Out
               </button>
             ) : (

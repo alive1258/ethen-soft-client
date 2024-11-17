@@ -45,6 +45,7 @@ const SignUp = () => {
       gender,
       contactNo,
     } = data;
+    
     const user = {
       name: { firstName, middleName, lastName },
       email,

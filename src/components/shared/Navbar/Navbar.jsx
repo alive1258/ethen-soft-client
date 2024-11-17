@@ -8,14 +8,8 @@ import { HiMiniXMark } from "react-icons/hi2";
 import Button from "@/components/UI/Button/Button";
 import { HiOutlineBars3BottomLeft } from "react-icons/hi2";
 import ethenSoftLogo from "../../../../public/assets/images/about/eslogo.png";
-import { useDispatch, useSelector } from "react-redux";
-import { registerModalToggle } from "@/redux/features/toggleSlice";
-import Modal from "@/components/Modal/Modal";
-import Register from "../Register/Register";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
-  // const { registerValue } = useSelector((state) => state.sidebarToggle);
   const pathName = usePathname();
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

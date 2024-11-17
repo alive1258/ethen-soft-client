@@ -3,25 +3,41 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { HiMiniXMark } from "react-icons/hi2";
-import Button from "@/components/UI/Button/Button";
 import { HiOutlineBars3BottomLeft } from "react-icons/hi2";
 import ethenSoftLogo from "../../../../public/assets/images/about/eslogo.png";
+
+
+import Modal from "@/components/Modal/Modal";
+import AuthModal from "@/components/Modal/AuthModal";
+import { getUserinfo, removeUser } from "@/services/auth.services";
+import { useLogoutMutation } from "@/redux/api/authApi";
+import { toast } from "react-toastify";
+
 
 const Navbar = () => {
   const pathName = usePathname();
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
-  // const handleLoginModal = () => {
-  //   dispatch(registerModalToggle());
-  // };
+  const [showModal, setShowModal] = useState(false);
+  const user = getUserinfo();
+  const [logout] = useLogoutMutation();
+  const router = useRouter();
 
   const topFunction = () => {
     setOpen(!open);
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+  };
+
+  const handleLoginClick = () => {
+    topFunction();
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   useEffect(() => {
@@ -35,6 +51,18 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await logout().unwrap();
+      topFunction();
+      removeUser();
+      router.push("/");
+      toast.success("User logged out successfully");
+    } catch (error) {
+      console.error("Failed to log out:", error);
+    }
+  };
 
   const items = [
     { display: "Home", path: "/" },
@@ -97,7 +125,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/*  Nav Items */}
+        {/* Nav Items */}
         <ul
           className={`flex flex-col md:flex-row items-center md:gap-y-0 gap-y-4 md:pb-0 pb-10 pt-20 md:pt-0 absolute md:static md:z-auto z-[-1] top-0 w-full md:w-auto transition-all duration-500 ease-in ${
             open
@@ -126,14 +154,22 @@ const Navbar = () => {
           })}
 
           <div className="md:ml-8">
-            {/* <div onClick={handleLoginModal} className="md:ml-8"> */}
-            <Button content="Login" />
+            {user?.role ? (
+              <button className="bg-btn px-4 py-2" onClick={handleLogout}>
+                Sign Out
+              </button>
+            ) : (
+              <button className="bg-btn px-4 py-2" onClick={handleLoginClick}>
+                Login
+              </button>
+            )}
           </div>
-          {/* {registerValue && (
+
+          {showModal && (
             <Modal>
-              <Register />
+              <AuthModal closeModal={closeModal} />
             </Modal>
-          )} */}
+          )}
         </ul>
       </div>
     </div>

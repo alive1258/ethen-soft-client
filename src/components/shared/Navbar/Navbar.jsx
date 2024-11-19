@@ -79,7 +79,7 @@ const Navbar = () => {
     <div
       className={`fixed top-0 w-full z-[500] transition-all duration-500 ease-in-out ${
         isScrolled
-          ? "bg-[#fff] shadow-md text-gray-900"
+          ? "bg-[#fff] shadow-lg  text-gray-900"
           : "text-[#fff] bg-transparent"
       }`}
     >
@@ -140,7 +140,7 @@ const Navbar = () => {
                 className={`md:ml-6 font-normal duration-300 ${
                   isActive
                     ? `font-semibold  ${
-                        isScrolled ? "text-gradient" : "text-gradient"
+                        isScrolled ? "text-[#8e54e9]" : "text-[#8e54e9]"
                       }`
                     : `${isScrolled ? "md:text-gray-900" : "md:text-white"}`
                 }`}

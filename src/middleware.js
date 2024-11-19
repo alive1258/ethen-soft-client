@@ -2,34 +2,25 @@ import { NextResponse } from "next/server";
 import { decodedToken } from "./hooks/jwt";
 
 export async function middleware(request) {
-  const url = request.nextUrl.clone(); // Clone the URL to manipulate redirects
-
   // Get the refresh token or access token from cookies
   const token = request.cookies.get("refreshToken")?.value;
 
   if (!token) {
     // If no token is found, redirect to home or login page
-    url.pathname = "/";
-    return NextResponse.redirect(url);
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
-  let user;
-  try {
-    // Decode the token to get user information
-    user = decodedToken(token);
-  } catch (error) {
-    console.error("Error decoding token:", error);
-    url.pathname = "/";
-    return NextResponse.redirect(url);
-  }
+  // Decode the token to get user information
+  const user = decodedToken(token);
+  console.log("user", user);
 
   if (!user || !user.role) {
     // Redirect if the token is invalid or the user has no role
-    url.pathname = "/";
-    return NextResponse.redirect(url);
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   const { role } = user;
+
   const path = request.nextUrl.pathname;
 
   // Define role-specific access rules
@@ -47,8 +38,7 @@ export async function middleware(request) {
 
   if (!isAuthorized) {
     // Redirect if the user is not authorized to access the route
-    url.pathname = "/";
-    return NextResponse.redirect(url);
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   // Allow the request to proceed if validation passes

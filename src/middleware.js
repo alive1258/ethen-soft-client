@@ -12,6 +12,7 @@ export async function middleware(request) {
 
   // Decode the token to get user information
   const user = decodedToken(token);
+  console.log("user", user);
 
   if (!user || !user.role) {
     // Redirect if the token is invalid or the user has no role
@@ -19,6 +20,7 @@ export async function middleware(request) {
   }
 
   const { role } = user;
+
   const path = request.nextUrl.pathname;
 
   // Define role-specific access rules
@@ -36,6 +38,18 @@ export async function middleware(request) {
 
   if (!isAuthorized) {
     // Redirect if the user is not authorized to access the route
+
+  // Check if the request is for the dashboard
+  const dashboardRoute = request.nextUrl.pathname.startsWith("/dashboard");
+  // Only allow admins to access the dashboard
+  if (
+    dashboardRoute &&
+    role !== "admin" &&
+    role !== "super-admin" &&
+    role !== "customer"
+  ) {
+    // Redirect to home if not an admin
+
     return NextResponse.redirect(new URL("/", request.url));
   }
 
@@ -44,6 +58,9 @@ export async function middleware(request) {
 }
 
 export const config = {
+
   // Match all dashboard routes
   matcher: ["/dashboard/:path*"],
+
+
 };

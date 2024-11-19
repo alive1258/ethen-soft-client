@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // initialState state for sidebar toggle
 const initialState = {
-  value: false,
+  sidebarToggleStatus: false,
   loginValue: false,
   registerValue: false,
   forgotPassword: false,
@@ -16,7 +16,7 @@ export const sidebarToggleSlice = createSlice({
   reducers: {
     // sidebar responsive toggle
     sidebarToggle: (state) => {
-      state.value = !state.value;
+      state.sidebarToggleStatus = !state.sidebarToggleStatus;
     },
     cartMenuToggle: (state) => {
       state.cartValue = !state.cartValue;
@@ -42,7 +42,7 @@ export const sidebarToggleSlice = createSlice({
 
 //  export Toggle  action for sidebar toggle
 export const {
-  sidebartoggle,
+  sidebarToggle,
   mobileToggle,
   cartMenuToggle,
   loginModalToggle,

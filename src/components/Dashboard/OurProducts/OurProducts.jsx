@@ -14,12 +14,22 @@ import {
   useDeleteOurProductsMutation,
   useGetAllOurProductsQuery,
 } from "@/redux/api/ourProductApi";
+import { IoSearch } from "react-icons/io5";
+import { useState } from "react";
+import { filterBySearchQuery } from "@/utils/filterBySearchQuery";
 
 const OurProducts = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   // fetched all products
   const { data, error, isLoading } = useGetAllOurProductsQuery();
   // user formate name for better understand
-  const products = data?.data;
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value.toLowerCase());
+  };
+
+  // Filters companies based on the search query
+  const filteredData = filterBySearchQuery(data?.data, searchQuery);
 
   const [deleteOurProducts] = useDeleteOurProductsMutation();
 
@@ -74,95 +84,99 @@ const OurProducts = () => {
 
   return (
     <>
-      <div className="h-[75px] md:px-10 mt-5 rounded-t-[26px] flex justify-between items-center px-3 text-[#ADB5BD] bg-black-muted">
-        <div className="flex items-center gap-1 text-[#ADB5BD] text-base font-semibold">
-          <PiAlarmFill />
-          <span>All Our products</span>
+      <div className="md:px-6 px-4 py-7 mt-6 bg-primary-base mx-6 rounded-lg">
+        {/* Table header */}
+        <div className="flex justify-between items-center">
+          <h1 className="text-2xl font-semibold">All Our products</h1>
+          <div className="flex items-center space-x-4">
+            {/* Search input with icon */}
+            <div className="relative w-full max-w-xs">
+              <IoSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                placeholder="Search for..."
+                className="bg-primary-base border border-gray-700 rounded-md py-2 pl-10 pr-4 focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
+              />
+            </div>
+            {/* Link to create a new company */}
+            <Link href="/dashboard/admin/our-products/create">
+              <button className="btn w-60">Create Our products</button>
+            </Link>
+          </div>
         </div>
-        <Link
-          href={"/dashboard/admin/our-products/create"}
-          className="flex items-center gap-1 cursor-pointer text-[#4D69FA] bg-[#F0EFFB] rounded-[50px] py-1 px-[10px]"
-        >
-          <MdOutlineCloudUpload />
-          <span className="text-[13px] font-semibold">Add Our products</span>
-        </Link>
-      </div>
-
-      <div className="md:px-10 px-4 mt-3">
-        <div className="mx-auto w-full">
+        <div className="mx-auto w-full pt-6">
           <div className="overflow-x-auto w-full">
-            <table className="min-w-full bg-black-muted text-[#ADB5BD] border-gray-200 mb-10 rounded-lg">
+            <table className="min-w-full bg-primary-base text-[#ADB5BD] border-gray-200 mb-10 rounded-lg">
               <thead>
-                <tr className="bg-black-muted text-start text-[13px] overflow-hidden">
-                  <th className="py-4 px-4 text-start rounded-l-xl">
-                    <span>ID</span>
-                  </th>{" "}
-                  <th className="py-4 px-4 text-start">
-                    <span>Logo</span>
-                  </th>
-                  <th className="py-4 px-4 text-start">
-                    <span>Title</span>
-                  </th>
-                  <th className="py-4 px-4 text-start">
-                    <span>Slug</span>
-                  </th>
-                  <th className="py-4 px-4 text-start">
-                    <span>Sub Description</span>
-                  </th>
-                  <th className="py-4 px-4 text-start">
-                    <span>Meta key</span>
-                  </th>
-                  <th className="py-4 px-4 text-start">
-                    <span>Color Code</span>
-                  </th>
-                  <th className="py-4 px-4 text-end rounded-r-xl">
-                    <span>Action</span>
-                  </th>
+                <tr className="bg-primary-base text-start text-[13px] ">
+                  <th className="py-4 px-4 text-start rounded-l-xl">ID</th>
+                  <th className="py-4 px-4 text-start rounded-l-xl">Image</th>
+                  <th className="py-4 px-4 text-start">title Name</th>
+                  <th className="py-4 px-4 text-start">color_code</th>
+
+                  <th className="py-4 px-4 text-end rounded-r-xl">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {products?.map((item, index) => (
-                  <tr
-                    key={item.id}
-                    className={`${
-                      (index + 1) % 2 === 0
-                        ? "text-[#ECECEC]"
-                        : " bg-[#1C1C1C] text-[#ECECEC]"
-                    } text-[13px] px-[10px]`}
-                  >
-                    <td className="py-3 rounded-l-xl px-4">{index + 1}</td>
-                    <td className="py-3 px-4">
-                      <Image
-                        width={14}
-                        height={14}
-                        className="h-12 w-12 py-1 bg-[#FFF3D4]"
-                        src={item?.image}
-                        alt="image"
-                      />
-                    </td>
-                    <td className="py-3 px-4">{item?.title}</td>
-                    <td className="py-3 px-4">{item?.slug}</td>
-                    <td className="py-3 px-4">
-                      {truncateCharacters(item?.sub_description, 20)}
-                    </td>
-                    <td className="py-3 px-4">
-                      {truncateCharacters(item?.meta_key, 20)}
-                    </td>
-                    <td className="py-3 px-4">{item?.color_code}</td>
-                    <td className="my-2 px-4 text-end rounded-r-xl">
-                      <div className="flex items-center justify-end w-full gap-4">
-                        <Link
-                          href={`/dashboard/admin/our-products/update/${item?.slug}`}
-                        >
-                          <LiaEditSolid className="text-info-base text-2xl" />
-                        </Link>
-                        <button onClick={() => handleDeleteOurProducts(item)}>
-                          <MdDelete className="text-danger-base text-2xl" />
-                        </button>
-                      </div>
+                {filteredData?.length > 0 ? (
+                  filteredData.map((item, index) => (
+                    <tr
+                      key={item._id}
+                      className={`${
+                        (index + 1) % 2 === 0
+                          ? "text-[#ECECEC]"
+                          : "bg-[#1C1C1C] text-[#ECECEC]"
+                      } text-[13px] px-[10px]`}
+                    >
+                      <td className="py-3 rounded-l-xl px-4">{index + 1}</td>
+                      <td className="py-3 px-4">
+                        <Image
+                          width={14}
+                          height={14}
+                          className="h-12 w-12 py-1 bg-[#FFF3D4]"
+                          src={item?.image}
+                          alt="image"
+                        />
+                      </td>
+                      <td className="py-3 px-4 ">
+                        <p>{truncateCharacters(item?.title, 30)}</p>
+                      </td>
+                      <td className="py-3 px-4 ">
+                        <p>
+                          {truncateCharacters(
+                            item?.color_code?.name || "No Company Name",
+                            30
+                          )}
+                        </p>
+                      </td>
+
+                      <td className="my-2 px-4 text-end rounded-r-xl">
+                        <div className="flex items-center justify-end w-full gap-4">
+                          <Link
+                            href={`/dashboard/admin/our-products/update/${item?.slug}`}
+                          >
+                            <LiaEditSolid className="text-info-base text-2xl" />
+                          </Link>
+                          <button onClick={() => handleDeleteAttribute(item)}>
+                            <MdDelete className="text-danger-base text-2xl" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  // Display message when no companies match the search criteria
+                  <tr>
+                    <td
+                      colSpan="7"
+                      className="text-center py-6 text-red-600 text-2xl font-bold"
+                    >
+                      No results found.
                     </td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
           </div>

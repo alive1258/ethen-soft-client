@@ -5,10 +5,10 @@
 /* Color variable declarer  */
 @layer base {
   :root {
-    --color-primary-base: #8e4fae;
+    --color-primary-base: #0b1739;
     --color-tertiary-base: #c07fe0;
     --color-primary-muted: #f1f1f1;
-    --color-secondary-base: #e8292f;
+    --color-secondary-base: #929394;
     --color-info-base: #106bda;
     --color-info-muted: #b5d1f4;
     --color-warning-base: #e4a11b;
@@ -18,7 +18,7 @@
     --color-neutral-muted: #767676;
     --color-black-base: #1e232c;
     --color-black-solid: #000000;
-    --color-black-muted: #151819;
+    --color-black-muted: #1e1f25;
     --color-primary-shadow: 0px 0px 16px 0px rgba(187, 1, 252, 0.5);
   }
 }

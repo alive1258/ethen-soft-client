@@ -5,7 +5,7 @@ import { baseApi } from "./api/baseApi";
 import authSlice from "./features/authSlice";
 import adminAuthSlice from "./features/adminAuthSlice";
 import otpSlice from "./features/otp/otpSlice";
-import { sidebarToggleSlice } from "./features/toggleSlice";
+import sidebarToggleSlice from "./features/toggleSlice";
 
 const persistConfig = {
   key: "root",

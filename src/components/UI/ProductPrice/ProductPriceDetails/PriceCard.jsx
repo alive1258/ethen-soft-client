@@ -1,19 +1,38 @@
+"use client";
+
+import AuthModal from "@/components/Modal/AuthModal";
+import Modal from "@/components/Modal/Modal";
+import OrderModal from "@/components/Modal/OrderModal";
+import { useGetAllFeatureAssignedToPricingQuery } from "@/redux/api/featureAssignedToPricingApi";
+import { getUserinfo } from "@/services/auth.services";
+import { useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 
-const PriceCard = async ({
-  title,
-  price,
-  pricingCategory,
-  serviceId,
-  pricingId,
-}) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/feature-assigned-pricing?pricing=${pricingId}`
-  );
+const PriceCard = ({ title, price, pricingCategory, serviceId, pricingId }) => {
+  const [open, setOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  const data = await res?.json();
-  const features = data?.data?.data;
-  // const meta = data?.data?.meta;
+  // get user info
+  const user = getUserinfo();
+
+  const data = useGetAllFeatureAssignedToPricingQuery({ pricing: pricingId });
+  const features = data?.data?.data?.data;
+  // const meta = data?.data?.data?.meta;
+
+  const topFunction = () => {
+    setOpen(!open);
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+
+  const handleLoginClick = () => {
+    topFunction();
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   // for payment
   //serviceId and pricingId given in params
@@ -49,8 +68,30 @@ const PriceCard = async ({
               </div>
             ))}
         </div>
-        <button className="text-white w-full bg-btn mb-2">Buy Now</button>
+        <button
+          onClick={handleLoginClick}
+          className="text-white w-full bg-btn mb-2"
+        >
+          Buy Now
+        </button>
       </div>
+      {showModal && (
+        <Modal>
+          {user?._id ? (
+            <OrderModal
+              closeModal={closeModal}
+              title={title}
+              price={price}
+              userId={user?._id}
+              pricingCategory={pricingCategory}
+              serviceId={serviceId}
+              pricingId={pricingId}
+            />
+          ) : (
+            <AuthModal closeModal={closeModal} />
+          )}
+        </Modal>
+      )}
     </div>
   );
 };

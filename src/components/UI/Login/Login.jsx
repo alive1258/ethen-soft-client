@@ -31,6 +31,7 @@ const Login = ({ closeModal }) => {
         });
         closeModal();
       }
+
       if (!res?.success) {
         toast.error(res?.message || "Something Went wrong!", {
           position: toast.TOP_RIGHT,

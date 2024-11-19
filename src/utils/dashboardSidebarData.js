@@ -29,6 +29,7 @@ import { FaFeather, FaImages } from "react-icons/fa";
 import { getUserinfo } from "@/services/auth.services";
 
 const user = getUserinfo();
+console.log(user);
 
 export const SidebarItemsData = [];
 

@@ -17,8 +17,8 @@ import { toast } from "react-toastify";
 const Navbar = () => {
   const pathName = usePathname();
   const [open, setOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const user = getUserinfo();
   const [logout] = useLogoutMutation();
   const router = useRouter();
@@ -77,7 +77,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed top-0 w-full z-[1000] transition-all duration-500 ease-in-out ${
+      className={`fixed top-0 w-full z-[500] transition-all duration-500 ease-in-out ${
         isScrolled
           ? "bg-[#fff] shadow-lg  text-gray-900"
           : "text-[#fff] bg-transparent"

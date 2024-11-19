@@ -26,6 +26,7 @@ const PriceAndPlan = async ({ serviceId }) => {
                 key={index}
                 title={item?.title}
                 price={item?.price}
+                serviceId={serviceId}
                 pricingCategory={item?.pricingCategory}
                 pricingId={item?._id}
               />

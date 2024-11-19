@@ -37,7 +37,7 @@ const Modal = ({ children }) => {
     <div
       ref={modalRef}
       onClose={onHide}
-      className="fixed left-0 top-0 w-full h-full grid place-items-center bg-slate-800/50 backdrop-blur-sm z-[500]"
+      className=" fixed left-0 top-0 w-full h-full grid place-items-center bg-slate-800/50 backdrop-blur-sm z-[501]"
       role="dialog"
       aria-modal="true"
     >

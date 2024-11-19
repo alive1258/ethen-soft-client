@@ -7,6 +7,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { HiMiniXMark } from "react-icons/hi2";
 import { HiOutlineBars3BottomLeft } from "react-icons/hi2";
 import ethenSoftLogo from "../../../../public/assets/images/about/eslogo.png";
+
 import Modal from "@/components/Modal/Modal";
 import AuthModal from "@/components/Modal/AuthModal";
 import { getUserinfo, removeUser } from "@/services/auth.services";

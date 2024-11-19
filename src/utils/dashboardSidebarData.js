@@ -231,7 +231,7 @@ export const SidebarItems = [
 ];
 
 const usersForSuperAdmin = {
-  id: 3,
+  id: 9,
   name: "User",
   path: "/user",
   Icon: <FaUser size={24} />,
@@ -251,14 +251,14 @@ const usersForSuperAdmin = {
   ],
 };
 const usersForAdmin = {
-  id: 1,
+  id: 10,
   name: "Customers",
   path: "/dashboard/admin/user/admins",
   Icon: <RiAdminFill />,
 };
 
 const settings = {
-  id: 6,
+  id: 11,
   name: "Setting",
   path: "/setting",
   Icon: <LiaBlogSolid size={24} />,

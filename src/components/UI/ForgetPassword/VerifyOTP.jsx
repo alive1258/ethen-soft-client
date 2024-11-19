@@ -61,8 +61,9 @@ const VerifyOTP = () => {
     }
   };
   return (
-    <div className="text-white bg-black-solid h-lvh w-lvw grid place-items-center">
-      <div className="w-[556px] mx-auto bg-black-muted rounded-lg px-6 py-12">
+    <div className="text-white bg-[#0a0b31] h-lvh w-lvw grid place-items-center">
+      <div className="w-[556px] mx-auto bg-[#122352]  relative  px-6 py-12 rounded-xl overflow-hidden shadow-xl">
+        <div className="absolute  top-0 left-0 w-full h-[4px] bg-gradient-to-r from-violet-600  to-[#e4365e]"></div>
         <p className="border-0 border-b border-b-[#828282] pb-4">Verify OTP</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input

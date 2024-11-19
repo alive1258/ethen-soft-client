@@ -45,6 +45,7 @@ const SignUp = ({ isSignUp }) => {
       gender,
       contactNo,
     } = data;
+
     const user = {
       name: { firstName, middleName, lastName },
       email,
@@ -79,8 +80,12 @@ const SignUp = ({ isSignUp }) => {
     }
   };
   return (
-    <div className="text-black-base text-start md:w-[800px]">
-      <div className="w-full mx-auto rounded-lg p-2 md:p-6">
+    // <div className="text-white bg-[#0a0b31] h-lvh w-lvw grid place-items-center">
+    // <div className="w-[556px] mx-auto bg-[#122352]  relative  px-6 py-12 rounded-xl overflow-hidden shadow-xl">
+
+    <div className="text-start  md:w-[800px]">
+      <div className="absolute  top-0 left-0 w-full h-[4px] bg-gradient-to-r from-violet-600   to-[#e4365e]"></div>
+      <div className="w-full text-gray-900  mx-auto   p-2 md:p-6">
         <p className="border-0 border-b border-b-[#828282] pb-4">
           Sign Up Form
         </p>

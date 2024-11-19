@@ -25,8 +25,11 @@ const VerifyOTP = () => {
   } = useForm();
 
   const { otpData } = useSelector((state) => state?.otpData);
+  const userId = otpData?.userId;
 
-  const { data: userData } = useGetSingleUserQuery(otpData?.userId);
+  const { data: userData } = useGetSingleUserQuery(userId, {
+    skip: !userId,
+  });
   const role = userData?.data?.role;
 
   const [verifyOTP] = useVerifyOTPMutation();
@@ -40,7 +43,7 @@ const VerifyOTP = () => {
       if (res?.success) {
         reset();
         dispatch(removeOTPInfo());
-        await storeUserInfo(res?.data?.accessToken);
+        storeUserInfo(res?.data?.accessToken);
         toast.success(res?.message || "Singed is successful!", {
           position: toast.TOP_RIGHT,
         });

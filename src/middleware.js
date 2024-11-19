@@ -13,26 +13,37 @@ export async function middleware(request) {
   // Decode the token to get user information
   const user = decodedToken(token);
 
-  // If user is not decoded properly, redirect
   if (!user || !user.role) {
+    // Redirect if the token is invalid or the user has no role
     return NextResponse.redirect(new URL("/", request.url));
   }
 
   const { role } = user;
+  const path = request.nextUrl.pathname;
 
-  // Check if the request is for the dashboard
-  const dashboardRoute = request.nextUrl.pathname.startsWith("/dashboard");
-  // Only allow admins to access the dashboard
-  if (dashboardRoute && role !== "admin" && role !== "super-admin") {
-    // Redirect to home if not an admin
+  // Define role-specific access rules
+  const rolePaths = {
+    "super-admin": ["/dashboard/admin"],
+    admin: ["/dashboard/admin"],
+    customer: ["/dashboard/customer"],
+  };
+
+  // Check if the requested path matches the user's role
+  const allowedPaths = rolePaths[role] || [];
+  const isAuthorized = allowedPaths.some((allowedPath) =>
+    path.startsWith(allowedPath)
+  );
+
+  if (!isAuthorized) {
+    // Redirect if the user is not authorized to access the route
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  // Allow the request to proceed if the role matches the required access level
+  // Allow the request to proceed if validation passes
   return NextResponse.next();
 }
 
 export const config = {
-  // Protect both dashboard and pricing routes
+  // Match all dashboard routes
   matcher: ["/dashboard/:path*"],
 };

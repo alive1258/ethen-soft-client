@@ -7,6 +7,8 @@ import SubmitButton from "@/components/UI/Button/SubmitButton";
 import { useLoginMutation } from "@/redux/api/authApi";
 import { toast } from "react-toastify";
 import { storeUserInfo } from "@/services/auth.services";
+import Cookies from "js-cookie";
+import { REFRESH_TOKEN_KEY } from "@/contents/authKey";
 
 const Login = ({ closeModal }) => {
   const {
@@ -24,7 +26,14 @@ const Login = ({ closeModal }) => {
 
       if (res?.success) {
         reset();
+        // set refresh token in cookies
+        Cookies.set(REFRESH_TOKEN_KEY, res?.data?.refreshToken, {
+          expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "lax",
+        });
 
+        // set access token in local storage
         storeUserInfo(res?.data?.accessToken);
         toast.success(res?.message || "Singed is successful!", {
           position: toast.TOP_RIGHT,

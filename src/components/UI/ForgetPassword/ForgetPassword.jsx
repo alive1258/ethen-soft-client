@@ -23,10 +23,9 @@ const ForgetPassword = () => {
   const onSubmit = async (data) => {
     try {
       const res = await forgetPassword(data).unwrap();
-      console.log(res);
       if (res?.success) {
         reset();
-        await dispatch(sotreOTPInfo(res?.data));
+        dispatch(sotreOTPInfo(res?.data));
         toast.success(res?.message || "Success! Please check your email.", {
           position: toast.TOP_RIGHT,
         });

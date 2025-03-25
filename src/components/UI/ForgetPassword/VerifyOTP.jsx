@@ -49,7 +49,7 @@ const VerifyOTP = () => {
         Cookies.set(REFRESH_TOKEN_KEY, res?.data?.refreshToken, {
           expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours
           secure: process.env.NODE_ENV === "production",
-          sameSite: "strict",
+          sameSite: "lax",
         });
 
         // set access token in local storage

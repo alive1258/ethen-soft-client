@@ -12,7 +12,6 @@ export async function middleware(request) {
 
   // Decode the token to get user information
   const user = decodedToken(token);
-  console.log("user", user);
 
   if (!user || !user.role) {
     // Redirect if the token is invalid or the user has no role

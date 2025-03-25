@@ -13,6 +13,8 @@ import AuthModal from "@/components/Modal/AuthModal";
 import { getUserinfo, removeUser } from "@/services/auth.services";
 import { useLogoutMutation } from "@/redux/api/authApi";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie";
+import { REFRESH_TOKEN_KEY } from "@/contents/authKey";
 
 const Navbar = () => {
   const pathName = usePathname();
@@ -52,9 +54,9 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await logout().unwrap();
-      topFunction();
+      Cookies.remove(REFRESH_TOKEN_KEY);
       removeUser();
+      topFunction();
       router.push("/");
       toast.success("User logged out successfully");
     } catch (error) {
